@@ -1,0 +1,45 @@
+/**
+ * Copyright (C) J Leadbetter <j@jleadbetter.com>
+ * Affero GPL v3
+ **/
+
+Container {
+    align: center middle;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    scrollbar-background: $surface;
+}
+
+/* 10,000 Words title */
+
+#title {
+    width: 40;
+    overflow-x: hidden;
+}
+
+.title-text {
+    color: $secondary;
+    text-style: bold;
+}
+
+/* Subtitle */
+
+#subtitle-wrapper {
+    margin: 2 0;
+}
+
+.subtitle-text {
+    color: $accent;
+    text-align: center;
+}
+
+/* Login */
+
+#login {
+    width: 40;
+}
+
+#login-button {
+    margin-top: 1;
+    margin-bottom: 2;
+}
