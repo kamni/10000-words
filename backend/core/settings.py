@@ -20,8 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 PROJECT_DIR = BASE_DIR.parent
 
-SETTINGS_STORE_CFG = 'django.dev'
-SETTINGS_STORE = SettingsStore(SETTINGS_STORE_CFG)
+SETTINGS_STORE_FILE = PROJECT_DIR / 'setup.cfg'
+SETTINGS_STORE_CFG = 'dev.django'
+SETTINGS_STORE = SettingsStore(SETTINGS_STORE_FILE, SETTINGS_STORE_CFG)
 
 MEDIA_ROOT = PROJECT_DIR / SETTINGS_STORE.get('common', 'uploaddir')
 

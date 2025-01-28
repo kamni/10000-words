@@ -11,13 +11,18 @@ from common.utils.singleton import Singleton
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent 
-TEST_CONFIG = BASE_DIR / 'config.ini'
+TEST_CONFIG = BASE_DIR / 'setup.cfg'
 
 
 class TestSettingsStore(TestCase):
     """
     Tests for common.stores.settings.SettingsStore
     """
+
+    @classmethod
+    def setUpClass(cls):
+        # In case there is already lurking from somewhere else in the code
+        Singleton.destroy(SettingsStore)
 
     def tearDown(self):
         Singleton.destroy(SettingsStore)
@@ -40,7 +45,7 @@ class TestSettingsStore(TestCase):
     def test_init_with_defaults(self):
         settings_store = SettingsStore()
         expected_config = 'default'
-        expected_subsection = 'dev.json'
+        expected_subsection = 'dev.django'
 
         self.assertEqual(
             expected_config,
@@ -87,14 +92,14 @@ class TestSettingsStore(TestCase):
 
     def test_subsection(self):
         settings_store = SettingsStore()
-        expected_config_file = 'dev.json'
+        expected_config_file = 'dev.django'
         self.assertEqual(
             expected_config_file,
             settings_store.subsection
         )
 
-        settings_store._subsection = 'dev.django'
-        expected_config_file = 'dev.json'
+        settings_store._subsection = 'dev.foo'
+        expected_config_file = 'dev.django'
         self.assertEqual(
             expected_config_file,
             settings_store.subsection
