@@ -1,5 +1,11 @@
 # TODOS
 
+## Config
+
+* [ ] make new config.ini.example
+* [ ] is it read correctly? tests, check out adapters
+* [ ] django uses config.ini
+
 ## Document
 
 * [ ] Reconcile common models and backend models
@@ -16,6 +22,10 @@
 * [ ] lint
 * [ ] mypy
 * [ ] copyright checker
+
+## Auth
+
+* [ ] UI: User creation
 
 ## Document Part 2: Basic UI
 

@@ -1,23 +1,38 @@
-# Configurations for the project
+###############################################################################
+#                                                                             #
+# Copyright (C) J Leadbetter <j@jleadbetter.com>                              #
+# Affero GPL V3                                                               #
+#                                                                             #
+# Configuration for all modules of the project                                #
+#                                                                             #
+###############################################################################
 
-[ports]
-AuthnPort = common.adapters.auth.AuthnJSONFileAdapter
-DatabasePort = common.adapters.database.DatabaseJSONFileAdapter
-UserPort = common.adapters.users.UserJSONFileAdapter
-WordPort = common.adapters.words.WordJSONFileAdapter
+[config.meta]
+Name = default
+DefaultConfig = dev.django
 
-[adapters.common]
-databaseFile = database
+###############################################################################
+#                                                                             #
+# Configuration for Django ORM backend                                        #
+#                                                                             #
+###############################################################################
 
-[setup]
+[dev.django]
+
+[dev.django.ports]
+DocumentPort = common.adapters.documents.DocumentDjangoORMAdapter
+UserPort = common.adapters.users.UserDjangoORMAdapter
+
+[dev.django.adapters.common]
+DatabaseFile = database
+DataDir = data
+
+[dev.django.setup]
+CreateDefaultWords = yes
 CreateDefaultUsers = yes
 
-###############################################################################
-# Adapter-specific settings go here.                                          #
-#                                                                             #
-# Example config:                                                             #
-#                                                                             #
-#     [adapters.AuthnPort]                                                    #
-#     KeycloakUrl = https://example.com/keycloak                              #
-#                                                                             #
-###############################################################################
+# Adapter-specific settings go here
+# Example:
+#
+#   [dev.django.adapters.AuthnPort]
+#   SingleUserSystem = yes
