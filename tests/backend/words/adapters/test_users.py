@@ -30,7 +30,7 @@ class TestUserDBDjangoORMAdapter(TestCase):
         # Check the returned object
         new_user = adapter.create(user)
         self.assertIsNotNone(new_user.id)
-        self.assertIsNotNone(new_user.password)
+        self.assertTrue(new_user.password)  # non-empty string
         self.assertEqual(user.username, new_user.username)
         self.assertEqual(user.display_name, new_user.display_name)
         self.assertNotEqual(user.password, new_user.password)
@@ -42,7 +42,24 @@ class TestUserDBDjangoORMAdapter(TestCase):
         self.assertEqual(new_user.display_name, new_db_user.display_name)
 
     def test_create_without_password(self):
-        pass
+        user = UserDB(
+            username='test_create_user_no_password',
+            display_name='Test User',
+        )
+        adapter = UserDBDjangoORMAdapter()
+
+        # Check the returned object
+        new_user = adapter.create(user)
+        self.assertIsNotNone(new_user.id)
+        self.assertFalse(new_user.password)  # empty string
+        self.assertEqual(user.username, new_user.username)
+        self.assertEqual(user.display_name, new_user.display_name)
+
+        # Verify the database object
+        new_db_user = UserSettings.objects.get(id=new_user.id)
+        self.assertFalse(new_db_user.password)  # empty string
+        self.assertEqual(new_user.username, new_db_user.username)
+        self.assertEqual(new_user.display_name, new_db_user.display_name)
 
     def test_create_duplicate_user(self):
         pass
