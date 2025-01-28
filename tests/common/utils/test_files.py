@@ -8,7 +8,7 @@ from unittest import TestCase
 
 from pydantic import BaseModel
 
-from common.models.documents import DocumentDBBase
+from common.models.documents import DocumentBase
 from common.utils.files import document_upload_path
 
 
@@ -16,7 +16,7 @@ class FooUser(BaseModel):
     id: str
 
 
-class FooDocument(DocumentDBBase, BaseModel):
+class FooDocument(DocumentBase, BaseModel):
     id: str
     user: FooUser
     language_code: str
