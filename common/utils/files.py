@@ -6,10 +6,7 @@ Affero GPL v3
 import os
 from typing import Any
 
-from django.confg import settings
-
 from ..models.documents import DocumentDBBase
-from ..stores.settings import SettingsStore
 
 
 def document_upload_path(instance: DocumentDBBase, filename: str) -> str:

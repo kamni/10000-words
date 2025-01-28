@@ -2,13 +2,14 @@
 
 ## Config
 
-* [ ] Fix settings adapter
+* [x] Fix settings
 * [ ] common.utils.files.document_upload_path
   * [ ] implement DocumentBase
   * [ ] make all documents use DocumentBase
   * [ ] tests
 * [ ] make backend.models.database.Database use document_upload_path
 
+* [ ] Fix adapter
 * [ ] Redoo settings to get any setting?
   * [ ] Or just subsetting
 * [x] make new config.ini.example

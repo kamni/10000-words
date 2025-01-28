@@ -3,7 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -13,7 +13,7 @@ from .users import UserDB, UserUI
 from ..utils.languages import LanguageCode
 
 
-class DocumentDBBase(ABC):
+class DocumentDBBase:
     """
     Minimum guarantee of properties on models used with the database
     """
@@ -33,7 +33,7 @@ class DocumentDBBase(ABC):
         pass
 
 
-class DocumentDBMinimal(HashableMixin, DocumentDBBAse, BaseModel):
+class DocumentDBMinimal(HashableMixin, DocumentDBBase, BaseModel):
     """
     Minimal representation of a document in the database
     """

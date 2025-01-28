@@ -2,7 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import warnings
 from pathlib import Path
+
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 if PROJECT_DIR not in sys.path:
