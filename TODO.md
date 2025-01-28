@@ -1,25 +1,14 @@
 # TODOS
 
-## Initialize Database
+## Document
 
-* [ ] Remove corpora collection and parsed words -- they're not interesting
-* [ ] Remove corpora info in README
-* [ ] Initialize database only creates a new database
-* [ ] Tests for initialize database -- if Django, would be command
-
-## Sqlite, Sqlalchemy, and South
-
-Or Django with Vue frontend, postgres database?
-
-* [ ] Re-convert the models, and from_ORM to pydantic
-* [ ] Initialize database should work with sql config
-
-## Upload Script
-
-* [ ] Handle 'txt' with a txt port/adapter
-* [ ] Upload the script, creating Unknowns for each word, unless it already
-      exists, then just add the sentence (provided the sentence isn't already
-      there).
+* [ ] Reconcile common models and backend models
+* [ ] Document adapter
+  * [ ] tests
+* [ ] User settings model -- display name
+* [ ] Migrations
+* [ ] User adapter
+  * [ ] tests
 
 ## Cleanup
 
@@ -27,6 +16,93 @@ Or Django with Vue frontend, postgres database?
 * [ ] lint
 * [ ] mypy
 * [ ] copyright checker
+
+## Document Part 2: Basic UI
+
+* [ ] command line, list documents
+* [ ] command line, click on documents to take to an empty page
+* [ ] command line, display title
+* [ ] command line, sidebar to open any document
+
+## Show document list
+
+* [ ] Tests for UserUI.from_db
+* [ ] Tests for DocumentUIMinimal.from_db
+
+
+* [ ] Add UserPort to django
+* [ ] Add document_port
+  * [x] DocumentJSONAdapter
+    * [x] tests
+  * [ ] DocumentDjangoORMAdapter
+    * [ ] tests
+  * [ ] DocumentDjangoORMAdapter
+* [ ] Tests for database adapter
+* [ ] Tests for user adapter?
+* [ ] Tests for auth adapter?
+* [ ] Import document for testing
+* [ ] Django API
+
+## Tests
+
+* [ ] utils.file
+
+## Misc
+
+* [ ] Conjugations are tied to the sentences, not the words
+* [ ] When importing 'words' into the database, make them a conjugation.
+      We'll add a word later.
+* [ ] move conjugations into their own file (fix init.py)
+* [ ] change Word.root_word to Word.text
+* [ ] remove common.models.config
+* [ ] remove common.models.dev
+* [ ] rename `language` field on Document to `language_code`
+* [ ] mv `utils/languages.py` to `common`
+* [ ] convert backend.words.models.words to use PartOfSpeechType from common
+* [ ] convert all the conjugation enums into choices for conjugations
+
+* [ ] Conjugation (Django)
+  * [ ] A conjugation has a One-to-Many relationship with a word.
+  * [ ] Conjugations are unique per word, not language/user/text, because
+        sometimes conjugations are the same for different root words
+
+## Misc
+
+* [ ] fix audio upload url
+* [ ] replace instances of os.path with pathlib.Path
+
+## Django Experiment
+
+* [ ] Don't fetch audio until first time viewing word?
+* [ ] Fix common models
+* [ ] Audio adapter
+* [ ] Tests for audio adapter
+
+
+* [x] Stressed or unstressed conjugation (think Dutch pronouns)
+* [x] Add examples per conjugation, not per word
+* [ ] Adapter for audio
+* [ ] Tests
+* [ ] Adapters for working with Django ORM
+* [ ] Ability to upload translation files -- linked to other document
+
+## Editing UI
+
+* [ ] UserSettings
+* [ ] Users should only be able to see their own items
+* [ ] Django or js framework? Or textual? or?
+* [ ] Display untranslated sentences
+* [ ] Create words when sentence is translated (if they don't already exist)
+* [ ] Create user tracking when a conjugation is added
+* [ ] Set status from the UI on conjugation
+
+## Initialize Database
+
+* [ ] Remove corpora collection and parsed words -- they're not interesting
+* [ ] Remove corpora info in README
+* [ ] Initialize database only creates a new database
+* [ ] Tests for initialize database -- if Django, would be command
+
 
 ## Thoughts
 
@@ -74,6 +150,11 @@ Learning mode:
    3. Hear foreign text, type what you heard.
    4. Option to turn off seeing text in #1 and #2
 
+Score for number of words you've learned
+
+Store word -- are all of them user-related? No uneditable words?
+Selected translations?
+You are responsible for your own copyright
 
 ## Database Models
 
