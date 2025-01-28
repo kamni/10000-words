@@ -46,13 +46,13 @@ class UserDBDjangoORMAdapter(UserDBPort):
             new_user.set_password(user.password)
             new_user.save()
 
-        try:
-            new_settings = UserSettings.objects.create(
-                user=new_user,
-                display_name=user.display_name,
-            )
-        except IntegrityError as exc:
-            raise ObjectExistsError(exc)
+        # The user is unique on a UserSettings model.
+        # We don't have to worry about a duplicate user,
+        # because it would have failed in the previous try-except block.
+        new_settings = UserSettings.objects.create(
+            user=new_user,
+            display_name=user.display_name,
+        )
 
         new_user_db = self._django_to_pydantic(new_settings)
         return new_user_db

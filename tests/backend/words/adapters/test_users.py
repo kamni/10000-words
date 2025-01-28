@@ -3,8 +3,11 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import uuid
+
 from django.test import TestCase
 
+from common.models.errors import ObjectExistsError, ObjectNotFoundError
 from common.models.users import UserDB, UserUI
 
 from words.adapters.users import (
@@ -62,22 +65,55 @@ class TestUserDBDjangoORMAdapter(TestCase):
         self.assertEqual(new_user.display_name, new_db_user.display_name)
 
     def test_create_duplicate_user(self):
-        pass
+        user = UserDB(
+            username='test_create_user_duplicate_django_user',
+            password='1234567',
+            display_name='Test User',
+        )
+        adapter = UserDBDjangoORMAdapter()
+        adapter.create(user)
 
-    def test_create_duplicate_user_settings(self):
-        pass
+        with self.assertRaises(ObjectExistsError):
+            adapter.create(user)
 
     def test_get(self):
-        pass
+        user = UserDB(
+            username='test_get',
+            password='1234567',
+            display_name='Test User',
+        )
+        adapter = UserDBDjangoORMAdapter()
+        new_user = adapter.create(user)
+
+        new_user_db = adapter.get(new_user.id)
+        self.assertEqual(new_user, new_user_db)
 
     def test_get_user_settings_does_not_exist(self):
-        pass
+        user_id = uuid.uuid4()
+        adapter = UserDBDjangoORMAdapter()
+
+        with self.assertRaises(ObjectNotFoundError):
+            adapter.get(user_id)
 
     def test_get_by_username(self):
-        pass
+        username = 'test_get_by_username'
+        user = UserDB(
+            username=username,
+            password='1234567',
+            display_name='Test User',
+        )
+        adapter = UserDBDjangoORMAdapter()
+
+        new_user = adapter.create(user)
+        new_user_db = adapter.get_by_username(username)
+        self.assertEqual(new_user, new_user_db)
 
     def test_get_by_username_settings_does_not_exist(self):
-        pass
+        username = 'nonexistent_username'
+        adapter = UserDBDjangoORMAdapter()
+
+        with self.assertRaises(ObjectNotFoundError):
+            adapter.get_by_username(username)
 
 
 class TestUserUIDjangoORMAdapter(TestCase):
