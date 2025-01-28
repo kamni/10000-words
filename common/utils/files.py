@@ -6,10 +6,10 @@ Affero GPL v3
 import os
 from typing import Any
 
-from ..models.documents import DocumentDBBase
+from ..models.documents import DocumentBase
 
 
-def document_upload_path(instance: DocumentDBBase, filename: str) -> str:
+def document_upload_path(instance: DocumentBase, filename: str) -> str:
     """
     Get the upload path for a document.
 

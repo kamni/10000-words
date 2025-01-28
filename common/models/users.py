@@ -12,7 +12,20 @@ from pydantic import BaseModel
 from .base import HashableMixin
 
 
-class UserDB(HashableMixin, BaseModel):
+class UserBase(HashableMixin):
+    """
+    Shared base class for both Pydantic and Django models for the database.
+
+    Must implement the following fields:
+
+    * id
+    * user (with user.id)
+    * language_code
+    """
+    pass
+
+
+class UserDB(UserBase, BaseModel):
     """
     Representation of a user in the database.
     """
@@ -28,7 +41,7 @@ class UserDB(HashableMixin, BaseModel):
         return ['username']
 
 
-class UserUI(HashableMixin, BaseModel):
+class UserUI(UserBase, BaseModel):
     """
     Representation of a logged-in user in the UI.
     NOTE: use camel-cased attributes for easier handling with javascript

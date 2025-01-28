@@ -10,12 +10,13 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from common.models.users import DocumentBase
 from common.utils.files import document_upload_path
 
 from ..utils.languages import language_code_choices
 
 
-class Document(models.Model):
+class Document(DocumentBase, models.Model):
     """
     Uploaded document with words to study.
     """

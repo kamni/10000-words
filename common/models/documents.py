@@ -12,7 +12,7 @@ from .users import UserDB, UserUI
 from ..utils.languages import LanguageCode
 
 
-class DocumentDBBase(HashableMixin):
+class DocumentBase(HashableMixin):
     """
     Shared base class for both Pydantic and Django models for the database.
 
@@ -25,7 +25,7 @@ class DocumentDBBase(HashableMixin):
     pass
 
 
-class DocumentDBMinimal(DocumentDBBase, BaseModel):
+class DocumentDBMinimal(DocumentBase, BaseModel):
     """
     Minimal representation of a document in the database
     """
@@ -36,7 +36,7 @@ class DocumentDBMinimal(DocumentDBBase, BaseModel):
     language_code: LanguageCode
 
 
-class DocumentDB(DocumentDBBase, BaseModel):
+class DocumentDB(DocumentBase, BaseModel):
     """
     Representation of a document to be stored in the database
     """
@@ -53,7 +53,7 @@ class DocumentDB(DocumentDBBase, BaseModel):
         return ['user_id', 'display_name', 'language_code']
 
 
-class DocumentUIMinimal(HashableMixin, BaseModel):
+class DocumentUIMinimal(DocumentBase, BaseModel):
     """
     Bare minimum display of documents in the UI
     Excludes Sentences and Words
