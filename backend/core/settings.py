@@ -8,8 +8,6 @@ Django settings for the 10,000 Words project.
 import sys
 from pathlib import Path
 
-from common.stores.settings import SettingsStore
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ###############################################################################
@@ -19,6 +17,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ###############################################################################
 
 PROJECT_DIR = BASE_DIR.parent
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.append(str(PROJECT_DIR))
+
+from common.stores.settings import SettingsStore
 
 SETTINGS_STORE_FILE = PROJECT_DIR / 'setup.cfg'
 SETTINGS_STORE_CFG = 'dev.django'

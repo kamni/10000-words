@@ -46,7 +46,7 @@ class DocumentDB(DocumentDBBase, BaseModel):
     display_name: str
     language_code: LanguageCode
     doc_file: str  # Relative path in file system
-    translations: Optional[List[DocumentDBMinimal]] = None
+    translations: Optional[List['DocumentDB']] = None
 
     @property
     def unique_fields(self):
@@ -82,15 +82,3 @@ class DocumentUIMinimal(HashableMixin, BaseModel):
             languageCode=document.language_code,
         )
         return document_ui
-
-
-class DocumentUI(HashableMixin, BaseModel):
-    """
-    All information needed to display a Document and its Sentences/Words.
-    Includes user tracking for learned words
-    """
-
-    id: str  # UUID
-    user: UserUI
-    displayName: str
-    languageCode: LanguageCode

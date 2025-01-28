@@ -7,8 +7,8 @@ from pathlib import Path
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
-if PROJECT_DIR not in sys.path:
-    sys.path.append(PROJECT_DIR)
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.append(str(PROJECT_DIR))
 
 
 def main():

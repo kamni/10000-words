@@ -1,33 +1,24 @@
 # TODOS
 
-## Config
+## User
 
-* [x] Fix settings
-* [ ] common.utils.files.document_upload_path
-  * [ ] implement DocumentBase
-  * [ ] make all documents use DocumentBase
-  * [ ] tests
-* [ ] make backend.models.database.Database use document_upload_path
+* [ ] Reconcile common User models with django User model
+  * [ ] create UserSettings
+  * [ ] create migrations
+* [ ] Port/adapter for getting UserDB
+* [ ] Port/adapter for converting to UserUI
 
-* [ ] Fix adapter
-* [ ] Redoo settings to get any setting?
-  * [ ] Or just subsetting
-* [x] make new config.ini.example
-* [ ] get tests running
-* [ ] django uses config.ini
+## Adapter Store
+
+* [ ] Get tests working
+* [ ] Do other existing tests work?
 
 ## Document
 
-* [ ] Thin models, fat utils
-* [ ] Reconcile common models and backend models
-  * [ ] document
-  * [ ] user
-* [ ] Document adapter
-  * [ ] tests
-* [ ] User settings model -- display name
-* [ ] Migrations
-* [ ] User adapter
-  * [ ] tests
+* [ ] Reconcile common Document models with django Document models
+  * [ ] create migrations
+* [ ] Port/adapter for getting DocumentDB
+* [ ] Port/adapter for converting to DocumentUI
 
 ## Cleanup
 

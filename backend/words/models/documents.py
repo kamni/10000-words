@@ -10,17 +10,9 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from common.utils.files import document_upload_path
+
 from ..utils.languages import language_code_choices
-
-
-def document_directory_path(instance: models.Model, filename:str):
-    """
-    Where to upload documents
-
-    See https://docs.djangoproject.com/en/5.1/ref/models/fields/#filefield
-    """
-
-    return f'uploads/{instance.user.id}/{instance.language}/docs/{filename}'
 
 
 class Document(models.Model):
@@ -52,9 +44,15 @@ class Document(models.Model):
         help_text=_('Language that the document belongs to'),
     )
     doc_file = models.FileField(
-        upload_to=document_directory_path,
-        unique=True,
+        upload_to=document_upload_path,
+        help_text=_('Uploaded document'),
     )
+    translations = models.ManytoManyField(
+        'Document',
+        symmetrical=True,
+        help_text=_('Other language translations of this document'),
+    )
+
 
     def __str__(self):
         return self.display_name
