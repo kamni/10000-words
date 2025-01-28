@@ -37,3 +37,11 @@ class UserSettings(UserBase, models.Model):
         null=True,
         help_text=_('Display name shown in the UI'),
     )
+
+    @property
+    def username(self):
+        return self.user.username
+
+    @property
+    def password(self):
+        return self.user.password

@@ -7,6 +7,7 @@
   * [x] create migrations
 * [ ] Port/adapter for getting UserDB
 * [ ] Port/adapter for converting to UserUI
+* [ ] Add to setup.cfg
 
 ## Adapter Store
 
@@ -19,6 +20,7 @@
   * [ ] create migrations
 * [ ] Port/adapter for getting DocumentDB
 * [ ] Port/adapter for converting to DocumentUI
+* [ ] Add to setup.cfg
 
 ## Cleanup
 

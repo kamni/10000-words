@@ -1,8 +1,6 @@
 """
 Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
-
-Port for working with Users
 """
 
 from abc import ABC, abstractmethod
