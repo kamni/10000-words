@@ -6,11 +6,11 @@ Affero GPL v3
 from django.contrib.auth.models import User
 from django.db.utils import IntegrityError
 
-from common.models.errors import ObjectExistsError, ObjectNotFoundError
-from common.models.users import UserDB, UserUI
-from common.ports.users import UserDBPort, UserUIPort
+from words.models.users import UserSettings
 
-from ..models.users import UserSettings
+from ..models.errors import ObjectExistsError, ObjectNotFoundError
+from ..models.users import UserDB, UserUI
+from ..ports.users import UserDBPort, UserUIPort
 
 
 class UserDBDjangoORMAdapter(UserDBPort):

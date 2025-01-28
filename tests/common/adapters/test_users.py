@@ -7,13 +7,13 @@ import uuid
 
 from django.test import TestCase
 
-from common.models.errors import ObjectExistsError, ObjectNotFoundError
-from common.models.users import UserDB, UserUI
-
-from words.adapters.users import (
+from common.adapters.users import (
     UserDBDjangoORMAdapter,
     UserUIDjangoORMAdapter,
 )
+from common.models.errors import ObjectExistsError, ObjectNotFoundError
+from common.models.users import UserDB, UserUI
+
 from words.models.users import UserSettings
 
 
