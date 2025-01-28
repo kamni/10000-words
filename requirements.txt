@@ -1,5 +1,4 @@
+Django==5.1.5
 gTTS==2.5.4
-pydantic==2.10.5
-rich==13.9.4
-textual==1.0.0
-textual-serve==1.1.1
+langcodes==3.5.0
+pydantic==2.10.6

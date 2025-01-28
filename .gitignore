@@ -1,5 +1,4 @@
-audio/*
-config.ini
-data/database.json
-/node_modules/*
+*/db.sqlite3
+backend/uploads/*
+*setup.cfg
 */__pycache__/*

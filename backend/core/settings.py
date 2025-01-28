@@ -8,12 +8,12 @@ Django settings for the 10,000 Words project.
 import sys
 from pathlib import Path
 
-from common.stores.adapter import AdapterStore
+#from common.stores.adapter import AdapterStore
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ADAPTERS = AdapterStore('dev.django')
+#ADAPTERS = AdapterStore('dev.django')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
