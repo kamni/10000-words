@@ -2,6 +2,7 @@
 Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
+import uuid
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -10,12 +11,19 @@ from django.utils.translation import gettext_lazy as _
 
 class UserSettings(models.Model):
     """
-    Additional settings for the django User model
+    Additional settings for the django User model.
+    Use this instead of the django User model when querying for a User.
     """
 
     class Meta:
         verbose_name_plural = 'User Settings'
 
+    id = models.UUIDField(
+        primary_key=True,
+        blank=True,
+        editable=False,
+        default=uuid.uuid4,
+    )
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,

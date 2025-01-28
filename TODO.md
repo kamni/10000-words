@@ -2,9 +2,9 @@
 
 ## User
 
-* [ ] Reconcile common User models with django User model
-  * [ ] create UserSettings
-  * [ ] create migrations
+* [x] Reconcile common User models with django User model
+  * [x] create UserSettings
+  * [x] create migrations
 * [ ] Port/adapter for getting UserDB
 * [ ] Port/adapter for converting to UserUI
 

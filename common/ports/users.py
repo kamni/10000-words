@@ -8,53 +8,64 @@ Port for working with Users
 from abc import ABC, abstractmethod
 from typing import List
 
-from common.models.users import User
+from common.models.users import UserDB, UserUI
 
 
-class UserPort(ABC):
+class UserDBPort(ABC):
     """
-    Manages users in the database
+    Handles CRUD for users in the database
     """
 
     @abstractmethod
-    def create(self, user: User) -> User:
+    def create(self, user: UserDB) -> UserDB:
         """
         Create a new user in the database.
 
-        :user: New User object to add to the database.
-            User is counted as a duplicate when it has the same
-            languageCode and baseUser.
+        :user: New user to add to the database.
 
-        :return: Created User object.
+        :return: Created user object.
         :raises: ObjectExistsError if the object already exists.
         """
         pass
 
     @abstractmethod
-    def create_in_batch(self, users: List[User]) -> List[User]:
+    def get(self, id: str) -> UserDB:
         """
-        Batch create multiple users.
-        Ignores users that already exist.
+        Get a user from the database using an ID.
 
-        :user: New User object to add to the database.
-            User is counted as a duplicate when it has the same
-            languageCode and baseUser.
+        :id: User's UUID.
 
-        :return: List of created users.
-            Returns None for any users that were not created,
-            so the lists can be compared, if needed.
+        :return: Found user object.
+        :raises: ObjectNotFoundError if the user does not exist.
         """
         pass
 
     @abstractmethod
-    def read(self, username: str) -> User:
+    def get_by_username(self, username: str) -> UserDB:
         """
-        Read a single User from the database.
+        Get a user from the database using a username.
 
-        :username: The username to search for.
-            Username is expected to be unique.
+        :username: User's username
 
-        :return: The user that was found.
-        :raises: ObjectNotFoundError if user doesn't exist
+        :return: Found user object.
+        :raises: ObjectNotFoundError
         """
         pass
+
+
+class UserUIPort(ABC):
+    """
+    Works with user objects for the UI
+    """
+
+    @abstractmethod
+    def get(self, user: UserDB) -> UserUI:
+        """
+        Convert a database user into a UI user.
+
+        :user: Database representation of a user.
+
+        :return: UI representation of a user.
+        """
+        pass
+
