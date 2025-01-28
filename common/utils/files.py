@@ -20,10 +20,10 @@ def document_upload_path(instance: DocumentDBBase, filename: str) -> str:
         Path will be relative to `UploadDir` in setup.cfg
     """
 
-    path = os.path.join([
+    path = os.path.join(
         str(instance.user.id),
         instance.language_code,
         'docs',
         filename,
-    ])
+    )
     return path

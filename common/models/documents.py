@@ -3,7 +3,6 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from abc import ABC
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -13,27 +12,20 @@ from .users import UserDB, UserUI
 from ..utils.languages import LanguageCode
 
 
-class DocumentDBBase:
+class DocumentDBBase(HashableMixin):
     """
-    Minimum guarantee of properties on models used with the database
+    Shared base class for both Pydantic and Django models for the database.
+
+    Must implement the following fields:
+
+    * id
+    * user (with user.id)
+    * language_code
     """
-
-    @property
-    @abstractmethod
-    def id(self):
-        pass
-
-    @property
-    @abstractmethod
-    def language_code(self):
-        """
-        Which language the document is in.
-        See common.utils.languages.LanguageCode
-        """
-        pass
+    pass
 
 
-class DocumentDBMinimal(HashableMixin, DocumentDBBase, BaseModel):
+class DocumentDBMinimal(DocumentDBBase, BaseModel):
     """
     Minimal representation of a document in the database
     """
@@ -44,7 +36,7 @@ class DocumentDBMinimal(HashableMixin, DocumentDBBase, BaseModel):
     language_code: LanguageCode
 
 
-class DocumentDB(HashableMixin, DocumentDBBase, BaseModel):
+class DocumentDB(DocumentDBBase, BaseModel):
     """
     Representation of a document to be stored in the database
     """
