@@ -11,7 +11,7 @@ from common.utils.singleton import Singleton
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-DEFAULT_CONFIG = BASE_DIR / 'config.ini'
+DEFAULT_CONFIG = BASE_DIR / 'setup.cfg'
 
 
 class SettingsStore(metaclass=Singleton):

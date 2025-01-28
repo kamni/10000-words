@@ -9,8 +9,10 @@ from typing import Any, Optional
 
 from pydantic import BaseModel
 
+from .base import HashableMixin
 
-class User(BaseModel):
+
+class UserDB(HashableMixin, BaseModel):
     """
     Representation of a user in the database.
     """
@@ -18,40 +20,26 @@ class User(BaseModel):
     id: Optional[str] = None
     username: str
     password: Optional[str] = None
+    email: Optional[str] = None
     display_name: str
 
-    def __hash__(self):
-        return hash(self.username)
-
-    def __eq__(self, other: Any) -> bool: 
-        """
-        Two users are equal if the usernames are equal
-        """
-        if isinstance(other, BaseModel): 
-            self_type = self.__pydantic_generic_metadata__['origin'] or self.__class__
-            other_type = other.__pydantic_generic_metadata__['origin'] or other.__class__
-
-            return (
-                self_type == other_type and (
-                    self.__dict__ == other.__dict__ or
-                    self.username == other.username
-                )
-            )
-        return False
+    @property
+    def unique_fields(self):
+        return ['username']
 
 
-class UserDisplay(BaseModel):
+class UserUI(HashableMixin, BaseModel):
     """
     Representation of a logged-in user in the UI.
     NOTE: use camel-cased attributes for easier handling with javascript
     """
 
-    user_id: Optional[str] = None
+    id: str  # UUID
     username: str
     displayName: Optional[str] = None
 
     @classmethod
-    def from_user(cls, user: User) -> 'UserDisplay':
+    def from_db(cls, user: UserDB) -> 'UserUI':
         """
         Convert a database user into a UI-friendly user object.
 
@@ -59,9 +47,9 @@ class UserDisplay(BaseModel):
         :return: UserDisplay for the UI.
         """
 
-        user_display = UserDisplay(
-            user_id=user.id,
+        user_ui = cls(
+            id=user.id,
             username=user.username,
             displayName=user.display_name or user.username,
         )
-        return user_display
+        return user_ui

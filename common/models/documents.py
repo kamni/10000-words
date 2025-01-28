@@ -3,28 +3,48 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from pydantic import BaseModel
 
 from .base import HashableMixin
-from .sentences import SentenceDB, SentenceDBMinimal, SentenceUI
 from .users import UserDB, UserUI
 from ..utils.languages import LanguageCode
 
 
-class DocumentDBMinimal(HashableMixin, BaseModel):
+class DocumentDBBase(ABC):
+    """
+    Minimum guarantee of properties on models used with the database
+    """
+
+    @property
+    @abstractmethod
+    def id(self):
+        pass
+
+    @property
+    @abstractmethod
+    def language_code(self):
+        """
+        Which language the document is in.
+        See common.utils.languages.LanguageCode
+        """
+        pass
+
+
+class DocumentDBMinimal(HashableMixin, DocumentDBBAse, BaseModel):
     """
     Minimal representation of a document in the database
     """
 
-    id: str = None
+    id: str
     user_id: str  # UUID.
     display_name: str
     language_code: LanguageCode
 
 
-class DocumentDB(HashableMixin, BaseModel):
+class DocumentDB(HashableMixin, DocumentDBBase, BaseModel):
     """
     Representation of a document to be stored in the database
     """
@@ -34,7 +54,6 @@ class DocumentDB(HashableMixin, BaseModel):
     display_name: str
     language_code: LanguageCode
     doc_file: str  # Relative path in file system
-    sentences: List[SentenceDBMinimal]
     translations: Optional[List[DocumentDBMinimal]] = None
 
     @property
@@ -83,4 +102,3 @@ class DocumentUI(HashableMixin, BaseModel):
     user: UserUI
     displayName: str
     languageCode: LanguageCode
-    sentences: List[SentenceUI]

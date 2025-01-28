@@ -19,6 +19,9 @@ DefaultConfig = dev.django
 
 [dev.django]
 
+[dev.django.common]
+UploadDir = data/uploads
+
 [dev.django.ports]
 DocumentPort = common.adapters.documents.DocumentDjangoORMAdapter
 UserPort = common.adapters.users.UserDjangoORMAdapter

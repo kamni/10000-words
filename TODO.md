@@ -2,13 +2,25 @@
 
 ## Config
 
-* [ ] make new config.ini.example
-* [ ] is it read correctly? tests, check out adapters
+* [ ] Fix settings adapter
+* [ ] common.utils.files.document_upload_path
+  * [ ] implement DocumentBase
+  * [ ] make all documents use DocumentBase
+  * [ ] tests
+* [ ] make backend.models.database.Database use document_upload_path
+
+* [ ] Redoo settings to get any setting?
+  * [ ] Or just subsetting
+* [x] make new config.ini.example
+* [ ] get tests running
 * [ ] django uses config.ini
 
 ## Document
 
+* [ ] Thin models, fat utils
 * [ ] Reconcile common models and backend models
+  * [ ] document
+  * [ ] user
 * [ ] Document adapter
   * [ ] tests
 * [ ] User settings model -- display name

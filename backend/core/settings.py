@@ -8,12 +8,30 @@ Django settings for the 10,000 Words project.
 import sys
 from pathlib import Path
 
-#from common.stores.adapter import AdapterStore
+from common.stores.settings import SettingsStore
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#ADAPTERS = AdapterStore('dev.django')
+###############################################################################
+#                                                                             #
+#  Global, project-wide settings                                              #
+#                                                                             #
+###############################################################################
+
+PROJECT_DIR = BASE_DIR.parent
+
+SETTINGS_STORE_CFG = 'django.dev'
+SETTINGS_STORE = SettingsStore(SETTINGS_STORE_CFG)
+
+MEDIA_ROOT = PROJECT_DIR / SETTINGS_STORE.get('common', 'uploaddir')
+
+###############################################################################
+#                                                                             #
+#  Django-specific settings                                                   #
+#                                                                             #
+###############################################################################
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -117,7 +135,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = 'uploads/'
 MEDIA_URL = '/uploads/'
 
 # Default primary key field type
