@@ -23,8 +23,9 @@ DefaultConfig = dev.django
 UploadDir = data/uploads
 
 [dev.django.ports]
-DocumentPort = common.adapters.documents.DocumentDjangoORMAdapter
-UserPort = common.adapters.users.UserDjangoORMAdapter
+#DocumentPort = common.adapters.documents.DocumentDjangoORMAdapter
+UserDBPort = words.adapters.users.UserDBDjangoORMAdapter
+UserUIPort = words.adapters.users.UserUIDjangoORMAdapter
 
 [dev.django.adapters.common]
 DatabaseFile = database

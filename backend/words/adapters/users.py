@@ -18,6 +18,11 @@ class UserDBDjangoORMAdapter(UserDBPort):
     Handles CRUD for users in the database
     """
 
+    def __init__(self, **kwargs):
+        # Ignore any kwargs configuration.
+        # This uses the django settings.
+        super().__init__()
+
     def _django_to_pydantic(self, user: UserSettings) -> UserDB:
         pydantic_user = UserDB(
             id=user.id,
@@ -98,6 +103,11 @@ class UserUIDjangoORMAdapter(UserUIPort):
     """
     Works with user objects for the UI
     """
+
+    def __init__(self, **kwargs):
+        # Ignore any kwargs configuration.
+        # This uses the django settings.
+        super().__init__()
 
     def _db_to_ui(self, user: UserDB) -> UserUI:
         user_ui = UserUI(

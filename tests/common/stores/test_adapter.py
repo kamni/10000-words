@@ -6,9 +6,6 @@ Affero GPL v3
 from pathlib import Path
 from unittest import TestCase
 
-from common.adapters.auth import AuthnJSONFileAdapter
-from common.adapters.database import DatabaseJSONFileAdapter
-from common.adapters.users import UserJSONFileAdapter
 from common.stores.adapter import (
     AdapterInitializationError,
     AdapterNotFoundError,
@@ -17,9 +14,13 @@ from common.stores.adapter import (
 from common.stores.settings import SettingsStore
 from common.utils.singleton import Singleton
 
+from words.adapters.users import (
+    UserDBDjangoORMAdapter,
+    UserUIDjangoORMAdapter,
+)
 
 TEST_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent
-TEST_CONFIG = TEST_CONFIG_DIR / 'config.ini'
+TEST_CONFIG = TEST_CONFIG_DIR / 'setup.cfg'
 
 
 class TestAdapterStore(TestCase):
@@ -165,9 +166,8 @@ class TestAdapterStore(TestCase):
 
         # Not testing all ports; just a few for examples
         port_to_adapter_cls = {
-            'AuthnPort': AuthnJSONFileAdapter,
-            'DatabasePort': DatabaseJSONFileAdapter,
-            'UserPort': UserJSONFileAdapter,
+            'UserDBPort': UserDBDjangoORMAdapter,
+            'UserUIPort': UserUIDjangoORMAdapter,
         }
 
         for port, adapter_cls in port_to_adapter_cls.items():

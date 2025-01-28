@@ -1,14 +1,5 @@
 # TODOS
 
-## User
-
-* [x] Reconcile common User models with django User model
-  * [x] create UserSettings
-  * [x] create migrations
-* [ ] Port/adapter for getting UserDB
-* [ ] Port/adapter for converting to UserUI
-* [ ] Add to setup.cfg
-
 ## Adapter Store
 
 * [ ] Get tests working
