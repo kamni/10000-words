@@ -32,7 +32,7 @@ class UserDB(UserBase, BaseModel):
     id: Optional[uuid.UUID] = None
     username: str
     password: Optional[str] = None
-    display_name: str
+    display_name: Optional[str] = None
 
     @property
     def unique_fields(self):

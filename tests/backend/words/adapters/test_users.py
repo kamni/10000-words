@@ -122,4 +122,37 @@ class TestUserUIDjangoORMAdapter(TestCase):
     """
 
     def test_get(self):
-        pass
+        user_db = UserDB(
+            username='test_get',
+            password='1234567',
+            display_name='Test User',
+        )
+        db_adapter = UserDBDjangoORMAdapter()
+        new_user_db = db_adapter.create(user_db)
+
+        adapter = UserUIDjangoORMAdapter()
+        expected = UserUI(
+            id=new_user_db.id,
+            username=new_user_db.username,
+            displayName=new_user_db.display_name,
+        )
+        returned = adapter.get(new_user_db)
+        self.assertEqual(expected, returned)
+
+    def test_get_with_no_display_name(self):
+        user_db = UserDB(
+            username='test_get_no_display_name',
+            password='1234567',
+        )
+        db_adapter = UserDBDjangoORMAdapter()
+        new_user_db = db_adapter.create(user_db)
+
+        adapter = UserUIDjangoORMAdapter()
+        expected = UserUI(
+            id=new_user_db.id,
+            username=new_user_db.username,
+            displayName=new_user_db.username,
+        )
+        returned = adapter.get(new_user_db)
+        self.assertEqual(expected, returned)
+
