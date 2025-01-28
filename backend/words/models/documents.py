@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from ..utils.languages import language_choices
+from ..utils.languages import language_code_choices
 
 
 def document_directory_path(instance: models.Model, filename:str):
@@ -48,8 +48,8 @@ class Document(models.Model):
     )
     language_code = models.CharField(
         max_length=8,
-        choices=language_choices(),
-        help_text=_('Language that the sentence belongs to'),
+        choices=language_code_choices,
+        help_text=_('Language that the document belongs to'),
     )
     doc_file = models.FileField(
         upload_to=document_directory_path,
@@ -58,74 +58,3 @@ class Document(models.Model):
 
     def __str__(self):
         return self.display_name
-
-    def delete(self):
-        sentence_order = SentenceOrder.objects.filter(document=self)
-        sentence_ids = [obj.sentence.id for obj in sentence_order]
-        sentence_ids_to_ignore = [
-            obj.sentence.id for obj in SentenceOrder.objects.filter(
-                sentence__id__in=sentence_ids,
-            ).exclude(document=self)
-        ]
-        sentence_ids_to_delete = list(
-            set(sentence_ids).difference(set(sentence_ids_to_ignore)),
-        )
-        sentences_to_delete = Sentence.objects.filter(
-            id__in=sentence_ids_to_delete,
-        )
-
-        all_words_to_delete = []
-        for sentence in sentences_to_delete:
-            word_order = WordOrder.objects.filter(sentence=sentence)
-            word_ids = [obj.word.id for obj in word_order]
-            word_ids_to_ignore = [
-                obj.word.id for obj in WordOrder.objects.filter(
-                    word__id__in=word_ids,
-                ).exclude(
-                    sentence__id__in=sentences_to_delete,
-                )
-            ]
-            word_ids_to_delete = list(
-                set(word_ids).difference(set(word_ids_to_ignore)),
-            )
-            words_to_delete = Word.objects.filter(
-                id__in=word_ids_to_delete,
-            )
-            all_words_to_delete.extend(words_to_delete)
-
-        # Remove duplicates
-        all_words_to_delete = list(set(all_words_to_delete))
-
-        # We're not calling a query batch delete,
-        # because we need to delete the uploaded files
-        # (as handled by word.delete and sentence.delete)
-        for word in all_words_to_delete:
-            word.delete()
-        for sentence in sentences_to_delete:
-            sentence.delete()
-
-        doc_file = pathlib.Path(self.doc_file.name)
-        if doc_file.exists():
-            doc_file.unlink()
-        super().delete()
-
-
-class SentenceOrder(models.Model):
-    """
-    Join table to keep track of sentence order in a document
-    """
-
-    class Meta:
-        ordering = ['document', 'order']
-        unique_together = [['sentence', 'document', 'order']]
-        verbose_name_plural = 'Sentence order'
-
-    sentence = models.ForeignKey(
-        Sentence,
-        on_delete=models.CASCADE,
-    )
-    document = models.ForeignKey(
-        Document,
-        on_delete=models.CASCADE,
-    )
-    order = models.PositiveIntegerField()

@@ -7,4 +7,5 @@ class WordsConfig(AppConfig):
     name = 'words'
 
     def ready(self):
-        from . import signals
+        #from . import signals
+        pass
