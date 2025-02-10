@@ -49,4 +49,4 @@ class UserUI(UserBase, BaseModel):
     id: uuid.UUID
     username: str
     displayName: Optional[str] = None
-    is_admin: Optional[bool] = False
+    isAdmin: Optional[bool] = False

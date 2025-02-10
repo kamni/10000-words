@@ -9,7 +9,7 @@ from typing import Union
 from ..models.app import AppSettingsDB
 
 
-class AppSettingsPort(ABC):
+class AppSettingsDBPort(ABC):
     """
     Get global settings for apps
     """
@@ -21,6 +21,16 @@ class AppSettingsPort(ABC):
         Only returns the first instance, because there should be only one.
 
         :return: AppSettingsDB object, or None
+        """
+        pass
+
+    @abstractmethod
+    def get_or_default(self) -> AppSettingsDB:
+        """
+        Get the settings.
+        If they don't exist, return default settings (all false)
+
+        :return: AppSettingsDB
         """
         pass
 

@@ -9,7 +9,7 @@ import os
 import sys
 from typing import Any, Optional
 
-from common.stores.settings import SettingsStore
+from common.stores.config import ConfigStore
 from common.utils.singleton import Singleton
 
 
@@ -36,7 +36,7 @@ class AdapterStore(metaclass=Singleton):
         :subsection: subsection of setup.cfg to use for settings
         """
         self._adapters = {}
-        self._settings = SettingsStore(config, subsection)
+        self._settings = ConfigStore(config, subsection)
         self.initialize()
 
     def _get_adapter_cls(self, port_name: str):

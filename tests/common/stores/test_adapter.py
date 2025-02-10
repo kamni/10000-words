@@ -6,19 +6,17 @@ Affero GPL v3
 from pathlib import Path
 from unittest import TestCase
 
-from common.adapters.users import (
-    UserDBDjangoORMAdapter,
-    UserUIDjangoORMAdapter,
-)
+from common.adapters.django_orm.users import UserDBDjangoORMAdapter
+from common.adapters.ui.users import UserUIAdapter
 from common.stores.adapter import (
     AdapterInitializationError,
     AdapterNotFoundError,
     AdapterStore,
 )
-from common.stores.settings import SettingsStore
+from common.stores.config import ConfigStore
 from common.utils.singleton import Singleton
 
-from ...utils_for_tests.init_scripts import FakeStore
+from ...utils.init_scripts import FakeStore
 
 TEST_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent
 TEST_CONFIG = TEST_CONFIG_DIR / 'setup.cfg'
@@ -33,13 +31,13 @@ class TestAdapterStore(TestCase):
     def setUpClass(cls):
         # Get rid of lurking instances before starting tests
         Singleton.destroy(AdapterStore)
-        Singleton.destroy(SettingsStore)
+        Singleton.destroy(ConfigStore)
         Singleton.destroy(FakeStore)
         super().setUpClass()
 
     def tearDown(self):
         Singleton.destroy(AdapterStore)
-        Singleton.destroy(SettingsStore)
+        Singleton.destroy(ConfigStore)
         Singleton.destroy(FakeStore)
 
     def test_is_singleton(self):
@@ -176,7 +174,7 @@ class TestAdapterStore(TestCase):
         # Not testing all ports; just a few for examples
         port_to_adapter_cls = {
             'UserDBPort': UserDBDjangoORMAdapter,
-            'UserUIPort': UserUIDjangoORMAdapter,
+            'UserUIPort': UserUIAdapter,
         }
 
         for port, adapter_cls in port_to_adapter_cls.items():

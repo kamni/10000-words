@@ -1,6 +1,9 @@
 */db.sqlite3
 backend/uploads/*
 data/uploads/*
+*/build/*
+*/dist/*
 *.log
+.nicegui
 /setup.cfg
-*/__pycache__/*
+**/__pycache__/**

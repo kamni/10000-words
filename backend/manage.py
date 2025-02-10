@@ -14,12 +14,7 @@ if PROJECT_DIR.as_posix() not in sys.path:
 
 def main():
     """Run administrative tasks."""
-    # Custom code to run multiple servers
-    try:
-        requires_postgres = sys.argv.pop(sys.argv.index('--requires-postgres'))
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings_postgres')
-    except ValueError:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
     try:
         from django.core.management import execute_from_command_line

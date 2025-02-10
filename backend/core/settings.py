@@ -20,11 +20,11 @@ PROJECT_DIR = BASE_DIR.parent
 if str(PROJECT_DIR) not in sys.path:
     sys.path.append(str(PROJECT_DIR))
 
-from common.stores.settings import SettingsStore
+from common.stores.config import ConfigStore
 
 SETTINGS_STORE_FILE = PROJECT_DIR / 'setup.cfg'
 SETTINGS_STORE_CFG = 'dev.django'
-SETTINGS_STORE = SettingsStore(SETTINGS_STORE_FILE, SETTINGS_STORE_CFG)
+SETTINGS_STORE = ConfigStore(SETTINGS_STORE_FILE, SETTINGS_STORE_CFG)
 
 MEDIA_ROOT = PROJECT_DIR / SETTINGS_STORE.get('common', 'uploaddir')
 

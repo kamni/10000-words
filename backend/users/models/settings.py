@@ -8,10 +8,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from common.models.users import UserBase
 
-
-class UserSettings(UserBase, models.Model):
+class UserSettings(models.Model):
     """
     Additional settings for the django User model.
     Use this instead of the django User model when querying for a User.

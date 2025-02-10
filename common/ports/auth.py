@@ -4,6 +4,7 @@ Affero GPL v3
 """
 
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from ..models.users import UserUI
 
@@ -18,12 +19,13 @@ class AuthPort(ABC):
     """
 
     @abstractmethod
-    def login(self, username: str, password: str) -> UserUI:
+    def login(self, username: str, password: Optional[str]=None) -> UserUI:
         """
         Log a user in.
 
         :username: Username of the user.
         :password: Password of the user.
+            Can be empty/null
 
         :return: UserUI:
         :raises: AuthnInvalidError if user is not sucessfully authenticated.

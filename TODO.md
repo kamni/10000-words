@@ -1,32 +1,56 @@
 # TODOS
 
-## Initialize Database
-
-* [ ] Remove corpora collection and parsed words -- they're not interesting
-* [ ] Remove corpora info in README
-* [ ] Initialize database only creates a new database
-* [ ] Tests for initialize database -- if Django, would be command
-
-## Sqlite, Sqlalchemy, and South
-
-Or Django with Vue frontend, postgres database?
-
-* [ ] Re-convert the models, and from_ORM to pydantic
-* [ ] Initialize database should work with sql config
-
-## Upload Script
-
-* [ ] Handle 'txt' with a txt port/adapter
-* [ ] Upload the script, creating Unknowns for each word, unless it already
-      exists, then just add the sentence (provided the sentence isn't already
-      there).
-
 ## Cleanup
 
-* [ ] coverage
-* [ ] lint
-* [ ] mypy
-* [ ] copyright checker
+* coverage
+* lint
+* mypy
+* copyright checker
+
+---
+
+## Exception handling
+
+* app.on_exception
+
+## Document
+
+* Document model should use the uuid of UserSettings
+  * Django
+  * Pydantic -- id only
+* Document port/adapter
+  * Add adapters to config
+  * Create models
+  * Write ports
+  * Write tests
+  * Upload includes a force override to upload to same document name
+* Nicegui: if no documents, suggest an upload
+* Nicegui: Upload a document file, split into sentences
+* Nicegui: display uploaded document by language in sidebar
+* Nicegui: can see document by clicking on it
+* Nicegui: Can upload same document twice, with warning dialog;
+  overwrites existing document
+
+---
+
+## Document
+
+* Click on sentence to add translation
+* After adding a translation, words become individual labels
+* Left-clicking on word plays Google TTS
+* Right-clicking a word sets status
+* Ctrl-left-click allows multiple to be selected for phrase
+* Upload a translation document to automate
+
+---
+
+## Logging
+
+* Log when user is created (username, admin status)
+* Log when user logs in (username, admin status)
+* Log when a document is uploaded
+
+---
 
 ## Thoughts
 
@@ -74,6 +98,11 @@ Learning mode:
    3. Hear foreign text, type what you heard.
    4. Option to turn off seeing text in #1 and #2
 
+Score for number of words you've learned
+
+Store word -- are all of them user-related? No uneditable words?
+Selected translations?
+You are responsible for your own copyright
 
 ## Database Models
 
