@@ -25,7 +25,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
     """
 
     async def dispatch(self, request: Request, call_next):
-        import pdb; pdb.set_trace()
         if not app.storage.user.get('authenticated', False):
             if (
                 not request.url.path.startswith('/_nicegui')

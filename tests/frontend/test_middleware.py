@@ -10,6 +10,7 @@ from nicegui.testing import User
 from common.models.app import AppSettingsDB
 from common.stores.adapter import AdapterStore
 from common.stores.app import AppSettingsStore
+from frontend import main
 from frontend.middleware.auth import UNRESTRICTED_PAGE_ROUTES
 from tests.frontend.utils import assert_logged_in, login
 from tests.utils.users import create_user_db
@@ -19,6 +20,7 @@ RESTRICTED_ROUTES = {'/edit', '/practice'}
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_auth_middleware_allows_all_pages_when_logged_in(user: User):
     userdb = create_user_db(is_admin=True)
     settings_adapter = AdapterStore().get('AppSettingsDBPort')
@@ -43,6 +45,7 @@ async def test_auth_middleware_allows_all_pages_when_logged_in(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_can_visit_unrestricted_pages_when_not_authenticated(user: User):
     # We have to test this before configuring the settings.
     # After initial configuration,
@@ -64,8 +67,8 @@ async def test_can_visit_unrestricted_pages_when_not_authenticated(user: User):
 
 # This works for manual testing,
 # but Nicegui seems to ignore middleware during tests.
-@pytest.mark.xfail
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_middleware_redirects_to_login_for_restricted_pages(user: User):
     create_user_db(is_admin=True)
     settings_adapter = AdapterStore().get('AppSettingsDBPort')

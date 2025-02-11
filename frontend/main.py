@@ -31,7 +31,7 @@ UNSAFE_SECRET_KEY = 'UNSAFE_jsn9wx-vje-+#k%(b*kra1std2^v43^jtq&)5x26whm'
 
 def startup(config: Optional[str]=None, subsection: Optional[str]=None):
     """
-    Set up routes in the app on startup
+    Set up configuration from setup.cfg
 
     :config: Path to configuration file.
         If not specified, uses the top-level setup.cfg.
@@ -71,7 +71,6 @@ def startup(config: Optional[str]=None, subsection: Optional[str]=None):
     def practice():
         ui.page_title('Practice Mode')
         ui.label('practice')
-
 
 
 app.add_middleware(AuthMiddleware)
