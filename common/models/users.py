@@ -13,7 +13,7 @@ from .base import HashableMixin
 
 class UserBase(HashableMixin):
     """
-    Shared base class for both Pydantic and Django models for the database.
+    Shared base class for the Pydantic models for the database.
 
     Must implement the following fields:
 

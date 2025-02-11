@@ -3,10 +3,13 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import uuid
+
 from django.test import TestCase
 
 from common.adapters.ui.users import UserUIAdapter
 from common.models.users import UserDB, UserUI
+from common.stores.adapter import AdapterStore
 
 
 class TestUserUIAdapter(TestCase):
@@ -16,17 +19,17 @@ class TestUserUIAdapter(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        adapters = AdapterStore(subsection='dev.django')
+        adapters = AdapterStore()
         cls.adapter = adapters.get('UserUIPort')
         super().setUpClass()
 
     def test_get(self):
         user_db = UserDB(
             username='test_get',
-            password='1234567',
+            password='8765432Wsx#',
             display_name='Test User',
         )
-        db_adapter = UserDBDjangoORMAdapter()
+        db_adapter = AdapterStore().get('UserDBPort')
         new_user_db = db_adapter.create(user_db)
 
         expected = UserUI(
@@ -40,9 +43,9 @@ class TestUserUIAdapter(TestCase):
     def test_get_with_no_display_name(self):
         user_db = UserDB(
             username='test_get_no_display_name',
-            password='1234567',
+            password='8765432Wsx#',
         )
-        db_adapter = UserDBDjangoORMAdapter()
+        db_adapter = AdapterStore().get('UserDBPort')
         new_user_db = db_adapter.create(user_db)
 
         expected = UserUI(
@@ -57,13 +60,13 @@ class TestUserUIAdapter(TestCase):
         user_db1 = UserDB(
             id=uuid.uuid4(),
             username='test_get_all1',
-            password='1234567',
+            password='8765432Wsx#',
             display_name='Test User'
         )
         user_db2 = UserDB(
             id=uuid.uuid4(),
             username='test_get_all2',
-            password='1234567',
+            password='8765432Wsx#',
         )
 
         expected = [
