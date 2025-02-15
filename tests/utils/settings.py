@@ -5,7 +5,7 @@ Affero GPL v3
 
 from typing import Optional
 
-from common.models.app import AppSettingsDB
+from common.models.settings import AppSettingsDB
 from common.stores.adapter import AdapterStore
 
 

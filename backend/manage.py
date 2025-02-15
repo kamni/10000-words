@@ -7,7 +7,7 @@ import warnings
 from pathlib import Path
 
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 if PROJECT_DIR.as_posix() not in sys.path:
     sys.path.append(PROJECT_DIR.as_posix())
 

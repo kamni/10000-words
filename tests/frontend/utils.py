@@ -9,7 +9,7 @@ from nicegui import ui
 from nicegui.testing import User
 
 from common.models.users import UserDB
-from common.stores.app import AppSettingsStore
+from common.stores.adapter import AdapterStore
 
 
 async def login(user: User, userdb: UserDB):
@@ -23,7 +23,10 @@ async def login(user: User, userdb: UserDB):
     :raises: AssertionError if user is in an unexpected state
     """
 
-    settings = AppSettingsStore()
+    adapters = AdapterStore()
+    settings_db = adapters.get('AppSettingsDBPort')
+    settings_ui = adapters.get('AppSettingsUIPort')
+    settings = settings_ui.get(settings_db.get())
 
     await user.open('/')
     try:
@@ -71,7 +74,10 @@ async def assert_logged_in(user: User, userdb: UserDB):
 
     :raises: AssertionError if user is in an unexpected state
     """
-    settings = AppSettingsStore()
+    adapters = AdapterStore()
+    settings_db = adapters.get('AppSettingsDBPort')
+    settings_ui = adapters.get('AppSettingsUIPort')
+    settings = settings_ui.get(settings_db.get())
 
     await user.should_see('Edit', kind=ui.link)
     await user.should_see('Practice', kind=ui.link)

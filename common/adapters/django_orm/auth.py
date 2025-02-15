@@ -103,7 +103,7 @@ class AuthDjangoORMAdapter(AuthPort):
         except ObjectNotFoundError:
             # This message is only for internal logging.
             # Do not show to users.
-            raise AuthInvalidError('Django user found, but UserSettings missing')
+            raise AuthInvalidError('Django user found, but UserProfile missing')
 
         userui = self.user_ui_adapter.get(userdb)
         return userui

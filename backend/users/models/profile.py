@@ -9,15 +9,15 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class UserSettings(models.Model):
+class UserProfile(models.Model):
     """
-    Additional settings for the django User model.
+    Additional information for the django User model.
     Use this instead of the django User model when querying for a User.
     """
 
     class Meta:
         ordering = ['created']
-        verbose_name_plural = 'User Settings'
+        verbose_name_plural = 'User Profile'
 
     id = models.UUIDField(
         primary_key=True,
@@ -41,6 +41,9 @@ class UserSettings(models.Model):
         null=True,
         help_text=_('Display name shown in the UI'),
     )
+
+    def __str__(self):
+        return self.username
 
     @property
     def is_admin(self):

@@ -24,8 +24,11 @@ InitScript = common.adapters.django_orm.initialize.init_django
 UploadDir = data/uploads
 
 [dev.django.ports]
-AppSettingsDBPort = common.adapters.django_orm.app.AppSettingsDjangoORMAdapter
+AppSettingsDBPort = common.adapters.django_orm.settings.AppSettingsDjangoORMAdapter
+AppSettingsUIPort = common.adapters.ui.settings.AppSettingsUIAdapter
 AuthPort = common.adapters.django_orm.auth.AuthDjangoORMAdapter
+DocumentDBPort = common.adapters.django_orm.documents.DocumentDBDjangoORMAdapter
+DocumentUIPort = common.adapters.ui.documents.DocumentUIAdapter
 UserDBPort = common.adapters.django_orm.users.UserDBDjangoORMAdapter
 UserUIPort = common.adapters.ui.users.UserUIAdapter
 
@@ -37,3 +40,50 @@ UserUIPort = common.adapters.ui.users.UserUIAdapter
 #
 #   [dev.django.adapters.FooPort]
 #   UseFoo = yes
+
+
+[dev.django.stores]
+AdapterStore = common.stores.adapter.AdapterStore
+DataStore = common.stores.data.django.DjangoDBStore
+
+# Any settings that all stores should share
+[dev.django.stores.common]
+
+# Store-specific settings go here
+# Example:
+#
+#   [dev.django.stores.FooStore]
+#   UseFoo = yes
+[dev.django.stores.datastore]
+LoadTestData = no
+
+###############################################################################
+#                                                                             #
+# Configuration for the in-memory backend                                     #
+#                                                                             #
+###############################################################################
+
+[dev.in_memory]
+
+[dev.in_memory.common]
+UploadDir = data/uploads
+
+[dev.in_memory.ports]
+AppSettingsDBPort = common.adapters.in_memory.settings.AppSettingsInMemoryAdapter
+AppSettingsUIPort = common.adapters.ui.settings.AppSettingsUIAdapter
+AuthPort = common.adapters.in_memory.auth.AuthInMemoryAdapter
+DocumentDBPort = common.adapters.in_memory.documents.DocumentDBInMemoryAdapter
+DocumentUIPort = common.adapters.ui.documents.DocumentUIAdapter
+UserDBPort = common.adapters.in_memory.users.UserDBInMemoryAdapter
+UserUIPort = common.adapters.ui.users.UserUIAdapter
+
+[dev.in_memory.adapters.common]
+
+[dev.in_memory.stores]
+AdapterStore = common.stores.adapter.AdapterStore
+DataStore = common.stores.data.in_memory.InMemoryDBStore
+
+[dev.in_memory.stores.common]
+
+[dev.in_memory.stores.datastore]
+LoadTestData = no

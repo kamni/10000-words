@@ -33,7 +33,7 @@ class ConfigStore(metaclass=Singleton):
             If not specified, uses the config.meta.DefaultConfig setting.
             Please look at the config.ini file for configuration optiions.
         """
-        self._config_name = config or DEFAULT_CONFIG
+        self._config_name = str(config or DEFAULT_CONFIG)
         self._subsection_name = subsection
 
         self._config = {}
@@ -43,6 +43,10 @@ class ConfigStore(metaclass=Singleton):
     @property
     def name(self):
         return self._config['config.meta']['name']
+
+    @property
+    def config(self):
+        return self._config_name
 
     @property
     def subsection(self):
@@ -84,6 +88,7 @@ class ConfigStore(metaclass=Singleton):
         section: str,
         key: Optional[str]=None,
         value_type: Optional[type]=str,
+        default: Optional[Any]=None,
     ) -> Any:
         """
         Retrieve a setting from the config file.
@@ -93,8 +98,9 @@ class ConfigStore(metaclass=Singleton):
             E.g. 'ports' to get '[dev.json.ports]'.
         :key: key from the section.
             If not specified, the whole section is returned.
-        :type: Python type to return.
+        :value_type: Python type to return.
             Defaults to a string.
+        :default: Default value to return if config section/key not found.
 
         :return: either section of the config (list), or value, if found;
             otherwise None
@@ -107,7 +113,7 @@ class ConfigStore(metaclass=Singleton):
         try:
             section = self._config[section_path]
         except KeyError:
-            return None
+            return default if key else []
 
         if not key:
             return list(section)
@@ -118,6 +124,6 @@ class ConfigStore(metaclass=Singleton):
         try:
             value = self._convert_to_type(section_path, key, value_type)
         except (configparser.NoOptionError, KeyError, ValueError):
-            value = None
+            value = default
 
         return value

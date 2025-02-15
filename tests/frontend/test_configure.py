@@ -7,9 +7,8 @@ import pytest
 from nicegui import ui
 from nicegui.testing import User
 
-from common.models.app import AppSettingsDB
+from common.models.settings import AppSettingsDB
 from common.stores.adapter import AdapterStore
-from common.stores.app import AppSettingsStore
 from tests.frontend.utils import login
 from tests.utils.users import create_user_db
 
@@ -64,7 +63,6 @@ async def test_configure_second_time(user: User):
             show_users_on_login_screen=True,
         ),
     )
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
     await user.open('/configure')
@@ -92,7 +90,6 @@ async def test_configure_second_time_cancel(user: User):
             show_users_on_login_screen=True,
         ),
     )
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
     await user.open('/configure')
@@ -119,7 +116,6 @@ async def test_redirects_to_register_if_settings_exist_but_no_user(user: User):
             show_users_on_login_screen=True,
         ),
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/configure')
     await user.should_not_see('Settings', kind=ui.label)
@@ -137,7 +133,6 @@ async def test_redirects_if_user_not_logged_in_and_not_first_run(user: User):
             show_users_on_login_screen=True,
         ),
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/configure')
     await user.should_not_see('Settings', kind=ui.label)
@@ -155,7 +150,6 @@ async def test_redirects_when_not_admin_user(user: User):
             show_users_on_login_screen=True,
         ),
     )
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
     await user.open('/configure')

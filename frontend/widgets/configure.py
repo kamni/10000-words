@@ -8,7 +8,7 @@ from typing import Optional
 from nicegui import ui
 from nicegui.elements.label import Label
 
-from common.models.app import AppSettingsDB
+from common.models.settings import AppSettingsDB
 from frontend.widgets.base import BaseWidget
 
 
@@ -57,17 +57,15 @@ class ConfigureWidget(BaseWidget):
     Configure the global app settings
     """
 
-    def __init__(self, redirect_after_save: Optional[str]='/'):
-        super().__init__()
-        self._redirect = redirect_after_save
-
     def display(self):
-        adapter = self._adapters.get('AppSettingsDBPort')
-        current_settings = adapter.get()
+        adapter_db = self.adapters.get('AppSettingsDBPort')
+        adapter_ui = self.adapters.get('AppSettingsUIPort')
+
+        current_settings = adapter_db.get()
         if current_settings:
             is_configured = True
         else:
-            current_settings = adapter.get_or_default()
+            current_settings = adapter_db.get_or_default()
             is_configured = False
 
         self._multiuser = OptionWidget(
@@ -92,8 +90,8 @@ class ConfigureWidget(BaseWidget):
                 passwordless_login=self._passwordless.value,
                 show_users_on_login_screen=self._show_users.value,
             )
-            adapter.create_or_update(settings)
-            self._app_settings.initialize(force=True)
+            adapter_db.create_or_update(settings)
+            self.settings = adapter_ui.get(settings)
             ui.notify('Settings Saved!')
             self.emit_done()
 

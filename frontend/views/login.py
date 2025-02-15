@@ -24,34 +24,32 @@ class LoginView(BaseView):
         return next_url
 
     def setup(self):
-        if not self._app_settings.is_configured:
-            self._redirect = '/configure'
+        if not self.settings.is_configured:
+            self.redirect = '/configure'
             return False
 
-        self._userdb_adapter = self._adapters.get('UserDBPort')
-        self._userui_adapter = self._adapters.get('UserUIPort')
+        userdb_adapter = self.adapters.get('UserDBPort')
+        userui_adapter = self.adapters.get('UserUIPort')
 
-        userdb = self._userdb_adapter.get_first()
+        userdb = userdb_adapter.get_first()
         if userdb:
             # Automatic login, if user exists
-            if self._app_settings.automatic_login:
-                userui = self._userui_adapter.get(userdb)
-                app.storage.user.update(userui.model_dump())
-                app.storage.user['authenticated'] = True
-                self._redirect = self._get_next_url()
+            if self.settings.automatic_login:
+                userui = userui_adapter.get(userdb)
+                self.user = userui
+                self.redirect = self._get_next_url()
                 return True
         # We need at least one user in the system
         else:
-            self._redirect = '/register'
+            self.redirect = '/register'
             return False
 
         # User already has a session
         if app.storage.user.get('authenticated', False):
-            self._redirect = '/edit'
+            self.redirect = '/edit'
             return True
 
-        self._login_widget = LoginWidget()
-        self._page_content.append(self._login_widget)
+        self.page_content.append(LoginWidget())
         return True
 
     def navigate_back(self):

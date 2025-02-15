@@ -5,10 +5,10 @@ Affero GPL v3
 
 from django.test import TestCase
 
-from app.models.app import AppSettings
-from common.adapters.django_orm.app import AppSettingsDjangoORMAdapter
-from common.models.app import AppSettingsDB
-from common.stores.adapter import AdapterStore
+from app.models import AppSettings
+from common.adapters.django_orm.settings import AppSettingsDjangoORMAdapter
+from common.models.settings import AppSettingsDB
+from common.stores.app import AppStore
 
 
 class TestAppSettingsDjangoORMAdapter(TestCase):
@@ -18,9 +18,16 @@ class TestAppSettingsDjangoORMAdapter(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        adapters = AdapterStore(subsection='dev.django')
-        cls.adapter = adapters.get('AppSettingsDBPort')
+        AppStore.destroy_all()
         super().setUpClass()
+
+    def setUp(self):
+        app = AppStore(subsection='dev.django')
+        adapters = app.get('AdapterStore')
+        self.adapter = adapters.get('AppSettingsDBPort')
+
+    def tearDown(self):
+        AppStore.destroy_all()
 
     def test_get(self):
         app_db = AppSettingsDB(

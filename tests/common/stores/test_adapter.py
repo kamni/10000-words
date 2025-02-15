@@ -4,7 +4,9 @@ Affero GPL v3
 """
 
 from pathlib import Path
-from unittest import TestCase
+
+import pytest
+from django.test import TestCase
 
 from common.adapters.django_orm.users import UserDBDjangoORMAdapter
 from common.adapters.ui.users import UserUIAdapter
@@ -13,10 +15,8 @@ from common.stores.adapter import (
     AdapterNotFoundError,
     AdapterStore,
 )
-from common.stores.config import ConfigStore
-from common.utils.singleton import Singleton
+from common.stores.app import AppStore
 
-from ...utils.init_scripts import FakeStore
 
 TEST_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent
 TEST_CONFIG = TEST_CONFIG_DIR / 'setup.cfg'
@@ -29,16 +29,14 @@ class TestAdapterStore(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Get rid of lurking instances before starting tests
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(FakeStore)
+        AppStore.destroy_all()
         super().setUpClass()
 
+    def setUp(self):
+        AppStore(config=TEST_CONFIG, subsection='dev.in_memory')
+
     def tearDown(self):
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(FakeStore)
+        AppStore.destroy_all()
 
     def test_is_singleton(self):
         adapter_store = AdapterStore()
@@ -51,45 +49,13 @@ class TestAdapterStore(TestCase):
             adapter_store2._adapters['foo'],
         )
 
-    def test_init_default(self):
-        adapter_store = AdapterStore()
-        expected_settings_name = 'default'
-
-        self.assertEqual(
-            expected_settings_name,
-            adapter_store._settings._config['config.meta']['name'],
-        )
-
-    def test_init_with_custom_settings(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
-        expected_settings_name = 'testDefault'
-
-        self.assertEqual(
-            expected_settings_name,
-            adapter_store._settings._config['config.meta']['name'],
-        )
-
     def test_initialize_at_init(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
-        for port in adapter_store._settings.get('ports'):
+        adapter_store = AdapterStore()
+        for port in adapter_store._config.get('ports'):
             self.assertTrue(port in adapter_store._adapters)
 
-    def test_initialize_custom_init_script(self):
-        foo = FakeStore('foo')
-        self.assertEqual(foo._foo, 'foo')
-
-        adapter_store = AdapterStore(config=TEST_CONFIG, subsection='test')
-        self.assertEqual(foo._foo, 'bar')
-
-    def test_initialize_no_custom_init_script(self):
-        foo = FakeStore('foo')
-        self.assertEqual(foo._foo, 'foo')
-
-        adapter_store = AdapterStore(config=TEST_CONFIG, subsection='test2')
-        self.assertEqual(foo._foo, 'foo')
-
     def test_initialize_doesnt_override_existing_adapters(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
+        adapter_store = AdapterStore()
 
         expected_value = 'override'
         for key in adapter_store._adapters.keys():
@@ -103,9 +69,9 @@ class TestAdapterStore(TestCase):
             )
 
     def test_initialize_some_adapters_missing(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
+        adapter_store = AdapterStore()
 
-        ports = adapter_store._settings.get('ports')
+        ports = adapter_store._config.get('ports')
         overridden_ports = []
         for idx, port in enumerate(ports):
             if idx % 2:
@@ -127,9 +93,9 @@ class TestAdapterStore(TestCase):
                 )
 
     def test_initialize_overrides_exising_adapters_on_force(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
+        adapter_store = AdapterStore()
 
-        ports = adapter_store._settings.get('ports')
+        ports = adapter_store._config.get('ports')
         for port in ports:
             adapter_store._adapters[port] = 'override'
 
@@ -142,15 +108,15 @@ class TestAdapterStore(TestCase):
             )
 
     def test_initialize_waits_to_end_to_aggregate_errors(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
+        adapter_store = AdapterStore()
 
-        ports = adapter_store._settings.get('ports')
+        ports = adapter_store._config.get('ports')
         overridden_config = []
         for idx, port in enumerate(ports):
             if idx % 2:
                 overridden_config.append(port)
-                adapter_store._settings._config[
-                    f'{adapter_store._settings.subsection}.ports'
+                adapter_store._config._config[
+                    f'{adapter_store._config.subsection}.ports'
                 ][port] = 'override'
 
         with self.assertRaises(Exception) as exc:
@@ -169,7 +135,9 @@ class TestAdapterStore(TestCase):
                 self.assertTrue(port in adapter_store._adapters)
 
     def test_get(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
+        AppStore.destroy_all()
+        AppStore(config=TEST_CONFIG, subsection='dev.django')
+        adapter_store = AdapterStore()
 
         # Not testing all ports; just a few for examples
         port_to_adapter_cls = {
@@ -182,8 +150,9 @@ class TestAdapterStore(TestCase):
                 adapter_cls,
                 type(adapter_store.get(port)),
             )
+        AppStore.destroy_all()
 
     def test_get_throws_error_if_adapter_not_found(self):
-        adapter_store = AdapterStore(config=TEST_CONFIG)
+        adapter_store = AdapterStore()
         with self.assertRaises(AdapterNotFoundError):
             adapter_store.get('FooBarPort')

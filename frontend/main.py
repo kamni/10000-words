@@ -17,12 +17,13 @@ if BASE_DIR.as_posix() not in sys.path:
 if PROJECT_DIR.as_posix() not in sys.path:
     sys.path.append(PROJECT_DIR.as_posix())
 
-from common.stores.config import ConfigStore
+from common.stores.app import AppStore
 
 from frontend.middleware.auth import AuthMiddleware
 from frontend.views.configure import ConfigureView
 from frontend.views.edit import EditView
 from frontend.views.login import LoginView
+from frontend.views.practice import PracticeView
 from frontend.views.register import RegisterView
 
 
@@ -39,9 +40,12 @@ def startup(config: Optional[str]=None, subsection: Optional[str]=None):
         If not specified, uses the `common.meta.DefaultConfig` value.
     """
 
-    # Initialize the configuration.
-    # ConfigStore is a singleton that lasts for the duration of the app.
-    ConfigStore(config=config, subsection=subsection)
+    # Initialize all stores and adapters.
+    # AppStore is a singleton that lasts for the duration of the app.
+    app_store = AppStore(config=config, subsection=subsection)
+
+    data_store = app_store.get('DataStore')
+    data_store.load_data()
 
     @ui.page('/')
     async def login():
@@ -68,9 +72,10 @@ def startup(config: Optional[str]=None, subsection: Optional[str]=None):
         return await view.display()
 
     @ui.page('/practice')
-    def practice():
+    async def practice():
         ui.page_title('Practice Mode')
-        ui.label('practice')
+        view = PracticeView()
+        return await view.display()
 
 
 app.add_middleware(AuthMiddleware)

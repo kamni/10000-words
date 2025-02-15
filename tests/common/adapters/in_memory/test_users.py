@@ -15,12 +15,7 @@ from common.models.errors import (
     ObjectValidationError,
 )
 from common.models.users import UserDB, UserUI
-from common.stores.adapter import AdapterStore
-from common.stores.config import ConfigStore
-from common.stores.in_memory import InMemoryDBStore
-from common.utils.singleton import Singleton
-
-from users.models.settings import UserSettings
+from common.stores.app import AppStore
 
 
 TEST_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent.parent
@@ -29,26 +24,21 @@ TEST_CONFIG = TEST_CONFIG_DIR / 'setup.cfg'
 
 class TestUserDBInMemoryAdapter(TestCase):
     """
-    Tests for backend.words.adapters.in_memory.users.UserDBInMemoryAdapter
+    Tests for common.adapters.in_memory.users.UserDBInMemoryAdapter
     """
 
     @classmethod
     def setUpClass(cls):
-        # Clean up from previous tests
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(InMemoryDBStore)
-
+        AppStore.destroy_all()
         super().setUpClass()
 
     def setUp(self):
-        adapters = AdapterStore(config=TEST_CONFIG, subsection='dev.in_memory')
+        app = AppStore(config=TEST_CONFIG, subsection='dev.in_memory')
+        adapters = app.get('AdapterStore')
         self.adapter = adapters.get('UserDBPort')
 
     def tearDown(self):
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(InMemoryDBStore)
+        AppStore.destroy_all()
 
     def test_create(self):
         user = UserDB(
@@ -112,6 +102,25 @@ class TestUserDBInMemoryAdapter(TestCase):
 
         with self.assertRaises(ObjectExistsError):
             self.adapter.create(user)
+
+    def test_create_duplicate_user_ignore_errors(self):
+        userdb = UserDB(
+            username='test_duplicate_user_ignore_errors',
+            password='fakepass390',
+            display_name='Test User',
+            is_admin=False,
+        )
+        new_userdb1 = self.adapter.create(userdb)
+
+        # We expect these to be updated
+        userdb.password = 'fakepass772'
+        userdb.display_name = 'Test User 2'
+        userdb.is_admin = True
+        new_userdb2 = self.adapter.create(userdb, ignore_errors=True)
+
+        self.assertEqual(new_userdb1.id, new_userdb2.id)
+        self.assertEqual('Test User 2', new_userdb2.display_name)
+        self.assertTrue(new_userdb2.is_admin)
 
     def test_get(self):
         user = UserDB(

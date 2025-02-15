@@ -26,7 +26,6 @@ def make_user_db(**kwargs) -> UserDB:
 
     username = random_string()
     random_data = {
-        'id': random_uuid(),
         'username': username,
         'password': random_password(),
         'email': random_email(username=username),
@@ -47,9 +46,11 @@ def create_user_db(**kwargs) -> UserDB:
 
     adapter = AdapterStore().get('UserDBPort')
     userdb = make_user_db(**kwargs)
-    adapter.create(userdb)
-    # We return the original object, because we need the password.
-    return userdb
+
+    new_userdb = adapter.create(userdb)
+    # We need the password for testing
+    new_userdb.password = userdb.password
+    return new_userdb
 
 
 def make_user_ui(**kwargs) -> UserUI:

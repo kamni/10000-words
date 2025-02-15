@@ -5,7 +5,6 @@ Affero GPL v3
 
 from nicegui import app, ui
 
-from common.stores.adapter import AdapterStore
 from frontend.views.base import BaseView
 from frontend.widgets.configure import ConfigureWidget
 
@@ -20,17 +19,17 @@ class ConfigureView(BaseView):
     """
 
     def setup(self):
-        if self._app_settings.is_configured:
-            if not app.storage.user.get('isAdmin', False):
-                self._redirect = '/'
+        if self.settings.is_configured:
+            if not self.user or not self.user.isAdmin:
+                self.redirect = '/'
                 return False
         else:
-            existing_user = AdapterStore().get('UserDBPort').get_first()
+            existing_user = self.adapters.get('UserDBPort').get_first()
             # The first time the app is configured,
             # we also want to give the chance to create a new user.
             if not existing_user:
-                self._next_url = '/register'
+                self.next_url = '/register'
 
-        self._page_content.append(ConfigureWidget())
+        self.page_content.append(ConfigureWidget())
         return True
 

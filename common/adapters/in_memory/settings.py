@@ -3,18 +3,24 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from abc import ABC, abstractmethod
 from typing import Union
 
-from ..models.app import AppSettingsDB
+from ...models.settings import AppSettingsDB
+from ...ports.settings import AppSettingsDBPort
+from ...stores.data.in_memory import InMemoryDBStore
 
 
-class AppSettingsDBPort(ABC):
+class AppSettingsInMemoryAdapter(AppSettingsDBPort):
     """
-    Get global settings for apps
+    Uses the in-memory database store
     """
 
-    @abstractmethod
+    def __init__(self, **kwargs):
+        # Ignore any kwargs configuration.
+        # This uses the django settings.
+        super().__init__()
+        self.store = InMemoryDBStore()
+
     def get(self) -> Union[AppSettingsDB, None]:
         """
         Get the settings.
@@ -22,9 +28,8 @@ class AppSettingsDBPort(ABC):
 
         :return: AppSettingsDB object, or None
         """
-        pass
+        return self.store.db.app_settings
 
-    @abstractmethod
     def get_or_default(self) -> AppSettingsDB:
         """
         Get the settings.
@@ -32,9 +37,11 @@ class AppSettingsDBPort(ABC):
 
         :return: AppSettingsDB
         """
-        pass
+        app_db = self.store.db.app_settings
+        if not app_db:
+            app_db = AppSettingsDB()
+        return app_db
 
-    @abstractmethod
     def create_or_update(self, settings: AppSettingsDB) -> AppSettingsDB:
         """
         Create a new settings item, or update if one exists.
@@ -42,4 +49,5 @@ class AppSettingsDBPort(ABC):
 
         :return: AppSettingsDB object.
         """
-        pass
+        self.store.db.app_settings = settings
+        return settings
