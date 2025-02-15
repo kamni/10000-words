@@ -16,12 +16,13 @@ class RegisterView(BaseView):
 
     def setup(self) -> bool:
         if (
-            not self._app_settings.show_registration
+            not self.settings.show_registration
             or app.storage.user.get('authenticated', False)
         ):
-            self._redirect = '/'
+            self.log_console('foo')
+            self.redirect = '/'
             return False
 
-        self._next_url = '/'
-        self._page_content.append(RegistrationWidget())
+        self.next_url = '/'
+        self.page_content.append(RegistrationWidget())
         return True

@@ -5,10 +5,10 @@ Affero GPL v3
 
 from typing import Union
 
-from app.models.app import AppSettings
+from app.models import AppSettings
 
-from ...models.app import AppSettingsDB
-from ...ports.app import AppSettingsDBPort
+from ...models.settings import AppSettingsDB
+from ...ports.settings import AppSettingsDBPort
 
 
 class AppSettingsDjangoORMAdapter(AppSettingsDBPort):

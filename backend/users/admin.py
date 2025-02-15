@@ -5,10 +5,10 @@ Affero GPL v3
 
 from django.contrib import admin
 
-from .models import UserSettings
+from .models import UserProfile
 
 
-@admin.register(UserSettings)
-class UserSettingsAdmin(admin.ModelAdmin):
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
     list_display = ['user', 'display_name']
 

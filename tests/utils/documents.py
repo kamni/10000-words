@@ -15,12 +15,11 @@ from tests.utils.random_data import (
     random_string,
     random_uuid,
 )
-from tests.utils.sentences import create_sentence_db_minimal
 
 
-def create_document_db(**kwargs):
+def make_document_db(**kwargs):
     """
-    Create a DocumentDB object.
+    Make a DocumentDB object.
     Not written to database.
 
     :kwargs: arguments that will be passed to DocumentDB during creation.
@@ -33,7 +32,6 @@ def create_document_db(**kwargs):
         'display_name': random_string().title(),
         'language_code': random_language_code(),
         'doc_file': random_file_path(),
-        'sentences': [create_sentence_db_minimal(document_id=doc_id)],
         'translations': [],
     }
     random_data.update(kwargs)

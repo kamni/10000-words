@@ -3,6 +3,8 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+from typing import Any, Optional
+
 from nicegui import app, ui
 
 from common.ports.auth import AuthInvalidError
@@ -29,42 +31,43 @@ class LoginWidget(BaseWidget):
     def display(self):
         # This shouldn't happen,
         # because this means we got here without configuring the app.
-        if not self._app_settings.show_login:
+        if not self.settings.show_login:
             Error500Widget().display()
             return
 
-        user_adapter = self._adapters.get('UserDBPort')
-        auth_adapter = self._adapters.get('AuthPort')
+        user_adapter = self.adapters.get('UserDBPort')
+        auth_adapter = self.adapters.get('AuthPort')
 
-        self._username = None
-        self._password = None
-        self._error = None
+        username = None
+        password = None
+        error = None
 
         def login():
-            self._error.classes(add='hidden')
-            self._error.text = ''
+            error.classes(add='hidden')
+            error.text = ''
             try:
                 userui = auth_adapter.login(
-                    self._username.value,
-                    self._password.value if self._password else None,
+                    username.value,
+                    password.value if password else None,
                 )
             except AuthInvalidError as exc:
-                if self._app_settings.show_password_field:
-                    self._error.text = 'Invalid username or password.'
+                if self.settings.show_password_field:
+                    error.text = 'Invalid username or password.'
                 else:
-                    self._error.text = 'Invalid username.'
-                self._error.classes(remove='hidden')
+                    error.text = 'Invalid username.'
+                error.classes(remove='hidden')
             else:
-                app.storage.user.update(userui.model_dump())
-                app.storage.user['authenticated'] = True
+                self.user = userui
                 ui.notify('Welcome!')
                 self.emit_done()
+
+        ui.on('keydown.enter', login)
 
         with ui.card().classes('absolute-center'):
             ui.label('Login').classes('text-3xl')
             ui.separator()
 
-            if self._app_settings.show_user_select:
+            if self.settings.show_user_select:
                 users = user_adapter.get_all()
                 if not users:
                     RegistrationLinkWidget().display()
@@ -72,7 +75,7 @@ class LoginWidget(BaseWidget):
 
                 if len(users) == 1:
                     user = users[0]
-                    self._username = ui.input(
+                    username = ui.input(
                         'Username',
                         value=user.username,
                     ).classes('text-1xl')
@@ -81,22 +84,26 @@ class LoginWidget(BaseWidget):
                         user.username: user.username
                         for user in users
                     }
-                    self._username = ui.select(
+                    username = ui.select(
                         label='Username',
                         options=options,
                         with_input=True,
                     )
             else:
-                self._username = ui.input('Username')
+                username = ui.input('Username')
 
-            if self._app_settings.show_password_field:
-                self._password = ui.input('Password', password=True)
+            if self.settings.show_password_field:
+                password = ui.input(
+                    'Password',
+                    password=True,
+                    password_toggle_button=True,
+                )
 
-            self._error = ui.label('').classes(
+            error = ui.label('').classes(
                 'text-amber-600 text-center self-center height-fit hidden',
             )
 
             ui.separator()
-            if self._app_settings.show_registration:
+            if self.settings.show_registration:
                 RegistrationLinkWidget().display()
             ui.button('Log In', on_click=login).classes('self-center')

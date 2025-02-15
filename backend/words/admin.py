@@ -1,12 +1,11 @@
 from django.contrib import admin
 
-#from .models import Document
+from .models import Document
 
 
-'''
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ['display_name', 'language', 'user']
+    list_display = ['display_name', 'language_code', 'user']
     actions = ['full_delete']
 
     def get_actions(self, request):
@@ -18,4 +17,3 @@ class DocumentAdmin(admin.ModelAdmin):
     def full_delete(self, request, obj):
         for doc in obj:
             doc.delete()
-'''

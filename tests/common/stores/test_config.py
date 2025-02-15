@@ -7,6 +7,7 @@ import configparser
 from pathlib import Path
 from unittest import TestCase
 
+from common.stores.app import AppStore
 from common.stores.config import ConfigStore
 from common.utils.singleton import Singleton
 
@@ -23,12 +24,11 @@ class TestConfigStore(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # In case there is already lurking from somewhere else in the code
-        Singleton.destroy(ConfigStore)
+        AppStore.destroy_all()
         super().setUpClass()
 
     def tearDown(self):
-        Singleton.destroy(ConfigStore)
+        AppStore.destroy_all()
 
     def test_class_is_singleton(self):
         settings_store = ConfigStore(config=TEST_CONFIG)
@@ -130,7 +130,7 @@ class TestConfigStore(TestCase):
             settings_store.name,
         )
 
-        Singleton.destroy(ConfigStore)
+        AppStore.destroy_all()
 
         settings_store = ConfigStore(TEST_CONFIG)
         expected_name = 'testDefault'
@@ -168,7 +168,7 @@ class TestConfigStore(TestCase):
 
     def test_get_invalid_section(self):
         settings_store = ConfigStore(config=TEST_CONFIG, subsection='test')
-        self.assertIsNone(settings_store.get('foo'))
+        self.assertEqual(settings_store.get('foo'), [])
 
     def test_get_section_and_key(self):
         settings_store = ConfigStore(config=TEST_CONFIG, subsection='test')
@@ -181,9 +181,11 @@ class TestConfigStore(TestCase):
 
     def test_get_invalid_key(self):
         settings_store = ConfigStore(config=TEST_CONFIG, subsection='test')
-        self.assertIsNone(
-            settings_store.get('data', 'boz'),
-        )
+        self.assertIsNone(settings_store.get('data', 'boz'))
+
+    def test_get_invalid_key_with_default(self):
+        settings_store = ConfigStore(config=TEST_CONFIG, subsection='test')
+        self.assertEqual(settings_store.get('data', 'boz', default=3), 3)
 
     def test_get_typed_key_int(self):
         settings_store = ConfigStore(config=TEST_CONFIG, subsection='test')

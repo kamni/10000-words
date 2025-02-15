@@ -59,8 +59,8 @@ class Header(BaseWidget):
 
         user = app.storage.user
         user_authenticated = user.get('authenticated', False)
-        app_is_configured = self._app_settings.is_configured
-        show_logout = self._app_settings.show_logout and user_authenticated
+        app_is_configured = self.settings.is_configured
+        show_logout = self.settings.show_logout and user_authenticated
         show_settings = user.get('isAdmin', False)
 
         with ui.header():

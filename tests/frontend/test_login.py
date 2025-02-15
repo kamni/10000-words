@@ -10,17 +10,18 @@ from nicegui import ui
 from nicegui.testing import User
 
 from common.stores.adapter import AdapterStore
-from common.stores.app import AppSettingsStore
+from frontend import main
 from tests.frontend.utils import (
     assert_logged_in,
     assert_not_logged_in,
     login,
 )
-from tests.utils.app import create_app_settings
+from tests.utils.settings import create_app_settings
 from tests.utils.users import create_user_db
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_initial_setup_flow(user: User):
     """
     Here are the steps we expect the first time things are launched:
@@ -38,7 +39,6 @@ async def test_initial_setup_flow(user: User):
     # Configure the app
     user.find('Save', kind=ui.button).click()
     await user.should_see('Settings Saved!', kind=ui.notify)
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     # After configuring, redirect to create a user (who is an admin)
@@ -47,6 +47,7 @@ async def test_initial_setup_flow(user: User):
     username = 'user'
     password = '8765432Wsx#'
 
+    await user.should_see('Register for 10,000 Words', kind=ui.label)
     user.find('Name (Optional)').type(username.title())
     user.find('Username').type(username)
     user.find('Password').type(password)
@@ -80,9 +81,7 @@ async def test_login_config_false_false_false(user: User):
     show_users_on_login_screen = False
     """
     userdb = create_user_db()
-
     create_app_settings()
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -105,9 +104,7 @@ async def test_login_config_true_false_false(user: User):
     userdb = create_user_db()
     # Testing a multiuser system
     userdb2 = create_user_db()
-
     create_app_settings(multiuser_mode=True)
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -139,7 +136,6 @@ async def test_login_config_true_true_false(user: User):
         multiuser_mode=True,
         passwordless_login=True,
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -172,7 +168,6 @@ async def test_login_config_true_false_true(user: User):
         passwordless_login=False,
         show_users_on_login_screen=True,
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -207,7 +202,6 @@ async def test_login_config_true_true_true(user: User):
         passwordless_login=True,
         show_users_on_login_screen=True,
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -234,10 +228,8 @@ async def test_login_config_false_true_false(user: User):
     """
     # Single user system
     userdb = create_user_db()
-
     # This sets up automatic login
     create_app_settings(passwordless_login=True)
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_logged_in(user, userdb)
@@ -259,7 +251,6 @@ async def test_login_config_false_true_true(user: User):
         passwordless_login=True,
         show_users_on_login_screen=True,
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_logged_in(user, userdb)
@@ -281,7 +272,6 @@ async def test_login_config_false_false_true(user: User):
         passwordless_login=False,
         show_users_on_login_screen=True,
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -304,7 +294,6 @@ async def test_login_redirects_to_signup_when_no_other_users(user: User):
         passwordless_login=False,
         show_users_on_login_screen=False,
     )
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await assert_not_logged_in(user)
@@ -316,7 +305,6 @@ async def test_login_redirects_to_signup_when_no_other_users(user: User):
 async def test_login_redirects_already_logged_in(user: User):
     userdb = create_user_db()
     create_app_settings()
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
     await user.open('/')
@@ -327,7 +315,6 @@ async def test_login_redirects_already_logged_in(user: User):
 async def test_validate_username_bad_user(user: User):
     create_user_db()
     create_app_settings()
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     user.find('Username', kind=ui.input).type('not-a-user')
@@ -339,7 +326,6 @@ async def test_validate_username_bad_user(user: User):
 async def test_validate_username_bad_user_passwordless(user: User):
     create_user_db()
     create_app_settings(multiuser_mode=True, passwordless_login=True)
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     user.find('Username', kind=ui.input).type('not-a-user')
@@ -351,7 +337,6 @@ async def test_validate_username_bad_user_passwordless(user: User):
 async def test_validate_username_bad_password(user: User):
     userdb = create_user_db()
     create_app_settings()
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     user.find('Username', kind=ui.input).type(userdb.username)
@@ -364,7 +349,6 @@ async def test_validate_username_bad_password(user: User):
 async def test_registration_link(user: User):
     create_user_db()
     create_app_settings(multiuser_mode=True)
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     user.find('Register for 10,000 Words', kind=ui.link).click()
@@ -378,7 +362,6 @@ async def test_registration_link(user: User):
 async def test_logout(user: User):
     userdb = create_user_db(is_admin=True)
     create_app_settings(multiuser_mode=True)
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
 

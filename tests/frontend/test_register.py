@@ -8,10 +8,9 @@ import string
 from nicegui import ui
 from nicegui.testing import User
 
-from common.models.app import AppSettingsDB
 from common.models.errors import ObjectNotFoundError
+from common.models.settings import AppSettingsDB
 from common.stores.adapter import AdapterStore
-from common.stores.app import AppSettingsStore
 from tests.frontend.utils import assert_logged_in, login
 from tests.utils.users import create_user_db
 
@@ -20,7 +19,6 @@ from tests.utils.users import create_user_db
 async def test_all_fields_filled_in(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='user'
     password='8765432Wsx#'
@@ -62,7 +60,6 @@ async def test_second_user_is_not_automatically_admin(user: User):
     create_user_db(is_admin=True)
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     username='user'
     password='8765432Wsx#'
@@ -94,7 +91,6 @@ async def test_second_user_is_not_automatically_admin(user: User):
 async def test_display_name_optional(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='user'
     password='8765432Wsx#'
@@ -133,7 +129,6 @@ async def test_display_name_optional(user: User):
 async def test_username_must_be_4_characters_long(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='foo'
     password='8765432Wsx#'
@@ -165,7 +160,6 @@ async def test_username_must_be_4_characters_long(user: User):
 async def test_username_cannot_contain_spaces(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='f oo'
     password='8765432Wsx#'
@@ -189,7 +183,6 @@ async def test_username_cannot_contain_spaces(user: User):
 async def test_username_cannot_contain_punctuation(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username = string.punctuation + string.ascii_lowercase
     password='8765432Wsx#'
@@ -216,7 +209,6 @@ async def test_username_cannot_contain_punctuation(user: User):
 async def test_username_cannot_contain_upercase_letters(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username = string.ascii_uppercase
     password='8765432Wsx#'
@@ -240,7 +232,6 @@ async def test_username_cannot_contain_upercase_letters(user: User):
 async def test_username_is_valid(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username = string.ascii_lowercase + '_' + '-' + string.digits
     password='8765432Wsx#'
@@ -268,7 +259,6 @@ async def test_username_is_valid(user: User):
 async def test_password_must_be_8_characters_long(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='user'
     password='1234567'
@@ -304,7 +294,6 @@ async def test_password_must_be_8_characters_long(user: User):
 async def test_password_cannot_contain_spaces(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='user'
     password='876543 2Wsx#'
@@ -328,7 +317,6 @@ async def test_password_cannot_contain_spaces(user: User):
 async def test_password_confirm_matches(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     username='user'
     password='8765432Wsx#'
@@ -352,7 +340,6 @@ async def test_password_confirm_matches(user: User):
 async def test_dont_show_password_fields_if_passwordless_system(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(passwordless_login=True))
-    AppSettingsStore().initialize(force=True)
 
     username='user'
 
@@ -395,7 +382,6 @@ async def test_redirects_if_not_multiuser_system_and_user_exists(user: User):
     create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/register')
     await user.should_not_see('Register for 10,000 Words', kind=ui.label)
@@ -407,7 +393,6 @@ async def test_redirects_if_already_logged_in_as_another_user(user: User):
     userdb = create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
     await user.open('/register')
@@ -421,7 +406,6 @@ async def test_cancel(user: User):
     create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     username = 'user'
     password = '8765432Wsx#'
@@ -445,7 +429,6 @@ async def test_cancel(user: User):
 async def test_cancel_unavailable_for_first_user(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/register')
     await user.should_not_see('Cancel', kind=ui.button())

@@ -5,7 +5,7 @@ Affero GPL v3
 
 from django.contrib import admin
 
-from .models.app import AppSettings
+from .models.settings import AppSettings
 
 
 @admin.register(AppSettings)

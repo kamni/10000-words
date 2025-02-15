@@ -8,13 +8,10 @@ from pathlib import Path
 from unittest import TestCase
 
 from common.adapters.in_memory.auth import AuthInMemoryAdapter
-from common.models.app import AppSettingsDB
+from common.models.settings import AppSettingsDB
 from common.models.users import UserUI, UserDB
 from common.ports.auth import AuthInvalidError
-from common.stores.adapter import AdapterStore
-from common.stores.config import ConfigStore
-from common.stores.in_memory import InMemoryDBStore
-from common.utils.singleton import Singleton
+from common.stores.app import AppStore
 
 
 TEST_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent.parent
@@ -28,24 +25,19 @@ class TestAuthInMemoryAdapter(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Clean up from other tests
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(InMemoryDBStore)
-
+        AppStore.destroy_all()
         super().setUpClass()
 
     def setUp(self):
-        adapters = AdapterStore(config=TEST_CONFIG, subsection='dev.in_memory')
+        app = AppStore(config=TEST_CONFIG, subsection='dev.in_memory')
+        adapters = app.get('AdapterStore')
         self.app_settings = adapters.get('AppSettingsDBPort')
         self.auth_adapter = adapters.get('AuthPort')
         self.user_db_adapter = adapters.get('UserDBPort')
         self.user_ui_adapter = adapters.get('UserUIPort')
 
     def tearDown(self):
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(InMemoryDBStore)
+        AppStore.destroy_all()
 
     def test_login(self):
         self.app_settings.create_or_update(AppSettingsDB())

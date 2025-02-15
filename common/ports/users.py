@@ -4,7 +4,7 @@ Affero GPL v3
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Union
+from typing import List, Optional, Union
 
 from common.models.users import UserDB, UserUI
 
@@ -15,11 +15,13 @@ class UserDBPort(ABC):
     """
 
     @abstractmethod
-    def create(self, user: UserDB) -> UserDB:
+    def create(self, user: UserDB, ignore_errors: Optional[bool]=False) -> UserDB:
         """
         Create a new user in the database.
 
         :user: New user to add to the database.
+        :ignore_errors: Whether to ignore errors that the object exists.
+            Not useful in prod, but useful for testing.
 
         :return: Created user object.
         :raises: ObjectExistsError if the object already exists.

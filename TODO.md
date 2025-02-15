@@ -1,5 +1,43 @@
 # TODOS
 
+## Document
+
+* Nicegui: upload a document
+  * Form validation
+    * input has validators...figure out how
+  * Warning if file already exists, and confirmation dialog
+  * How do I clear the input forms?
+  * In-Memory Adapter
+    * needs to handle file upload
+  * Tests:
+    * Document Adapter
+    * In-Memory Adapter
+
+---
+
+* Nicegui: Upload a document file, split into sentences
+  * I don't really have to save the file, do I?
+
+* Disable buttons like 'Save' to prevent double-clicks
+* Settings where you can choose your languages, to make the dropdown easier
+  for upload
+
+---
+
+* Adapters: db to ui, so we only have one to import to the frontend?
+* Run frontend tests with both django and in-memory?
+
+* Scripts
+  * tests for load_data
+  * tests for create_test_data
+
+* AppStore: should I make the other stores not singletons?
+
+* Get permission to use fairy tales
+  * If not permission, remove and update README
+
+---
+
 ## Cleanup
 
 * coverage
@@ -13,34 +51,22 @@
 
 * app.on_exception
 
-## Document
-
-* Document model should use the uuid of UserSettings
-  * Django
-  * Pydantic -- id only
-* Document port/adapter
-  * Add adapters to config
-  * Create models
-  * Write ports
-  * Write tests
-  * Upload includes a force override to upload to same document name
-* Nicegui: if no documents, suggest an upload
-* Nicegui: Upload a document file, split into sentences
-* Nicegui: display uploaded document by language in sidebar
-* Nicegui: can see document by clicking on it
-* Nicegui: Can upload same document twice, with warning dialog;
-  overwrites existing document
-
 ---
 
 ## Document
 
+* Split document into sentences
+    * Sentences are the same when they match without punctuation
+    * How to store punctuation?
+* When storing sentences, close quotation marks.
 * Click on sentence to add translation
 * After adding a translation, words become individual labels
 * Left-clicking on word plays Google TTS
 * Right-clicking a word sets status
 * Ctrl-left-click allows multiple to be selected for phrase
 * Upload a translation document to automate
+  * Set primary language, don't show docs for that language in the sidebar
+    * Show them as a list of translations
 
 ---
 

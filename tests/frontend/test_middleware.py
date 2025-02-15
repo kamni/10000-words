@@ -7,9 +7,8 @@ import pytest
 from nicegui import ui
 from nicegui.testing import User
 
-from common.models.app import AppSettingsDB
+from common.models.settings import AppSettingsDB
 from common.stores.adapter import AdapterStore
-from common.stores.app import AppSettingsStore
 from frontend import main
 from frontend.middleware.auth import UNRESTRICTED_PAGE_ROUTES
 from tests.frontend.utils import assert_logged_in, login
@@ -25,7 +24,6 @@ async def test_auth_middleware_allows_all_pages_when_logged_in(user: User):
     userdb = create_user_db(is_admin=True)
     settings_adapter = AdapterStore().get('AppSettingsDBPort')
     settings_adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     await login(user, userdb)
 
@@ -56,7 +54,6 @@ async def test_can_visit_unrestricted_pages_when_not_authenticated(user: User):
     create_user_db(is_admin=True)
     settings_adapter = AdapterStore().get('AppSettingsDBPort')
     settings_adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     await user.open('/')
     await user.should_see('Login', kind=ui.label)
@@ -73,7 +70,6 @@ async def test_middleware_redirects_to_login_for_restricted_pages(user: User):
     create_user_db(is_admin=True)
     settings_adapter = AdapterStore().get('AppSettingsDBPort')
     settings_adapter.create_or_update(AppSettingsDB(multiuser_mode=True))
-    AppSettingsStore().initialize(force=True)
 
     for route in RESTRICTED_ROUTES:
         await user.open(route)

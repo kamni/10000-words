@@ -4,7 +4,7 @@ Affero GPL v3
 """
 
 import uuid
-from typing import List, Union
+from typing import List, Optional, Union
 
 from ...models.errors import (
     ObjectExistsError,
@@ -13,7 +13,7 @@ from ...models.errors import (
 )
 from ...models.users import UserDB
 from ...ports.users import UserDBPort
-from ...stores.in_memory import InMemoryDBStore
+from ...stores.data.in_memory import InMemoryDBStore
 
 
 class UserDBInMemoryAdapter(UserDBPort):
@@ -26,9 +26,8 @@ class UserDBInMemoryAdapter(UserDBPort):
 
     def __init__(self, **kwargs):
         # Ignore any kwargs configuration.
-        # This uses the django settings.
         super().__init__()
-        self.store = InMemoryDBStore()
+        self.store = InMemoryDBStore(subsection='dev.in_memory')
 
     def _user_to_return_value(self, user: UserDB) -> UserDB:
         # Don't return the password
@@ -40,28 +39,41 @@ class UserDBInMemoryAdapter(UserDBPort):
         )
         return userdb
 
-    def create(self, user: UserDB) -> UserDB:
+    def create(self, user: UserDB, ignore_errors: Optional[bool]=False) -> UserDB:
         """
         Create a new user in the database.
 
         :user: New user to add to the database.
+        :ignore_errors: Whether to ignore errors that the object exists.
+            Not useful in prod, but useful for testing.
 
         :return: Created user object.
         :raises: ObjectExistsError if the object already exists.
         """
 
-        existing_user = len(list(
+        existing_user_filter = list(
             filter(lambda x: x.username == user.username, self.store.db.users),
-        )) > 0
-        if existing_user:
-            raise ObjectExistsError('User already exists.')
+        )
+        if existing_user_filter:
+            if not ignore_errors:
+                raise ObjectExistsError('User already exists.')
+            else:
+                new_user = existing_user_filter[0]
+        else:
+            new_user = user
 
-        if not user.id:
-            user.id = uuid.uuid4()
+        if existing_user_filter:
+            # Update it
+            new_user.password = user.password
+            new_user.display_name = user.display_name
+            new_user.is_admin = user.is_admin
+            new_user.id = user.id
+        else:
+            new_user.id = uuid.uuid4()
+            self.store.db.users.append(new_user)
 
-        self.store.db.users.append(user)
         # Don't return the password
-        userdb = self._user_to_return_value(user)
+        userdb = self._user_to_return_value(new_user)
         return userdb
 
     def get(self, id: str) -> UserDB:

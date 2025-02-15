@@ -7,17 +7,25 @@ import configparser
 import importlib
 import os
 import sys
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 
 from common.stores.config import ConfigStore
 from common.utils.singleton import Singleton
 
 
 class AdapterInitializationError(Exception):
+    """
+    Indicates that an adapter failed to initialize.
+    Raised during Adapteradapter.initialize.
+    """
     pass
 
 
 class AdapterNotFoundError(Exception):
+    """
+    Indicates that an adapter was not found.
+    Raised during Adapteradapter.get.
+    """
     pass
 
 
@@ -26,30 +34,10 @@ class AdapterStore(metaclass=Singleton):
     Singleton that instantiates all adapters using the specified config
     """
 
-    def __init__(
-        self,
-        config: Optional[str]=None,
-        subsection: Optional[str]=None,
-    ):
-        """
-        :config: setup.cfg to use to create adapters
-        :subsection: subsection of setup.cfg to use for settings
-        """
+    def __init__(self):
         self._adapters = {}
-        self._settings = ConfigStore(config, subsection)
+        self._config = ConfigStore()
         self.initialize()
-
-    def _get_adapter_cls(self, port_name: str):
-        module_name, cls_name = self._settings.get('ports', port_name).rsplit('.', 1)
-        module = importlib.import_module(module_name)
-        AdapterCls = getattr(module, cls_name)
-        return AdapterCls
-
-    def _get_init_script(self, initialize_script: str):
-        script_path, script_name = initialize_script.rsplit('.', 1)
-        module = importlib.import_module(script_path)
-        script = getattr(module, script_name)
-        return script
 
     def initialize(self, force: bool=False):
         """
@@ -65,43 +53,21 @@ class AdapterStore(metaclass=Singleton):
         if force:
             self._adapters = {}
 
-        if not self._adapters or force:
-            init_script = self._settings.get('', 'InitScript')
-            if init_script:
-                script = self._get_init_script(init_script)
-                script()
-
-        ports = self._settings.get('ports')
-        if not ports:
-            return
-
-        exceptions = {}
+        ports = self._config.get('ports', default=[])
+        port_exceptions = {}
         for port in ports:
             # Don't override existing adapters
             if port in self._adapters:
                 continue
 
             try:
-                AdapterCls = self._get_adapter_cls(port)
-                adapter_options = {}
-                for key in self._settings.get('adapters.common', {}):
-                    value = self._settings.get('adapters.common', key)
-                    adapter_options[key] = value
-
-                custom_options_section = f'adapters.{port}'
-                section = self._settings.get(custom_options_section)
-                if section:
-                    for key in section:
-                        value = self._settings.get(section, key)
-                        adapter_options[key] = value
-
-                adapter = AdapterCls(**adapter_options)
+                adapter = self._make_adapter(port)
                 self._adapters[port] = adapter
             except Exception as exc:
-                exceptions[port] = exc
+                port_exceptions[port] = exc
 
-        if exceptions:
-            raise AdapterInitializationError(str(exceptions))
+        if port_exceptions:
+            raise AdapterInitializationError(str(port_exceptions))
 
     def get(self, port_name: str) -> Any:
         """
@@ -116,9 +82,36 @@ class AdapterStore(metaclass=Singleton):
         try:
             adapter = self._adapters[port_name.lower()]
         except KeyError:
-            raise AdapterNotFoundError(
-                f'Unable to find adapter for {port_name}. '
-                'Did you call AdapterStore.initialize first?'
-            )
+            raise AdapterNotFoundError(f'Unable to find adapter for {port_name}.')
 
+        return adapter
+
+    def _get_adapter_options(self, adapter_name: str) -> Dict[str, Any]:
+        options = {}
+
+        common_key = 'adapters.common'
+        general_opts = self._config.get(common_key, default=[])
+        for key in general_opts:
+            value = self._config.get(common_key, key)
+            options[common_key] = value
+
+        adapter_key = f'adapters.{adapter_name}'
+        adapter_opts = self._config.get(adapter_key, default=[])
+        for key in adapter_opts:
+            value = self._config.get(adapter_key, key)
+            options[adapter_key] = value
+
+        return options
+
+    def _get_adapter_cls(self, adapter_name: str) -> Any:
+        config_option = self._config.get('ports', adapter_name)
+        module_name, cls_name = config_option.rsplit('.', 1)
+        module = importlib.import_module(module_name)
+        AdapterCls = getattr(module, cls_name)
+        return AdapterCls
+
+    def _make_adapter(self, adapter_name: str):
+        AdapterCls = self._get_adapter_cls(adapter_name)
+        options = self._get_adapter_options(adapter_name)
+        adapter = AdapterCls(**options)
         return adapter

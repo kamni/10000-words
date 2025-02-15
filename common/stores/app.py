@@ -3,139 +3,175 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from typing import Any, Optional, Union
+import importlib
+import os
+from typing import Any, Dict, Optional
 
-from ..ports.auth import AuthInvalidError
-from ..models.errors import ObjectNotFoundError
-from ..models.users import UserUI
-from ..ports.auth import AuthInvalidError
-from ..stores.adapter import AdapterStore
+from ..models.settings import AppSettingsDB
+from ..stores.config import ConfigStore
+from ..utils.files import get_project_dir
 from ..utils.singleton import Singleton
 
 
-class AppSettingsStore(metaclass=Singleton):
+class StoreInitializationError(Exception):
     """
-    Tracks auth settings and current authenticated user
+    Indicates that a store failed to initialize.
+    Raised during AppStore.initialize.
+    """
+    pass
+
+
+class StoreNotFoundError(Exception):
+    """
+    Indicates that a store was not found.
+    Raised during AppStore.get_store.
+    """
+    pass
+
+
+
+class AppStore(metaclass=Singleton):
+    """
+    Initializes and provides access to all stores in the application.
+    This should be one of the first things initialized while running the app.
+
+    NOTE: Only initialize the AppStore.
+          Except when testing, don't manually initialize other stores.
     """
 
-    AUTOMATIC_LOGIN = 'automatic_login'
-    IS_CONFIGURED = 'is_configured'
-    SHOW_LOGIN = 'show_login'
-    SHOW_LOGOUT = 'show_logout'
-    SHOW_REGISTRATION = 'show_registration'
-    SHOW_PASSWORD_FIELD = 'show_password_field'
-    SHOW_USER_SELECT = 'show_user_select'
+    STORES = ['datastore', 'adapterstore']
 
-    def __init__(self):
-        self._settings = {}
-        self.initialize()
+    def __init__(
+        self,
+        config: Optional[str]=None,
+        subsection: Optional[str]=None,
+        wait_to_initialize: Optional[bool]=False,
+    ):
+        """
+        :config: setup.cfg to use to create adapters
+        :subsection: subsection of setup.cfg to use for settings
+        :wait_to_initialize: the init will not call `initialize` if True.
+            Sometimes we want to delay setup until first use.
+            If True, won't initialize until `get` is called.
+        """
+        self._config_file = config
+        self._subsection = subsection
+        self._stores = {}
+        self._config = None
+        self._initialized = False
 
-    @property
-    def automatic_login(self):
-        return self.get(self.AUTOMATIC_LOGIN)
-
-    @property
-    def is_configured(self):
-        return self.get(self.IS_CONFIGURED)
-
-    @property
-    def show_login(self):
-        return self.get(self.SHOW_LOGIN)
-
-    @property
-    def show_logout(self):
-        return self.get(self.SHOW_LOGOUT)
+        if not wait_to_initialize:
+            self.initialize()
 
     @property
-    def show_registration(self):
-        return self.get(self.SHOW_REGISTRATION)
-
-    @property
-    def show_password_field(self):
-        return self.get(self.SHOW_PASSWORD_FIELD)
-
-    @property
-    def show_user_select(self):
-        return self.get(self.SHOW_USER_SELECT)
+    def stores(self):
+        return self._stores
 
     def initialize(self, force: Optional[bool]=False):
         """
-        Initialize this store.
-        This is a singleton,
-        so if you want to re-initialize the settings,
-        you should use `force=True`.
+        Initialize the stores that will be used for the app.
 
-        :force: Even if this has been initialized, re-initialize it
+        :force: initialize, even if it has already been initialized.
+            If False, will skip the creation of already-initialized stores.
         """
 
-        if self._settings and not force:
+        if self._initialized and not force:
             return
 
-        adapter_store = AdapterStore()
-        self._settings_adapter = adapter_store.get('AppSettingsDBPort')
-        self._user_db_adapter = adapter_store.get('UserDBPort')
+        if force:
+            for store in self._stores.values():
+                Singleton.destroy(store.__class__)
+            self._stores = {}
 
-        self._settings = {
-            self.AUTOMATIC_LOGIN: False,
-            self.IS_CONFIGURED: False,
-            self.SHOW_LOGIN: False,
-            self.SHOW_LOGOUT: False,
-            self.SHOW_REGISTRATION: False,
-            self.SHOW_PASSWORD_FIELD: False,
-            self.SHOW_USER_SELECT: False,
-        }
+        config_store = ConfigStore(
+            config=self._config_file,
+            subsection=self._subsection,
+        )
+        self._config = config_store
+        self._stores['configstore'] = config_store
 
-        settings = self._settings_adapter.get()
-        if settings:
-            self._settings.update({
-                self.IS_CONFIGURED: True,
-                self.SHOW_LOGIN: True,
-                self.SHOW_LOGOUT: True,
-                self.SHOW_REGISTRATION: settings.multiuser_mode,
-                self.SHOW_PASSWORD_FIELD: not settings.passwordless_login,
-                self.SHOW_USER_SELECT: settings.show_users_on_login_screen,
-            })
+        init_script = self._config.get('', 'InitScript')
+        if init_script:
+            script = self._get_init_script(init_script)
+            script()
 
-            userdb = self._user_db_adapter.get_first()
-            if (
-                userdb
-                and settings.passwordless_login
-                and not settings.multiuser_mode
-            ):
-                # We don't need to show this
-                # because we're just logging in automatically
-                # with the first user in the database
-                self._settings[self.SHOW_USER_SELECT] = False
-                self._settings[self.SHOW_LOGIN] = False
-                self._settings[self.SHOW_LOGOUT] = False
-                self._settings[self.AUTOMATIC_LOGIN] = True
+        exceptions = {}
+        for store in self.STORES:
+            try:
+                if not store in self._stores:
+                    self._stores[store] = self._make_store(store)
+            except Exception as exc:
+                exceptions[store] = exc
 
-            # We need to be able to add a user after initial configuration.
-            # Enable registration form, even if not explicitly enabled
-            if not settings.multiuser_mode and not userdb:
-                self._settings[self.SHOW_LOGIN] = True
-                self._settings[self.SHOW_REGISTRATION] = True
-                self._settings[self.SHOW_LOGOUT] = not settings.passwordless_login
+        if exceptions:
+            raise StoreInitializationError(str(exceptions))
 
+        self._initialized=True
 
-    def get(self, setting: str) -> Union[Any, None]:
+    @classmethod
+    def destroy_all(cls):
         """
-        Get specified setting.
+        Clear all stores.
+        Wrapper around Singleton.destroy_all
 
-        Available settings:
-
-        * automatic_login
-        * is_configured
-        * show_login
-        * show_logout
-        * show_registration
-        * show_password_field
-        * show_user_select
-
-        :setting: One of the available settings
-
-        :return: Specified setting, if exists; otherwise None
+        NOTE: If you only want to update a single store,
+            just call store.initialize(force=True)
         """
+        Singleton.destroy_all()
 
-        setting = self._settings[setting]
-        return setting
+    def get(self, store_name: str):
+        """
+        Get a configured store
+        """
+        if not self._initialized:
+            self.initialize()
+
+        key = store_name.lower()
+        try:
+            store = self._stores[key]
+        except KeyError:
+            raise StoreNotFoundError(f'Store {store_name} not found')
+
+        return store
+
+    def _get_init_script(self, initialize_script: str):
+        script_path, script_name = initialize_script.rsplit('.', 1)
+        module = importlib.import_module(script_path)
+        script = getattr(module, script_name)
+        return script
+
+    def _get_store_options(self, store_name: str) -> Dict[str, Any]:
+        options = {}
+
+        common_key = 'stores.common'
+        general_opts = self._config.get(common_key, default=[])
+        for key in general_opts:
+            value = self._config.get(common_key, key)
+            options[key] = value
+
+        store_key = f'stores.{store_name}'
+        store_opts = self._config.get(store_key, default=[])
+        for key in store_opts:
+            value = self._config.get(store_key, key)
+            options[key] = value
+
+        return options
+
+    def _get_store_cls(self, store_name: str) -> Any:
+        config_option = self._config.get('stores', store_name)
+        try:
+            module_name, cls_name = config_option.rsplit('.', 1)
+        except :
+            raise StoreNotFoundError(
+                f'Configuration missing for store {store_name} '
+                f'in subsection {config.subsection}'
+            )
+        module = importlib.import_module(module_name)
+        StoreCls = getattr(module, cls_name)
+        return StoreCls
+
+    def _make_store(self, store_name: str) -> Any:
+        StoreCls = self._get_store_cls(store_name)
+        options = self._get_store_options(store_name)
+        store = StoreCls(**options)
+        return store

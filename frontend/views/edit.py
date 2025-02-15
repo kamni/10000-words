@@ -3,36 +3,35 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+from nicegui import app
+
 from frontend.views.base import BaseView
+
+from ..widgets.edit import EditWidget
+
 
 class EditView(BaseView):
     """
     Add and edit text to practice with
     """
-    pass
 
-'''
-document = {
-    'sentences': ['Foo bar.', 'Baz' ],
-}
+    def set_store(self):
+        """
+        Set data needed by the widgets.
+        This will be available to all widgets.
+        """
+        document_db = self.adapters.get('DocumentDBPort')
+        document_ui = self.adapters.get('DocumentUIPort')
+        doc_dict = {
+            'current_document': None,
+            'all_documents': [],
+        }
 
-documents = [('Dutch', ['Roodkapje']), ('English', ['Little Red Riding Hood'])]
+        documents = document_db.get_all(self.user.id)
+        for doc in document_ui.get_all_minimal(documents, self.user):
+            doc_dict['all_documents'].append(doc.model_dump())
 
-def DocumentList(documents):
-    with ui.column().classes():
-        for section, doc_list in documents:
-            with ui.expansion(section, icon='folder'):
-                with ui.column():
-                    for doc in doc_list:
-                        ui.label(doc)
+        app.storage.client['documents'] = doc_dict
 
-def DocumentDisplay(document):
-    for sentence in document['sentences']:
-        with ui.card():
-            ui.label(sentence)
-
-
-with ui.row():
-    DocumentList(documents)
-    DocumentDisplay(document)
-'''
+    def setup(self):
+        self.page_content.append(EditWidget())

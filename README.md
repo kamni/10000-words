@@ -60,3 +60,16 @@ python manage.py createsuperuser
 
 You can visit the admin interface at
 [localhost:8000/admin](http://localhost:8000/admin)
+
+
+## Tests
+
+To run all tests:
+
+```sh
+pytest
+```
+
+### Credits for Test Data
+
+Test data comes from [Grimm Stories](https://www.grimmstories.com).

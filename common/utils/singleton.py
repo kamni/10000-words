@@ -27,3 +27,10 @@ class Singleton(type):
         """
         if cls in metacls._instances:
             del metacls._instances[cls]
+
+    @classmethod
+    def destroy_all(cls):
+        """
+        Nuke everything
+        """
+        cls._instances = {}

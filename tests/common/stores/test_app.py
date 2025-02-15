@@ -3,444 +3,201 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import configparser
+import os
+
 from django.test import TestCase
 
-from app.models.app import AppSettings
-from common.adapters.django_orm.auth import AuthInvalidError
-from common.adapters.django_orm.users import UserDBDjangoORMAdapter
 from common.adapters.ui.users import UserUIAdapter
 from common.stores.adapter import AdapterStore
-from common.stores.app import AppSettingsStore
+from common.stores.app import (
+    AppStore,
+    StoreNotFoundError,
+    StoreInitializationError,
+)
 from common.stores.config import ConfigStore
-from common.utils.singleton import Singleton
+from common.stores.data import DjangoDBStore, InMemoryDBStore
+from common.stores.data.base import BaseDataStore
+from common.utils.files import get_project_dir
+from tests.utils.stores import FakeErrorStore, FakeStore
 
-from ...utils.users import make_user_db, make_user_ui
+
+PROJECT_DIR = get_project_dir()
+PROJECT_CONFIG = os.path.join(PROJECT_DIR, 'setup.cfg')
+TEST_CONFIG = os.path.join(PROJECT_DIR, 'tests', 'setup.cfg')
 
 
-class TestAppSettingsStore(TestCase):
+class TestAppStore(TestCase):
     """
-    Tests for common.stores.auth.AppSettingsStore
+    Tests for common.stores.app.AppStore
     """
 
     @classmethod
     def setUpClass(cls):
-        # Get rid of lurking instances before starting tests
-        Singleton.destroy(AdapterStore)
-        Singleton.destroy(AppSettingsStore)
-        Singleton.destroy(ConfigStore)
-
-        adapter_store = AdapterStore(subsection='dev.django')
+        AppStore.destroy_all()
         super().setUpClass()
 
     def tearDown(self):
-        Singleton.destroy(AppSettingsStore)
+        AppStore.destroy_all()
 
-    def test_is_singleton(self):
-        app_store1 = AppSettingsStore()
-        self.assertFalse(app_store1.get(AppSettingsStore.IS_CONFIGURED))
+    def test_init_default(self):
+        app = AppStore()
 
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=True,
-            show_users_on_login_screen=True,
-        )
-        app_store2 = AppSettingsStore()
-        self.assertFalse(app_store2.get(AppSettingsStore.IS_CONFIGURED))
+        config_store = app.get('ConfigStore')
+        config = configparser.ConfigParser()
+        config.read(PROJECT_CONFIG)
+        expected_subsection = config['config.meta']['defaultconfig']
 
-    def test_initialize_already_initialized(self):
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=True,
-            show_users_on_login_screen=True,
-        )
+        self.assertEqual(PROJECT_CONFIG, config_store.config)
+        # We expect ConfigStore will read the section from the file
+        self.assertIsNone(app._subsection)
+        self.assertEqual(expected_subsection, config_store.subsection)
 
-        app_store = AppSettingsStore()
-        self.assertTrue(app_store.get(AppSettingsStore.IS_CONFIGURED))
+        for store in app.STORES:
+            self.assertIsNotNone(app.get(store))
 
-        AppSettings.objects.all().delete()
-        app_store.initialize()
-        self.assertTrue(app_store.get(AppSettingsStore.IS_CONFIGURED))
+    def test_init_custom_config(self):
+        app = AppStore(config=TEST_CONFIG)
 
-    def test_initialize_forced(self):
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=True,
-            show_users_on_login_screen=True,
-        )
+        config_store = app.get('ConfigStore')
+        config = configparser.ConfigParser()
+        config.read(TEST_CONFIG)
+        expected_subsection = config['config.meta']['defaultconfig']
 
-        app_store = AppSettingsStore()
-        self.assertTrue(app_store.get(AppSettingsStore.IS_CONFIGURED))
+        self.assertEqual(TEST_CONFIG, config_store.config)
+        # We expect ConfigStore will read the section from the file
+        self.assertIsNone(app._subsection)
+        self.assertEqual(expected_subsection, config_store.subsection)
 
-        AppSettings.objects.all().delete()
-        app_store.initialize(force=True)
-        self.assertFalse(app_store.get(AppSettingsStore.IS_CONFIGURED))
+        for store in app.STORES:
+            self.assertIsNotNone(app.get(store))
 
-    def test_init_settings_does_not_exist(self):
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
+    def test_init_custom_subsection(self):
+        expected_subsection = 'dev.in_memory'
+        app = AppStore(subsection=expected_subsection)
+        config_store = app.get('ConfigStore')
 
-        app_store = AppSettingsStore()
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: False,
-            AppSettingsStore.SHOW_LOGIN: False,
-            AppSettingsStore.SHOW_LOGOUT: False,
-            AppSettingsStore.SHOW_REGISTRATION: False,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: False,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
+        self.assertEqual(PROJECT_CONFIG, config_store.config)
+        self.assertEqual(app._subsection, expected_subsection)
+        self.assertEqual(expected_subsection, config_store.subsection)
 
-    def test_init_settings_false_false_false(self):
-        """
-        multiuser_mode = False
-        passwordless_login = False
-        show_users_on_login_screen = False
-        """
+    def test_init_custom_config_and_subsection(self):
+        expected_config = TEST_CONFIG
+        expected_subsection = 'test'
+        app = AppStore(config=expected_config, subsection=expected_subsection)
+        config_store = app.get('ConfigStore')
 
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
+        self.assertEqual(expected_config, app._config_file)
+        self.assertEqual(expected_subsection, app._subsection)
+        self.assertEqual(expected_config, config_store.config)
+        self.assertEqual(expected_subsection, config_store.subsection)
 
-        AppSettings.objects.create(
-            multiuser_mode=False,
-            passwordless_login=False,
-            show_users_on_login_screen=False,
-        )
-        app_store = AppSettingsStore()
+    def test_init_wait_to_initialize(self):
+        app = AppStore(wait_to_initialize=True)
+        self.assertEqual({}, app._stores)
+        self.assertFalse(app._initialized)
 
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: True,
-            AppSettingsStore.SHOW_REGISTRATION: False,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: True,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
+    def test_destroy_all(self):
+        config = configparser.ConfigParser()
+        config.read(PROJECT_CONFIG)
+        expected_subsection = config['config.meta']['defaultconfig']
 
-    def test_init_settings_true_false_false(self):
-        """
-        multiuser_mode = True
-        passwordless_login = False
-        show_users_on_login_screen = False
-        """
+        app = AppStore()
+        self.assertEqual(PROJECT_CONFIG, app._config.config)
+        self.assertEqual(expected_subsection, app._config.subsection)
+        # smoke test stores
+        adapters = app.get('AdapterStore')
+        userui_adapter = adapters.get('UserUIPort')
+        self.assertTrue(isinstance(userui_adapter, UserUIAdapter))
 
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
+        app2 = AppStore()
 
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=False,
-            show_users_on_login_screen=False,
-        )
-        app_store = AppSettingsStore()
+        self.assertEqual(PROJECT_CONFIG, app2._config.config)
+        self.assertEqual(expected_subsection, app2._config.subsection)
+        # smoke test stores
+        adapters = app.get('AdapterStore')
+        userui_adapter = adapters.get('UserUIPort')
+        self.assertTrue(isinstance(userui_adapter, UserUIAdapter))
 
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: True,
-            AppSettingsStore.SHOW_REGISTRATION: True,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: True,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_true_false_true(self):
-        """
-        multiuser_mode = True
-        passwordless_login = False
-        show_users_on_login_screen = True
-        """
-
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
-
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=False,
-            show_users_on_login_screen=True,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: True,
-            AppSettingsStore.SHOW_REGISTRATION: True,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: True,
-            AppSettingsStore.SHOW_USER_SELECT: True,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_true_true_false(self):
-        """
-        multiuser_mode = True
-        passwordless_login = True
-        show_users_on_login_screen = False
-        """
-
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
-
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=True,
-            show_users_on_login_screen=False,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: True,
-            AppSettingsStore.SHOW_REGISTRATION: True,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: False,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_true_true_true(self):
-        """
-        multiuser_mode = True
-        passwordless_login = True
-        show_users_on_login_screen = True
-        """
-
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
-
-        AppSettings.objects.create(
-            multiuser_mode=True,
-            passwordless_login=True,
-            show_users_on_login_screen=True,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: True,
-            AppSettingsStore.SHOW_REGISTRATION: True,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: False,
-            AppSettingsStore.SHOW_USER_SELECT: True,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_false_true_false(self):
-        """
-        mutliuser_mode = False
-        passwordless_login = True
-        show_users_on_login_screen = False
-        """
-
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
-
-        AppSettings.objects.create(
-            multiuser_mode=False,
-            passwordless_login=True,
-            show_users_on_login_screen=False,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: True,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: False,
-            AppSettingsStore.SHOW_LOGOUT: False,
-            AppSettingsStore.SHOW_REGISTRATION: False,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: False,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_false_true_false_no_users(self):
-        """
-        mutliuser_mode = False
-        passwordless_login = True
-        show_users_on_login_screen = False
-        """
-
-        AppSettings.objects.create(
-            multiuser_mode=False,
-            passwordless_login=True,
-            show_users_on_login_screen=False,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: False,
-            AppSettingsStore.SHOW_REGISTRATION: True,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: False,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_false_true_true(self):
-        """
-        multiuser_mode = False
-        passwordless_login = True
-        show_users_on_login_screen = True
-        """
-
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
-
-        AppSettings.objects.create(
-            multiuser_mode=False,
-            passwordless_login=True,
-            show_users_on_login_screen=True,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: True,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: False,
-            AppSettingsStore.SHOW_LOGOUT: False,
-            AppSettingsStore.SHOW_REGISTRATION: False,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: False,
-            AppSettingsStore.SHOW_USER_SELECT: False,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_init_settings_false_false_true(self):
-        """
-        multiuser_mode = False
-        passwordless_login = False
-        show_users_on_login_screen = True
-        """
-
-        usersdb = [
-            UserDBDjangoORMAdapter().create(make_user_db())
-            for i in range(3)
-        ]
-        usersui = UserUIAdapter().get_all(usersdb)
-
-        AppSettings.objects.create(
-            multiuser_mode=False,
-            passwordless_login=False,
-            show_users_on_login_screen=True,
-        )
-        app_store = AppSettingsStore()
-
-        expected = {
-            AppSettingsStore.AUTOMATIC_LOGIN: False,
-            AppSettingsStore.IS_CONFIGURED: True,
-            AppSettingsStore.SHOW_LOGIN: True,
-            AppSettingsStore.SHOW_LOGOUT: True,
-            AppSettingsStore.SHOW_REGISTRATION: False,
-            AppSettingsStore.SHOW_PASSWORD_FIELD: True,
-            AppSettingsStore.SHOW_USER_SELECT: True,
-        }
-        returned = app_store._settings
-        self.assertEqual(expected, returned)
-
-    def test_automatic_login(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.AUTOMATIC_LOGIN] = True
-        self.assertTrue(app_store.automatic_login)
-
-        app_store._settings[AppSettingsStore.AUTOMATIC_LOGIN] = False
-        self.assertFalse(app_store.automatic_login)
-
-    def test_is_configured(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.IS_CONFIGURED] = True
-        self.assertTrue(app_store.is_configured)
-
-        app_store._settings[AppSettingsStore.IS_CONFIGURED] = False
-        self.assertFalse(app_store.is_configured)
-
-    def test_show_login(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.SHOW_LOGIN] = True
-        self.assertTrue(app_store.show_login)
-
-        app_store._settings[AppSettingsStore.SHOW_LOGIN] = False
-        self.assertFalse(app_store.show_login)
-
-    def test_show_logout(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.SHOW_LOGOUT] = True
-        self.assertTrue(app_store.show_logout)
-
-        app_store._settings[AppSettingsStore.SHOW_LOGOUT] = False
-        self.assertFalse(app_store.show_logout)
-
-    def test_show_registration(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.SHOW_REGISTRATION] = True
-        self.assertTrue(app_store.show_registration)
-
-        app_store._settings[AppSettingsStore.SHOW_REGISTRATION] = False
-        self.assertFalse(app_store.show_registration)
-
-    def test_show_password_field(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.SHOW_PASSWORD_FIELD] = True
-        self.assertTrue(app_store.show_password_field)
-
-        app_store._settings[AppSettingsStore.SHOW_PASSWORD_FIELD] = False
-        self.assertFalse(app_store.show_password_field)
-
-    def test_show_user_select(self):
-        app_store = AppSettingsStore()
-        app_store._settings[AppSettingsStore.SHOW_USER_SELECT] = True
-        self.assertTrue(app_store.show_user_select)
-
-        app_store._settings[AppSettingsStore.SHOW_USER_SELECT] = False
-        self.assertFalse(app_store.show_user_select)
+        # destroy_all lets us re-initialize
+        AppStore.destroy_all()
+        app3 = AppStore(config=TEST_CONFIG, subsection='test')
+        self.assertEqual(TEST_CONFIG, app3._config.config)
+        self.assertEqual('test', app3._config.subsection)
+        for name, store in app3._stores.items():
+            # Config store is always a ConfigStore
+            if name != 'configstore':
+                self.assertTrue(isinstance(store, FakeStore))
 
     def test_get(self):
-        app_store = AppSettingsStore()
-        for key, value in app_store._settings.items():
-            expected = value
-            returned = app_store.get(key)
-            self.assertEqual(expected, returned)
+        app = AppStore()
+        for cls, cls_name in [
+            (ConfigStore, 'ConfigStore'),
+            (BaseDataStore, 'DataStore'),
+            (AdapterStore, 'AdapterStore'),
+        ]:
+            self.assertTrue(isinstance(app.get(cls_name), cls))
 
-    def test_get_setting_does_not_exist(self):
-        app_store = AppSettingsStore()
-        with self.assertRaises(KeyError):
-            app_store.get('foo')
+    def test_get_store_does_not_exist(self):
+        app = AppStore()
+        with self.assertRaises(StoreNotFoundError):
+            app.get('FooStore')
+
+    def test_get_initializes_unconfigured_store(self):
+        app = AppStore(wait_to_initialize=True)
+        self.assertFalse(app._initialized)
+        self.assertEqual({}, app._stores)
+
+        adapters = app.get('AdapterStore')
+        self.assertIsNotNone(adapters)
+        self.assertTrue(app._initialized)
+
+    def test_initialize_django_data_store(self):
+        app = AppStore(subsection='dev.django')
+        data_store = app.get('DataStore')
+        self.assertTrue(isinstance(data_store, DjangoDBStore))
+
+    def test_initialize_in_memory_data_store(self):
+        app = AppStore(subsection='dev.in_memory')
+        data_store = app.get('DataStore')
+        self.assertTrue(isinstance(data_store, InMemoryDBStore))
+
+    def test_initialize_store_errors(self):
+        # test3 is configured with fake stores that throw errors
+        with self.assertRaises(StoreInitializationError):
+            AppStore(config=TEST_CONFIG, subsection='test3')
+
+    def test_initialize_does_not_overwrite_existing_stores(self):
+        app = AppStore(subsection='dev.in_memory')
+        data_store = app.get('DataStore')
+        self.assertTrue(isinstance(data_store, InMemoryDBStore))
+
+        app.initialize()
+        data_store = app.get('DataStore')
+        self.assertTrue(isinstance(data_store, InMemoryDBStore))
+
+    def test_initialize_overwrites_existing_stores_if_force(self):
+        app = AppStore(subsection='dev.in_memory')
+        data_store = app.get('DataStore')
+        self.assertTrue(isinstance(data_store, InMemoryDBStore))
+
+        app._subsection = 'dev.django'
+        app.initialize(force=True)
+        data_store = app.get('DataStore')
+        self.assertTrue(isinstance(data_store, DjangoDBStore))
+
+    def test_initialize_runs_custom_init_script(self):
+        foo = FakeStore(foo='foo')
+        self.assertEqual(foo._foo, 'foo')
+
+        config_store = ConfigStore(config=TEST_CONFIG, subsection='test')
+        AppStore()
+        self.assertEqual(foo._foo, 'bar')
+
+    def test_initialize_no_custom_init_script(self):
+        foo = FakeStore(foo='foo')
+        self.assertEqual(foo._foo, 'foo')
+
+        ConfigStore(config=TEST_CONFIG, subsection='test2')
+        AppStore()
+        self.assertEqual(foo._foo, 'foo')

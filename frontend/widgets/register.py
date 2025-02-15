@@ -28,6 +28,12 @@ class RegistrationWidget(BaseWidget):
     Provides a registration form for a new user.
     """
 
+    CSS = '''
+        .q-input {
+            width: 60% !important;
+        }
+    '''
+
     def display(self):
         self._display_name = ValidatingInput('Name (Optional)', 'display-name')
         self._username = ValidatingInput(
@@ -42,7 +48,7 @@ class RegistrationWidget(BaseWidget):
         )
         self._password = None
         self._password_confirm = None
-        if self._app_settings.show_password_field:
+        if self.settings.show_password_field:
             self._password = ValidatingInput(
                 'Password',
                 'password',
@@ -51,12 +57,14 @@ class RegistrationWidget(BaseWidget):
                     text_does_not_contain_spaces,
                 ],
                 password=True,
+                password_toggle_button=True,
             )
             self._password_confirm = ValidatingInput(
                 'Confirm password',
                 'confirm-password',
-                password=True,
                 show_title_in_errors=False,
+                password=True,
+                password_toggle_button=True,
             )
 
         def is_valid() -> bool:
@@ -67,7 +75,7 @@ class RegistrationWidget(BaseWidget):
                 self._password_confirm.validate() if self._password else True,
             ])
 
-        adapter = self._adapters.get('UserDBPort')
+        adapter = self.adapters.get('UserDBPort')
         another_user_exists = adapter.get_first() is not None
 
         def save_user():
@@ -102,14 +110,10 @@ class RegistrationWidget(BaseWidget):
                 self._password.set_error(exc.messages, include_title=False)
                 return
 
-            # Some settings don't take effect
-            # until after the first user is created.
-            # We need to force-refresh the settings store.
-            if not another_user_exists:
-                self._app_settings.initialize(force=True)
-
             ui.notify(f'Success!')
             self.emit_done()
+
+        ui.on('keydown.enter', save_user)
 
         with ui.card().classes('absolute-center'):
             ui.label('Register for 10,000 Words').classes('text-3xl')

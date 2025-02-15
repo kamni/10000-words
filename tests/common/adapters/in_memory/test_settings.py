@@ -6,12 +6,9 @@ Affero GPL v3
 from pathlib import Path
 from unittest import TestCase
 
-from common.adapters.in_memory.app import AppSettingsInMemoryAdapter
-from common.models.app import AppSettingsDB
-from common.stores.adapter import AdapterStore
-from common.stores.config import ConfigStore
-from common.stores.in_memory import InMemoryDBStore
-from common.utils.singleton import Singleton
+from common.adapters.in_memory.settings import AppSettingsInMemoryAdapter
+from common.models.settings import AppSettingsDB
+from common.stores.app import AppStore
 
 TEST_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent.parent
 TEST_CONFIG = TEST_CONFIG_DIR / 'setup.cfg'
@@ -24,19 +21,17 @@ class TestAppSettingsInMemoryAdapter(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Cleanup, in case other tests missed it
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(AdapterStore)
-
-        adapters = AdapterStore(config=TEST_CONFIG, subsection='dev.in_memory')
-        cls.adapter = adapters.get('AppSettingsDBPort')
-        cls.store = InMemoryDBStore()
+        AppStore.destroy_all()
         super().setUpClass()
 
+    def setUp(self):
+        app = AppStore(config=TEST_CONFIG, subsection='dev.in_memory')
+        adapters = app.get('AdapterStore')
+        self.store = app.get('DataStore')
+        self.adapter = adapters.get('AppSettingsDBPort')
+
     def tearDown(self):
-        Singleton.destroy(ConfigStore)
-        Singleton.destroy(AdapterStore)
-        self.store.drop()
+        AppStore.destroy_all()
 
     def test_get(self):
         app_db = AppSettingsDB(

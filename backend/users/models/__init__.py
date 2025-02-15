@@ -3,4 +3,4 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from .settings import UserSettings
+from .profile import UserProfile
