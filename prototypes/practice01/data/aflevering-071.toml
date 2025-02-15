@@ -1,0 +1,1272 @@
+[document]
+display_name = "Een Beetje Nederlands: Aflevering 71"
+author = "Robin"
+language_code = "nl"
+[[document.sentences]]
+id = "af476956-baba-457d-84e1-b15c1719e87e"
+text = ""
+language_code = "nl"
+ordering = 1
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "df6b9c69-0831-4468-beb7-8d1907054a06"
+text = "Het was vies, zwaar en gevaarlijk om te werken in de mijnen."
+language_code = "nl"
+ordering = 2
+enabled_for_study = true
+[[document.sentences.translations]]
+id = "5c5c54cb-0123-4b79-ad9e-bfb0b1bfea1b"
+text = "It was dirty, hard, and dangerous to work in the mines."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "1b3e5b29-cd27-46db-819e-1736b6f412a0"
+text = "Toch waren de Limburgse mijnwerkers trots op hun werk."
+language_code = "nl"
+ordering = 3
+enabled_for_study = true
+[[document.sentences.translations]]
+id = "39fb7423-809a-45ce-b6fb-067db51750fa"
+text = "Nevertheless, the Limburg miners were proud of their work."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6a5659b2-57bd-4d21-8274-1d10a9e6d12d"
+text = "De opbrengsten uit de mijnen waren ook heel belangrijk voor de economie van Limburg en heel Nederland."
+language_code = "nl"
+ordering = 4
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d7ff80be-3801-414c-81e1-b06442de3e36"
+text = "Maar in het jaar 1965 werd aangekondigd dat de mijnen zouden sluiten."
+language_code = "nl"
+ordering = 5
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "6added8b-a462-471c-ad6c-f6fa3867fe07"
+text = "In één keer werden meer dan tienduizend Limburgers werkloos."
+language_code = "nl"
+ordering = 6
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "c68b38e2-0e13-4684-a5e5-fe6c40bede87"
+text = "Nu merk je weinig meer van het feit dat er iedere dag duizenden mannen diep onder de grond aan het werk waren."
+language_code = "nl"
+ordering = 7
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "26d5dfb9-6a56-419d-8cf8-0f15aea613d6"
+text = "Maar de mijnen zijn een belangrijk onderdeel van de Limburgse geschiedenis en die van Nederland."
+language_code = "nl"
+ordering = 8
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d4828bf7-b12c-4db7-b403-0fb6ce138bdb"
+text = "Als ik aan de provincie Limburg denk, komen er verschillende dingen in mij op."
+language_code = "nl"
+ordering = 9
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "9c2feafa-ef8e-478e-bb9b-0a05730644e7"
+text = "Ik denk dan aan de Limburgse tradities zoals carnaval, het Limburgse eten zoals vlaai, en het heuvelachtige landschap."
+language_code = "nl"
+ordering = 10
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "aca8e339-6de8-4e89-9a89-f8ad3243d1cf"
+text = "Heuvels hebben we natuurlijk in een groot deel van Nederland niet, maar in Limburg wel."
+language_code = "nl"
+ordering = 11
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "24743b07-82f1-4562-b16a-195693c2ff57"
+text = "Diep in de grond onder die heuvels zitten allemaal gangen verstopt, waar in de vorige eeuw mijnen gemaakt zijn."
+language_code = "nl"
+ordering = 12
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "85d1c07c-072c-4af2-94fd-f4c848f21513"
+text = "Een mijn is een plek waar grondstoffen uit de grond gehaald worden."
+language_code = "nl"
+ordering = 13
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "99fd070c-27c3-4112-bf87-3783bf80eb57"
+text = "Maar als je nu in het gebied rondloopt, zie je weinig of niets meer van het mijnverleden van Limburg."
+language_code = "nl"
+ordering = 14
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "e0ac3a42-f3d7-4f23-be7a-af2cc17266f4"
+text = "De gebouwen van de mijn zijn gesloopt en zelfs de naam van het gebied is veranderd."
+language_code = "nl"
+ordering = 15
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "c21a9fc6-913f-4b57-94d7-b0806b9de0aa"
+text = "In de Limburgse mijnen werd steenkool gewonnen."
+language_code = "nl"
+ordering = 16
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "035961d4-ed48-4ac3-b58b-105e463d04a0"
+text = "In het Nederlands gebruiken we het werkwoord winnen als we het hebben over grondstoffen uit de grond halen."
+language_code = "nl"
+ordering = 17
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8cc4df7e-8dfb-4acc-8850-3712a8820d29"
+text = "Steenkool is een zwart gesteente dat gebruikt kan worden als brandstof."
+language_code = "nl"
+ordering = 18
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "20f31e50-eeaf-4c94-871e-fb4211e356f1"
+text = "Steenkool bestaat uit planten- en dierenresten die na miljoenen jaren onder de grond onder hoge druk zijn veranderd in steen."
+language_code = "nl"
+ordering = 19
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "47a66441-eda1-4299-b27d-ece1de86509d"
+text = "Al in de Romeinse tijd werd steenkool gebruikt als brandstof."
+language_code = "nl"
+ordering = 20
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "57e19e47-0765-44d1-a1c9-4163b5b86300"
+text = "In de middeleeuwen werd steenkool steeds meer gebruikt en met die reden uit de grond gehaald, ook in Limburg."
+language_code = "nl"
+ordering = 21
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "22798072-48e1-4da1-bd3d-fce45aca5990"
+text = "Maar lang was het makkelijker om hout te gebruiken als brandstof."
+language_code = "nl"
+ordering = 22
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "df7bb910-832c-44dd-ac2d-2e1ac981f785"
+text = "Diepe mijnen werden nog niet gemaakt, dat kostte nog meer moeite dan het waard was."
+language_code = "nl"
+ordering = 23
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "5b1628f6-72ed-4451-a95b-82b41fe63fcd"
+text = "Limburg was voor de industriële revolutie een regio waar mensen vooral leefden van landbouw."
+language_code = "nl"
+ordering = 24
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "3c59d5fd-9eeb-4c3a-a449-2d3121fb7f8c"
+text = "In de 19de eeuw leefde bijna driekwart van de inwoners in kleine dorpen en verdienden hun dagelijkse brood als boer."
+language_code = "nl"
+ordering = 25
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "77d3b517-5205-4887-a569-2a2286aa0cb4"
+text = "Halverwege de 19de eeuw nam de vraag naar steenkool enorm toe."
+language_code = "nl"
+ordering = 26
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8126a327-ea6b-4e06-81eb-1c0150bcd0d1"
+text = "De industriële revolutie was begonnen: er werden allerlei machines uitgevonden die veel energie kostten, zoals stoommachines en treinen, en er werd steeds meer ijzer en staal gemaakt."
+language_code = "nl"
+ordering = 27
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "770e5a68-463f-4cb3-a525-ccd3273c61c6"
+text = "Steenkool was de belangrijkste brandstof voor al deze nieuwe ontwikkelingen en zorgde ervoor dat fabrieken en transportmiddelen konden werken."
+language_code = "nl"
+ordering = 28
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "3b8b4ed4-a719-4066-80ce-ab8b419611e6"
+text = "Op veel plaatsen in Europa werd er gezocht naar steenkool onder de grond en er werden op hoog tempo mijnen gebouwd om het zwarte goud uit de grond te halen."
+language_code = "nl"
+ordering = 29
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "f8814a28-76db-42a6-81e5-5652bc2763f7"
+text = "De Domaniale mijn, in de buurt van Kerkrade, is de oudste mijn in de regio."
+language_code = "nl"
+ordering = 30
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8fb2ac83-f64c-466e-b29e-12878384d453"
+text = "Het begon in de vroege middeleeuwen als een kleine mijn in de buurt van een klooster."
+language_code = "nl"
+ordering = 31
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "4c318541-de6c-4e08-b492-ad236ec12b2a"
+text = "Waarschijnlijk werd er al in de 11e eeuw steenkool gewonnen."
+language_code = "nl"
+ordering = 32
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "deee83db-5d68-498a-b618-8cef78a88d1a"
+text = "Rond 1900 werden in Zuid-Limburg meer mijnen gebouwd."
+language_code = "nl"
+ordering = 33
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "6cc2496d-c47b-40ea-8e98-433bdf69235e"
+text = "Zowel mijnen die gebouwd zijn door de overheid, de Staatsmijnen, als mijnen die particulier bezit waren."
+language_code = "nl"
+ordering = 34
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "88f650b7-6875-42b1-956f-76ef839426fc"
+text = "Particulier bezit is het eigendom van een privépersoon, dus niet van een overheid of gemeenschap."
+language_code = "nl"
+ordering = 35
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "98c4720a-6ed1-4d77-ac4d-84d8652ca0c0"
+text = "In totaal waren er twaalf mijnen in Nederland."
+language_code = "nl"
+ordering = 36
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "121fdc75-1f10-4bd2-8005-e05a0ef9578b"
+text = "Vier Staatsmijnen die allemaal naar leden van het koningshuis zijn vernoemd: Wilhelmina, Emma, Hendrik en Maurits."
+language_code = "nl"
+ordering = 37
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ce27ed64-fe36-4965-bd41-115d43edb8a6"
+text = "En acht particuliere mijnen: de Oranje Nassau-mijn I, II, III en IV, de Willem-Sophia, de Laura, de Julia en de Domaniale."
+language_code = "nl"
+ordering = 38
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "6badef30-c022-4dce-ac62-6cfa9dfd2d40"
+text = "In totaal lag er een enorm netwerk aan gangen onder Limburg, die met ondergrondse treinen aan elkaar verbonden zijn."
+language_code = "nl"
+ordering = 39
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "2475b738-e284-45bf-815a-ed30e0834c12"
+text = "Om een beeld te geven: het totale netwerk aan tunnels en gangen in de mijnen is groter dan de Amsterdamse en Rotterdamse wegen bij elkaar."
+language_code = "nl"
+ordering = 40
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "81dd7e0c-7cf3-4fba-bb6e-31d3e206f629"
+text = "De diepste mijn in Limburg was de Staatsmijn Hendrik, deze mijn was zo’n 1100 meter diep."
+language_code = "nl"
+ordering = 41
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ec1f7944-35a8-4bf2-92f5-45ecd379cc8b"
+text = "Op deze diepte was het wel 30 tot 40 graden."
+language_code = "nl"
+ordering = 42
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "280a8c72-77a2-4a4b-9964-f6f34af2d978"
+text = "Door de snelle groei van het aantal mijnen nam ook de vraag naar arbeiders toe."
+language_code = "nl"
+ordering = 43
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "7ded695f-89e3-4f98-9f4e-7f5f729ecddd"
+text = "Uit allerlei landen kwamen migranten naar Nederland om in de mijnen te werken, bijvoorbeeld uit Polen, Duitsland en Slovenië."
+language_code = "nl"
+ordering = 44
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "1e5f0689-0ab7-420e-b46a-ca33f3ed9f47"
+text = "De Limburgse boeren en landarbeiders gingen voortaan in de mijnbouw werken."
+language_code = "nl"
+ordering = 45
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "3aa700e7-e811-46d3-bd7d-5247f35af8d8"
+text = "Om zoveel nieuwe arbeiders onderdak te kunnen geven, werden er speciale buurten gebouwd, zogenaamde mijnwerkerskoloniën."
+language_code = "nl"
+ordering = 46
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "80902f9f-66e8-496d-86e7-f1963b8e5951"
+text = "Vaak waren deze koloniën ruim en groen opgezet."
+language_code = "nl"
+ordering = 47
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "32b30d15-0bf1-499e-80f8-97c76cc9067d"
+text = "Ook voor het vermaak van de arbeiders werd gezorgd, bijvoorbeeld met sportclubs en muziekverenigingen die gesteund werden door de mijnbedrijven."
+language_code = "nl"
+ordering = 48
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "97993d00-88d1-4895-bec4-3e96165f87dd"
+text = "De steden en dorpen in Zuid-Limburg maakten een grote groei door, er kwamen wel 26.000 nieuwe inwoners in het gebied."
+language_code = "nl"
+ordering = 49
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "fc0d66e6-6eb0-4577-8882-35964b82702c"
+text = "Limburg veranderde snel van een arme landbouwregio naar een regio met veel werkgelegenheid en voorspoed."
+language_code = "nl"
+ordering = 50
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "149eef60-f58c-4a87-8f8c-c3cb7163ace4"
+text = "De katholieke kerk had een grote invloed op de Limburgse bevolking."
+language_code = "nl"
+ordering = 51
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "b19238b8-2e35-40f5-af33-7a5330be009b"
+text = "Een deel van de nieuwe woningen die ik noemde is gebouwd door katholieke woningbouworganisaties."
+language_code = "nl"
+ordering = 52
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8c006ccd-215d-41ae-86a8-71ae76c05eb5"
+text = "Katholieke arbeiders kregen makkelijker werk in de mijnen."
+language_code = "nl"
+ordering = 53
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8c5678b3-fa15-4a49-ab91-52de5edbeb7a"
+text = "Er werden zelfs ondergronds in de mijnen kerken en kapellen gebouwd voor de katholieke arbeiders."
+language_code = "nl"
+ordering = 54
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "272817c2-a79b-4f1f-8b0d-f8dc3395988d"
+text = "De mijnwerkers hoopten op de bescherming van de heilige Barbara, de patrones of beschermheilige van de mijnwerkers."
+language_code = "nl"
+ordering = 55
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "93dd72e5-91e6-4536-b5fc-fed0164f4012"
+text = "Ook op het dagelijkse leven in Limburg aan het begin van de 20ste eeuw had de kerk veel invloed."
+language_code = "nl"
+ordering = 56
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "fe5ec35b-f29e-468b-9894-34e383a2089e"
+text = "De pastoor speelde een centrale rol in de gemeenschap en bezocht regelmatig arbeidersgezinnen."
+language_code = "nl"
+ordering = 57
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "e4b7d380-d543-4239-8b1f-8bcb93c66f4c"
+text = "Hij lette erop of het huishouden goed verzorgd werd en sprak met de echtparen over gezinsplanning, waarbij hij vaak suggereerde dat een volgend kind welkom zou zijn."
+language_code = "nl"
+ordering = 58
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "fc69a11c-03ed-4354-a05e-e2f7fbb11d15"
+text = "En als er jongens in het gezin woonden, werd er aangemoedigd om hen in de mijn te laten werken."
+language_code = "nl"
+ordering = 59
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "aa1657ee-b2b5-41e5-933b-fdb66d31d1d7"
+text = "Deze bemoeienis van de kerk had te maken met hun overtuiging dat de Kerk richting moest geven aan het leven van de arbeiders."
+language_code = "nl"
+ordering = 60
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "208cc849-c3ba-4e3f-9393-e78416ba8a1c"
+text = "Een belangrijke reden hiervoor was de opkomst van het socialisme, dat door de kerk als een bedreiging werd gezien voor de katholieke waarden en de traditionele sociale orde."
+language_code = "nl"
+ordering = 61
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "a915c9f3-735e-4cd1-94d2-b6c8b64e706e"
+text = "Het werk in de mijnen was zwaar, vies en gevaarlijk."
+language_code = "nl"
+ordering = 62
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "b689815f-d757-4be0-b301-a6d6375cf437"
+text = "Op sommige plekken was er in mijntunnels maar 40 centimeter hoogte om in te werken."
+language_code = "nl"
+ordering = 63
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "e0647af4-b6ae-492b-8e00-74157c5d5254"
+text = "Een mijnwerker werd in Limburg een koempel genoemd, dat komt van het Duitse woord voor vriend."
+language_code = "nl"
+ordering = 64
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "355d7fd0-89e2-4d45-9c4f-541317cf97db"
+text = "Een goedgekozen naam, want het werk zorgde voor een sterke band tussen de werkers."
+language_code = "nl"
+ordering = 65
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "2f256ab1-4284-4085-bc93-ef7597c798de"
+text = "Omdat het zulk gevaarlijk werk was, waren de mijnwerkers van elkaar afhankelijk voor hun veiligheid."
+language_code = "nl"
+ordering = 66
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "0a6423d8-22fc-41d4-8c81-4cda0a62163e"
+text = "De mannen werkten jarenlang intensief samen."
+language_code = "nl"
+ordering = 67
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "f8415c10-64aa-42a0-aa8a-d53a152793a0"
+text = "Bij het lezen van herinneringen van mijnwerkers kwam ik vaak verhalen tegen over de kameraadschap die bestond tussen de koempels."
+language_code = "nl"
+ordering = 68
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "86f2c2d3-8213-42c8-b5bc-19ba17f21eab"
+text = "Koempels werkten hard, in diensten van 8 uur ondergronds."
+language_code = "nl"
+ordering = 69
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "bce0b4f2-eab1-4bd0-93e1-2e7f145c34ec"
+text = "Door drie ploegen achter elkaar diensten te laten werken, werd er 24 uur per dag kolen gewonnen."
+language_code = "nl"
+ordering = 70
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "b419c55f-0b53-41f6-bc2b-deee778b4f1a"
+text = "Elke koempel had een eigen nummer, dat de koempel bij zich had op een metalen plaatje."
+language_code = "nl"
+ordering = 71
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "73ee26ec-1b85-4f17-a140-0c3f397c8f1b"
+text = "Bij het begin van de dienst gaf de koempel zijn plaatje af, en bij het einde van de dienst kreeg hij het weer terug."
+language_code = "nl"
+ordering = 72
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "7f775a29-d111-443c-b555-3c5d14b87a69"
+text = "Zo kon men controleren of er geen werkmannen in de mijn waren achtergebleven."
+language_code = "nl"
+ordering = 73
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "be3c0bd7-ee4d-4b5b-bfcf-94e37a08734b"
+text = "De mijnen in Limburg stonden bekend als de veiligste mijnen van Europa, maar toch gebeurden er regelmatig ongelukken."
+language_code = "nl"
+ordering = 74
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "22c30c4e-ff94-4331-b217-8988d8396b5b"
+text = "Explosies en instortingen waren een gevaar tijdens het dagelijkse werk."
+language_code = "nl"
+ordering = 75
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "eb229769-c96a-452e-8e24-57a22541ab81"
+text = "Er zijn 1455 mijnwerkers omgekomen bij ongelukken in de mijnen."
+language_code = "nl"
+ordering = 76
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "97bb0166-f315-496a-9ad3-6c6303e9b58d"
+text = "Maar er was nog een ander gevaar, waar nog veel meer mijnwerkers aan zijn gestorven."
+language_code = "nl"
+ordering = 77
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "7690c468-c6ed-4990-b1ba-37877bcdb1ea"
+text = "Namelijk de ziekte silicose, ook wel bekend als stoflongen of mijnwerkers-longen."
+language_code = "nl"
+ordering = 78
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d0a1f1bb-3786-4fd5-b650-1eafbab56620"
+text = "Mijnwerkers werden ziek doordat ze lange tijd stof uit de mijnen inademden."
+language_code = "nl"
+ordering = 79
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d50b8a9a-5d79-44e9-994d-0fd90cc979fa"
+text = "Dat veroorzaakt schade aan de longen, waar geen behandeling voor mogelijk is."
+language_code = "nl"
+ordering = 80
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "dbdaa243-94d0-4b08-8ad8-613a11411f37"
+text = "De stofdeeltjes gaan in de longen zitten, waardoor er niet meer goed ademgehaald kan worden."
+language_code = "nl"
+ordering = 81
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "a9409cfd-a904-438c-9f1c-ad7b2b20517c"
+text = "Dat leidt tot benauwdheid, hartproblemen en uiteindelijk de dood."
+language_code = "nl"
+ordering = 82
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "c9862ffa-ad5a-4bcc-9269-a45804cea589"
+text = "Ondanks de risico’s koos bijna iedere Limburgse jongen ervoor om in de mijn te gaan werken, onder andere vanwege het aantrekkelijke salaris."
+language_code = "nl"
+ordering = 83
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "2a2eeac6-b894-43a6-8b61-01af931d5525"
+text = "Mijnwerkers verdienden ongeveer 75% meer dan bijvoorbeeld bouwvakkers, het was een van de best betaalde beroepen in die tijd."
+language_code = "nl"
+ordering = 84
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "60584142-76cb-40b8-8f26-080914fafb03"
+text = "Voor een 16-jarige jongen was dit een kans om aanzienlijk meer te verdienen dan leeftijdsgenoten in andere beroepen."
+language_code = "nl"
+ordering = 85
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ded5393e-a320-4cba-be8c-4285a25e4516"
+text = "Het bood hen de mogelijkheid om luxegoederen zoals een brommer te kopen, wat voor veel jongens een belangrijke motivatie was om het zware en gevaarlijke werk in de mijnen te accepteren."
+language_code = "nl"
+ordering = 86
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "9f163d90-423e-42ca-aa85-bd9a1ace00f1"
+text = "De stad Heerlen was voor de mijnbouw maar een dorp geweest, maar deze stad was het middelpunt van de explosieve groei in de regio."
+language_code = "nl"
+ordering = 87
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "3f8d8cd5-a3c7-41a3-b99f-e1314a548de9"
+text = "In korte tijd groeide het inwonersaantal enorm en voor al die mensen moesten huizen, scholen en voorzieningen gebouwd worden."
+language_code = "nl"
+ordering = 88
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "c83e7583-5133-4e50-ab3a-837a747dd350"
+text = "Ook kwamen er grote warenhuizen, waar de arbeiders luxeproducten konden kopen met hun verdiende geld."
+language_code = "nl"
+ordering = 89
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "f40e5082-e95e-4b73-aaa7-2e10a18cd4c6"
+text = "Heerlen werd een echte winkelstad, een van de rijkste steden in Nederland."
+language_code = "nl"
+ordering = 90
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "5dd850dc-57f0-4571-b63d-caf453d77dff"
+text = "De economische groei leek maar niet te stoppen."
+language_code = "nl"
+ordering = 91
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ba6f3f63-5778-4f9b-870b-d66a657f5ec6"
+text = "Het beroemdste warenhuis in Heerlen is het zogenaamde Glaspaleis, een gebouw met een volledig glazen voorgevel."
+language_code = "nl"
+ordering = 92
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "7fb5f95a-c96e-41c6-8062-a10f58fe6db8"
+text = "In die tijd was dat buitengewoon."
+language_code = "nl"
+ordering = 93
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "95b3b143-4f7d-4550-a5ab-42e3b1f469a8"
+text = "Het gebouw was ontzettend modern en vernieuwend en stond symbool voor de nieuwe rijkdom van de stad."
+language_code = "nl"
+ordering = 94
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8482b52d-e404-41af-8d1b-faadf55a642f"
+text = "Nederland heeft veel gehad aan de mijnbouw."
+language_code = "nl"
+ordering = 95
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "e282f9d8-024c-41b7-a76d-993eeda506c3"
+text = "De verkoop van kolen zorgde voor welvaart in het land in de 20ste eeuw."
+language_code = "nl"
+ordering = 96
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "c50febdd-2ad7-43ae-9705-1511c6c436e7"
+text = "Na de Tweede Wereldoorlog was er veel brandstof nodig, en de kolen uit Limburg zorgden daarvoor."
+language_code = "nl"
+ordering = 97
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "11a1d7d0-2a46-4571-893f-6b0d0157354a"
+text = "Daar had Nederland geluk mee, want het importeren van kool uit het buitenland was onbetaalbaar geweest."
+language_code = "nl"
+ordering = 98
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "83ed6a8d-5c2b-45a3-bee6-50acc4f30fa3"
+text = "Rond 1958 beleefden de Limburgse mijnen hun hoogtepunt."
+language_code = "nl"
+ordering = 99
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "5c816c81-c2ee-4da3-a3f3-a7d27346cc93"
+text = "Er waren op dat moment zo’n 60.000 medewerkers in dienst van de mijnen."
+language_code = "nl"
+ordering = 100
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "31bcb3ba-dd99-4dca-b7fb-6265a5309894"
+text = "En nog eens 30.000 mensen bij bedrijven die daarmee verbonden waren, zoals mensen die de kolen vervoerden of verhandelden."
+language_code = "nl"
+ordering = 101
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d71a63a1-1e7c-43eb-986e-c03411fdb725"
+text = "Maar al snel begon het einde van de mijnbouw in zicht te komen."
+language_code = "nl"
+ordering = 102
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d8167de6-dc6f-49e7-8b0f-985b245a21e8"
+text = "Het werd steeds duurder om de steenkolen uit de grond te halen, te duur om winstgevend te blijven."
+language_code = "nl"
+ordering = 103
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8ea0ce92-513a-4517-83bd-fe0fc8f007aa"
+text = "De hoge salariskosten en concurrentie uit het buitenland waren een bedreiging voor de Limburgse mijnbouw."
+language_code = "nl"
+ordering = 104
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "0998d94a-196b-4514-93ce-5dd9ed1c2771"
+text = "Ook kwamen er alternatieve energiebronnen, zoals aardgas uit Groningen, waar ik eerder een aflevering over heb gemaakt."
+language_code = "nl"
+ordering = 105
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "397d3eb9-9c1f-4754-a1ae-bab38dee8f21"
+text = "In korte tijd veranderde het toekomstbeeld van Zuid-Limburg."
+language_code = "nl"
+ordering = 106
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "1271bc6c-1553-4d56-8fa3-f3a10999f36b"
+text = "Het mijngebied veranderde in korte tijd van een winstgevende regio naar een probleem."
+language_code = "nl"
+ordering = 107
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "931c67be-54cd-4544-970d-dae5f753922e"
+text = "In 1965 kwam de minister van Economische Zaken, Joop den Uyl, met slecht nieuws naar Heerlen."
+language_code = "nl"
+ordering = 108
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "992c9051-f256-434d-8967-77e3ad86994b"
+text = "Ondanks dat de mijnbouw zo belangrijk was geweest voor de levens van de mensen in de regio, was het sluiten van de mijnen onvermijdelijk."
+language_code = "nl"
+ordering = 109
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "40469d0d-80e0-4514-8b43-6f116a9a0e5c"
+text = "Er werd beloofd dat er nieuwe banen zouden komen in Zuid-Limburg, dat alle mijnwerkers een nieuwe toekomst zouden krijgen."
+language_code = "nl"
+ordering = 110
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "5c91bd32-cec8-42e0-a040-ad0ec5f33337"
+text = "Eind 1974 werd de laatste steenkool uit de Limburgse grond naar boven gehaald en ging de laatste mijn dicht."
+language_code = "nl"
+ordering = 111
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "89baf98f-ccb9-4500-b53f-7b98ea579a5d"
+text = "Nu dus precies 50 jaar geleden."
+language_code = "nl"
+ordering = 112
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "12b34a0b-44a2-4316-bab4-ea9a0e312c8e"
+text = "Na de aankondiging van het sluiten van de mijnen moest alles zo snel mogelijk van zwart naar groen, van steenkool naar natuur."
+language_code = "nl"
+ordering = 113
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "cde2c756-2fb4-47ec-9fad-ba05b4e7a0d8"
+text = "Limburg moest het verleden achter zich laten."
+language_code = "nl"
+ordering = 114
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d64d7c84-dc67-4fba-a1cf-597d0352ceb3"
+text = "Het gebied veranderde van naam, van de Oostelijke Mijnstreek naar Parkstad."
+language_code = "nl"
+ordering = 115
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "3407dc9b-8b9f-4f4c-bd50-885c6cf80ed0"
+text = "De overheid hoopte dat er snel bedrijven naar Limburg zouden komen om werk te bieden aan de mijnwerkers."
+language_code = "nl"
+ordering = 116
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ae2a0fc1-6aee-403a-a2dd-882b2e759394"
+text = "Bedrijven die een vestiging wilden openen in Limburg kregen daarvoor subsidie."
+language_code = "nl"
+ordering = 117
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "a759ae43-c787-4cfa-b56b-f06e94c52b30"
+text = "De overheid zelf gaf het goede voorbeeld: het Centraal Bureau voor de Statistiek opende een kantoor in Heerlen in 1974."
+language_code = "nl"
+ordering = 118
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ba80fb2a-902c-40fb-a77c-2e0e5d881767"
+text = "Als compensatie voor het sluiten van de mijnen."
+language_code = "nl"
+ordering = 119
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "e846d0f3-a558-43da-a6e1-0240aa8b7b7a"
+text = "Het veranderen van de economie van Parkstad bleek moeilijker dan gedacht."
+language_code = "nl"
+ordering = 120
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "8d6daa28-e96e-4574-aa2e-2c04e1f23f96"
+text = "Er kwamen minder bedrijven naar Limburg dan gehoopt en daardoor konden veel oud-mijnwerkers geen nieuwe baan krijgen."
+language_code = "nl"
+ordering = 121
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "64646d28-828b-4a8b-ace8-d80f362e82d4"
+text = "Het sluiten van de mijnen had enorme gevolgen voor veel gezinnen."
+language_code = "nl"
+ordering = 122
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "a7245ce6-32c5-41d6-bd6f-8789ebd18818"
+text = "De werkende vaders zaten plotseling thuis zonder werk."
+language_code = "nl"
+ordering = 123
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "fd0f3b2b-34b4-4091-a77c-9bcb063dbfa8"
+text = "Of ze moesten worden omgeschoold naar ander werk, na jaren onder de grond in de mijnen te hebben gewerkt."
+language_code = "nl"
+ordering = 124
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "6086b867-fc25-4f7b-8296-82a66c61d3a1"
+text = "Eind jaren 70 was de helft van de beroepsbevolking thuis: werkloos, ziek of met vervroegd pensioen."
+language_code = "nl"
+ordering = 125
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "7441ce00-e99d-4936-a250-9e9aa03d6ba3"
+text = "Het werkloosheidspercentage was in die tijd in Limburg 2 keer zo hoog als het gemiddelde in Nederland."
+language_code = "nl"
+ordering = 126
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "51527f82-daaf-493a-8ece-0c30e68b655f"
+text = "Vandaag de dag is het verschil niet meer zo groot, maar nog steeds is in de vroegere mijnstreek de werkloosheid hoger en het opleidingsniveau lager dan in de Randstad."
+language_code = "nl"
+ordering = 127
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "bd742cdc-4d4d-406a-90bb-90312316dd2e"
+text = "Het is nu ruim 50 jaar geleden dat de mijnen gesloten zijn."
+language_code = "nl"
+ordering = 128
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "07a585a4-b287-4240-bfb5-222abf244d70"
+text = "Vandaag is er weinig meer te zien in Limburg van het mijnverleden."
+language_code = "nl"
+ordering = 129
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "85e90bb0-4d81-48fa-aa14-14832dc14176"
+text = "De mijnen zijn dicht, bijna alle gebouwen die erbij hoorden zijn gesloopt."
+language_code = "nl"
+ordering = 130
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "a203f77b-a527-4444-af00-aaee54b9b747"
+text = "Daarvoor in de plaats kwamen natuurparken, en op sommige plekken werden de resten van de mijn hergebruikt."
+language_code = "nl"
+ordering = 131
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "9bb9370f-26bd-46a4-820f-64a2d2f37d31"
+text = "Op de oude steenberg van de Staatsmijn Wilhelmina is bijvoorbeeld een hal gebouwd waar je binnen kan skiën."
+language_code = "nl"
+ordering = 132
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "19a8a6bd-bf79-4bc2-bb99-39bee3c26989"
+text = "Soms verzakken oude mijngangen of storten die in, wat schade kan aanrichten aan de huizen en gebouwen die erboven staan."
+language_code = "nl"
+ordering = 133
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "b606598b-5521-4494-8165-535c34c9cc45"
+text = "Een opvallend voorbeeld hiervan vond plaats in 2011, toen een verzakking een heel winkelcentrum in Heerlen trof."
+language_code = "nl"
+ordering = 134
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "0c8b0f53-7e5f-47ae-a793-442f5e444b92"
+text = "De schade was zo groot dat het winkelcentrum volledig gesloopt moest worden."
+language_code = "nl"
+ordering = 135
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "0eee65a3-af7a-4970-9013-93f4c652c33f"
+text = "Zo gingen de mijnen van de Limburgse trots naar een verborgen stuk geschiedenis."
+language_code = "nl"
+ordering = 136
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "5e19b16d-64d5-46ac-bdb3-0dc8b73e02bc"
+text = "Voor veel oudere Limburgers nog steeds een verdrietige en pijnlijke geschiedenis, door de manier waarop de mijnen geëindigd zijn."
+language_code = "nl"
+ordering = 137
+enabled_for_study = false
+translations = []
+
+[document.words.het]
+id = "72e91b54-332d-45af-b262-627c3e48fed7"
+text = "het"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.was]
+id = "2c7980ad-ff1e-4b51-926c-4fd78706751e"
+text = "was"
+language_code = "en"
+status = "learned"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.vies]
+id = "c6b2eda9-0cef-4862-a74b-f7e56c33bfee"
+text = "vies"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.zwaar]
+id = "6f94fa1a-fd04-4725-8c25-6674351af924"
+text = "zwaar"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.en]
+id = "e66f3113-fd03-4892-845b-cd742774cd1d"
+text = "en"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.gevaarlijk]
+id = "51d20b05-587d-4332-bae4-2595f1915497"
+text = "gevaarlijk"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.om]
+id = "b5ce40dd-ec3a-46ef-a369-4752380f1aaa"
+text = "om"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.te]
+id = "4ef62e40-8a1c-4ab5-b4b4-c7c656624b5a"
+text = "te"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.werken]
+id = "2414852f-0082-4281-9899-dc5b30c0cf66"
+text = "werken"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.in]
+id = "68468dd5-da17-4b83-b34b-d8e7056dd746"
+text = "in"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.de]
+id = "ac3b311d-4a15-4a88-aff7-35dcfe20deb8"
+text = "de"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06", "df6b9c69-0831-4468-beb7-8d1907054a06", "1b3e5b29-cd27-46db-819e-1736b6f412a0", "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words."de mijn, de mijnen"]
+id = "feab8bee-5ef4-4f5c-9117-4270b788e176"
+text = "de mijn, de mijnen"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.mijnen]
+id = "c4ec2700-8e43-4f6d-95a6-b194ff6be596"
+text = "mijnen"
+language_code = "en"
+status = "learned"
+example_sentence_ids = [ "df6b9c69-0831-4468-beb7-8d1907054a06",]
+
+[document.words.toch]
+id = "63a0bd9e-6937-4b33-a623-c9e4e67d4bcd"
+text = "toch"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0", "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.waren]
+id = "25f4aee9-a0fd-4913-b768-8e3466bf31e6"
+text = "waren"
+language_code = "en"
+status = "learned"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0", "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.limburgse]
+id = "74c527ea-655c-4782-aede-60dc95ecb14b"
+text = "limburgse"
+language_code = "en"
+status = "learned"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0", "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words."de mijnwerker, de mijnwerkers"]
+id = "accbdd5e-aa35-4a70-96b2-33e3883b926d"
+text = "de mijnwerker, de mijnwerkers"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words."trots op"]
+id = "9d58f1ce-3682-4ac3-9270-205ecef9a3a4"
+text = "trots op"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.mijnwerkers]
+id = "eda1e464-e29a-4d54-9112-7cab4d56d3e3"
+text = "mijnwerkers"
+language_code = "en"
+status = "learned"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.trots]
+id = "3afc1619-6770-4f9e-8a23-65579e55713e"
+text = "trots"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.op]
+id = "d30156a0-996f-4a9f-9ab4-16fbd7cf1655"
+text = "op"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.hun]
+id = "0ebdcb6f-bee1-41f7-b32d-b0244991bc56"
+text = "hun"
+language_code = "en"
+status = "ignored"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]
+
+[document.words.werk]
+id = "86a31725-d23d-4a17-8899-8775b398f48c"
+text = "werk"
+language_code = "en"
+status = "to_learn"
+example_sentence_ids = [ "1b3e5b29-cd27-46db-819e-1736b6f412a0",]

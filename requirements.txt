@@ -4,3 +4,4 @@ langcodes==3.5.0
 nicegui==2.11.0
 pydantic==2.10.6
 pywebview==5.4
+toml==0.10.2

@@ -1,0 +1,1805 @@
+[document]
+display_name = "Een Beetje Nederlands: Natuur in Nederland, Aflevering 70"
+author = "Robin"
+language_code = "nl"
+[[document.sentences]]
+id = "8295cc97-736f-4b08-a272-82c088883697"
+text = ""
+language_code = "nl"
+ordering = 1
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d124f9a2-5e10-40b8-b914-76591f9ab7aa"
+text = "Ook al is Nederland een klein en dichtbevolkt land, is er genoeg mooie en bijzondere natuur te vinden."
+language_code = "nl"
+ordering = 2
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "2eb61e91-8907-4cef-938e-aad96016cdd0"
+text = "Even though the Netherlands is a small and densely populated country, there is plenty of beautiful and special nature to be found."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "1724ef78-8a97-4a09-bc8e-785d4666187f"
+text = "Nederland is niet echt beroemd vanwege de natuur, en vergeleken met sommige andere landen is dat misschien terecht."
+language_code = "nl"
+ordering = 3
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "5ad6a91f-a56f-4f2a-8a1d-b627e95442d0"
+text = "The Netherlands is not really famous for its nature, and compared to some other countries this is perhaps justified."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "04e41161-d45a-4cd1-8686-943db39837bf"
+text = "Toch genieten miljoenen Nederlanders van de verschillende landschappen die we hebben: de duinen aan de kust, moerasgebieden met bijzondere vogels en bosrijke gebieden."
+language_code = "nl"
+ordering = 4
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "307f1bc1-15df-4efe-98b8-0b598ce2ec96"
+text = "Yet millions of Dutch people enjoy the different landscapes we have: the dunes on the coast, marshlands with special birds and wooded areas."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "2da5cf19-fecc-42fc-8af0-d49a9073dde2"
+text = "In deze aflevering vertel ik over natuur in Nederland: over de bijzondere gebieden en dieren, maar ook de problemen die er zijn."
+language_code = "nl"
+ordering = 5
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "a795344c-e71e-4d26-9857-e1f3fd364035"
+text = "In this episode I talk about nature in the Netherlands: about the special areas and animals, but also the problems that exist."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f5dcc54e-f737-4749-a9ef-185913db6288"
+text = ""
+language_code = "nl"
+ordering = 6
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "953de37b-28eb-4607-a854-63484f372272"
+text = "Nederland is niet een land met hoge spectaculaire bergen of extreem warme of koude natuur."
+language_code = "nl"
+ordering = 7
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "efe0ea81-0075-463d-a429-2ce57072c43d"
+text = "The Netherlands is not a country with high spectacular mountains or extremely hot or cold nature."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "27306f17-68b9-4486-8841-a0c7196b217e"
+text = "Maar toch kan je in Nederland best wat bijzondere natuurgebieden vinden die de moeite waard zijn."
+language_code = "nl"
+ordering = 8
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "98f897f1-ec4e-47e8-a283-a6b02b46a1f9"
+text = "But still, you can find quite a few special nature reserves in the Netherlands that are worth the effort."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "4a77e451-b2ff-42cc-b26d-6ae8918bb246"
+text = ""
+language_code = "nl"
+ordering = 9
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "9274b6a6-b948-49b9-9eff-2c4f7e1eb646"
+text = "De eerste natuursoort waar ik het over wil hebben zijn de duinen."
+language_code = "nl"
+ordering = 10
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "52ecf29a-efa0-4a83-a30e-225a6eead8a8"
+text = "The first natural places I want to talk about are the dunes."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6dab4bc0-04e2-41a8-b165-69e3e803bd19"
+text = "Nederland ligt aan de Noordzee, en langs de hele kust van de provincies Noord- en Zuid-Holland en Zeeland liggen duinen."
+language_code = "nl"
+ordering = 11
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "6849a07a-6197-4547-b903-e00273606459"
+text = "The Netherlands is located on the North Sea, and there are dunes along the entire coast of the provinces of North and South Holland and Zeeland."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f57efd3b-5d1b-414b-8e55-acb02d7d046e"
+text = "Duinen zijn heuvels van zand, meestal langs een zee."
+language_code = "nl"
+ordering = 12
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "a1b37669-c196-4e30-bc9c-7f97782ae2f9"
+text = "Dunes are hills of sand, generally along a sea."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "aae5b823-66a7-47ca-ad88-ed0936dcaf2c"
+text = "Niet allemaal, er zijn ook duinen langs rivieren."
+language_code = "nl"
+ordering = 13
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "b2a16bed-4543-4ee3-ac6f-cf88cdeef5c2"
+text = "Not all of them, there are also dunes along rivers."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "fe064d15-6cb7-4216-924d-abe777e022b2"
+text = "Duinen ontstaan door de wind: zand komt uit de zee op het strand terecht."
+language_code = "nl"
+ordering = 14
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "a269ef37-4628-4a5d-945d-5cd2715de221"
+text = "Dunes are formed by the wind: sand comes from the sea onto the beach."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f9f959b9-cc85-4301-a42e-9d642e21e180"
+text = "Als het zand droog is, kan de wind het zand richting het land waaien."
+language_code = "nl"
+ordering = 15
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "d0d41b6c-cc3f-4639-8021-6a703d030012"
+text = "When the sand is dry, the wind can blow the sand towards the land."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5ed05a90-ab23-4fd5-9053-23554bddd717"
+text = "Verderop komt het zand weer neer, bijvoorbeeld waar planten groeien."
+language_code = "nl"
+ordering = 16
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ba5b2ad9-3a1c-4d81-8c78-7e6464624522"
+text = "Further on, the sand comes down again, for example where plants grow."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "35cc7045-705c-4f55-a552-b8da3ae5eab5"
+text = "Daar hoopt het zand zich op, en ontstaan zandheuvels."
+language_code = "nl"
+ordering = 17
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "1ae6d793-78fa-4f18-b871-ed778f5f9d46"
+text = "There the sand accumulates and sand hills are formed."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "e8c0ce61-c08b-4555-be8f-4301b9af3b8a"
+text = ""
+language_code = "nl"
+ordering = 18
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ef19df71-b698-44f8-983d-cc7b7255b7fb"
+text = "Wat is er nou interessant aan de duinen, vraag je je misschien af?"
+language_code = "nl"
+ordering = 19
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "74b344da-7da4-4f46-a772-ae5fa269fd24"
+text = "What's so interesting about the dunes, you might ask?"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "e6644284-8228-48f2-8c2f-2a0b8ee3a58b"
+text = ""
+language_code = "nl"
+ordering = 20
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "2ed9a27c-c831-4e87-8f8c-38a4207d676b"
+text = "Van de 15.000 kilometer Atlantische kust in Europa, is maar 3000 kilometer duingebied."
+language_code = "nl"
+ordering = 21
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "f45592bd-cb81-4a9b-9a29-d7019ab798e4"
+text = "Of the 15,000 kilometers of Atlantic coastline in Europe, only 3,000 kilometers are dune areas."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "fa8e19d8-585a-429c-aa81-48122cbae823"
+text = "En 10% daarvan ligt langs de Nederlandse kust."
+language_code = "nl"
+ordering = 22
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "f606b62e-9c9f-4303-bd68-06a8c3f42961"
+text = "And 10% of that is along the Dutch coast."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "1de3df9f-d91b-41f2-a7af-3b48217d7723"
+text = ""
+language_code = "nl"
+ordering = 23
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "e9f382d8-3d86-4597-9078-67a60674eda6"
+text = "De Nederlandse duinen zijn duizenden jaren geleden ontstaan."
+language_code = "nl"
+ordering = 24
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "a3eec879-4a8a-4518-9ca7-3c2166354cd8"
+text = "The Dutch dunes were formed thousands of years ago."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "9d8fc2f0-059d-44bd-8ea7-f371e10f81e5"
+text = "Ongeveer 5000 jaar geleden ontstond er een duinstrook langs de Hollandse kust."
+language_code = "nl"
+ordering = 25
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "9a38ceb2-27b7-48a6-a248-549f6ee689b6"
+text = "About 5,000 years ago, a strip of dunes formed along the Dutch coast."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "15cda750-0650-497c-aade-8b895a64aa0c"
+text = "Daarna verschoven de duinen eeuwenlang van plaats."
+language_code = "nl"
+ordering = 26
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "261aec4f-83f4-4335-ba3b-b9de1a49b8f9"
+text = "After that, the dunes shifted position for centuries."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "dec87767-3f23-48e9-970d-aa5049650256"
+text = "Op sommige plekken lag de kust wel tien kilometer van de huidige plaats."
+language_code = "nl"
+ordering = 27
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "1ae31a2d-5620-4407-b354-cc21b783d4ce"
+text = "In some places the coast was as far as ten kilometers from the current location."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f364a690-0ec4-4f88-8925-16afb8dbf15c"
+text = "Pas rond het jaar 1600 lagen de duinen op de huidige plek."
+language_code = "nl"
+ordering = 28
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "cea6043e-ba8a-40d9-ba63-bafdc3df1c0b"
+text = "It was not until around 1600 that the dunes were in their current location."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "e40b7b52-a9d9-4fd4-ad5a-ed57aff41e3e"
+text = ""
+language_code = "nl"
+ordering = 29
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "6529a02f-2f06-41fa-8dce-8146fb00ad5d"
+text = "De duinen zijn natuurlijk hartstikke belangrijk voor de Nederlandse veiligheid."
+language_code = "nl"
+ordering = 30
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "003a2a16-411e-4b62-9acd-718f37ee061d"
+text = "The dunes are of course terribly important for Dutch safety."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "2479cc14-113d-4c18-a5de-3e8515f160c2"
+text = "Dankzij de duinen hebben we droge voeten in Nederland, de duinen houden de zee tegen bij bijvoorbeeld storm."
+language_code = "nl"
+ordering = 31
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "58ba7151-5d08-4153-82c3-84c52845ab10"
+text = "Thanks to the dunes we have dry feet in the Netherlands, the dunes keep the sea at bay during storms, for example."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "09eca3c7-9c2d-45c4-8f01-7f717c1ffae6"
+text = "Op veel plekken mag je daarom als mens niet komen, en dat is goed nieuws voor de natuur."
+language_code = "nl"
+ordering = 32
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "77cca3a6-28e4-4222-88e6-204132ab831c"
+text = "For that reason, you are not allowed to enter many places as a human, and that is good news for nature."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "a6ebae46-3002-47ea-ba0a-3c56a8b5e095"
+text = "Hoewel maar 1% van het Nederlandse oppervlakte duingebied is, komen er veel bijzondere planten en vogels voor."
+language_code = "nl"
+ordering = 33
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "7cf4b195-2624-4273-a333-205d51a90159"
+text = "Although only 1% of the Dutch surface area is dune, many special plants and birds occur there."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "c818a96f-0b44-45e2-87cb-7939fef16634"
+text = "Dat komt vooral door de grote verschillen in landschap die je vindt in de duinen."
+language_code = "nl"
+ordering = 34
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "a4a094e6-dc05-464c-8d42-8348c8349199"
+text = "This is mainly due to the large differences in landscape that you find in the dunes."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "4bcaa2c4-d97a-4083-afcf-f451a44b4df3"
+text = "In de duinen vind je heuvels, dalen, droge en natte gebieden."
+language_code = "nl"
+ordering = 35
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "fe9aba65-42ec-4db4-945d-b0366034c5c0"
+text = "In the dunes you will find hills, valleys, dry and wet areas."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "8fa7983f-d3aa-4bc1-8ad5-a77b97b3b368"
+text = "Die variatie zorgt ervoor dat er 850 verschillende planten in het gebied groeien."
+language_code = "nl"
+ordering = 36
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "73511dd0-327d-45ea-8a01-7c2ecc3d34c5"
+text = "This variation ensures that 850 different plants grow in the area."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "1b22564c-1daf-473e-997e-3ab5c66e90c4"
+text = "Ook komen er 140 verschillende vogelsoorten voor in de duinen, van de 190 in totaal in Nederland."
+language_code = "nl"
+ordering = 37
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "cac86790-7e69-4d5c-ac3e-bf613d58afb5"
+text = "There are also 140 different bird species in the dunes, out of a total of 190 in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "54fc3b53-1ee2-414f-9b66-c203fb83dc62"
+text = ""
+language_code = "nl"
+ordering = 38
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "b0cf8dce-89c9-4003-93e3-515d7a06c2cf"
+text = "Een typisch Nederlands duingebied is het Zuid-Kennemerland, bij Haarlem."
+language_code = "nl"
+ordering = 39
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "dffa046e-550d-4af6-a0d5-6ab9d056c1c1"
+text = "A typical Dutch dune area is the South Kennemerland, near Haarlem."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5a3ea9d1-37bd-42bc-b01e-c7d6ff9cdbe1"
+text = "De duinen in het Kennemerland noemen we de Kennemerduinen."
+language_code = "nl"
+ordering = 40
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "3b51eb4b-5e67-4c47-9862-bcff839a6c91"
+text = "The dunes in Kennemerland are called the Kennemer Dunes."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "a34d83a1-be03-4cd7-b321-bb85a28ce208"
+text = "Dit nationale park ligt bij het bekende strand Zandvoort in Noord-Holland en is een van de grootste duingebieden van Nederland."
+language_code = "nl"
+ordering = 41
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "9462ecf8-b3fb-425e-8cf3-d57d50b457f2"
+text = "This national park is located near the well-known Zandvoort beach in North Holland and is one of the largest dune areas in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5830883e-b284-41ea-bf74-0c07fcb80af4"
+text = "Dit bijzondere duinlandschap is een Europees Natura 2000-gebied, een gebied dat extra beschermd wordt."
+language_code = "nl"
+ordering = 42
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "140192ac-3a5e-44a3-8002-a2918cefa7f5"
+text = "This special dune landscape is a European Natura 2000 area, an area that is given extra protection."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "d6093719-1d03-4c69-a57e-bf89af7b2ec3"
+text = "In dit gebied kom je alle landschappen tegen die ik eerder beschreef: meren, bossen, open stukken land en uitzichtpunten."
+language_code = "nl"
+ordering = 43
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "e9d235c0-b79a-4f21-8ef7-89075ecada79"
+text = "In this area you will encounter all the landscapes I described earlier: lakes, forests, open pieces of land and viewpoints."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "95c14fac-e961-4ecd-8f3a-0b3c10648026"
+text = "Ook leven er veel zoogdieren in het gebied, zoals herten, vossen, konijnen en de Europese bizon."
+language_code = "nl"
+ordering = 44
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "3857b02b-bac2-41f7-b364-f8df32fbe995"
+text = "There are also many mammals living in the area, such as deer, foxes, rabbits and the European bison."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "3260b16f-d1b2-4ae4-b97b-f7b0fda56232"
+text = "Deze bizon noemen we de wisent, en dat zijn indrukwekkende beesten!"
+language_code = "nl"
+ordering = 45
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "614c5c49-b603-4d3a-9231-1ad83a1584c4"
+text = "We call this bison the wisent, and they are impressive beasts!"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "9069d31f-7c05-4e77-8a73-4946bf9333a4"
+text = ""
+language_code = "nl"
+ordering = 46
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ef6dd255-8761-4b6c-8a64-696061821faf"
+text = "Ook de Amsterdamse Waterleidingduinen, die vlakbij de Kennemerduinen liggen, zijn bijzonder."
+language_code = "nl"
+ordering = 47
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "62a8d0b2-5107-4385-bbc7-960822a4088b"
+text = "The Amsterdam Water Supply Dunes, which are located near the Kennemer Dunes, are also special."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5b462aaa-cc11-45b8-830b-20c9bfcc80d2"
+text = "In dit gebied wordt al sinds 1853 drinkwater gewonnen."
+language_code = "nl"
+ordering = 48
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "37ebce07-27f1-495f-b7cf-076d96b0f9d9"
+text = "Drinking water has been extracted in this area since 1853."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6401598d-45be-4602-b5cb-9971fdee1684"
+text = "Duinen zijn namelijk heel erg goed in het filteren van water: als het water door het zand heen gaat, blijft er heel helder water over."
+language_code = "nl"
+ordering = 49
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "6b80095e-a07b-47fd-a9b5-91ca33cdbd70"
+text = "Dunes are namely very good at filtering water: when the water passes through the sand, very clear water remains."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "bc68aeaa-1e89-4c43-b1f7-a713f610b246"
+text = "Maar in het natuurgebied wordt ook veel gewandeld: het gebied heeft ongeveer een miljoen bezoekers per jaar."
+language_code = "nl"
+ordering = 50
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "35a86cc8-67ee-4e37-81b6-91fef4efb229"
+text = "But the nature reserve is also a popular place for walking: the area has approximately one million visitors per year."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "c670c68e-b86a-4a78-aa6d-879b398b3398"
+text = ""
+language_code = "nl"
+ordering = 51
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "d887bbee-148d-40c6-bd0d-6bf4cea86127"
+text = "Een andere natuursoort die je in Nederland kan vinden zijn heidelandschappen."
+language_code = "nl"
+ordering = 52
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "7e3e08d0-cf2e-4499-b268-e1e74435e0a6"
+text = "Another type of nature that you can find in the Netherlands are heathland landscapes."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "fa416ef2-56ee-4309-b9e3-e0e0cf0a3260"
+text = "In dit gebied vind je heide, of hei, dat is een plant die groeit op grond met weinig voedingsstoffen, zoals zand."
+language_code = "nl"
+ordering = 53
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "8847923f-2d4d-4915-816e-c2a8beca1650"
+text = "In this area you will find heather, or heath, which is a plant that grows on soil with few nutrients, such as sand."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "1708be87-bfa4-4a8e-8b5f-d69d6719d463"
+text = "Heide komt alleen voor bij klimaten met koele zomers, zachte winter en voldoende neerslag."
+language_code = "nl"
+ordering = 54
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "27e3ff21-560c-450d-9950-30218a25eebc"
+text = "Heather only occurs in climates with cool summers, mild winters and sufficient precipitation."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "db5f7bd1-3fea-470d-8ba2-e04f45d969b4"
+text = "Buiten Nederland en België vind je op weinig plekken heidelandschappen."
+language_code = "nl"
+ordering = 55
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "f6b9f30f-4e1d-4743-b046-cf2db788f63b"
+text = "Outside the Netherlands and Belgium, you will find heathland landscapes in few places."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "a4c2197e-284a-4f74-8d88-357173a6c973"
+text = "Heiden zijn open landschappen: heideplanten zijn laag en er groeien weinig bomen."
+language_code = "nl"
+ordering = 56
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "19cd1e14-0a0f-42d2-8966-926436d5e79b"
+text = "Heaths are open landscapes: heather plants are low and few trees grow there."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "d489a6bd-277a-428e-92ea-a1c5f76a42be"
+text = ""
+language_code = "nl"
+ordering = 57
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "aae6dd98-fe09-45b6-9053-7ff23aa6c43d"
+text = "Het bijzondere van heiden is de periode wanneer de heideplanten bloeien."
+language_code = "nl"
+ordering = 58
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "d394fc4e-16f4-4fb6-bf59-2ba6e440ca9a"
+text = "The special thing about heaths is the period when the heather plants bloom."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "97a0bdaa-720d-43a6-9d99-90634c172ded"
+text = "Tegen het einde van de zomer, van ongeveer half augustus tot half september, staat de heide in bloei in Nederland."
+language_code = "nl"
+ordering = 59
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "7366026a-c06a-4c32-8c93-d3210947cccd"
+text = "Towards the end of summer, from about mid-August to mid-September, the heather is in bloom in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "71179678-628d-4609-ac70-ad5e695df4f3"
+text = "Aan de heideplanten komen dan kleine paarse bloemetjes."
+language_code = "nl"
+ordering = 60
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "89aab867-3e7c-4824-bf9f-d052becac360"
+text = "The heather plants then produce small purple flowers."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6b3f4d8e-1c1e-4afc-8c86-0661ffb1172a"
+text = "Hierdoor verandert het hele landschap in een prachtige paarse zee."
+language_code = "nl"
+ordering = 61
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "bf029a64-3b34-490a-9bd6-3b7d7a3bfe64"
+text = "This turns the entire landscape into a beautiful purple sea."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "339e9745-23af-45be-abf7-d68afb0b5562"
+text = ""
+language_code = "nl"
+ordering = 62
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "dcd59107-31ee-45fc-8dbc-6ccba7454816"
+text = "Op heiden komen allerlei bijzondere dieren voor, zoals hagedissen, slangen, reeën en edelherten."
+language_code = "nl"
+ordering = 63
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ea00fedf-27db-461d-b8ae-b3eb05e7b7a7"
+text = "Heathlands are home to all kinds of special animals, such as lizards, snakes, roe deer and red deer."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "49d717bb-623a-4b16-8483-49cf75d3736c"
+text = "Het edelhert is de een-na grootste hertensoort, in Europa zijn alleen elanden groter."
+language_code = "nl"
+ordering = 64
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "51033d16-69b8-436b-a520-3343912cbf99"
+text = "The red deer is the second largest deer species, in Europe only elk is larger."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "212e39e5-0dff-4679-86dd-5e2c8698e7ba"
+text = "Mannetjes hebben een gewei op hun kop van 70 tot 90 centimeter, dat wel tien kilo kan wegen."
+language_code = "nl"
+ordering = 65
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "8e53e2e2-0cd3-4fad-81eb-468f3337d60e"
+text = "Males have antlers on their heads that are 70 to 90 centimetres long and can weigh up to ten kilos."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "14966012-62e8-485b-96cc-7be4aff50871"
+text = "In de bronsttijd, de periode aan het einde van de zomer waarin dieren paren, zijn de mannelijke edelherten zeer actief bezig."
+language_code = "nl"
+ordering = 66
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "f76d5288-4214-4ad3-a760-03f261f5c57c"
+text = "During the rutting season, the period at the end of summer when animals mate, male red deer are very active."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "c0f41f21-7f13-4823-9e7b-6457237201b1"
+text = "Ze maken een specifiek geluid, dat we burlen noemen, om andere mannetjes te laten weten dat ze aanwezig zijn."
+language_code = "nl"
+ordering = 67
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "0c6cb602-ed3e-4cef-a5a0-057e0b46e763"
+text = "They make a specific sound, called a roar, to let other males know they are present."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "8f683ae6-b4d0-4993-be0f-d170951b75cb"
+text = "Dat klinkt zo: …."
+language_code = "nl"
+ordering = 68
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "6f2634a3-808c-4b51-98ce-fe0eab58a725"
+text = "That sounds like this: ..."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f2ea422e-0058-458e-8508-82bcc765c90f"
+text = ""
+language_code = "nl"
+ordering = 69
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "ab923faa-51f5-4fc3-acae-e793f05475e3"
+text = "Als dat nog niet genoeg indruk maakt, gebruiken ze hun geweien om de concurrenten weg te jagen."
+language_code = "nl"
+ordering = 70
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "519c2464-a3b1-46ad-94f5-7f2dea358747"
+text = "If that isn't impressive enough, they use their antlers to chase away competitors."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "c7fdf552-5655-4447-a224-41abe7c104e9"
+text = ""
+language_code = "nl"
+ordering = 71
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "f55e7d7f-6182-443a-862c-766dd9ecbda9"
+text = "Edelherten zijn niet de enige grote wilde dieren in de Nederlandse natuur."
+language_code = "nl"
+ordering = 72
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "0fb76f7f-6e2f-4b45-82cc-838dd10bc916"
+text = "Red deer are not the only large wild animals in Dutch nature."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "ffe1681e-b3a7-40e1-8fee-8fb3c7dacf7e"
+text = "Er is sinds een aantal jaar weer een roofdier aanwezig in Nederland, dat tot veel discussie leidt: de wolf."
+language_code = "nl"
+ordering = 73
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "c6c81f92-ed2c-4bb2-8036-e152d75ab77c"
+text = "For a number of years now, a predator has been present in the Netherlands again, which has led to much discussion: the wolf."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "daea8dbc-514e-42e2-8e5b-33fe2ea302e1"
+text = "Sinds 2015 is dit dier weer in Nederland te vinden, nadat het roofdier 150 jaar lang afwezig was geweest."
+language_code = "nl"
+ordering = 74
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "b1d4e3e9-0fa0-436a-82f2-7a3f1acae9ed"
+text = "Since 2015, this animal has been found in the Netherlands again, after the predator had been absent for 150 years."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "56aad188-ecb3-4040-abde-418cbb987c22"
+text = "Nu leven er ongeveer 100 wolven in Nederland, vooral in het oosten van het land."
+language_code = "nl"
+ordering = 75
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "10fda509-730f-4d30-95af-34d1d71a0f40"
+text = "There are currently about 100 wolves living in the Netherlands, mainly in the east of the country."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "66589a17-245c-4142-b6b9-e2e3b5545a4f"
+text = "De wolf zorgt voor een gezonde natuur, omdat het jaagt op dieren zoals reeën, zwijnen en herten."
+language_code = "nl"
+ordering = 76
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "29662bc9-01a6-4f75-a9a7-c3a4af403311"
+text = "The wolf ensures a healthy environment, because it hunts animals such as roe deer, wild boar and deer."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "2baacb8a-6c75-4b49-9c8d-c8eea5b1069d"
+text = "Die diersoorten groeien daardoor niet te veel in aantal en blijven gezond."
+language_code = "nl"
+ordering = 77
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "45fb85f0-eb7d-44b3-96b6-2e0814c4ae17"
+text = "As a result, these animal species do not grow too much in numbers and remain healthy."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "8dfc0464-f781-4120-96fd-b401f56aeb69"
+text = "Maar wolven vallen ook andere dieren aan, zoals schapen, jonge koeien en pony’s."
+language_code = "nl"
+ordering = 78
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "22475990-e0e6-416c-8235-61bc76ece876"
+text = "But wolves also attack other animals, such as sheep, young cows and ponies."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5730936a-81ef-4a77-8afa-5cd0b8a466e7"
+text = "De eigenaren van deze dieren hebben daardoor schade, en het zorgt voor angst bij veel mensen."
+language_code = "nl"
+ordering = 79
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "75165014-95e8-4749-b22f-30bbb98a05fb"
+text = "This causes damage to the owners of these animals and causes fear among many people."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "180c0ca5-a122-4162-b35a-7949d21afefe"
+text = "Sommige mensen vragen zich af of een wild dier als een wolf wel thuishoort in een dichtbevolkt land als Nederland."
+language_code = "nl"
+ordering = 80
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "add6bc3d-4b23-43de-a9f7-720875f16c6b"
+text = "Some people wonder whether a wild animal like a wolf belongs in a densely populated country like the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "a37f2d8b-823d-4726-b335-0318467eea52"
+text = "Natuurorganisaties vinden dat boeren zich moeten aanpassen en dat we moeten leren samen te leven met de wolf."
+language_code = "nl"
+ordering = 81
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "52339f6f-a63c-4174-9699-f64420be2940"
+text = "Nature organizations believe that farmers must adapt and that we must learn to live together with the wolf."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "8b6ddfa3-34fb-4d6c-bbd8-4fedc99861bb"
+text = "Eigenaren van dieren die zijn gedood door wolven krijgen een schadevergoeding van de overheid."
+language_code = "nl"
+ordering = 82
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ef4f4c36-972f-4a80-abea-ce561df23dfe"
+text = "Owners of animals killed by wolves will receive compensation from the government."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "b3c9073f-be85-45a0-a79a-312c8592521a"
+text = ""
+language_code = "nl"
+ordering = 83
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "10be116d-5e7a-4338-87c0-6860942c16f1"
+text = "Waar moet je dan heen in Nederland om te kunnen genieten van de natuur?"
+language_code = "nl"
+ordering = 84
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "4eecb860-39c6-40d8-915d-a32646440786"
+text = "Where should you go in the Netherlands to enjoy nature?"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "c069be7d-c82b-406a-94b1-327f6828bdc7"
+text = "Door het hele land zijn er natuurgebieden te vinden, er zijn 21 nationale parken in Nederland."
+language_code = "nl"
+ordering = 85
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "5511a61b-6461-445d-804d-4aa408b31360"
+text = "There are nature reserves throughout the country, there are 21 national parks in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "09eeaabc-a90a-4e3f-9059-b30cddcfaeca"
+text = "Maar er zijn drie gebieden die ik extra de moeite waard vind."
+language_code = "nl"
+ordering = 86
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "24567545-b3ae-400c-9dda-addded332643"
+text = "But there are three areas that I find particularly worthwhile."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "76d15c49-0fd2-4cbc-9a64-f45cbaa88d57"
+text = ""
+language_code = "nl"
+ordering = 87
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "90d58ce0-a8f1-4b69-ae89-9f4c2911b9a4"
+text = "De Hoge Veluwe is het bekendste natuurgebied van Nederland."
+language_code = "nl"
+ordering = 88
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "1f843fe2-adda-490e-9b9d-98f93cb2b616"
+text = "The Hoge Veluwe is the most famous nature reserve in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6e927974-887b-47a4-8025-9da468044978"
+text = "Het ligt in de provincie Gelderland, in een groter gebied dat de Veluwe heet."
+language_code = "nl"
+ordering = 89
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "fe9232fb-57da-4f9a-8077-eadec1334fe8"
+text = "It is located in the province of Gelderland, in a larger area called the Veluwe."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "ecccb7a5-15b9-4947-8269-f2880021c602"
+text = "In De Hoge Veluwe vind je heiden, bossen en grote zandvlakten."
+language_code = "nl"
+ordering = 90
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ee751607-b17f-4b27-a05d-27c686634e69"
+text = "In the Hoge Veluwe you will find heaths, forests and large sandy plains."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "0e1a4404-1f6c-40bb-8bbe-4ab0a8ee60d3"
+text = "Op de Hoge Veluwe leven veel grote zoogdieren zoals edelherten, everzwijnen en reeën."
+language_code = "nl"
+ordering = 91
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "0ca7361b-7b7f-4728-aef1-6396cd52e820"
+text = "Many large mammals such as red deer, wild boar and roe deer live on the Hoge Veluwe."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5a1a4346-32b2-4240-9d1c-4150da2753ae"
+text = "Het is het enige nationale park in Nederland waarvoor je entree moet betalen."
+language_code = "nl"
+ordering = 92
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "8ca06de0-7979-46bc-b2ad-e9cf5316df52"
+text = "It is the only national park in the Netherlands for which you have to pay an entrance fee."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "e9737af1-ed72-4cf3-bd80-e95a023da0d7"
+text = "Je kan wel gebruikmaken van gratis fietsen, wat een hele goede manier is om je door het gebied te verplaatsen."
+language_code = "nl"
+ordering = 93
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "88c65f35-d04b-40ba-adc2-d691ceedccd2"
+text = "You can use free bicycles, which are a great way to get around the area."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "dea2c616-7683-4fa0-bb40-395ecbdeac1a"
+text = "Ook ligt er een prachtig museum midden in het park, het Kröller-Müller Museum."
+language_code = "nl"
+ordering = 94
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "e58aae75-1cec-4c13-9a45-00237fdb3d70"
+text = "There is also a beautiful museum in the middle of the park, the Kröller-Müller Museum."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "aac14f1d-d01b-4ffb-8b64-261d23a6d9dd"
+text = "Daar hangen onder andere schilderijen van Van Gogh en andere beroemde kunstenaars."
+language_code = "nl"
+ordering = 95
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "86d021c1-0f7d-46a5-b2df-c57c49fc1a84"
+text = "Among other things, paintings by Van Gogh and other famous artists hang there."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "3b78c773-4eea-4de8-877d-13cb47612667"
+text = ""
+language_code = "nl"
+ordering = 96
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "f60a0288-5990-424d-839b-6159af0b1938"
+text = "Een heel ander natuurgebied is het Biesbosch, dat ligt voor een deel in de provincie Zuid-Holland en een deel in Noord-Brabant."
+language_code = "nl"
+ordering = 97
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "2372326c-cdbf-4c4f-89e3-151d3a2e4f98"
+text = "A completely different nature reserve is the Biesbosch, which is partly located in the province of South Holland and partly in North Brabant."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "91346cf9-6ff8-442b-821e-0cfdc8af0a30"
+text = "Het Biesbosch is meer dan 600 jaar geleden ontstaan door een overstroming."
+language_code = "nl"
+ordering = 98
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "173e4545-752a-4ad9-b642-51b9ecaf2df0"
+text = "The Biesbosch was formed more than 600 years ago by a flood."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "15999881-35bf-427a-952c-b4edf38c8230"
+text = "Het is nu nog steeds een nat gebied, met veel rivieren, eilandjes en water."
+language_code = "nl"
+ordering = 99
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "a84d325a-82cb-4e5c-8c56-b398afe1a547"
+text = "It is still a wet area today, with many rivers, islands and water."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "57ada9f8-285a-473b-b3bc-5d703cbc4825"
+text = "En dus veel planten, vissen en vogels die van natte gebieden houden."
+language_code = "nl"
+ordering = 100
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "8863e7a1-68d4-4b5f-ba19-bbe40b049e5b"
+text = "And therefore many plants, fish and birds that like wet areas."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "677afa12-f6ec-4f24-a92a-85f7878f996c"
+text = "In het gebied leven ook veel bevers, die verder niet zo veel voorkomen in Nederland."
+language_code = "nl"
+ordering = 101
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ca6373d0-dec0-47f6-9152-10585e7c2e79"
+text = "The area is also home to many beavers, which are not very common in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "3588f19c-7b9a-4a9b-8954-4c434952ec81"
+text = "In het Biesbosch kan je bootjes of kano’s huren waarmee je heel goed het gebied kan ontdekken, echt een aanrader!"
+language_code = "nl"
+ordering = 102
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "0a41fcb8-ba39-40cc-a957-c18e8c2173f4"
+text = "In the Biesbosch you can rent boats or canoes with which you can explore the area very well, highly recommended!"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "76014573-c987-49a8-a30d-7b6601309d66"
+text = ""
+language_code = "nl"
+ordering = 103
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "2b777b16-b1da-4bbe-9d06-3148679d4909"
+text = "Het derde natuurgebied dat ik extra aandacht wil geven is de Oostvaardersplassen."
+language_code = "nl"
+ordering = 104
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "fe596a23-2541-40c0-8da2-9a3fe75d111a"
+text = "The third nature reserve that I would like to pay extra attention to is the Oostvaardersplassen."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f06809d0-8ea3-40e8-a52b-64f45db32356"
+text = "Dit gebied ligt vlakbij Almere, in Flevoland."
+language_code = "nl"
+ordering = 105
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "fde3816f-0526-4065-b6d2-f38f2ebf218b"
+text = "This area is located near Almere, in Flevoland."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "39226472-3bc3-469c-a71b-65783a10aa94"
+text = "Zoals je misschien weet, bestond Flevoland 100 jaar geleden nog niet, toen was het nog een meer."
+language_code = "nl"
+ordering = 106
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ea986eeb-4464-4cec-be75-e8e59680fa37"
+text = "As you may know, Flevoland did not exist 100 years ago, it was still a lake."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "43cec696-f404-40a6-9935-e5a73f840094"
+text = "Het gebied waar nu de Oostvaardersplassen liggen was eigenlijk bedoeld als industrieterrein, maar daar was te weinig interesse voor."
+language_code = "nl"
+ordering = 107
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "cefc41c0-0443-451c-80de-082e0e52d015"
+text = "The area where the Oostvaardersplassen are now located was actually intended as an industrial estate, but there was too little interest in this."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "c91a9150-909e-4db0-8727-aea7f0ae9510"
+text = "Daarom werd het gebied met rust gelaten en werd het vanzelf een natuurgebied."
+language_code = "nl"
+ordering = 108
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ddf7ea98-5140-45df-bda0-cecc5704bfd1"
+text = "Therefore the area was left alone and automatically became a nature reserve."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "24422c9c-b661-4e68-b101-aebd66275b63"
+text = "Nu, zo’n 50 jaar later, is de Oostvaardersplassen het grootste door mens gemaakte natuurgebied ter wereld."
+language_code = "nl"
+ordering = 109
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ac816073-0e12-4e4a-ae8b-939c48a1d30f"
+text = "Now, some 50 years later, the Oostvaardersplassen is the largest man-made nature reserve in the world."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "e8f7a52b-3f3f-4b8c-8b88-55c4b468a11e"
+text = "Het natuurgebied is een paradijs voor vogelliefhebbers: er zijn ruim 100 vogelsoorten te zien."
+language_code = "nl"
+ordering = 110
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "181cf29c-55d1-41b2-b46c-a4164aae952b"
+text = "The nature reserve is a paradise for bird lovers: more than 100 bird species can be seen."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "ab709479-20d1-4b88-894f-de61f230780c"
+text = "Sinds 2006 leeft de zeearend in het gebied."
+language_code = "nl"
+ordering = 111
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "30a5eeae-54e9-459b-b86f-24e892f0ea41"
+text = "The white-tailed eagle has lived in the area since 2006."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "baa42a46-8f40-46b8-86b4-be37e51c13ed"
+text = "Deze roofvogel heeft vleugels van meer dan 2,50, waardoor het dier de bijnaam ‘vliegende deur’ heeft."
+language_code = "nl"
+ordering = 112
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "caf1ce6d-0d89-45d4-88ec-f372e15a2480"
+text = "This bird of prey has wingspans of over 2.50, earning it the nickname “flying door.”"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6162c241-71fc-4d42-89e7-3c69cd11e2e9"
+text = "De zeearend was eeuwenlang afwezig in Nederland, maar nu zijn er ongeveer 70 zeearenden in Nederland."
+language_code = "nl"
+ordering = 113
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "db92e069-55d3-4e75-a1c2-3974078929c2"
+text = "The white-tailed eagle was absent from the Netherlands for centuries, but now there are about 70 white-tailed eagles in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "479461b0-8c4e-4b75-b38c-e34215da8120"
+text = "Mede dankzij het succes van de Oostvaardersplassen."
+language_code = "nl"
+ordering = 114
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "99f91cd8-5eea-47ab-b318-bf718ded8043"
+text = "Partly thanks to the success of the Oostvaardersplassen."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "8c608e0e-c8df-44c4-9505-c65b3f625afd"
+text = ""
+language_code = "nl"
+ordering = 115
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "3d39d201-7565-4160-a645-d34d5a3da569"
+text = "Wist je dat Nederland een nationale vogel heeft?"
+language_code = "nl"
+ordering = 116
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "5241f800-15cc-49f7-8ea6-f2432e60a334"
+text = "Did you know that the Netherlands has a national bird?"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "f14131ab-1001-4eeb-b527-45f629950463"
+text = "In 2015 is er een verkiezing geweest waarbij er gekozen kon worden welke vogel het nationale symbool van Nederland moest worden."
+language_code = "nl"
+ordering = 117
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "d19399ef-2d81-4a70-b323-3c2df8b2e32e"
+text = "In 2015 there was an election to choose which bird should become the national symbol of the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "e52af21f-1e58-48bc-a014-9070c90ebd43"
+text = "En de winnaar was: de grutto!"
+language_code = "nl"
+ordering = 118
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "7a35b1e9-47f1-48a0-b206-9b79183912a1"
+text = "And the winner was: the black-tailed godwit!"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "ff92cb74-fd47-4d8d-b8c3-a8b46874cb0b"
+text = "Een grutto is een weidevogel, dat zijn vogels die graag leven in graslanden."
+language_code = "nl"
+ordering = 119
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "ea2459b7-7cba-4910-8a4a-1755001fe09e"
+text = "A black-tailed godwit is a meadow bird, which are birds that like to live in grasslands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "968651de-8a8a-472c-ad8d-0a952b9ca1f5"
+text = "Het is een bruin/oranje vogel met lange poten en een lange snavel."
+language_code = "nl"
+ordering = 120
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "81f3d586-8eb6-4abf-b31d-d2694db67e0a"
+text = "It is a brown/orange bird with long legs and a long beak."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6184358e-dc57-404a-b0f6-b9b814bbb10b"
+text = "Met die snavel kan de grutto zijn voedsel, wormen en insecten, uit de grond halen."
+language_code = "nl"
+ordering = 121
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "32895fe3-5fbf-4a4f-8c18-1ee3c046a6d6"
+text = "The beak enables the black-tailed godwit to extract its food, worms and insects, from the ground."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "39da3e27-a686-4b35-9f34-97594f51e115"
+text = "De naam grutto komt van het geluid dat deze vogel maakt: met een beetje fantasie roept hij zijn eigen naam."
+language_code = "nl"
+ordering = 122
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "23a49996-1835-46c0-8acb-17967ee624aa"
+text = "The name black-tailed godwit comes from the sound this bird makes: with a little imagination it calls out its own name."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "0dc29efb-46ef-43a4-af10-a8e1c9261f02"
+text = "(grutto utto utto!)"
+language_code = "nl"
+ordering = 123
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "441dd163-496c-4ef8-b8b1-5abac2ed6e16"
+text = "(black-tailed godwit utto utto!)"
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "bbe95402-3995-44c2-947e-d7bd61241e93"
+text = ""
+language_code = "nl"
+ordering = 124
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "62299c40-3636-4d2e-9a5c-fe16ee086a02"
+text = "Nergens in Europa broeden zoveel grutto’s als in Nederland."
+language_code = "nl"
+ordering = 125
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "f02c5d96-a070-4d3d-9f28-530177815ab7"
+text = "Nowhere in Europe do as many black-tailed godwits breed as in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "5963fe1e-3f53-4588-a78f-fe65d96aa328"
+text = "Helaas gaat het steeds slechter met de grutto en andere weidevogels."
+language_code = "nl"
+ordering = 126
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "41240e1a-b95c-4135-8213-936d64e3aabf"
+text = "Unfortunately, the situation of the black-tailed godwit and other meadow birds is getting worse."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "31aa2c79-12bf-4b66-b322-5292ee09e205"
+text = "Er is steeds minder leefgebied voor de vogels."
+language_code = "nl"
+ordering = 127
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "8da53b55-6827-4da4-aed0-cebccf4bf026"
+text = "There is less and less habitat for the birds."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "11ec565a-a336-4dde-b816-6f0cff3f7334"
+text = "Dat komt omdat landbouwgrond steeds minder ruimte geeft voor vogels."
+language_code = "nl"
+ordering = 128
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "4bb19839-3ef5-43d8-972f-c2000b01b673"
+text = "This is because agricultural land provides less and less space for birds."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "1425fb12-30fc-48b8-81d6-d40a613bb74a"
+text = ""
+language_code = "nl"
+ordering = 129
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "6dcc9116-0f75-4e56-9077-5b039c4d03a9"
+text = "Helaas is het dus niet alleen goed nieuws als het gaat om natuur in Nederland."
+language_code = "nl"
+ordering = 130
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "3d6ce842-d39d-43e5-878e-859f5a549902"
+text = "Unfortunately, it is not all good news when it comes to nature in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "3d2c8332-91aa-4c4e-9cab-1bd5c1215cf0"
+text = "De natuur staat onder druk: er is weinig land en er zijn veel mensen die er gebruik van willen maken."
+language_code = "nl"
+ordering = 131
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "cda59cc1-a191-48b8-9b55-e4c9eaeae105"
+text = "Nature is under pressure: there is little land and many people who want to use it."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "23efeb19-db82-45ea-b196-32f8831a8752"
+text = "Ik heb het daar in de aflevering over de stikstofcrisis ook over gehad, als er niet iets gebeurt zal de natuur de komende jaren alleen maar achteruit gaan."
+language_code = "nl"
+ordering = 132
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "90f2ff1d-f763-4c42-9151-d30f6b9ecfeb"
+text = "I also talked about this in the episode about the nitrogen crisis; if nothing is done, nature will only deteriorate in the coming years."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "481d300f-e406-4491-b1d4-886959f5805c"
+text = "40% van de diersoorten in Nederland staat op de rode lijst."
+language_code = "nl"
+ordering = 133
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "0f3efdc4-8c36-4c19-b17c-9c869521f367"
+text = "40% of the animal species in the Netherlands are on the red list."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "b42cf411-7cec-406d-92ca-71c9fca11aee"
+text = "Dat betekent dat ze misschien binnenkort hier niet meer voorkomen."
+language_code = "nl"
+ordering = 134
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "72017318-5ea0-4c80-9bfc-b909c2929212"
+text = "This means that they may soon no longer be found here."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "6505464a-b576-4690-bbe4-5922b3d4cf78"
+text = ""
+language_code = "nl"
+ordering = 135
+enabled_for_study = false
+translations = []
+
+[[document.sentences]]
+id = "de71a8b5-9dc7-44b3-a487-0b592564dddc"
+text = "Gelukkig zijn er organisaties die zich inzetten voor de bescherming van de natuur in Nederland."
+language_code = "nl"
+ordering = 136
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "692b15e4-73bd-4957-8df5-c383605d192a"
+text = "Fortunately, there are organizations that are committed to protecting nature in the Netherlands."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "58b9cd55-c97f-4d53-9d3f-9a3f91819c0d"
+text = "De organisaties Natuurmonumenten en Staatsbosbeheer hebben als doel om de Nederlandse natuur te beschermen."
+language_code = "nl"
+ordering = 137
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "1ace8ff1-105f-489b-863a-4c9c6b0a62ac"
+text = "The organisations Natuurmonumenten and Staatsbosbeheer aim to protect Dutch nature."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[[document.sentences]]
+id = "243a5a1b-28d7-472f-ae75-7fd0dd1c5124"
+text = "Maar er zal ook in de politiek meer aandacht aan gegeven moeten worden."
+language_code = "nl"
+ordering = 138
+enabled_for_study = false
+[[document.sentences.translations]]
+id = "71d39419-bb05-4556-a24a-e03ba82aaada"
+text = "But more attention should also be paid to this in politics."
+language_code = "en"
+enabled_for_study = false
+translations = []
+
+
+[document.words]

@@ -2,11 +2,6 @@
 
 ## 1. Load document with one sentence per line
 
-* Frontend tests:
-  * tbd
-
----
-
 * Sentence Adapter
   * Port
     * create_or_update
