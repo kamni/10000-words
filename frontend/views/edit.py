@@ -15,6 +15,7 @@ class EditView(BaseView):
     Add and edit text to practice with
     """
 
+    '''
     def set_store(self):
         """
         Set data needed by the widgets.
@@ -30,6 +31,32 @@ class EditView(BaseView):
         documents = document_db.get_all(self.user.id)
         for doc in document_ui.get_all_minimal(documents, self.user):
             doc_dict['all_documents'].append(doc.model_dump())
+
+        app.storage.client['documents'] = doc_dict
+    '''
+
+    # Temporary for prototyping purposes
+    def set_store(self):
+        from pathlib import Path
+        from common.utils.files import get_project_dir
+        from scripts.prototype_deleteme import DocumentParser
+
+        doc_dict = {
+            'current_document': None,
+            'all_documents': [],
+        }
+
+        project_dir = Path(get_project_dir())
+        data_dir = project_dir / 'scripts' / 'data' / 'en'
+        for (file, title) in [
+            ('Little-Red-Riding-Hood.txt', 'Little Red Riding Hood'),
+            #('Rumpelstiltskin.txt', 'Rumpelstiltskin'),
+            #('The-Bremen-town-musicians.txt', 'The Bremen Town Musicians'),
+         ]:
+            pass
+            parser = DocumentParser((data_dir / file).as_posix(), title)
+            database = parser.parse()
+            doc_dict['all_documents'].append(database.document.model_dump())
 
         app.storage.client['documents'] = doc_dict
 

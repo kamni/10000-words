@@ -3,7 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from nicegui import app, events, ui
+from nicegui import ElementFilter, app, events, ui
 
 from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
 from common.models.files import BinaryFileData
@@ -40,6 +40,106 @@ class EditArea(EditComponent):
     """
     Area for editing documents
     """
+
+    CSS = '''
+        .text-gap {
+            gap: 0 !important;
+        }
+    '''
+
+    def set_word_status(self, element, status):
+        classes = self.get_status_classes(status)
+        element.classes(add=classes)
+
+        for elem in ElementFilter(marker=element.text.lower()):
+            elem.classes(add=classes)
+
+        #ElementFilter(marker=element.text).classes(add=classes)
+        # TODO: we actually need to update these elements
+
+    @ui.refreshable
+    def context_menu(self, element):
+        from scripts.prototype_deleteme import WordStatus
+        not_set = self.get_status_classes(WordStatus.not_set)
+        ignored = self.get_status_classes(WordStatus.ignored)
+        to_learn = self.get_status_classes(WordStatus.to_learn)
+        learning = self.get_status_classes(WordStatus.learning)
+        learned = self.get_status_classes(WordStatus.learned)
+
+        with ui.context_menu().classes('bg-dark text-zinc-50'):
+            ui.label('Set Status:').classes('p-2 text-center')
+            ui.separator()
+
+            ui.menu_item(
+                'Ignored',
+                lambda: self.set_word_status(element, WordStatus.ignored),
+            ).classes(ignored)
+            ui.menu_item(
+                'To Learn',
+                lambda: self.set_word_status(element, WordStatus.to_learn),
+            ).classes(to_learn)
+            ui.menu_item(
+                'Learning',
+                lambda: self.set_word_status(element, WordStatus.learning),
+            ).classes(learning)
+            ui.menu_item(
+                'Learned',
+                lambda: self.set_word_status(element, WordStatus.learned),
+            ).classes(learned)
+
+            ui.separator()
+            ui.menu_item('Combine Words', self.combine_words)
+
+    def combine_words(self):
+        if not hasattr(self, '_collected_words') or not self._collected_words:
+            ui.notify('No words to combine')
+            return
+        # TODO: pop up a modal to edit word
+        # TODO: handle word combination
+        # TODO: populate across all documents
+        for word in self._collected_words:
+            word.classes(remove='!bg-amber-400')
+
+    # TODO: temporary prototype
+    def get_status_classes(self, status: str):
+        from scripts.prototype_deleteme import WordStatus
+        # TODO: define classes globally for the widget?
+        return {
+            WordStatus.not_set: ' bg-zinc-400 text-zinc-950',
+            WordStatus.ignored: ' bg-zinc-50 text-zinc-950',
+            WordStatus.to_learn: ' bg-violet-300 text-zinc-950',
+            WordStatus.learning: ' bg-emerald-300 text-zinc-950',
+            WordStatus.learned: ' bg-zinc-50 text-zinc-950',
+        }[status]
+
+    def collect_words(self, event: events.GenericEventArguments):
+        element = event.sender
+        if not hasattr(self, '_collected_words'):
+            self._collected_words = []
+
+        if element in self._collected_words:
+            self._collected_words.pop(self._collected_words.index(element))
+            element.classes(remove='!bg-amber-400')
+        else:
+            self._collected_words.append(element)
+            element.classes(add='!bg-amber-400')
+
+    # TODO: Temporary prototype; add correct typing later
+    def display_sentence(self, sentence):
+        from scripts.prototype_deleteme import WordStatus
+        with ui.row().classes('text-gap'):
+            for display_text in sentence['word_display_text']:
+                text = display_text['text']
+                status = display_text['word']['status']
+                classes = self.get_status_classes(status)
+                with ui.label(text).mark(text.lower()) \
+                        .on('click', self.collect_words) \
+                        .classes(
+                            'cursor-pointer text-lg px-2 py-2 rounded-lg'
+                            + classes
+                        ) as elem:
+                    self.context_menu(elem)
+
     def show_content(self):
         if not app.storage.client['documents']['all_documents']:
             ui.label('Welcome to 10,000 Words!').classes('text-2xl')
@@ -53,6 +153,8 @@ class EditArea(EditComponent):
         document = self.current_document
         if document:
             ui.label(document.displayName).classes('text-3xl bold text-blue-950')
+            for sentence in document.sentences:
+                self.display_sentence(sentence)
         else:
             with ui.row():
                 ui.icon('arrow_back').classes('text-2xl')

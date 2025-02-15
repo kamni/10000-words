@@ -2,11 +2,34 @@
 
 ## Sentences
 
+* Combining words
+  * how to handle in sentences when they're separate
+    * it points to the same word
+      * I need a word lookup
+
+---
+
+
+* set default classes
+* Tabbed view for translations
+
+* Switch to toml / tomllib
+  * tomllib.load(opened_file)
+* Uploading translations at the same time
+
+* Put some explanatory text about word color in the right sidebar
+* Words in document learned as percentage
+* Put multiple into the same word (orange) -- ctl click?
+
 * Sentences are displayed as individual words, color-coded by status
   * white background, black text: ignored or learned
   * gray background, black text: not set
   * learning: light green background, black text
   * waiting to learn: lavendar background, black text
+
+* Nice to have:
+  * Loading icon until document loads
+  * Cleanup: don't display extra classes...
 
 ---
 
