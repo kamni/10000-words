@@ -1,6 +1,16 @@
 # TODOS
 
-## Document
+## Sentences
+
+* Sentences are displayed as individual words, color-coded by status
+  * white background, black text: ignored or learned
+  * gray background, black text: not set
+  * learning: light green background, black text
+  * waiting to learn: lavendar background, black text
+
+---
+
+## Documents
 
 * Nicegui: upload a document
   * Form validation
@@ -102,7 +112,7 @@ Editing Mode:
    2. lavender background, black text: learning
    3. light green background, black text: defined, but not added to learning
       rotation.
-   4. orange background, black text: Unknown type.
+   4. gray background, black text: Unknown type.
 4. You handle all Unknown words. Left-click to bring up an editing modal:
    1. Set the type -- multiple words are type "Expression" -- ctrl+click to
       select multiple.
