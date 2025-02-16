@@ -1,9 +1,13 @@
 # TODOS
 
-## Sentences
+## Sentences: Prototype
 
 * Combining words
+  * Mark each display_text label with the word id
+  * Make sure setting statuses (e.g., learned) works with word id instead of text
+
   * how to handle in sentences when they're separate?
+    * color really needs to change based on word
     * get display text from marker?
     * reorder display_text by ordering
     * create new word, or get existing
@@ -15,14 +19,26 @@
     * sentence should refresh
   * Replacing in the rest of the document
 
+* Spinner while loading
+
+* Clean up prototype
+
 ---
 
+## Senentences: File Upload and Translations Prototype
+
+* Upload translations (later or at the same time)
+* Tabs per language?
+* Manually add translation
+
+---
 
 * set default classes
 * Tabbed view for translations
 
 * Switch to toml / tomllib
   * tomllib.load(opened_file)
+
 * Uploading translations at the same time
 
 * Put some explanatory text about word color in the right sidebar

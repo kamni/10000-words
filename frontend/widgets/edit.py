@@ -47,6 +47,7 @@ class EditArea(EditComponent):
         }
     '''
 
+    # TODO: prototype
     def set_word_status(self, element, status):
         classes = self.get_status_classes(status)
         element.classes(add=classes)
@@ -57,7 +58,7 @@ class EditArea(EditComponent):
         #ElementFilter(marker=element.text).classes(add=classes)
         # TODO: we actually need to update these elements
 
-    @ui.refreshable
+    # TODO: prototype
     def context_menu(self, element):
         from scripts.prototype_deleteme import WordStatus
         not_set = self.get_status_classes(WordStatus.not_set)
@@ -90,6 +91,7 @@ class EditArea(EditComponent):
             ui.separator()
             ui.menu_item('Combine Words', self.combine_words)
 
+    # TODO: temporary prototype
     def combine_words(self):
         if not hasattr(self, '_collected_words') or not self._collected_words:
             ui.notify('No words to combine')
@@ -130,9 +132,10 @@ class EditArea(EditComponent):
         with ui.row().classes('text-gap'):
             for display_text in sentence['word_display_text']:
                 text = display_text['text']
+                word_id = display_text['word']['id']
                 status = display_text['word']['status']
                 classes = self.get_status_classes(status)
-                with ui.label(text).mark(text.lower()) \
+                with ui.label(text).mark(f'{word_id}') \
                         .on('click', self.collect_words) \
                         .classes(
                             'cursor-pointer text-lg px-2 py-2 rounded-lg'
