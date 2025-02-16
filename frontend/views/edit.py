@@ -59,8 +59,8 @@ class EditView(BaseView):
             doc_dict['all_documents'].append(database.document.model_dump())
 
             words = {
-                word: word_obj.model_dump()
-                for word, word_obj in database.words.items()
+                id: word_obj.model_dump()
+                for id, word_obj in database.words.items()
             }
             word_dict.update(words)
 

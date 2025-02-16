@@ -4,7 +4,6 @@
 
 * Combining words
   * how to handle in sentences when they're separate?
-    * load words into storage
     * get display text from marker?
     * reorder display_text by ordering
     * create new word, or get existing
