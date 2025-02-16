@@ -187,10 +187,16 @@ class DocumentParser:
 
     def make_word_obj(self, text: str, sentence: Sentence) -> Word:
         case_insensitive_text = text.strip().lower()
-        if case_insensitive_text in self.database.words:
-            existing_word = self.database.words[case_insensitive_text]
-            existing_word.sentences.append(sentence.id)
-            return existing_word
+        existing_word = list(
+            filter(
+                lambda x: x[1].case_insensitive_text == case_insensitive_text,
+                self.database.words.items(),
+            )
+        )
+        if existing_word:
+            word = existing_word[0][1]
+            word.sentences.append(sentence.id)
+            return word
 
         if (
             not case_insensitive_text
@@ -252,8 +258,8 @@ class DocumentParser:
                 for text in raw_texts
             ]
             for idx, (word, raw_text) in enumerate(zip(words, raw_texts)):
-                if word.case_insensitive_text not in self.database.words:
-                    self.database.words[word.case_insensitive_text] = word
+                if word.id not in self.database.words:
+                    self.database.words[word.id] = word
                 display_text = self.make_display_text_obj(
                     raw_text, sentence, idx + 1, word,
                 )
