@@ -70,15 +70,14 @@ class EditArea(EditComponent):
         return WordStatus
 
     def get_status_classes(self, status: str):
-        from scripts.prototype_deleteme import WordStatus
         # TODO: define classes globally for the widget?
         # We can use SASS, apparently!
         return {
-            WordStatus.not_set: ' bg-zinc-400 text-zinc-950',
-            WordStatus.ignored: ' bg-zinc-50 text-zinc-950',
-            WordStatus.to_learn: ' bg-violet-300 text-zinc-950',
-            WordStatus.learning: ' bg-emerald-300 text-zinc-950',
-            WordStatus.learned: ' bg-zinc-50 text-zinc-950',
+            self.WordStatus.not_set: ' bg-zinc-400 text-zinc-950',
+            self.WordStatus.ignored: ' bg-zinc-50 text-zinc-950',
+            self.WordStatus.to_learn: ' bg-violet-300 text-zinc-950',
+            self.WordStatus.learning: ' bg-emerald-300 text-zinc-950',
+            self.WordStatus.learned: ' bg-zinc-50 text-zinc-950',
         }[status]
 
     def context_menu(self, element):
@@ -110,30 +109,93 @@ class EditArea(EditComponent):
             ).classes(learned)
 
             ui.separator()
+            ui.label('Multi-Word Actions:').classes('p-2 text-center')
+            ui.separator()
             ui.menu_item('Combine Words', self.combine_words) \
                     .classes('bg-amber-400 text-zinc=950')
 
     # TODO: prototype
     def set_word_status(self, element, status):
+        element.classes(remove='outline')
         classes = self.get_status_classes(status)
         element.classes(add=classes)
 
+        # TODO: we actually need to update these elements in the backend
         for elem in ElementFilter(marker=element._markers[0]):
+            elem.classes(remove='outline')
             elem.classes(add=classes)
 
-        #ElementFilter(marker=element.text).classes(add=classes)
-        # TODO: we actually need to update these elements
+    def clear_collected_words(self):
+        for word_label in self._collected_words:
+            word_label.classes(remove='!bg-amber-400')
+        self._collected_words = []
 
     # TODO: temporary prototype
     def combine_words(self):
         if not hasattr(self, '_collected_words') or not self._collected_words:
             ui.notify('No words to combine')
             return
-        # TODO: pop up a modal to edit word
-        # TODO: handle word combination
-        # TODO: populate across all documents
-        for word in self._collected_words:
-            word.classes(remove='!bg-amber-400')
+
+        is_same_sentence = len(list(set([
+            word_label.sentence['id'] for word_label in self._collected_words
+        ]))) == 1
+        if not is_same_sentence:
+            ui.notify('You can only combine words in the same sentence')
+            self.clear_collected_words()
+            return
+
+        new_word_text = ' '.join([
+            word_label.display_text['text'].lower()
+            for word_label in self._collected_words
+        ])
+        sentence = self._collected_words[0].sentence
+        sentence_id = str(sentence['id'])
+            lambda x: x['case_insensitive_text'] == new_word_text,
+            app.storage.client['words'].values(),
+        ))
+        # TODO: pop up a modal to edit word, taking into account existing word,
+        # *before*  we write to either storage or backend
+        if existing_word:
+            existing_word[0]['sentences'].append(
+                app.storage.client['sentences'][sentence_id],
+            )
+            new_word = existing_word
+        else:
+            # TODO: we'll write to the database and get a UUID
+            import uuid
+            new_word = {
+                'id': uuid.uuid4(),
+                'case_insensitive_text': new_word_text,
+                'status': self.WordStatus.not_set,
+                'sentences': [sentence],
+            }
+            app.storage.client['words'][new_word['id']] = new_word
+
+        def words_are_sequential():
+            last_num_seen = None
+            for word_label in self._collected_words:
+                ordering = word_label.display_text['ordering']
+                if last_num_seen is None:
+                    last_num_seen = ordering
+                    continue
+                if (ordering - last_num_seen) != 1:
+                    return False
+            return True
+
+        self._collected_words.sort(key=lambda x: x.display_text['ordering'])
+        # TODO: remove `and False`: this is just until we implement the merge
+        if words_are_sequential() and False:
+            # TODO: combine the visual representation
+            # TODO: update the whole document?
+            pass
+        else:
+            for word_label in self._collected_words:
+                word_label.word = new_word
+                self.set_word_status(word_label, new_word['status'])
+                word_label._markers = [new_word['id']]
+                word_label.classes(add='outline')
+
+        self.clear_collected_words()
 
     def collect_words(self, event: events.GenericEventArguments):
         element = event.sender

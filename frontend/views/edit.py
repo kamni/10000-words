@@ -46,6 +46,7 @@ class EditView(BaseView):
             'all_documents': [],
         }
         word_dict = {}
+        sentence_dict = {}
 
         project_dir = Path(get_project_dir())
         data_dir = project_dir / 'scripts' / 'data' / 'en'
@@ -58,13 +59,20 @@ class EditView(BaseView):
             database = parser.parse()
             doc_dict['all_documents'].append(database.document.model_dump())
 
+            sentences = {
+                'id': sentence_obj.model_dump()
+                for id, sentence_obj in database.sentences.items()
+            }
+            sentence_dict.update(sentences)
+
             words = {
-                id: word_obj.model_dump()
+                'id': word_obj.model_dump()
                 for id, word_obj in database.words.items()
             }
             word_dict.update(words)
 
         app.storage.client['documents'] = doc_dict
+        app.storage.client['sentences'] = sentence_dict
         app.storage.client['words'] = word_dict
 
     def setup(self):

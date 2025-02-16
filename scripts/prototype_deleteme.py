@@ -105,7 +105,7 @@ class MockDatabase(BaseModel):
     because we'll usually only access it through the Sentences.
     """
     document: Optional[Document] = None
-    sentences: Optional[List[Sentence]] = []
+    sentences: Optional[Dict[str, Sentence]] = {}
     words: Optional[Dict[str, Word]] = {}
 
 
@@ -249,9 +249,9 @@ class DocumentParser:
             self.make_sentence_obj(text, idx + 1)
             for idx, text in enumerate(sentence_texts)
         ]
-        self.database.sentences = sentences
 
         for sentence in sentences:
+            self.database.sentences[str(sentence.id)] = sentence
             raw_texts = self.tokenize_sentence(sentence)
             words = [
                 self.make_word_obj(text, sentence)
@@ -259,7 +259,7 @@ class DocumentParser:
             ]
             for idx, (word, raw_text) in enumerate(zip(words, raw_texts)):
                 if word.id not in self.database.words:
-                    self.database.words[word.id] = word
+                    self.database.words[str(word.id)] = word
                 display_text = self.make_display_text_obj(
                     raw_text, sentence, idx + 1, word,
                 )

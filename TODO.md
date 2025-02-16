@@ -3,8 +3,15 @@
 ## Sentences: Prototype
 
 * Combining words
-  * Mark each display_text label with the word id
-  * Make sure setting statuses (e.g., learned) works with word id instead of text
+  * Combine words menu item needs black text
+
+  * Covert everything to actual pydantic models,
+    so I'm not getting confused about index versus attribute
+  * BUG: second time we try to combine a word doesn't work
+  * BUG: Setting status on combined word doesn't work
+
+  * We need to replace labels if they're consecutive
+  * Refreshable sentence?
 
   * Change the word associated with display_text
   * how to handle in sentences when they're separate?
@@ -19,6 +26,8 @@
       * I need a word lookup
     * sentence should refresh
   * Replacing in the rest of the document
+
+* Model to approve/edit combined words
 
 * Spinner while loading
 
