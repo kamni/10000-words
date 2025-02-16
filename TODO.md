@@ -6,6 +6,7 @@
   * Mark each display_text label with the word id
   * Make sure setting statuses (e.g., learned) works with word id instead of text
 
+  * Change the word associated with display_text
   * how to handle in sentences when they're separate?
     * color really needs to change based on word
     * get display text from marker?
@@ -22,6 +23,9 @@
 * Spinner while loading
 
 * Clean up prototype
+  * CSS:
+    * Can add sass, scss
+  * Models?
 
 ---
 
