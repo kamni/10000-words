@@ -252,7 +252,7 @@ class DocumentParser:
                 for text in raw_texts
             ]
             for idx, (word, raw_text) in enumerate(zip(words, raw_texts)):
-                if not word.case_insensitive_text in self.database.words:
+                if word.case_insensitive_text not in self.database.words:
                     self.database.words[word.case_insensitive_text] = word
                 display_text = self.make_display_text_obj(
                     raw_text, sentence, idx + 1, word,

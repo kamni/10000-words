@@ -3,9 +3,18 @@
 ## Sentences
 
 * Combining words
-  * how to handle in sentences when they're separate
+  * how to handle in sentences when they're separate?
+    * load words into storage
+    * get display text from marker?
+    * reorder display_text by ordering
+    * create new word, or get existing
+    * create new label with word's marker
+    * if they're consecutive, we can merge them
+    * see if any are consecutive; they can merge
     * it points to the same word
       * I need a word lookup
+    * sentence should refresh
+  * Replacing in the rest of the document
 
 ---
 

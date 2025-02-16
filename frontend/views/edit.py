@@ -45,6 +45,7 @@ class EditView(BaseView):
             'current_document': None,
             'all_documents': [],
         }
+        word_dict = {}
 
         project_dir = Path(get_project_dir())
         data_dir = project_dir / 'scripts' / 'data' / 'en'
@@ -53,12 +54,18 @@ class EditView(BaseView):
             #('Rumpelstiltskin.txt', 'Rumpelstiltskin'),
             #('The-Bremen-town-musicians.txt', 'The Bremen Town Musicians'),
          ]:
-            pass
             parser = DocumentParser((data_dir / file).as_posix(), title)
             database = parser.parse()
             doc_dict['all_documents'].append(database.document.model_dump())
 
+            words = {
+                word: word_obj.model_dump()
+                for word, word_obj in database.words.items()
+            }
+            word_dict.update(words)
+
         app.storage.client['documents'] = doc_dict
+        app.storage.client['words'] = word_dict
 
     def setup(self):
         self.page_content.append(EditWidget())
