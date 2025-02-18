@@ -2,6 +2,23 @@
 
 ## Sentences: Prototype
 
+* Create models
+* Create adapters
+  * In Memory
+    * tests
+  * Django
+    * tests
+* Store document
+  * In Memory
+    * tests
+  * Django
+    * tests
+* Generate test data that can be loaded
+  * Script to load data
+* Update the frontend to use models
+
+---
+
 * Combining words
   * Combine words menu item needs black text
 
