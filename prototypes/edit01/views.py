@@ -82,9 +82,9 @@ class DisplayTextLabel(Label):
         # TODO: can we do a hover that shows the word?
         self.display_text = display_text_obj
         self.sentence = sentence_obj
-        self.word = display_text_obj['word']
+        self.word = display_text_obj.word
 
-        super().__init__(text=self.display_text['text'])
+        super().__init__(text=self.display_text.text)
 
     def get_marker(self):
         return str(self.word.id)
@@ -153,20 +153,20 @@ class EditArea(EditComponent):
         self.controller.set_word_status(element.word.id, status, app.storage.client)
         # TODO: we should probably re-load storage
 
-        marker = self.element.get_marker()
+        marker = element.get_marker()
         current_classes = self.get_status_classes(element.word.status)
         new_classes = self.get_status_classes(status)
         for elem in ElementFilter(marker=marker):
             elem.classes(remove='outline' + current_classes)
             elem.classes(add=new_classes)
 
+    '''
     def clear_collected_words(self):
         # TODO: this should be handled by a sentence class
         for word_label in self._collected_words:
             word_label.classes(remove='!bg-amber-400')
         self._collected_words = []
 
-    '''
     def combine_words(self):
         if not hasattr(self, '_collected_words') or not self._collected_words:
             ui.notify('No words to combine')
@@ -234,7 +234,6 @@ class EditArea(EditComponent):
                 word_label.classes(add='outline')
 
         self.clear_collected_words()
-    '''
 
     def collect_words(self, event: events.GenericEventArguments):
         element = event.sender
@@ -247,6 +246,7 @@ class EditArea(EditComponent):
         else:
             self._collected_words.append(element)
             element.classes(add='!bg-amber-400')
+    '''
 
     def display_sentence(self, sentence):
         with ui.row().classes('text-gap'):
@@ -262,7 +262,7 @@ class EditArea(EditComponent):
                     self.context_menu(dl)
 
     def show_content(self):
-        documents = self.controller.get_documents(app.storage.client)
+        documents = self.documents
         if not documents:
             ui.label('Welcome to 10,000 Words!').classes('text-2xl')
             with ui.row():
@@ -328,7 +328,7 @@ class DocumentSidebar(EditComponent):
             # TODO: we'll have to fetch full doc from server
             doc = list(filter(lambda x: x.id == doc_id, self.documents))[0]
             self.current_document = doc
-            #edit_area.refresh()
+            edit_area.refresh()
             upload_sidebar.refresh()
         return _on_click
 
@@ -384,7 +384,7 @@ class UploadForm(EditComponent):
 
         ui.notify('Document Saved')
         document_sidebar.refresh()
-        #edit_area.refresh()
+        edit_area.refresh()
         self.cancel()
 
     def hold_onto_document(self, event: events.UploadEventArguments):
@@ -484,5 +484,5 @@ class Edit01Widget(EditWidget):
     def display(self):
         with ui.row().classes('size-full flex'):
             document_sidebar()
-            #edit_area()
+            edit_area()
             upload_sidebar()
