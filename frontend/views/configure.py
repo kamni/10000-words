@@ -32,4 +32,3 @@ class ConfigureView(BaseView):
 
         self.page_content.append(ConfigureWidget())
         return True
-

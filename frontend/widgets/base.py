@@ -4,13 +4,13 @@ Affero GPL v3
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 
 from nicegui import app, ui
 
-from common.models.settings import AppSettingsUI
 from common.models.users import UserUI
 from common.stores.adapter import AdapterStore
+from frontend.controllers.settings import SettingsController
 
 
 class BaseWidget(ABC):
@@ -24,6 +24,7 @@ class BaseWidget(ABC):
 
     def __init__(self):
         self.adapters = AdapterStore()
+        self.settings_controller = SettingsController()
 
         self.set_style()
         self.set_storage()
@@ -36,18 +37,14 @@ class BaseWidget(ABC):
 
     @user.setter
     def user(self, user: UserUI):
+        # TODO: this should only be on login
+        # TODO: also fix for view
         app.storage.user.update(user.model_dump())
         app.storage.user['authenticated'] = True
 
     @property
     def settings(self):
-        settings_dict = app.storage.client.get('settings', {})
-        settings = AppSettingsUI(**settings_dict)
-        return settings
-
-    @settings.setter
-    def settings(self, settings: AppSettingsUI):
-        app.storage.client['settings'] = settings.model_dump()
+        return self.settings_controller.get()
 
     @abstractmethod
     def display(self):

@@ -3,7 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from typing import Optional
+from typing import Dict, Optional
 
 from nicegui import ui
 from nicegui.elements.label import Label
@@ -57,6 +57,14 @@ class ConfigureWidget(BaseWidget):
     Configure the global app settings
     """
 
+    @property
+    def settings(self):
+        return super().settings()
+
+    @settings.setter
+    def settings(self, settings_dict: Dict[str, bool]):
+        self.settings_controller.update(**settings_dict)
+
     def display(self):
         adapter_db = self.adapters.get('AppSettingsDBPort')
         adapter_ui = self.adapters.get('AppSettingsUIPort')
@@ -85,13 +93,11 @@ class ConfigureWidget(BaseWidget):
         )
 
         def save_settings():
-            settings = AppSettingsDB(
-                multiuser_mode=self._multiuser.value,
-                passwordless_login=self._passwordless.value,
-                show_users_on_login_screen=self._show_users.value,
-            )
-            adapter_db.create_or_update(settings)
-            self.settings = adapter_ui.get(settings)
+            self.settings = {
+                'multiuserMode': self._multiuser.value,
+                'passwordlessLogin': self._passwordless.value,
+                'showUsersOnLoginScreen': self._show_users.value,
+            }
             ui.notify('Settings Saved!')
             self.emit_done()
 

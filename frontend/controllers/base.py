@@ -1,0 +1,31 @@
+"""
+Copyright (C) J Leadbetter <j@jleadbetter.com>
+Affero GPL v3
+"""
+
+from common.stores.adapter import AdapterStore
+
+
+class BaseController:
+    """
+    Handle logic for getting/converting data betweeen the backend and frontend
+    """
+
+    def __init__(self):
+        self.adapters = AdapterStore()
+        self._backend_adapter = None
+        self._frontend_adapter = None
+
+    @property
+    def backend_adapter(self):
+        """
+        Access the primary backend adapter for a controller
+        """
+        raise NotImplementedError('BaseController.backend_adapter not implemented')
+
+    @property
+    def frontend_adapter(self):
+        """
+        Access the primary frontend adapter for a controller
+        """
+        raise NotImplementedError('BaseController.frontend_adapter not implemented')

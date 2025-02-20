@@ -5,7 +5,7 @@ Affero GPL v3
 
 from asgiref.sync import sync_to_async
 from collections.abc import Callable
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 from fastapi.responses import RedirectResponse
 from nicegui import app, ui
@@ -13,6 +13,7 @@ from nicegui import app, ui
 from common.models.settings import AppSettingsUI
 from common.models.users import UserUI
 from common.stores.adapter import AdapterStore
+from frontend.controllers.settings import SettingsController
 from frontend.widgets.header import Header
 
 
@@ -25,7 +26,7 @@ class BaseView:
 
     def __init__(self):
         self.adapters = AdapterStore()
-        self.set_store()
+        self.settings_controller = SettingsController()
 
         self.page_content = []
         self.redirect = None
@@ -33,9 +34,7 @@ class BaseView:
 
     @property
     def settings(self):
-        settings_dict = app.storage.client.get('settings', {})
-        settings = AppSettingsUI(**settings_dict)
-        return settings
+        return self.settings_controller.get()
 
     @property
     def user(self):
@@ -81,7 +80,7 @@ class BaseView:
         settings = settings_ui.get(settings_db.get())
         app.storage.client['settings'] = settings.model_dump()
 
-    def set_store(self):
+    def set_storage(self):
         """
         Set data needed by the widgets.
         This will be available to all widgets.
@@ -94,8 +93,8 @@ class BaseView:
         Redirect if setup determines user should be somewhere else.
         """
         self.set_settings()
+        self.set_storage()
         self.setup()
-        self.set_store()
         self.set_style()
 
         if self.redirect:

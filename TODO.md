@@ -1,8 +1,39 @@
 # TODOS
 
+## Categories:
+
+* finish edit01 prototype
+* finish practice01 prototype
+* refactor existing views/widgets to have controllers, not adapters
+
+---
+
+## Refactor with Controllers
+
+* StorageController
+  * tests
+* UserController
+  * tests
+
+* set_storage instead of set_store
+* don't set views/widgets adapters; save for controller
+* Tests for existing EditView
+
+---
+
+## EditO1 Prototype
+
+* Sentence widget
+  * Add a translation
+* Batch change words in a sentence
+
+
+## ObservableDict
 
 ObservableDict app.storage.client can add handlers with `on_change`
 events.handle_event(handler, events.ObservableChangeEventArguments(sender=self))
+
+Could we make documents/sentences/words observable dicts?
 
 
 ## Import steps
