@@ -4,6 +4,7 @@ Affero GPL v3
 """
 
 from pathlib import Path
+from typing import List
 
 from nicegui import ElementFilter, app, events, ui
 from nicegui.elements.label import Label
@@ -12,11 +13,15 @@ from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
 from common.models.files import BinaryFileData
 from common.stores.adapter import AdapterStore
 from common.utils.files import get_project_dir
-from common.utils.languages import language_code_choices
+from common.utils.languages import language_choices
 from frontend.views.edit import EditView
 from frontend.widgets.base import BaseWidget
 from frontend.widgets.edit import EditWidget
-from prototypes.edit01.controllers import NiceGuiDocumentController
+from prototypes.edit01.controllers import (
+    EditViewController,
+    EditComponentController,
+)
+from prototypes.edit01.models import Document, Sentence, WordStatus
 
 
 PROJECT_DIR = Path(get_project_dir())
@@ -24,11 +29,17 @@ DATA_DIR = PROJECT_DIR/ 'scripts' / 'data' / 'en'
 
 
 class Edit01View(EditView):
-    def set_storage(self):
-        controller = NiceGuiDocumentController()
-        controller.set_documents(app.storage.client)
-        controller.set_sentences(app.storage.client)
-        controller.set_words(app.storage.client)
+    @property
+    def controller(self):
+        if not hasattr(self, '_controller') or self._controller is None:
+            self._controller = EditViewController()
+        return self._controller
+
+    def set_store(self):
+        # TODO: rename to set_storage()
+        app.storage.client['documents'] = self.controller.get_documents()
+        app.storage.client['sentences'] = self.controller.get_sentences()
+        app.storage.client['words'] = self.controller.get_words()
 
     def setup(self):
         self.page_content.append(Edit01Widget())
@@ -39,36 +50,44 @@ class EditComponent(BaseWidget):
     Useful properties for all parts of the EditWidget
     """
     @property
-    def current_document(self) -> DocumentUI:
-        document_dict = app.storage.client['documents']['current_document']
-        if document_dict is not None:
-            document = DocumentUI(**document_dict)
-            return document
-        return None
-
-    @current_document.setter
-    def current_document(self, doc: DocumentUI):
-        app.storage.client['documents']['current_document'] = doc.model_dump()
+    def controller(self):
+        if not hasattr(self, '_controller') or self._controller is None:
+            self._controller = EditComponentController()
+        return self._controller
 
     @property
-    def documents(self):
-        doc_dicts = app.storage.client['documents']['all_documents']
-        docs = [DocumentUI(**doc) for doc in doc_dicts]
-        return docs
+    def current_document(self) -> Document:
+        return self.controller.get_current_document(
+            app.storage.client['documents']['current_document'],
+        )
+
+    @current_document.setter
+    def current_document(self, doc: Document):
+        app.storage.client['documents']['current_document'] = \
+                self.controller.get_current_document_dict(doc)
+
+    @property
+    def documents(self) -> List[Document]:
+        return self.controller.get_documents(
+            app.storage.client['documents']['all_documents'],
+        )
 
 
-# TODO: update when no longer prototyping
-class WordLabel(Label):
+class DisplayTextLabel(Label):
     """
-    Displays an individual word.
+    Displays an individual word's display text.
     """
 
     def __init__(self, display_text_obj, sentence_obj):
+        # TODO: can we do a hover that shows the word?
         self.display_text = display_text_obj
         self.sentence = sentence_obj
         self.word = display_text_obj['word']
 
         super().__init__(text=self.display_text['text'])
+
+    def get_marker(self):
+        return str(self.word.id)
 
 
 class EditArea(EditComponent):
@@ -82,30 +101,22 @@ class EditArea(EditComponent):
         }
     '''
 
-    # TODO: this is ugly.
-    # When we have it in a non-prototype space, fix this
-    @property
-    def WordStatus(self):
-        from scripts.prototype_deleteme import WordStatus
-        return WordStatus
-
     def get_status_classes(self, status: str):
-        # TODO: define classes globally for the widget?
-        # We can use SASS, apparently!
+        # TODO: make this SASS and add SASS to class
         return {
-            self.WordStatus.not_set: ' bg-zinc-400 text-zinc-950',
-            self.WordStatus.ignored: ' bg-zinc-50 text-zinc-950',
-            self.WordStatus.to_learn: ' bg-violet-300 text-zinc-950',
-            self.WordStatus.learning: ' bg-emerald-300 text-zinc-950',
-            self.WordStatus.learned: ' bg-zinc-50 text-zinc-950',
+            WordStatus.not_set: ' bg-zinc-400 text-zinc-950',
+            WordStatus.ignored: ' bg-zinc-50 text-zinc-950',
+            WordStatus.to_learn: ' bg-violet-300 text-zinc-950',
+            WordStatus.learning: ' bg-emerald-300 text-zinc-950',
+            WordStatus.learned: ' bg-zinc-50 text-zinc-950',
         }[status]
 
     def context_menu(self, element):
-        not_set = self.get_status_classes(self.WordStatus.not_set)
-        ignored = self.get_status_classes(self.WordStatus.ignored)
-        to_learn = self.get_status_classes(self.WordStatus.to_learn)
-        learning = self.get_status_classes(self.WordStatus.learning)
-        learned = self.get_status_classes(self.WordStatus.learned)
+        not_set = self.get_status_classes(WordStatus.not_set)
+        ignored = self.get_status_classes(WordStatus.ignored)
+        to_learn = self.get_status_classes(WordStatus.to_learn)
+        learning = self.get_status_classes(WordStatus.learning)
+        learned = self.get_status_classes(WordStatus.learned)
 
         with ui.context_menu().classes('bg-dark text-zinc-50'):
             ui.label('Set Status:').classes('p-2 text-center')
@@ -113,44 +124,49 @@ class EditArea(EditComponent):
 
             ui.menu_item(
                 'Ignored',
-                lambda: self.set_word_status(element, self.WordStatus.ignored),
+                lambda: self.set_word_status(element, WordStatus.ignored),
             ).classes(ignored)
             ui.menu_item(
                 'To Learn',
-                lambda: self.set_word_status(element, self.WordStatus.to_learn),
+                lambda: self.set_word_status(element, WordStatus.to_learn),
             ).classes(to_learn)
             ui.menu_item(
                 'Learning',
-                lambda: self.set_word_status(element, self.WordStatus.learning),
+                lambda: self.set_word_status(element, WordStatus.learning),
             ).classes(learning)
             ui.menu_item(
                 'Learned',
-                lambda: self.set_word_status(element, self.WordStatus.learned),
+                lambda: self.set_word_status(element, WordStatus.learned),
             ).classes(learned)
 
+            # TODO: handle combining
+            # TODO: add option to change base word
+            '''
             ui.separator()
             ui.label('Multi-Word Actions:').classes('p-2 text-center')
             ui.separator()
             ui.menu_item('Combine Words', self.combine_words) \
                     .classes('bg-amber-400 text-zinc=950')
+            '''
 
-    # TODO: prototype
     def set_word_status(self, element, status):
-        element.classes(remove='outline')
-        classes = self.get_status_classes(status)
-        element.classes(add=classes)
+        self.controller.set_word_status(element.word.id, status, app.storage.client)
+        # TODO: we should probably re-load storage
 
-        # TODO: we actually need to update these elements in the backend
-        for elem in ElementFilter(marker=element._markers[0]):
-            elem.classes(remove='outline')
-            elem.classes(add=classes)
+        marker = self.element.get_marker()
+        current_classes = self.get_status_classes(element.word.status)
+        new_classes = self.get_status_classes(status)
+        for elem in ElementFilter(marker=marker):
+            elem.classes(remove='outline' + current_classes)
+            elem.classes(add=new_classes)
 
     def clear_collected_words(self):
+        # TODO: this should be handled by a sentence class
         for word_label in self._collected_words:
             word_label.classes(remove='!bg-amber-400')
         self._collected_words = []
 
-    # TODO: temporary prototype
+    '''
     def combine_words(self):
         if not hasattr(self, '_collected_words') or not self._collected_words:
             ui.notify('No words to combine')
@@ -188,7 +204,7 @@ class EditArea(EditComponent):
             new_word = {
                 'id': uuid.uuid4(),
                 'case_insensitive_text': new_word_text,
-                'status': self.WordStatus.not_set,
+                'status': WordStatus.not_set,
                 'sentences': [sentence],
             }
             app.storage.client['words'][new_word['id']] = new_word
@@ -218,6 +234,7 @@ class EditArea(EditComponent):
                 word_label.classes(add='outline')
 
         self.clear_collected_words()
+    '''
 
     def collect_words(self, event: events.GenericEventArguments):
         element = event.sender
@@ -231,22 +248,22 @@ class EditArea(EditComponent):
             self._collected_words.append(element)
             element.classes(add='!bg-amber-400')
 
-    # TODO: Temporary prototype; add correct typing later
     def display_sentence(self, sentence):
-        from scripts.prototype_deleteme import WordStatus
         with ui.row().classes('text-gap'):
-            for display_text in sentence['word_display_text']:
-                with WordLabel(display_text, sentence) as wl:
-                    wl.mark(f'{wl.word['id']}')
-                    classes = self.get_status_classes(wl.word['status'])
-                    wl.classes(
+            for display_text in sentence.word_display_text:
+                with DisplayTextLabel(display_text, sentence) as dl:
+                    dl.mark(f'{dl.get_marker()}')
+                    classes = self.get_status_classes(dl.word.status)
+                    dl.classes(
                         'cursor-pointer text-lg px-2 py-2 rounded-lg' + classes
                     )
-                    wl.on('click', self.collect_words)
-                    self.context_menu(wl)
+                    # TODO: combine word changes
+                    #dl.on('click', self.collect_words)
+                    self.context_menu(dl)
 
     def show_content(self):
-        if not app.storage.client['documents']['all_documents']:
+        documents = self.controller.get_documents(app.storage.client)
+        if not documents:
             ui.label('Welcome to 10,000 Words!').classes('text-2xl')
             with ui.row():
                 ui.label('''
@@ -298,22 +315,20 @@ class DocumentSidebar(EditComponent):
 
     @property
     def documents_by_language(self):
-        doc_dicts = app.storage.client['documents']['all_documents']
         by_language = {}
-        for doc in doc_dicts:
-            doc_ui = DocumentUIMinimal(**doc)
-            if doc_ui.language in by_language:
-                by_language[doc_ui.language].append(doc_ui)
+        for doc in self.documents:
+            if doc.language in by_language:
+                by_language[doc.language].append(doc)
             else:
-                by_language[doc_ui.language] = [doc_ui]
+                by_language[doc.language] = [doc]
         return by_language
 
     def show_document(self, doc_id):
         def _on_click():
-            # TODO: we'll have to fetch full doc ffom server
+            # TODO: we'll have to fetch full doc from server
             doc = list(filter(lambda x: x.id == doc_id, self.documents))[0]
             self.current_document = doc
-            edit_area.refresh()
+            #edit_area.refresh()
             upload_sidebar.refresh()
         return _on_click
 
@@ -352,36 +367,24 @@ class UploadForm(EditComponent):
         }
     '''
 
-    def update_documents(self, document: DocumentDB):
-        adapter = self.adapters.get('DocumentUIPort')
-        doc_ui = adapter.get(document, self.user)
-        app.storage.client['documents']['all_documents'].append(
-            doc_ui.model_dump(),
-        )
-        self.current_document = doc_ui
-
     def create_document(self):
-        if not self._upload_event:
-            # TODO: add validation
-            return
-        adapter = self.adapters.get('DocumentDBPort')
-        # TODO: add validation
-        # TODO: check if document already exists and ask what to do
-        document = DocumentDB(
-            user_id=self.user.id,
-            display_name=self.document_title_input.value,
-            language_code=self.language_input.value,
-            binary_data=BinaryFileData(
+        docdb = self.controller.create_document(
+            user=self.user,
+            displayName=self.document_title_input.value,
+            language=self.language_input.value,
+            binaryData=BinaryFileData(
                 name=self._upload_event.name,
                 data=self._upload_event.content.read(),
             ),
         )
-        new_doc = adapter.create_or_update(document)
-        ui.notify('Document Saved')
+        app.storage.client['documents']['all_documents'].append(docdb.document)
+        app.storage.client['documents']['current_document'] = docdb.document
+        app.storage.client['sentences'].update(docdb.sentences)
+        app.storage.client['words'].update(docdb.words)
 
-        self.update_documents(new_doc)
+        ui.notify('Document Saved')
         document_sidebar.refresh()
-        edit_area.refresh()
+        #edit_area.refresh()
         self.cancel()
 
     def hold_onto_document(self, event: events.UploadEventArguments):
@@ -429,7 +432,7 @@ class UploadForm(EditComponent):
             self.document_title_input = ui.input('Document Title')
             self.language_input = ui.select(
                 label='Language',
-                options=language_code_choices,
+                options=language_choices,
                 with_input=True,
             )
             with ui.row():
@@ -478,17 +481,8 @@ class Edit01Widget(EditWidget):
     Allows the user to upload and manage vocabulary documents.
     """
 
-    CSS = '''
-        body {
-            background-color: var(--q-secondary) !important;
-        }
-    '''
-
     def display(self):
-        '''
         with ui.row().classes('size-full flex'):
             document_sidebar()
-            edit_area()
+            #edit_area()
             upload_sidebar()
-        '''
-        ui.label('Edit')

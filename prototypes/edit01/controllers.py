@@ -3,6 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import logging
 import re
 import string
 import sys
@@ -10,6 +11,7 @@ import uuid
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from nicegui import app
 from nicegui.observables import ObservableDict
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
@@ -31,26 +33,36 @@ from prototypes.edit01.models import (
 DATA_DIR = PROJECT_DIR / 'scripts' / 'data' / 'en'
 
 
-class NiceGuiDocumentController(metaclass=Singleton):
+class EditViewController(metaclass=Singleton):
+    """
+    Handle data manipulation for the EditView
+    """
+
     DATA = [
-        ('Little-Red-Riding-Hood.txt', 'Little Red Riding Hood'),
-        #('Rumpelstiltskin.txt', 'Rumpelstiltskin'),
-        #('The-Bremen-town-musicians.txt', 'The Bremen Town Musicians'),
+        ('Little-Red-Riding-Hood.txt', 'Little Red Riding Hood', 'English'),
+        #('Rumpelstiltskin.txt', 'Rumpelstiltskin', 'English'),
+        #('The-Bremen-town-musicians.txt', 'The Bremen Town Musicians', 'English'),
     ]
 
     def __init__(self):
+        # TODO: give everything a logger, including widgets and views
+        self.logger = logging.getLogger(__name__)
         self._datastore: List[MockDatabase] = []
 
     @property
     def datastore(self):
         if not self._datastore:
-            for file, title in self.DATA:
-                parser = DocumentParser((DATA_DIR / file).as_posix(), title)
+            for file, title, language in self.DATA:
+                parser = DocumentParser(
+                    (DATA_DIR / file).as_posix(),
+                    title,
+                    language,
+                )
                 database = parser.parse()
                 self._datastore.append(database)
         return self._datastore
 
-    def set_documents(self, client_storage: ObservableDict):
+    def get_documents(self):
         doc_dict = {
             'current_document': None,
             'all_documents': [],
@@ -58,35 +70,76 @@ class NiceGuiDocumentController(metaclass=Singleton):
         for db in self.datastore:
             doc_dict['all_documents'].append(db.document.model_dump())
 
-        client_storage['documents'] = doc_dict
+        return doc_dict
 
-    def set_sentences(self, client_storage: ObservableDict):
+    def get_sentences(self):
         sentence_dict = {}
         for db in self.datastore:
             sentences = {
-                'id': sentence_obj.model_dump()
+                str(id): sentence_obj.model_dump()
                 for id, sentence_obj in db.sentences.items()
             }
             sentence_dict.update(sentences)
 
-        client_storage['sentences'] = sentence_dict
+        return sentence_dict
 
-    def set_words(self, client_storage: ObservableDict):
+    def get_words(self):
         word_dict = {}
         for db in self.datastore:
             words = {
-                'id': word_obj.model_dump()
+                str(id): word_obj.model_dump()
                 for id, word_obj in db.words.items()
             }
             word_dict.update(words)
 
-        client_storage['words'] = word_dict
+        return word_dict
+
+
+class EditComponentController(metaclass=Singleton):
+    """
+    Handle data manipulation for the EditComponents
+    """
+
+    def create_new_document(self, **kwargs) -> Document:
+        # TODO: write to database
+        parser = DocumentParser(
+            document_path='',
+            display_name=kwargs.get('displayName'),
+            language=kwargs.get('language'),
+        )
+        data = kwargs.get('binaryData').decode('utf-8')
+        sentence_text = data.split('\n')
+        mockdb = parser.parse(sentence_text)
+        return mockdb
+
+    def get_current_document(self, doc: Dict) -> Document:
+        if doc:
+            return Document(**doc)
+        return None
+
+    def get_current_document_dict(self, doc: Document) -> Dict:
+        return doc.model_dump()
+
+    def get_documents(self, docs: List[Dict]) -> List[Document]:
+        return [Document(**doc) for doc in docs]
+
+    def set_word_status(
+        self,
+        id: uuid.UUID,
+        status: WordStatus,
+        client_storage: ObservableDict,
+    ):
+        # TODO: needs to write back to database
+        word_dict = client_storage['words'].get(str(id))
+        if word_dict:
+            word_dict['status'] = status
 
 
 class DocumentParser:
-    def __init__(self, document_path: str, display_name=str):
+    def __init__(self, document_path: str, display_name=str, language=str):
         self.document_path = document_path
         self.document_display_name = display_name
+        self.language = language
         self.database = MockDatabase()
 
     def make_document_obj(self, user=User) -> Document:
@@ -94,6 +147,7 @@ class DocumentParser:
             id=uuid.uuid4(),
             user=user,
             displayName=self.document_display_name,
+            language=self.language,
         )
         return doc
 
@@ -207,7 +261,7 @@ class DocumentParser:
         )
         return display_text
 
-    def parse(self) -> MockDatabase:
+    def parse(self, sentence_texts: Optional[List[str]]=None) -> MockDatabase:
         user = User(
             id=uuid.uuid4(),
             displayName='Dev Admin',
@@ -218,7 +272,7 @@ class DocumentParser:
         document = self.make_document_obj(user)
         self.database.document = document
 
-        sentence_texts = self.read_document()
+        sentence_texts = sentence_texts or self.read_document()
         sentences = [
             self.make_sentence_obj(text, idx + 1)
             for idx, text in enumerate(sentence_texts)
@@ -256,6 +310,6 @@ def print_document(database: MockDatabase):
 
 if __name__ == '__main__':
     document_path = PROJECT_DIR / 'scripts' / 'data' / 'en' / 'Rumpelstiltskin.txt'
-    parser = DocumentParser(document_path, 'Rumpelstiltskin')
+    parser = DocumentParser(document_path, 'Rumpelstiltskin', 'English')
     database = parser.parse()
     print_document(database)
