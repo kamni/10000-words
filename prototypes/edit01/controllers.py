@@ -4,20 +4,25 @@ Affero GPL v3
 """
 
 import re
-import uuid
 import string
 import sys
-from enum import StrEnum
+import uuid
 from pathlib import Path
 from typing import Dict, List, Optional
-
-from pydantic import BaseModel
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 if PROJECT_DIR.as_posix() not in sys.path:
     sys.path.append(PROJECT_DIR.as_posix())
 
-from prototypes.edit01.models import *
+from prototypes.edit01.models import (
+    DisplayText,
+    Document,
+    MockDatabase,
+    Sentence,
+    User,
+    Word,
+    WordStatus,
+)
 
 
 class DocumentParser:
@@ -179,3 +184,20 @@ class DocumentParser:
         document.sentences = sentences
         return self.database
 
+
+def print_document(database: MockDatabase):
+    print(database.document.displayName)
+    print('-------')
+    for sentence in database.document.sentences:
+        item = ''.join([
+            display_text.text
+            for display_text in sentence.word_display_text
+        ])
+        print(item)
+
+
+if __name__ == '__main__':
+    document_path = PROJECT_DIR / 'scripts' / 'data' / 'en' / 'Rumpelstiltskin.txt'
+    parser = DocumentParser(document_path, 'Rumpelstiltskin')
+    database = parser.parse()
+    print_document(database)

@@ -3,6 +3,13 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import uuid
+from enum import StrEnum
+from typing import Dict, List, Optional
+
+from pydantic import BaseModel
+
+
 class WordStatus(StrEnum):
     """
     Statuses for a certain word or word phrase.
