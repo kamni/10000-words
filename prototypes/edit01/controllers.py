@@ -100,17 +100,20 @@ class EditComponentController(metaclass=Singleton):
     Handle data manipulation for the EditComponents
     """
 
-    def create_new_document(self, **kwargs) -> Document:
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+
+    def create_document(self, **kwargs) -> Document:
         # TODO: write to database
         parser = DocumentParser(
             document_path='',
             display_name=kwargs.get('displayName'),
             language=kwargs.get('language'),
         )
-        data = kwargs.get('binaryData').decode('utf-8')
+        data = kwargs.get('binaryData').data.decode('utf-8')
         sentence_text = data.split('\n')
         mockdb = parser.parse(sentence_text)
-        return mockdb
+        return mockdb.model_dump()
 
     def get_current_document(self, doc: Dict) -> Document:
         if doc:

@@ -377,10 +377,10 @@ class UploadForm(EditComponent):
                 data=self._upload_event.content.read(),
             ),
         )
-        app.storage.client['documents']['all_documents'].append(docdb.document)
-        app.storage.client['documents']['current_document'] = docdb.document
-        app.storage.client['sentences'].update(docdb.sentences)
-        app.storage.client['words'].update(docdb.words)
+        app.storage.client['documents']['all_documents'].append(docdb['document'])
+        app.storage.client['documents']['current_document'] = docdb['document']
+        app.storage.client['sentences'].update(docdb['sentences'])
+        app.storage.client['words'].update(docdb['words'])
 
         ui.notify('Document Saved')
         document_sidebar.refresh()
