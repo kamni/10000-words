@@ -29,14 +29,12 @@ class SettingsController(BaseController):
         return self._frontend_adapter
 
     def get(self) -> AppSettingsUI:
-        settings_dict = app.storage.client.get('settings', AppSettingsUI)
-        if settings_dict:
-            settings = AppSettingsUI(**settings_dict)
-            return settings
-        return AppSettingsUI()
+        settings_dict = app.storage.client.get('settings', {})
+        settings = AppSettingsUI(**settings_dict)
+        return settings
 
     def set(self):
-        settings = self.frontend_adapter.get_or_default(self.backend_adapter.get())
+        settings = self.frontend_adapter.get(self.backend_adapter.get())
         app.storage.client['settings'] = settings.model_dump()
 
     def update(self, **kwargs):

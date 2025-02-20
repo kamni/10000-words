@@ -3,12 +3,16 @@
 ## Categories:
 
 * finish edit01 prototype
+  * delete scripts/prototype_deleteme.py
 * finish practice01 prototype
 * refactor existing views/widgets to have controllers, not adapters
 
 ---
 
 ## Refactor with Controllers
+
+* AppSettingsUI should have camelcase
+  * tests pass
 
 * StorageController
   * tests
