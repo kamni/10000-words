@@ -1,5 +1,17 @@
 # TODOS
 
+## Import steps
+
+1. Import a text with single lines.
+2. Add a translation of the sentence.
+3. Mark up the sentence (and mark up other sentences automatically).
+   * For individual display text, change the underlying word
+     * Bulk change...how can I make this less painful?
+4. For learning/to-learn sentences, upload example sentences.
+5. Export document as TOML
+
+* We'll worry about combo words later.
+
 ## Sentences: Prototype
 
 * Create models

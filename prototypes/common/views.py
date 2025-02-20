@@ -10,8 +10,7 @@ from nicegui import app, ui
 
 from common.models.settings import AppSettingsUI
 from common.models.users import UserUI
-from common.stores.adapter import AdapterStore
-from frontend.widgets.header import Header
+from protypes.common.widgets.header import Header
 
 
 class BaseView:
@@ -22,15 +21,13 @@ class BaseView:
     CSS = ''
 
     def __init__(self):
-        self.adapters = AdapterStore()
         self.page_content = []
         self.redirect = None
         self.next_url = None
 
     @property
     def settings(self):
-        settings_dict = app.storage.client.get('settings', {})
-        settings = AppSettingsUI(**settings_dict)
+        settings = AppSettingsUI()
         return settings
 
     @property
@@ -72,10 +69,7 @@ class BaseView:
         """
         Put the app settings in an accessible location for the widgets.
         """
-        settings_db = self.adapters.get('AppSettingsDBPort')
-        settings_ui = self.adapters.get('AppSettingsUIPort')
-        settings = settings_ui.get(settings_db.get())
-        app.storage.client['settings'] = settings.model_dump()
+        pass
 
     def set_storage(self):
         """

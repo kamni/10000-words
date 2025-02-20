@@ -15,8 +15,7 @@ class EditView(BaseView):
     Add and edit text to practice with
     """
 
-    '''
-    def set_store(self):
+    def set_storage(self):
         """
         Set data needed by the widgets.
         This will be available to all widgets.
@@ -33,47 +32,6 @@ class EditView(BaseView):
             doc_dict['all_documents'].append(doc.model_dump())
 
         app.storage.client['documents'] = doc_dict
-    '''
-
-    # Temporary for prototyping purposes
-    def set_store(self):
-        from pathlib import Path
-        from common.utils.files import get_project_dir
-        from scripts.prototype_deleteme import DocumentParser
-
-        doc_dict = {
-            'current_document': None,
-            'all_documents': [],
-        }
-        word_dict = {}
-        sentence_dict = {}
-
-        project_dir = Path(get_project_dir())
-        data_dir = project_dir / 'scripts' / 'data' / 'en'
-        for (file, title) in [
-            ('Little-Red-Riding-Hood.txt', 'Little Red Riding Hood'),
-            #('Rumpelstiltskin.txt', 'Rumpelstiltskin'),
-            #('The-Bremen-town-musicians.txt', 'The Bremen Town Musicians'),
-         ]:
-            parser = DocumentParser((data_dir / file).as_posix(), title)
-            database = parser.parse()
-            doc_dict['all_documents'].append(database.document.model_dump())
-
-            sentences = {
-                'id': sentence_obj.model_dump()
-                for id, sentence_obj in database.sentences.items()
-            }
-            sentence_dict.update(sentences)
-
-            words = {
-                'id': word_obj.model_dump()
-                for id, word_obj in database.words.items()
-            }
-            word_dict.update(words)
-
-        app.storage.client['documents'] = doc_dict
-        app.storage.client['sentences'] = sentence_dict
-        app.storage.client['words'] = word_dict
 
     def setup(self):
         self.page_content.append(EditWidget())
