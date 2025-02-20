@@ -3,6 +3,8 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+from asgiref.sync import sync_to_async
+from collections.abc import Callable
 from typing import Any, List, Optional
 
 from fastapi.responses import RedirectResponse
@@ -23,6 +25,8 @@ class BaseView:
 
     def __init__(self):
         self.adapters = AdapterStore()
+        self.set_store()
+
         self.page_content = []
         self.redirect = None
         self.next_url = None
@@ -77,7 +81,7 @@ class BaseView:
         settings = settings_ui.get(settings_db.get())
         app.storage.client['settings'] = settings.model_dump()
 
-    def set_storage(self):
+    def set_store(self):
         """
         Set data needed by the widgets.
         This will be available to all widgets.
@@ -91,7 +95,7 @@ class BaseView:
         """
         self.set_settings()
         self.setup()
-        self.set_storage()
+        self.set_store()
         self.set_style()
 
         if self.redirect:

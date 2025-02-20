@@ -15,7 +15,7 @@ class EditView(BaseView):
     Add and edit text to practice with
     """
 
-    def set_storage(self):
+    def set_store(self):
         """
         Set data needed by the widgets.
         This will be available to all widgets.

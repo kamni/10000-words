@@ -4,7 +4,7 @@ Affero GPL v3
 """
 
 import uuid
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -55,7 +55,6 @@ class DocumentUIMinimal(DocumentBase, BaseModel):
     user: UserUI
     displayName: str
     language: str
-    sentences: Optional[List[Dict]]
 
 
 class DocumentUI(DocumentBase, BaseModel):
@@ -67,5 +66,4 @@ class DocumentUI(DocumentBase, BaseModel):
     user: UserUI
     displayName: str
     language: str
-    sentences: Optional[List[Dict]]
     # TODO: rest of the model

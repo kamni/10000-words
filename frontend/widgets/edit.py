@@ -3,8 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from nicegui import ElementFilter, app, events, ui
-from nicegui.elements.label import Label
+from nicegui import app, events, ui
 
 from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
 from common.models.files import BinaryFileData
@@ -37,192 +36,10 @@ class EditComponent(BaseWidget):
         return docs
 
 
-# TODO: update when no longer prototyping
-class WordLabel(Label):
-    """
-    Displays an individual word.
-    """
-
-    def __init__(self, display_text_obj, sentence_obj):
-        self.display_text = display_text_obj
-        self.sentence = sentence_obj
-        self.word = display_text_obj['word']
-
-        super().__init__(text=self.display_text['text'])
-
-
 class EditArea(EditComponent):
     """
     Area for editing documents
     """
-
-    CSS = '''
-        .text-gap {
-            gap: 0 !important;
-        }
-    '''
-
-    # TODO: this is ugly.
-    # When we have it in a non-prototype space, fix this
-    @property
-    def WordStatus(self):
-        from scripts.prototype_deleteme import WordStatus
-        return WordStatus
-
-    def get_status_classes(self, status: str):
-        # TODO: define classes globally for the widget?
-        # We can use SASS, apparently!
-        return {
-            self.WordStatus.not_set: ' bg-zinc-400 text-zinc-950',
-            self.WordStatus.ignored: ' bg-zinc-50 text-zinc-950',
-            self.WordStatus.to_learn: ' bg-violet-300 text-zinc-950',
-            self.WordStatus.learning: ' bg-emerald-300 text-zinc-950',
-            self.WordStatus.learned: ' bg-zinc-50 text-zinc-950',
-        }[status]
-
-    def context_menu(self, element):
-        not_set = self.get_status_classes(self.WordStatus.not_set)
-        ignored = self.get_status_classes(self.WordStatus.ignored)
-        to_learn = self.get_status_classes(self.WordStatus.to_learn)
-        learning = self.get_status_classes(self.WordStatus.learning)
-        learned = self.get_status_classes(self.WordStatus.learned)
-
-        with ui.context_menu().classes('bg-dark text-zinc-50'):
-            ui.label('Set Status:').classes('p-2 text-center')
-            ui.separator()
-
-            ui.menu_item(
-                'Ignored',
-                lambda: self.set_word_status(element, self.WordStatus.ignored),
-            ).classes(ignored)
-            ui.menu_item(
-                'To Learn',
-                lambda: self.set_word_status(element, self.WordStatus.to_learn),
-            ).classes(to_learn)
-            ui.menu_item(
-                'Learning',
-                lambda: self.set_word_status(element, self.WordStatus.learning),
-            ).classes(learning)
-            ui.menu_item(
-                'Learned',
-                lambda: self.set_word_status(element, self.WordStatus.learned),
-            ).classes(learned)
-
-            ui.separator()
-            ui.label('Multi-Word Actions:').classes('p-2 text-center')
-            ui.separator()
-            ui.menu_item('Combine Words', self.combine_words) \
-                    .classes('bg-amber-400 text-zinc=950')
-
-    # TODO: prototype
-    def set_word_status(self, element, status):
-        element.classes(remove='outline')
-        classes = self.get_status_classes(status)
-        element.classes(add=classes)
-
-        # TODO: we actually need to update these elements in the backend
-        for elem in ElementFilter(marker=element._markers[0]):
-            elem.classes(remove='outline')
-            elem.classes(add=classes)
-
-    def clear_collected_words(self):
-        for word_label in self._collected_words:
-            word_label.classes(remove='!bg-amber-400')
-        self._collected_words = []
-
-    # TODO: temporary prototype
-    def combine_words(self):
-        if not hasattr(self, '_collected_words') or not self._collected_words:
-            ui.notify('No words to combine')
-            return
-
-        is_same_sentence = len(list(set([
-            word_label.sentence['id'] for word_label in self._collected_words
-        ]))) == 1
-        if not is_same_sentence:
-            ui.notify('You can only combine words in the same sentence')
-            self.clear_collected_words()
-            return
-
-        new_word_text = ' '.join([
-            word_label.display_text['text'].lower()
-            for word_label in self._collected_words
-        ])
-        sentence = self._collected_words[0].sentence
-        sentence_id = str(sentence['id'])
-            lambda x: x['case_insensitive_text'] == new_word_text,
-            app.storage.client['words'].values(),
-        ))
-        # TODO: pop up a modal to edit word, taking into account existing word,
-        # *before*  we write to either storage or backend
-        if existing_word:
-            existing_word[0]['sentences'].append(
-                app.storage.client['sentences'][sentence_id],
-            )
-            new_word = existing_word
-        else:
-            # TODO: we'll write to the database and get a UUID
-            import uuid
-            new_word = {
-                'id': uuid.uuid4(),
-                'case_insensitive_text': new_word_text,
-                'status': self.WordStatus.not_set,
-                'sentences': [sentence],
-            }
-            app.storage.client['words'][new_word['id']] = new_word
-
-        def words_are_sequential():
-            last_num_seen = None
-            for word_label in self._collected_words:
-                ordering = word_label.display_text['ordering']
-                if last_num_seen is None:
-                    last_num_seen = ordering
-                    continue
-                if (ordering - last_num_seen) != 1:
-                    return False
-            return True
-
-        self._collected_words.sort(key=lambda x: x.display_text['ordering'])
-        # TODO: remove `and False`: this is just until we implement the merge
-        if words_are_sequential() and False:
-            # TODO: combine the visual representation
-            # TODO: update the whole document?
-            pass
-        else:
-            for word_label in self._collected_words:
-                word_label.word = new_word
-                self.set_word_status(word_label, new_word['status'])
-                word_label._markers = [new_word['id']]
-                word_label.classes(add='outline')
-
-        self.clear_collected_words()
-
-    def collect_words(self, event: events.GenericEventArguments):
-        element = event.sender
-        if not hasattr(self, '_collected_words'):
-            self._collected_words = []
-
-        if element in self._collected_words:
-            self._collected_words.pop(self._collected_words.index(element))
-            element.classes(remove='!bg-amber-400')
-        else:
-            self._collected_words.append(element)
-            element.classes(add='!bg-amber-400')
-
-    # TODO: Temporary prototype; add correct typing later
-    def display_sentence(self, sentence):
-        from scripts.prototype_deleteme import WordStatus
-        with ui.row().classes('text-gap'):
-            for display_text in sentence['word_display_text']:
-                with WordLabel(display_text, sentence) as wl:
-                    wl.mark(f'{wl.word['id']}')
-                    classes = self.get_status_classes(wl.word['status'])
-                    wl.classes(
-                        'cursor-pointer text-lg px-2 py-2 rounded-lg' + classes
-                    )
-                    wl.on('click', self.collect_words)
-                    self.context_menu(wl)
-
     def show_content(self):
         if not app.storage.client['documents']['all_documents']:
             ui.label('Welcome to 10,000 Words!').classes('text-2xl')
@@ -236,8 +53,6 @@ class EditArea(EditComponent):
         document = self.current_document
         if document:
             ui.label(document.displayName).classes('text-3xl bold text-blue-950')
-            for sentence in document.sentences:
-                self.display_sentence(sentence)
         else:
             with ui.row():
                 ui.icon('arrow_back').classes('text-2xl')
