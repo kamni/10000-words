@@ -1,5 +1,10 @@
 # TODOS
 
+
+ObservableDict app.storage.client can add handlers with `on_change`
+events.handle_event(handler, events.ObservableChangeEventArguments(sender=self))
+
+
 ## Import steps
 
 1. Import a text with single lines.

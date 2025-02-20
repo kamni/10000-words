@@ -10,10 +10,13 @@ import uuid
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from nicegui.observables import ObservableDict
+
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 if PROJECT_DIR.as_posix() not in sys.path:
     sys.path.append(PROJECT_DIR.as_posix())
 
+from common.utils.singleton import Singleton
 from prototypes.edit01.models import (
     DisplayText,
     Document,
@@ -23,6 +26,61 @@ from prototypes.edit01.models import (
     Word,
     WordStatus,
 )
+
+
+DATA_DIR = PROJECT_DIR / 'scripts' / 'data' / 'en'
+
+
+class NiceGuiDocumentController(metaclass=Singleton):
+    DATA = [
+        ('Little-Red-Riding-Hood.txt', 'Little Red Riding Hood'),
+        #('Rumpelstiltskin.txt', 'Rumpelstiltskin'),
+        #('The-Bremen-town-musicians.txt', 'The Bremen Town Musicians'),
+    ]
+
+    def __init__(self):
+        self._datastore: List[MockDatabase] = []
+
+    @property
+    def datastore(self):
+        if not self._datastore:
+            for file, title in self.DATA:
+                parser = DocumentParser((DATA_DIR / file).as_posix(), title)
+                database = parser.parse()
+                self._datastore.append(database)
+        return self._datastore
+
+    def set_documents(self, client_storage: ObservableDict):
+        doc_dict = {
+            'current_document': None,
+            'all_documents': [],
+        }
+        for db in self.datastore:
+            doc_dict['all_documents'].append(db.document.model_dump())
+
+        client_storage['documents'] = doc_dict
+
+    def set_sentences(self, client_storage: ObservableDict):
+        sentence_dict = {}
+        for db in self.datastore:
+            sentences = {
+                'id': sentence_obj.model_dump()
+                for id, sentence_obj in db.sentences.items()
+            }
+            sentence_dict.update(sentences)
+
+        client_storage['sentences'] = sentence_dict
+
+    def set_words(self, client_storage: ObservableDict):
+        word_dict = {}
+        for db in self.datastore:
+            words = {
+                'id': word_obj.model_dump()
+                for id, word_obj in db.words.items()
+            }
+            word_dict.update(words)
+
+        client_storage['words'] = word_dict
 
 
 class DocumentParser:
