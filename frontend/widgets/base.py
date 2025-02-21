@@ -11,6 +11,7 @@ from nicegui import app, ui
 from common.models.users import UserUI
 from common.stores.adapter import AdapterStore
 from frontend.controllers.settings import SettingsController
+from frontend.controllers.users import UserController
 
 
 class BaseWidget(ABC):
@@ -25,22 +26,14 @@ class BaseWidget(ABC):
     def __init__(self):
         self.adapters = AdapterStore()
         self.settings_controller = SettingsController()
+        self.user_controller = UserController()
 
         self.set_style()
         self.set_storage()
 
     @property
     def user(self):
-        user_dict = app.storage.user
-        user = UserUI(**user_dict)
-        return user
-
-    @user.setter
-    def user(self, user: UserUI):
-        # TODO: this should only be on login
-        # TODO: also fix for view
-        app.storage.user.update(user.model_dump())
-        app.storage.user['authenticated'] = True
+        return self.user_controller.get()
 
     @property
     def settings(self):

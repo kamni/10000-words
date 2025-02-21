@@ -11,14 +11,18 @@
 
 ## Refactor with Controllers
 
-* AppSettingsUI should have camelcase
-  * tests pass
+* SettingsController
+  * get_db
+  * tests
 
 * UserController
   * tests
 
 * DocumentController
   * tests
+
+* AppSettingsUI should have camelcase
+  * tests pass
 
 * set_storage instead of set_store
 * don't set views/widgets adapters; save for controller

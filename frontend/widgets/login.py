@@ -28,6 +28,14 @@ class LoginWidget(BaseWidget):
     Log into the system
     """
 
+    @property
+    def user(self):
+        return self.user_controller.get()
+
+    @user.setter
+    def user(self, user):
+        self.user_controller.set(user)
+
     def display(self):
         # This shouldn't happen,
         # because this means we got here without configuring the app.

@@ -33,15 +33,21 @@ class SettingsController(BaseController):
         settings = AppSettingsUI(**settings_dict)
         return settings
 
+    def get_db(self) -> AppSettingsDB:
+        return self.backend_adapter.get_or_default()
+
     def set(self):
         settings = self.frontend_adapter.get(self.backend_adapter.get())
         app.storage.client['settings'] = settings.model_dump()
 
     def update(self, **kwargs):
         settings = AppSettingsDB(
-            multiuser_mode=kwargs.get('multiuserMode', False),
-            passwordless_login=kwargs.get('passwordlessLogin', False),
-            show_users_on_login_screen=kwargs.get('showUsersOnLoginScreen', False),
+            multiuser_mode=kwargs.get('multiuser_mode', False),
+            passwordless_login=kwargs.get('passwordless_login', False),
+            show_users_on_login_screen=kwargs.get(
+                'show_users_on_login_screen',
+                False,
+            ),
         )
         new_settings = self.frontend_adapter.get(
             self.backend_adapter.create_or_update(settings),

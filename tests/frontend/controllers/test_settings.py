@@ -89,9 +89,9 @@ class TestSettingsController(TestCase):
             mock_app.storage.client = {}
 
             self.controller.update(
-                multiuserMode=True,
-                passwordlessLogin=True,
-                showUsersOnLoginScreen=True,
+                multiuser_mode=True,
+                passwordless_login=True,
+                show_users_on_login_screen=True,
             )
             returned_dict = mock_app.storage.client['settings']
             returned_settings_db = self.backend_adapter.get()
@@ -106,9 +106,9 @@ class TestSettingsController(TestCase):
             mock_app.storage.client = {}
 
             self.controller.update(
-                multiuserMode=False,
-                passwordlessLogin=False,
-                showUsersOnLoginScreen=False,
+                multiuser_mode=False,
+                passwordless_login=False,
+                show_users_on_login_screen=False,
             )
             returned_dict = mock_app.storage.client['settings']
             returned_settings_db = self.backend_adapter.get()
