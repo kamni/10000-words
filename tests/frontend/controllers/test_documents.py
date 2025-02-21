@@ -152,11 +152,25 @@ class TestDocumentController(TestCase):
             mock_app.storage = mock.Mock()
             mock_app.storage.client = ObservableDict()
             self.controller.set(user)
+
             returned_data = mock_app.storage.client.get('documents')
             self.assertEqual(expected_data, returned_data)
 
     def test_set_no_documents(self):
-        pass
+        userdb = create_user_db()
+        user = self.userui_adapter.get(userdb)
+
+        expected_data = {
+            'current_document': None,
+            'all_documents': [],
+        }
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            self.controller.set(user)
+
+            returned_data = mock_app.storage.client.get('documents')
+            self.assertEqual(expected_data, returned_data)
 '''
     def set(self, user):
         doc_dict = {
