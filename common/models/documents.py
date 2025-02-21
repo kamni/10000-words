@@ -45,18 +45,6 @@ class DocumentDB(DocumentBase, BaseModel):
         return ['user_id', 'display_name', 'language_code']
 
 
-class DocumentUIMinimal(DocumentBase, BaseModel):
-    """
-    Bare minimum display of documents in the UI
-    Excludes Sentences and Words
-    """
-
-    id: uuid.UUID
-    user: UserUI
-    displayName: str
-    language: str
-
-
 class DocumentUI(DocumentBase, BaseModel):
     """
     Full document for display in the UI

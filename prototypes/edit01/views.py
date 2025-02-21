@@ -9,7 +9,7 @@ from typing import List
 from nicegui import ElementFilter, app, events, ui
 from nicegui.elements.label import Label
 
-from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
+from common.models.documents import DocumentDB, DocumentUI
 from common.models.files import BinaryFileData
 from common.stores.adapter import AdapterStore
 from common.utils.files import get_project_dir

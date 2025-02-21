@@ -9,7 +9,7 @@ import uuid
 from pathlib import Path
 from typing import List, Tuple
 
-from ...models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
+from ...models.documents import DocumentDB, DocumentUI
 from ...models.errors import ObjectNotFoundError
 from ...models.users import UserDB
 from ...ports.documents import DocumentDBPort

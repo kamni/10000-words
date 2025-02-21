@@ -7,7 +7,7 @@ import uuid
 from abc import ABC, abstractmethod
 from typing import List, Tuple
 
-from ..models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
+from ..models.documents import DocumentDB, DocumentUI
 from ..models.users import UserUI
 
 
@@ -75,16 +75,16 @@ class DocumentUIPort(ABC):
         pass
 
     @abstractmethod
-    def get_all_minimal(
+    def get_all(
         self,
         documents: List[DocumentDB],
         user: UserUI,
-    ) -> List[DocumentUIMinimal]:
+    ) -> List[DocumentUI]:
         """
-        Convert a list of database documents into a list of minimal UI objects.
+        Convert a list of database documents into a list of UI objects.
 
         :documents: DocumentDB instances
         :user: UserUI instances
-        :return: List of DocumentUIMinimal objects.
+        :return: List of DocumentUI objects.
         """
         pass

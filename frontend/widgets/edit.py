@@ -5,25 +5,27 @@ Affero GPL v3
 
 from nicegui import app, events, ui
 
-from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
+from common.models.documents import DocumentDB, DocumentUI
 from common.models.files import BinaryFileData
 from common.stores.adapter import AdapterStore
 from common.utils.languages import language_code_choices
 
-from .base import BaseWidget
+from frontend.controllers.documents import DocumentController
+from frontend.widgets.base import BaseWidget
 
 
 class EditComponent(BaseWidget):
     """
     Useful properties for all parts of the EditWidget
     """
+
+    def __init__(self):
+        super().__init__()
+        self.document_controller = DocumentController()
+
     @property
     def current_document(self) -> DocumentUI:
-        document_dict = app.storage.client['documents']['current_document']
-        if document_dict is not None:
-            document = DocumentUI(**document_dict)
-            return document
-        return None
+        return self.document_controller.get_current_document()
 
     @current_document.setter
     def current_document(self, doc: DocumentUI):
@@ -94,7 +96,7 @@ class DocumentSidebar(EditComponent):
         doc_dicts = app.storage.client['documents']['all_documents']
         by_language = {}
         for doc in doc_dicts:
-            doc_ui = DocumentUIMinimal(**doc)
+            doc_ui = DocumentUI(**doc)
             if doc_ui.language in by_language:
                 by_language[doc_ui.language].append(doc_ui)
             else:

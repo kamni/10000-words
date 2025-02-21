@@ -11,6 +11,9 @@
 
 ## Refactor with Controllers
 
+* Get rid of DocumentUI Minimal
+  * tests
+
 * SettingsController
   * get_db
   * tests
