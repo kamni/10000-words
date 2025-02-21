@@ -3,7 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 from nicegui import app
 
@@ -34,6 +34,12 @@ class UserController(BaseController):
             user = UserUI(**user_dict)
             return user
         return None
+
+    def get_all(self) -> List[UserUI]:
+        userdbs = self.backend_adapter.get_all()
+        if userdbs:
+            return self.frontend_adapter.get_all(userdbs)
+        return []
 
     def get_first(self) -> Optional[UserUI]:
         userdb = self.backend_adapter.get_first()
