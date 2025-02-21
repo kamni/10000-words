@@ -88,11 +88,11 @@ class TestSettingsController(TestCase):
             mock_app.storage = mock.MagicMock()
             mock_app.storage.client = {}
 
-            self.controller.update(
-                multiuser_mode=True,
-                passwordless_login=True,
-                show_users_on_login_screen=True,
-            )
+            self.controller.update({
+                'multiuser_mode': True,
+                'passwordless_login': True,
+                'show_users_on_login_screen': True,
+            })
             returned_dict = mock_app.storage.client['settings']
             returned_settings_db = self.backend_adapter.get()
 
@@ -105,11 +105,11 @@ class TestSettingsController(TestCase):
             mock_app.storage = mock.MagicMock()
             mock_app.storage.client = {}
 
-            self.controller.update(
-                multiuser_mode=False,
-                passwordless_login=False,
-                show_users_on_login_screen=False,
-            )
+            self.controller.update({
+                'multiuser_mode': False,
+                'passwordless_login': False,
+                'show_users_on_login_screen': False,
+            })
             returned_dict = mock_app.storage.client['settings']
             returned_settings_db = self.backend_adapter.get()
 

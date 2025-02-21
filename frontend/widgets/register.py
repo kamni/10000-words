@@ -111,12 +111,12 @@ class RegistrationWidget(BaseWidget):
         try:
             # First user should always be an admin
             # so we have someone to manage the system
-            self.user_controller.update(
-                display_name=self._display_name.value,
-                username=self._username.value,
-                password=self._password.value if self._password else None,
-                is_admin=not self.another_user_exists,
-            )
+            self.user_controller.update({
+                'display_name': self._display_name.value,
+                'username': self._username.value,
+                'password': self._password.value if self._password else None,
+                'is_admin': not self.another_user_exists,
+            })
         except ObjectExistsError:
             self._username.set_error(['already exists.'])
             return
