@@ -171,21 +171,19 @@ class TestDocumentController(TestCase):
 
             returned_data = mock_app.storage.client.get('documents')
             self.assertEqual(expected_data, returned_data)
-'''
-    def set(self, user):
-        doc_dict = {
-            'current_document': None,
-            'all_documents': [],
-        }
 
-        documents = self.backend_adapter.get_all(user.id)
-        for doc in self.frontend_adapter.get_all(documents, user):
-            doc_dict['all_documents'].append(doc.model_dump())
+    def test_set_current_document(self):
+        document = make_document_ui()
 
-        app.storage.client['documents'] = doc_dict
-
-    def set_current_document(self, document: DocumentUI):
-        # TODO: fetch sentence data
-        # TODO: update sentences, words
-        app.storage.client['documents']['current_document'] = document.model_dump()
-'''
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            mock_app.storage.client.update({
+                'documents': {
+                    'current_document': None,
+                    'all_documents': [],
+                },
+            })
+            self.controller.set_current_document(document)
+            returned = self.controller.get_current_document()
+            self.assertEqual(document, returned)
