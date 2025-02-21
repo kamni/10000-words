@@ -26,7 +26,6 @@ class BaseView:
     CSS = ''
 
     def __init__(self):
-        self.adapters = AdapterStore()
         self.settings_controller = SettingsController()
         self.user_controller = UserController()
 

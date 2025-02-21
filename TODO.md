@@ -17,6 +17,9 @@
 * UserController
   * tests
 
+* DocumentController
+  * tests
+
 * set_storage instead of set_store
 * don't set views/widgets adapters; save for controller
 * Tests for existing EditView
