@@ -3,13 +3,13 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import logging
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
 
 from nicegui import app, ui
 
 from common.models.users import UserUI
-from common.stores.adapter import AdapterStore
 from frontend.controllers.settings import SettingsController
 from frontend.controllers.users import UserController
 
@@ -24,9 +24,9 @@ class BaseWidget(ABC):
     CSS = ''
 
     def __init__(self):
-        self.adapters = AdapterStore()
         self.settings_controller = SettingsController()
         self.user_controller = UserController()
+        self.logger = logging.getLogger(__name__)
 
         self.set_controllers()
         self.set_style()

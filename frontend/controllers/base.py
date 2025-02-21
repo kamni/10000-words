@@ -3,6 +3,8 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import logging
+
 from common.stores.adapter import AdapterStore
 
 
@@ -13,6 +15,7 @@ class BaseController:
 
     def __init__(self):
         self.adapters = AdapterStore()
+        self.logger = logging.getLogger(__name__)
         self._backend_adapter = None
         self._frontend_adapter = None
 

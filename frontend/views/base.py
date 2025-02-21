@@ -3,6 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import logging
 from asgiref.sync import sync_to_async
 from collections.abc import Callable
 from typing import Any, Dict, List, Optional
@@ -28,6 +29,7 @@ class BaseView:
     def __init__(self):
         self.settings_controller = SettingsController()
         self.user_controller = UserController()
+        self.logger = logging.getLogger(__name__)
 
         self.page_content = []
         self.redirect = None
