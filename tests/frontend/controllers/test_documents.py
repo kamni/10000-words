@@ -1,0 +1,132 @@
+"""
+Copyright (C) J Leadbetter <j@jleadbetter.com>
+Affero GPL v3
+"""
+
+import uuid
+from pathlib import Path
+from unittest import TestCase, mock
+
+from nicegui.observables import ObservableDict
+
+from common.models.documents import DocumentDB, DocumentUI
+from common.stores.app import AppStore
+from common.utils.files import get_project_dir
+from frontend.controllers.documents import DocumentController
+from tests.utils.users import create_user_db
+
+
+DATA_DIR = Path(get_project_dir()) / 'scripts' / 'data' / 'en'
+DATA_FILE = DATA_DIR / 'Little-Red-Riding-Hood.txt'
+
+
+class TestDocumentController(TestCase):
+    """
+    Tests for frontend.controllers.document.DocumentController
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        AppStore.destroy_all()
+        super().setUpClass()
+
+    def setUp(self):
+        apps = AppStore(subsection='dev.in_memory')
+        adapters = apps.get('AdapterStore')
+        self.backend_adapter = adapters.get('DocumentDBPort')
+        self.frontend_adapter = adapters.get('DocumentUIPort')
+        self.userui_adapter = adapters.get('UserUIPort')
+        self.controller = DocumentController()
+
+    def tearDown(self):
+        AppStore.destroy_all()
+
+    def test_create(self):
+        userdb = create_user_db()
+        user = self.userui_adapter.get(userdb)
+
+        with open(DATA_FILE, 'rb') as datafile:
+            mock_upload = mock.Mock()
+            mock_upload.name = 'foo.txt'
+            mock_upload.content = datafile
+            document_dict = {
+                'user': user,
+                'display_name': 'Test Create',
+                'language': 'Spanish',
+                'upload': mock_upload,
+            }
+
+            expected_docui = DocumentUI(
+                id=uuid.uuid4(),  # Not the real UUID after creation
+                user=user,
+                displayName='Test Create',
+                language='Spanish',
+            )
+            with mock.patch('frontend.controllers.documents.app') as mock_app:
+                mock_app.storage = mock.Mock()
+                mock_app.storage.client = ObservableDict()
+                mock_app.storage.client.update({
+                    'documents': {
+                        'current_document': None,
+                        'all_documents': [],
+                    },
+                })
+                self.controller.create(document_dict)
+                returned_docui = self.controller.get_current_document()
+                for attr in ('user', 'displayName', 'language'):
+                    expected = getattr(expected_docui, attr)
+                    returned = getattr(returned_docui, attr)
+                    self.assertEqual(expected, returned)
+
+        returned_docdb = self.backend_adapter.get(returned_docui.id, user.id)
+        self.assertEqual('Test Create', returned_docdb.display_name)
+        self.assertEqual('es', returned_docdb.language_code)
+'''
+    def create(self, document_dict: Dict[str, Any]):
+        user = document_dict['user']
+        document = DocumentDB(
+            user_id=user.id,
+            display_name=document_dict['display_name'],
+            language_code=language_name_to_code[document_dict['language']],
+            binary_data=BinaryFileData(
+                name=document_dict['upload'].name,
+                data=document_dict['upload'].content.read(),
+            ),
+        )
+        new_doc = self.backend_adapter.create_or_update(document)
+
+        doc_ui = self.frontend_adapter.get(new_doc, user)
+        app.storage.client['documents']['all_documents'].append(
+            doc_ui.model_dump(),
+        )
+        self.set_current_document(doc_ui)
+
+    def get_all(self) -> List[DocumentUI]:
+        doc_dicts = app.storage.client['documents']['all_documents']
+        docs = [DocumentUI(**doc) for doc in doc_dicts]
+        return docs
+
+    def get_current_document(self) -> DocumentUI:
+        document_dict = app.storage.client['documents']['current_document']
+        if document_dict is not None:
+            document = DocumentUI(**document_dict)
+            return document
+        return None
+
+    def set(self, user):
+        doc_dict = {
+            'current_document': None,
+            'all_documents': [],
+        }
+
+        documents = self.backend_adapter.get_all(user.id)
+        for doc in self.frontend_adapter.get_all(documents, user):
+            doc_dict['all_documents'].append(doc.model_dump())
+
+        app.storage.client['documents'] = doc_dict
+
+    def set_current_document(self, document: DocumentUI):
+        # TODO: fetch sentence data
+        # TODO: update sentences, words
+        app.storage.client['documents']['current_document'] = document.model_dump()
+'''
