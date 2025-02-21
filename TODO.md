@@ -11,12 +11,6 @@
 
 ## Refactor with Controllers
 
-* Uploading a document doesn't set it
-
-* SettingsController
-  * get_db
-  * tests
-
 * UserController
   * tests
 

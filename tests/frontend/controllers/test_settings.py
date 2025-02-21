@@ -52,6 +52,17 @@ class TestSettingsController(TestCase):
 
         self.assertEqual(expected_settings_ui, returned_settings_ui)
 
+    def test_get_db(self):
+        settings_db = AppSettingsDB(passwordless_login=True)
+        expected_settings_db = self.backend_adapter.create_or_update(settings_db)
+        returned_settings_db = self.controller.get_db()
+        self.assertEqual(expected_settings_db, returned_settings_db)
+
+    def test_get_db_settings_not_created_yet(self):
+        expected_settings_db = AppSettingsDB()
+        returned_settings_db = self.controller.get_db()
+        self.assertEqual(expected_settings_db, returned_settings_db)
+
     def test_set(self):
         settings_db = AppSettingsDB(multiuser_mode=True)
         new_settings_db = self.backend_adapter.create_or_update(settings_db)
