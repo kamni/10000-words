@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import toml
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 if PROJECT_DIR.as_posix() not in sys.path:
@@ -24,10 +24,10 @@ DATA_DIR = Path(__file__).resolve().parent / 'data'
 
 
 class Document(BaseModel):
-    display_name: str
+    display_name: Optional[str] = None
     author: Optional[str] = None
     language_code: Optional[LanguageCode] = 'en'
-    sentences: Optional[List['Sentence']] = []
+    #sentences: Optional[List['Sentence']] = []
 
 
 class TOMLCreator:
@@ -51,7 +51,7 @@ class TOMLCreator:
         # Input file setup
         with input_file.open('r') as infile:
             lines = infile.readlines()
-        attributes = self._get_attributes(lines)
+        attributes = self._get_attributes(lines, input_file)
         text = self._get_text(lines)
 
         # Output file setup
@@ -60,18 +60,21 @@ class TOMLCreator:
         with output_file.open('r') as outfile:
             existing_toml = toml.load(outfile)
 
-        '''
-        # These will be redone each time the script is run.
-        self._setup_toml_dict(existing_toml)
-        self._set_title(attributes, existing_toml)
-        self._set_author(attributes, existing_toml)
-        self._set_language(attributes, existing_toml)
+        document = Document()
+        if 'document' in existing_toml:
+            try:
+                document = Document.model_validate(existing_toml)
+            except ValidationError:
+                pass
 
-        # This will try to respect existing sentences
+        # These will be overwritten each time the script is run.
+        self._set_document_attrs(document, attributes)
+
+        # This will try to respect existing sentences,
+        # but will overwrite if they differ.
         self._set_sentences(text, existing_toml)
-        '''
 
-        print(existing_toml)
+        print(document)
         print(text)
         print(attributes)
 
@@ -81,8 +84,11 @@ class TOMLCreator:
         output_file = Path(input_path).resolve() / f'{base_name}.toml'
         return output_file
 
-    def _get_attributes(self, input_lines: List[str]) -> Dict[str, str]:
-        attrs = {}
+    def _get_attributes(
+            self, input_lines: List[str], file_path: Path,
+        ) -> Dict[str, str]:
+        filename = file_path.as_posix().rsplit(os.sep, 1)[1]
+        attrs = {'filename': filename}
         for line in input_lines:
             line = line.strip()
             if not line.startswith(':'):
@@ -99,20 +105,16 @@ class TOMLCreator:
             text.append(line)
         return text
 
-    def _setup_toml_dict(self, toml: Dict[str, Any]):
-        if 'document' not in toml:
-            toml['document'] = {}
-        if 'sentences' not in toml['document']:
-            toml['document']['sentences'] = []
-
-    def _set_title(self, title: str, toml: Dict[str, Any]):
-        toml['document']['display_name'] = title
-
-    def _set_author(self, author: str, toml: Dict[str, Any]):
-        toml['document']['author'] = author
-
-    def _set_language(self, language: str, toml: Dict[str, Any]):
-        toml['document']['language_code'] = language_name_to_code[language]
+    def _set_document_attrs(self, doc: Document, attrs: Dict[str, str]):
+        doc.display_name = attrs.get('title', attrs.get('filename'))
+        doc.author = attrs.get('author')
+        language = attrs.get('language')
+        if language:
+            try:
+                doc.language_code = language_name_to_code[language]
+            except KeyError:
+                pass
+        return doc
 
     def _set_sentences(self, sentences: List[str], toml: Dict[str, Any]):
         pass
