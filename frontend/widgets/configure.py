@@ -63,7 +63,7 @@ class ConfigureWidget(BaseWidget):
 
     @settings.setter
     def settings(self, settings_dict: Dict[str, bool]):
-        self.settings_controller.update(**settings_dict)
+        self.settings_controller.update(settings_dict)
 
     def display(self):
         is_configured = self.settings.is_configured

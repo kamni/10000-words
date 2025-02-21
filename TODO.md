@@ -11,8 +11,7 @@
 
 ## Refactor with Controllers
 
-* Get rid of DocumentUI Minimal
-  * tests
+* Update functions should take dicts
 
 * SettingsController
   * get_db

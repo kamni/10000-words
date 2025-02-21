@@ -31,3 +31,11 @@ language_choices = {
     data['Subtag'] != 'mro'  # Disallowed key in Python Enum
 }
 
+
+# ISO 639 language names to language code mapping
+language_name_to_code = {
+    data['Description'][0]: data['Subtag'][0]
+    for data in parse_registry()
+    if data['Type'] == 'language' and
+    data['Subtag'] != 'mro'  # Disallowed key in Python Enum
+}

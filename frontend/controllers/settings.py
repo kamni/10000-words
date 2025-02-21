@@ -40,11 +40,11 @@ class SettingsController(BaseController):
         settings = self.frontend_adapter.get(self.backend_adapter.get())
         app.storage.client['settings'] = settings.model_dump()
 
-    def update(self, **kwargs):
+    def update(self, settings_dict: Dict[str, bool]):
         settings = AppSettingsDB(
-            multiuser_mode=kwargs.get('multiuser_mode', False),
-            passwordless_login=kwargs.get('passwordless_login', False),
-            show_users_on_login_screen=kwargs.get(
+            multiuser_mode=settings_dict.get('multiuser_mode', False),
+            passwordless_login=settings_dict.get('passwordless_login', False),
+            show_users_on_login_screen=settings_dict.get(
                 'show_users_on_login_screen',
                 False,
             ),

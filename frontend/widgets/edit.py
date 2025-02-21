@@ -6,9 +6,8 @@ Affero GPL v3
 from nicegui import app, events, ui
 
 from common.models.documents import DocumentDB, DocumentUI
-from common.models.files import BinaryFileData
 from common.stores.adapter import AdapterStore
-from common.utils.languages import language_code_choices
+from common.utils.languages import language_choices
 
 from frontend.controllers.documents import DocumentController
 from frontend.widgets.base import BaseWidget
@@ -25,7 +24,7 @@ class EditComponent(BaseWidget):
 
     @current_document.setter
     def current_document(self, doc: DocumentUI):
-        self.document_controller.update_current_document(doc)
+        self.document_controller.set_current_document(doc)
 
     @property
     def documents(self):
@@ -90,14 +89,13 @@ class DocumentSidebar(EditComponent):
 
     @property
     def documents_by_language(self):
-        doc_dicts = app.storage.client['documents']['all_documents']
+        all_docs = self.document_controller.get_all()
         by_language = {}
-        for doc in doc_dicts:
-            doc_ui = DocumentUI(**doc)
-            if doc_ui.language in by_language:
-                by_language[doc_ui.language].append(doc_ui)
+        for doc in all_docs:
+            if doc.language in by_language:
+                by_language[doc.language].append(doc_ui)
             else:
-                by_language[doc_ui.language] = [doc_ui]
+                by_language[doc.language] = [doc_ui]
         return by_language
 
     def show_document(self, doc_id):
@@ -144,45 +142,6 @@ class UploadForm(EditComponent):
         }
     '''
 
-    def update_documents(self, document: DocumentDB):
-        adapter = self.adapters.get('DocumentUIPort')
-        doc_ui = adapter.get(document, self.user)
-        app.storage.client['documents']['all_documents'].append(
-            doc_ui.model_dump(),
-        )
-        self.current_document = doc_ui
-
-    def create_document(self):
-        if not self._upload_event:
-            # TODO: add validation
-            return
-        adapter = self.adapters.get('DocumentDBPort')
-        # TODO: add validation
-        # TODO: check if document already exists and ask what to do
-        document = DocumentDB(
-            user_id=self.user.id,
-            display_name=self.document_title_input.value,
-            language_code=self.language_input.value,
-            binary_data=BinaryFileData(
-                name=self._upload_event.name,
-                data=self._upload_event.content.read(),
-            ),
-        )
-        new_doc = adapter.create_or_update(document)
-        ui.notify('Document Saved')
-
-        self.update_documents(new_doc)
-        document_sidebar.refresh()
-        edit_area.refresh()
-        self.cancel()
-
-    def hold_onto_document(self, event: events.UploadEventArguments):
-        """
-        Hold on to the event that just marked the file upload.
-        We still need to save the rest of the form.
-        """
-        self._upload_event = event
-
     def cancel(self):
         """
         Cancel the user form
@@ -221,7 +180,7 @@ class UploadForm(EditComponent):
             self.document_title_input = ui.input('Document Title')
             self.language_input = ui.select(
                 label='Language',
-                options=language_code_choices,
+                options=language_choices,
                 with_input=True,
             )
             with ui.row():
@@ -229,7 +188,7 @@ class UploadForm(EditComponent):
                         .classes('bold text-blue-950')
                 ui.icon('arrow_downward').classes('bold text-lg text-blue-950')
             self.upload = ui.upload(
-                on_upload=self.hold_onto_document,
+                on_upload=self._hold_onto_document,
                 on_rejected=lambda: ui.notify('File too large (max 1MB)'),
                 max_file_size=1_000_000,
             ).props('accept=.txt')
@@ -238,7 +197,31 @@ class UploadForm(EditComponent):
             with ui.row().classes('w-full'):
                 ui.button('Cancel', on_click=self.cancel).classes('bg-warning')
                 ui.space()
-                ui.button('Save', on_click=self.create_document)
+                ui.button('Save', on_click=self._create_document)
+
+    def _create_document(self):
+        if not self._upload_event:
+            # TODO: add validation
+            return
+
+        self.document_controller.create_document({
+            'user': self.user,
+            'display_name': self.document_title_input.value,
+            'language': self.language_input.value,
+            'upload': self._upload_event,
+        })
+        ui.notify('Document Saved')
+
+        document_sidebar.refresh()
+        edit_area.refresh()
+        self.cancel()
+
+    def _hold_onto_document(self, event: events.UploadEventArguments):
+        """
+        Hold on to the event that just marked the file upload.
+        We still need to save the rest of the form.
+        """
+        self._upload_event = event
 
 
 class UploadSidebar(EditComponent):

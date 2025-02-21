@@ -55,11 +55,11 @@ class UserController(BaseController):
             user.authenticated = True
         app.storage.user.update(user.model_dump())
 
-    def update(self, **kwargs):
+    def update(self, user_dict: Dict[str, Any]):
         user = UserDB(
-            display_name=kwargs.get('display_name'),
-            username=kwargs.get('username'),
-            password=kwargs.get('password'),
-            is_admin=kwargs.get('is_admin'),
+            display_name=user_dict.get('display_name'),
+            username=user_dict.get('username'),
+            password=user_dict.get('password'),
+            is_admin=user_dict.get('is_admin'),
         )
         self.backend_adapter.create(user)
