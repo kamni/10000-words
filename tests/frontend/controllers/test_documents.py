@@ -99,13 +99,45 @@ class TestDocumentController(TestCase):
             self.assertEqual(expected_docsui, returned_docsui)
 
     def test_get_all_no_documents(self):
-        pass
-'''
-    def get_all(self) -> List[DocumentUI]:
-        doc_dicts = app.storage.client['documents']['all_documents']
-        docs = [DocumentUI(**doc) for doc in doc_dicts]
-        return docs
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            mock_app.storage.client.update({
+                'documents': {
+                    'current_document': None,
+                    'all_documents': [],
+                },
+            })
+            returned_docsui = self.controller.get_all()
+            self.assertEqual([], returned_docsui)
 
+    def test_get_current_document(self):
+        expected_docui = make_document_ui()
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            mock_app.storage.client.update({
+                'documents': {
+                    'current_document': expected_docui.model_dump(),
+                    'all_documents': [expected_docui.model_dump()],
+                },
+            })
+            returned_docui = self.controller.get_current_document()
+            self.assertEqual(expected_docui, returned_docui)
+
+    def test_get_current_document_no_document(self):
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            mock_app.storage.client.update({
+                'documents': {
+                    'current_document': None,
+                    'all_documents': [],
+                },
+            })
+            returned_docui = self.controller.get_current_document()
+            self.assertIsNone(returned_docui)
+'''
     def get_current_document(self) -> DocumentUI:
         document_dict = app.storage.client['documents']['current_document']
         if document_dict is not None:
