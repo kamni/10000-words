@@ -6,6 +6,8 @@ Affero GPL v3
 import uuid
 from unittest import TestCase, mock
 
+from nicegui.observables import ObservableDict
+
 from common.models.users import UserDB, UserUI
 from common.stores.app import AppStore
 from frontend.controllers.users import UserController
@@ -67,14 +69,28 @@ class TestUserController(TestCase):
         self.assertEqual(expected_user, returned_user)
 
     def test_get_first_no_users(self):
-        pass
-'''
-    def get_first(self) -> Optional[UserUI]:
-        userdb = self.backend_adapter.get_first()
-        if userdb:
-            return self.frontend_adapter.get(userdb)
-        return None
+        returned_user = self.controller.get_first()
+        self.assertIsNone(returned_user)
 
+    def test_reset(self):
+        user = make_user_ui(id=uuid.uuid4())
+        with mock.patch('frontend.controllers.users.app') as mock_app:
+            mock_app.storage = mock.MagicMock()
+            mock_app.storage.user = ObservableDict()
+            mock_app.storage.user.update(user.model_dump())
+            self.assertEqual(user, self.controller.get())
+
+            self.controller.reset()
+            self.assertIsNone(self.controller.get())
+
+    def test_reset_no_user(self):
+        with mock.patch('frontend.controllers.users.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.user = ObservableDict()
+
+            self.controller.reset()
+            self.assertIsNone(self.controller.get())
+'''
     def reset(self):
         app.storage.user.clear()
 
