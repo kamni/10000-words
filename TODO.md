@@ -1,23 +1,18 @@
 # TODOS
 
-## Categories:
+## Unfinished:
 
-* refactor existing views/widgets to have controllers, not adapters
 * finish edit01 prototype
   * delete scripts/prototype_deleteme.py
 * finish practice01 prototype
+* Add validation to EditView upload
+  * tests
 
 ---
 
 ## Refactor with Controllers
 
-* DocumentController
-  * tests
-
 * Tests for existing EditView
-
-* AppSettingsUI should have camelcase
-  * tests pass
 
 * We have logging on everything?
 
