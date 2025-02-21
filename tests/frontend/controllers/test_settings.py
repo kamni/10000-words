@@ -5,6 +5,8 @@ Affero GPL v3
 
 from unittest import TestCase, mock
 
+from nicegui.observables import ObservableDict
+
 from common.models.settings import AppSettingsDB, AppSettingsUI
 from common.stores.app import AppStore
 from frontend.controllers.settings import SettingsController
@@ -35,7 +37,7 @@ class TestSettingsController(TestCase):
 
         expected_settings_ui = self.frontend_adapter.get(settings_db)
         with mock.patch('frontend.controllers.settings.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
+            mock_app.storage = mock.Mock()
             mock_app.storage.client = {
                 'settings': expected_settings_ui.model_dump(),
             }
@@ -46,8 +48,8 @@ class TestSettingsController(TestCase):
     def test_get_settings_not_created_yet(self):
         expected_settings_ui = AppSettingsUI()
         with mock.patch('frontend.controllers.settings.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
-            mock_app.storage.client = {}
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
             returned_settings_ui = self.controller.get()
 
         self.assertEqual(expected_settings_ui, returned_settings_ui)
@@ -69,8 +71,8 @@ class TestSettingsController(TestCase):
 
         expected_dict = self.frontend_adapter.get(new_settings_db).model_dump()
         with mock.patch('frontend.controllers.settings.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
-            mock_app.storage.client = {}
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
 
             self.controller.set()
             returned_dict = mock_app.storage.client['settings']
@@ -80,8 +82,8 @@ class TestSettingsController(TestCase):
     def test_set_settings_not_created_yet(self):
         expected_dict = AppSettingsUI().model_dump()
         with mock.patch('frontend.controllers.settings.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
-            mock_app.storage.client = {}
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
 
             self.controller.set()
             returned_dict = mock_app.storage.client['settings']
@@ -96,8 +98,8 @@ class TestSettingsController(TestCase):
         )
         expected_dict = self.frontend_adapter.get(expected_settings_db).model_dump()
         with mock.patch('frontend.controllers.settings.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
-            mock_app.storage.client = {}
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
 
             self.controller.update({
                 'multiuser_mode': True,
@@ -113,8 +115,8 @@ class TestSettingsController(TestCase):
         expected_settings_db = AppSettingsDB()
         expected_dict = self.frontend_adapter.get(expected_settings_db).model_dump()
         with mock.patch('frontend.controllers.settings.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
-            mock_app.storage.client = {}
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
 
             self.controller.update({
                 'multiuser_mode': False,

@@ -35,9 +35,9 @@ class TestUserController(TestCase):
         AppStore.destroy_all()
 
     def test_get(self):
-        expected_user = make_user_ui(id=uuid.uuid4(), authenticated=True)
+        expected_user = make_user_ui(authenticated=True)
         with mock.patch('frontend.controllers.users.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
+            mock_app.storage = mock.Mock()
             mock_app.storage.user = expected_user.model_dump()
             returned_user = self.controller.get()
 
@@ -45,8 +45,8 @@ class TestUserController(TestCase):
 
     def test_get_user_not_set(self):
         with mock.patch('frontend.controllers.users.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
-            mock_app.storage.user = {}
+            mock_app.storage = mock.Mock()
+            mock_app.storage.user = ObservableDict()
             returned_user = self.controller.get()
 
         self.assertIsNone(returned_user)
@@ -73,9 +73,9 @@ class TestUserController(TestCase):
         self.assertIsNone(returned_user)
 
     def test_reset(self):
-        user = make_user_ui(id=uuid.uuid4())
+        user = make_user_ui()
         with mock.patch('frontend.controllers.users.app') as mock_app:
-            mock_app.storage = mock.MagicMock()
+            mock_app.storage = mock.Mock()
             mock_app.storage.user = ObservableDict()
             mock_app.storage.user.update(user.model_dump())
             self.assertEqual(user, self.controller.get())
@@ -90,10 +90,31 @@ class TestUserController(TestCase):
 
             self.controller.reset()
             self.assertIsNone(self.controller.get())
-'''
-    def reset(self):
-        app.storage.user.clear()
 
+    def test_set(self):
+        expected_user = make_user_ui(authenticated=True)
+        with mock.patch('frontend.controllers.users.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.user = ObservableDict()
+
+            self.controller.set(expected_user)
+            returned_user = self.controller.get()
+
+        self.assertEqual(expected_user, returned_user)
+
+    def test_set_updates_authenticated(self):
+        user = make_user_ui(authenticated=False)
+        with mock.patch('frontend.controllers.users.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.user = ObservableDict()
+
+            self.controller.set(user)
+            returned_user = self.controller.get()
+
+        expected_user = UserUI(**user.model_dump())
+        expected_user.authenticated = True
+        self.assertEqual(expected_user, returned_user)
+'''
     def set(self, user: UserUI):
         if not user.authenticated:
             user.authenticated = True
