@@ -19,10 +19,6 @@ class EditComponent(BaseWidget):
     Useful properties for all parts of the EditWidget
     """
 
-    def __init__(self):
-        super().__init__()
-        self.document_controller = DocumentController()
-
     @property
     def current_document(self) -> DocumentUI:
         return self.document_controller.get_current_document()
@@ -34,6 +30,9 @@ class EditComponent(BaseWidget):
     @property
     def documents(self):
         return self.document_controller.get_all()
+
+    def set_controllers(self):
+        self.document_controller = DocumentController()
 
 
 class EditArea(EditComponent):

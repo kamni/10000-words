@@ -41,6 +41,9 @@ class UserController(BaseController):
             return self.frontend_adapter.get(userdb)
         return None
 
+    def reset(self):
+        app.storage.user.clear()
+
     def set(self, user: UserUI):
         if not user.authenticated:
             user.authenticated = True

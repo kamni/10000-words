@@ -28,6 +28,7 @@ class BaseWidget(ABC):
         self.settings_controller = SettingsController()
         self.user_controller = UserController()
 
+        self.set_controllers()
         self.set_style()
         self.set_storage()
 
@@ -49,6 +50,12 @@ class BaseWidget(ABC):
     def get_storage(self):
         """
         Returns data from the widget's storage.
+        """
+        pass
+
+    def set_controllers(self):
+        """
+        Set up controllers used by the widget.
         """
         pass
 

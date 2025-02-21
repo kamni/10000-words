@@ -53,15 +53,11 @@ class Header(BaseWidget):
     """
 
     def display(self):
-        def logout() -> None:
-            app.storage.user.clear()
-            ui.navigate.to('/')
-
-        user = app.storage.user
-        user_authenticated = user.get('authenticated', False)
+        user = self.user
+        user_authenticated = user and user.authenticated
         app_is_configured = self.settings.is_configured
         show_logout = self.settings.show_logout and user_authenticated
-        show_settings = user.get('isAdmin', False)
+        show_settings = user and user.isAdmin
 
         with ui.header():
             ui.label('💬').classes('text-2xl')
@@ -75,10 +71,10 @@ class Header(BaseWidget):
                     with ui.button(
                         on_click=lambda: right_drawer.toggle(),
                     ).mark('header-user-menu').props('flat color=white'):
-                        ui.label(user['displayName']).classes('text-xl pr-3')
+                        ui.label(user.displayName).classes('text-xl pr-3')
                         ui.icon('account_circle').classes('text-xl pl-2')
                 else:
-                    ui.label(user['displayName']).mark('header-username') \
+                    ui.label(user.displayName).mark('header-username') \
                             .classes('text-2xl')
 
         if show_logout or show_settings:
@@ -96,4 +92,8 @@ class Header(BaseWidget):
                         ui.separator()
 
                 if show_logout:
-                    MenuButton('Logout', 'logout', logout).display()
+                    MenuButton('Logout', 'logout', self._logout).display()
+
+    def _logout(self):
+        self.user_controller.reset()
+        ui.navigate.to('/')
