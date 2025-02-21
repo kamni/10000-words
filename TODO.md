@@ -2,28 +2,24 @@
 
 ## Categories:
 
+* refactor existing views/widgets to have controllers, not adapters
 * finish edit01 prototype
   * delete scripts/prototype_deleteme.py
 * finish practice01 prototype
-* refactor existing views/widgets to have controllers, not adapters
 
 ---
 
 ## Refactor with Controllers
 
-* UserController
-  * tests
-
 * DocumentController
   * tests
+
+* Tests for existing EditView
 
 * AppSettingsUI should have camelcase
   * tests pass
 
-* set_storage instead of set_store
-* don't set views/widgets adapters; save for controller
-* Tests for existing EditView
-* We have logging
+* We have logging on everything?
 
 ---
 
