@@ -54,7 +54,7 @@ class Sentence(BaseModel):
     # Don't forget user_id in real version
     document_id: uuid.UUID
     ordering: int
-    display_text: str
+    text: str
     # We'll add these later...
     # translations: Optional[List[Sentence]] = []
     word_display_text: Optional[List['DisplayText']] = []

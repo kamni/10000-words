@@ -255,6 +255,8 @@ class DocumentParser:
         document.sentences = sentences
         return self.database
 
+
+# This is potentially a util that can be used in more than one place
 def tokenize_sentence(sentence: Sentence) -> List[str]:
     tokens = []
 
@@ -265,7 +267,7 @@ def tokenize_sentence(sentence: Sentence) -> List[str]:
             else:
                 tokens.append(punctuation)
 
-    sentence_bits = sentence.display_text.split(' ')
+    sentence_bits = sentence.text.split(' ')
     for item in sentence_bits:
         item = item.strip()
         if not item:

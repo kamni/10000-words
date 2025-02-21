@@ -3,6 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import uuid
 from enum import StrEnum
 from typing import Any, List, Optional
 
@@ -12,6 +13,7 @@ from common.utils.languages import LanguageCode
 
 
 class Document(BaseModel):
+    id: Optional[uuid.UUID] = None
     display_name: Optional[str] = None
     author: Optional[str] = None
     language_code: Optional[LanguageCode] = None
@@ -22,6 +24,9 @@ class Document(BaseModel):
 
 
 class Sentence(BaseModel):
+    id: Optional[uuid.UUID] = None
+    document_id: Optional[uuid.UUID] = None
+    translation_id: Optional[uuid.UUID] = None
     text: str
     language_code: Optional[LanguageCode] = None
     ordering: Optional[int]
@@ -31,10 +36,12 @@ class Sentence(BaseModel):
 
     class Config:
         use_enum_values = True
+        exclude = {'display_text', 'translations'}
 
 
 class DisplayText(BaseModel):
-    sentence_ordering: int
+    id: Optional[uuid.UUID] = None
+    sentence_id: Optional[uuid.UUID] = None
     ordering: int
     text: str
     language_code: Optional[LanguageCode] = None
@@ -69,8 +76,9 @@ class WordStatus(StrEnum):
 
 
 class Word(BaseModel):
-    sentence_ordering: int
-    display_text_ordering: int
+    id: Optional[uuid.UUID] = None
+    display_text_ids: Optional[List[uuid.UUID]] = None
+    sentence_ids: Optional[List[uuid.UUID]] = []
     text: str
     language_code: Optional[LanguageCode] = None
     status: Optional[WordStatus] = 'not_set'
@@ -78,3 +86,10 @@ class Word(BaseModel):
 
     class Config:
         use_enum_values = True
+
+
+class MockDatabase(BaseModel):
+    documents: Optional[Dict[uuid.UUID, Document]] = {}
+    sentences: Optional[Dict[uuid.UUID, Sentence]] = {}
+    display_text: Optional[Dict[uuid.UUID, DisplayText]] = {}
+    words: Optional[Dict[uuid.UUID, Word]] = {}
