@@ -54,3 +54,12 @@ class UserController(BaseController):
         if not user.authenticated:
             user.authenticated = True
         app.storage.user.update(user.model_dump())
+
+    def update(self, **kwargs):
+        user = UserDB(
+            display_name=kwargs.get('display_name'),
+            username=kwargs.get('username'),
+            password=kwargs.get('password'),
+            is_admin=kwargs.get('is_admin'),
+        )
+        self.backend_adapter.create(user)
