@@ -11,7 +11,7 @@ from nicegui.observables import ObservableDict
 from common.models.users import UserDB, UserUI
 from common.stores.app import AppStore
 from frontend.controllers.users import UserController
-from tests.utils.users import create_user_db, make_user_ui
+from tests.utils.users import create_user_db, make_user_db, make_user_ui
 
 
 class TestUserController(TestCase):
@@ -114,18 +114,13 @@ class TestUserController(TestCase):
         expected_user = UserUI(**user.model_dump())
         expected_user.authenticated = True
         self.assertEqual(expected_user, returned_user)
-'''
-    def set(self, user: UserUI):
-        if not user.authenticated:
-            user.authenticated = True
-        app.storage.user.update(user.model_dump())
 
-    def update(self, user_dict: Dict[str, Any]):
-        user = UserDB(
-            display_name=user_dict.get('display_name'),
-            username=user_dict.get('username'),
-            password=user_dict.get('password'),
-            is_admin=user_dict.get('is_admin'),
-        )
-        self.backend_adapter.create(user)
-'''
+    def test_update(self):
+        user_dict = make_user_db().model_dump()
+        self.controller.update(user_dict)
+        returned_user = self.backend_adapter.get_by_username(user_dict['username'])
+        for key in user_dict:
+            # Id is set during creation, so we won't match.
+            # Password is never returned.
+            if key not in ('id', 'password'):
+                self.assertEqual(user_dict[key], getattr(returned_user, key))
