@@ -29,13 +29,11 @@ class EditComponent(BaseWidget):
 
     @current_document.setter
     def current_document(self, doc: DocumentUI):
-        app.storage.client['documents']['current_document'] = doc.model_dump()
+        self.document_controller.update_current_document(doc)
 
     @property
     def documents(self):
-        doc_dicts = app.storage.client['documents']['all_documents']
-        docs = [DocumentUI(**doc) for doc in doc_dicts]
-        return docs
+        return self.document_controller.get_all()
 
 
 class EditArea(EditComponent):
@@ -43,7 +41,7 @@ class EditArea(EditComponent):
     Area for editing documents
     """
     def show_content(self):
-        if not app.storage.client['documents']['all_documents']:
+        if not self.documents:
             ui.label('Welcome to 10,000 Words!').classes('text-2xl')
             with ui.row():
                 ui.label('''

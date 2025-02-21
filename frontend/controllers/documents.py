@@ -27,6 +27,11 @@ class DocumentController(BaseController):
             self._frontend_adapter = self.adapters.get('DocumentUIPort')
         return self._frontend_adapter
 
+    def get_all(self):
+        doc_dicts = app.storage.client['documents']['all_documents']
+        docs = [DocumentUI(**doc) for doc in doc_dicts]
+        return docs
+
     def get_current_document(self):
         document_dict = app.storage.client['documents']['current_document']
         if document_dict is not None:
@@ -45,3 +50,7 @@ class DocumentController(BaseController):
             doc_dict['all_documents'].append(doc.model_dump())
 
         app.storage.client['documents'] = doc_dict
+
+    def update_current_document(self, document: DocumentUI):
+        app.storage.client['documents']['current_document'] = document.model_dump()
+
