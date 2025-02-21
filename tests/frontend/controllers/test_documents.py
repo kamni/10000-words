@@ -13,7 +13,7 @@ from common.models.documents import DocumentDB, DocumentUI
 from common.stores.app import AppStore
 from common.utils.files import get_project_dir
 from frontend.controllers.documents import DocumentController
-from tests.utils.documents import make_document_ui
+from tests.utils.documents import create_document_db, make_document_ui
 from tests.utils.users import create_user_db, make_user_ui
 
 
@@ -137,14 +137,27 @@ class TestDocumentController(TestCase):
             })
             returned_docui = self.controller.get_current_document()
             self.assertIsNone(returned_docui)
-'''
-    def get_current_document(self) -> DocumentUI:
-        document_dict = app.storage.client['documents']['current_document']
-        if document_dict is not None:
-            document = DocumentUI(**document_dict)
-            return document
-        return None
 
+    def test_set(self):
+        userdb = create_user_db()
+        user = self.userui_adapter.get(userdb)
+        docdbs = [create_document_db(user_id=userdb.id) for i in range(3)]
+        docs = self.frontend_adapter.get_all(docdbs, user)
+
+        expected_data = {
+            'current_document': None,
+            'all_documents': [doc.model_dump() for doc in docs],
+        }
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            self.controller.set(user)
+            returned_data = mock_app.storage.client.get('documents')
+            self.assertEqual(expected_data, returned_data)
+
+    def test_set_no_documents(self):
+        pass
+'''
     def set(self, user):
         doc_dict = {
             'current_document': None,
