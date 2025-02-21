@@ -23,31 +23,34 @@ class LoginView(BaseView):
             next_url = '/edit'
         return next_url
 
+    @property
+    def user(self):
+        return self.user_controller.get()
+
+    @user.setter
+    def user(self, user):
+        self.user_controller.set(user)
+
     def setup(self):
         if not self.settings.is_configured:
             self.redirect = '/configure'
             return False
 
-        userdb_adapter = self.adapters.get('UserDBPort')
-        userui_adapter = self.adapters.get('UserUIPort')
-
-        userdb = userdb_adapter.get_first()
-        if userdb:
-            # Automatic login, if user exists
-            if self.settings.automatic_login:
-                userui = userui_adapter.get(userdb)
-                self.user = userui
-                self.redirect = self._get_next_url()
-                return True
-        # We need at least one user in the system
-        else:
-            self.redirect = '/register'
-            return False
-
         # User already has a session
-        if app.storage.user.get('authenticated', False):
+        if self.user and self.user.authenticated:
             self.redirect = '/edit'
             return True
+
+        first_user = self.user_controller.get_first()
+        if first_user:
+            if self.settings.automatic_login:
+                self.user = first_user
+                self.redirect = self._get_next_url()
+                return True
+        else:
+            # We need at least one user in the system
+            self.redirect = '/register'
+            return False
 
         self.page_content.append(LoginWidget())
         return True

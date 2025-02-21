@@ -8,7 +8,7 @@ from common.stores.adapter import AdapterStore
 
 class BaseController:
     """
-    Handle logic for getting/converting data betweeen the backend and frontend
+    Control the state of the application
     """
 
     def __init__(self):

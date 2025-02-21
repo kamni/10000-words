@@ -13,7 +13,7 @@ from frontend.controllers.base import BaseController
 
 class SettingsController(BaseController):
     """
-    Manages logic for the settings between the backend and frontend.
+    Control state of the settings in the application
     """
 
     @property

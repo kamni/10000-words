@@ -14,6 +14,7 @@ from common.models.settings import AppSettingsUI
 from common.models.users import UserUI
 from common.stores.adapter import AdapterStore
 from frontend.controllers.settings import SettingsController
+from frontend.controllers.users import UserController
 from frontend.widgets.header import Header
 
 
@@ -27,6 +28,7 @@ class BaseView:
     def __init__(self):
         self.adapters = AdapterStore()
         self.settings_controller = SettingsController()
+        self.user_controller = UserController()
 
         self.page_content = []
         self.redirect = None
@@ -38,16 +40,7 @@ class BaseView:
 
     @property
     def user(self):
-        user_dict = app.storage.user
-        if user_dict.get('id'):
-            user = UserUI(**user_dict)
-            return user
-        return None
-
-    @user.setter
-    def user(self, user: UserUI):
-        app.storage.user.update(user.model_dump())
-        app.storage.user['authenticated'] = True
+        return self.user_controller.get()
 
     def set_style(self):
         """
@@ -75,10 +68,7 @@ class BaseView:
         """
         Put the app settings in an accessible location for the widgets.
         """
-        settings_db = self.adapters.get('AppSettingsDBPort')
-        settings_ui = self.adapters.get('AppSettingsUIPort')
-        settings = settings_ui.get(settings_db.get())
-        app.storage.client['settings'] = settings.model_dump()
+        self.settings_controller.set()
 
     def set_storage(self):
         """

@@ -14,8 +14,6 @@
 * AppSettingsUI should have camelcase
   * tests pass
 
-* StorageController
-  * tests
 * UserController
   * tests
 
