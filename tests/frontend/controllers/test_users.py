@@ -60,13 +60,15 @@ class TestUserController(TestCase):
         returned_users = self.controller.get_all()
         self.assertEqual(expected_users, returned_users)
 
-'''
-    def get_all(self) -> List[UserUI]:
-        userdbs = self.backend_adapter.get_all()
-        if userdbs:
-            return self.frontend_adapter.get_all(userdbs)
-        return []
+    def test_get_first(self):
+        usersdb = [create_user_db() for i in range(3)]
+        expected_user = self.frontend_adapter.get(usersdb[0])
+        returned_user = self.controller.get_first()
+        self.assertEqual(expected_user, returned_user)
 
+    def test_get_first_no_users(self):
+        pass
+'''
     def get_first(self) -> Optional[UserUI]:
         userdb = self.backend_adapter.get_first()
         if userdb:
