@@ -14,7 +14,7 @@ from common.utils.languages import LanguageCode
 class Document(BaseModel):
     display_name: Optional[str] = None
     author: Optional[str] = None
-    language_code: Optional[LanguageCode] = 'en'
+    language_code: Optional[LanguageCode] = None
     sentences: Optional[List['Sentence']] = []
 
     class Config:
@@ -23,7 +23,7 @@ class Document(BaseModel):
 
 class Sentence(BaseModel):
     text: str
-    language_code: Optional[LanguageCode] = 'en'
+    language_code: Optional[LanguageCode] = None
     ordering: Optional[int]
     enabled_for_study: Optional[bool] = False
     display_text: Optional[List['DisplayText']] = []
@@ -37,7 +37,7 @@ class DisplayText(BaseModel):
     sentence_ordering: int
     ordering: int
     text: str
-    language_code: Optional[LanguageCode] = 'en'
+    language_code: Optional[LanguageCode] = None
     word: 'Word'
 
     class Config:
@@ -61,19 +61,20 @@ class WordStatus(StrEnum):
 
     5. Learning: currently in circulation for learning exercises.
     """
-    not_set = 'Not Set'
-    ignored = 'Ignored'
-    learned = 'Learned'
-    to_learn = 'To Learn'
-    learning = 'Learning'
+    not_set = 'not_set'
+    ignored = 'ignored'
+    learned = 'learned'
+    to_learn = 'to_learn'
+    learning = 'learning'
 
 
 class Word(BaseModel):
     sentence_ordering: int
     display_text_ordering: int
     text: str
-    language_code: Optional[LanguageCode] = 'en'
-    status: Optional[WordStatus] = 'Not Set'
+    language_code: Optional[LanguageCode] = None
+    status: Optional[WordStatus] = 'not_set'
+    examples: Optional[List[Sentence]] = []
 
     class Config:
         use_enum_values = True

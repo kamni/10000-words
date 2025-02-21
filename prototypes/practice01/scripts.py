@@ -66,7 +66,7 @@ class TOMLCreator:
         # but will overwrite if they differ.
         self._set_sentences(document, text)
 
-        new_toml = {'document': document.model_dump()}
+        new_toml = {'document': document.model_dump(exclude_defaults=True)}
         with output_file.open('w') as outfile:
             toml.dump(new_toml, outfile)
 

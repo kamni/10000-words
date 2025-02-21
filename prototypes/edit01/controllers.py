@@ -133,6 +133,7 @@ class EditComponentController(metaclass=Singleton):
         client_storage: ObservableDict,
     ):
         # TODO: needs to write back to database
+        # TODO: should update document and sentences
         word_dict = client_storage['words'].get(str(id))
         if word_dict:
             word_dict['status'] = status
@@ -170,51 +171,6 @@ class DocumentParser:
             display_text=sentence_text.strip(),
         )
         return sentence
-
-    def tokenize_sentence(self, sentence: Sentence) -> List[str]:
-        tokens = []
-
-        def add_punctuation_to_tokens(punctuation: str):
-            if punctuation:
-                if len(punctuation) > 1:
-                    tokens.extend(list(punctuation))
-                else:
-                    tokens.append(punctuation)
-
-        sentence_bits = sentence.display_text.split(' ')
-        for item in sentence_bits:
-            item = item.strip()
-            if not item:
-                # The documents are currently one sentence per line.
-                # We want to keep the empty lines as paragraph breaks.
-                tokens.append(item)
-                continue
-            if item.isdecimal() or item.isdigit():
-                tokens.append(item)
-                tokens.append(' ')
-                continue
-
-            only_punctuation = re.compile(r"^[^\w]+$")
-            before = re.compile(r"^([^\w]*)(.*)$")
-            after = re.compile(r"([\w\-_]+('\w+)*)([^\w]*)$")
-
-            if only_punctuation.match(item):
-                add_punctuation_to_tokens(item)
-                tokens.append(' ')
-                continue
-
-            punctuation, rest_of_bit = before.match(item).groups()
-            add_punctuation_to_tokens(punctuation)
-
-            word, _ignored, punctuation = after.match(rest_of_bit).groups()
-            tokens.append(word)
-            add_punctuation_to_tokens(punctuation)
-
-            # And we want to add the space back that we had
-            # when we originally split the sentence
-            tokens.append(' ')
-
-        return tokens
 
     def make_word_obj(self, text: str, sentence: Sentence) -> Word:
         case_insensitive_text = text.strip().lower()
@@ -283,7 +239,7 @@ class DocumentParser:
 
         for sentence in sentences:
             self.database.sentences[str(sentence.id)] = sentence
-            raw_texts = self.tokenize_sentence(sentence)
+            raw_texts = tokenize_sentence(sentence)
             words = [
                 self.make_word_obj(text, sentence)
                 for text in raw_texts
@@ -298,6 +254,51 @@ class DocumentParser:
 
         document.sentences = sentences
         return self.database
+
+def tokenize_sentence(sentence: Sentence) -> List[str]:
+    tokens = []
+
+    def add_punctuation_to_tokens(punctuation: str):
+        if punctuation:
+            if len(punctuation) > 1:
+                tokens.extend(list(punctuation))
+            else:
+                tokens.append(punctuation)
+
+    sentence_bits = sentence.display_text.split(' ')
+    for item in sentence_bits:
+        item = item.strip()
+        if not item:
+            # The documents are currently one sentence per line.
+            # We want to keep the empty lines as paragraph breaks.
+            tokens.append(item)
+            continue
+        if item.isdecimal() or item.isdigit():
+            tokens.append(item)
+            tokens.append(' ')
+            continue
+
+        only_punctuation = re.compile(r"^[^\w]+$")
+        before = re.compile(r"^([^\w]*)(.*)$")
+        after = re.compile(r"([\w\-_]+('\w+)*)([^\w]*)$")
+
+        if only_punctuation.match(item):
+            add_punctuation_to_tokens(item)
+            tokens.append(' ')
+            continue
+
+        punctuation, rest_of_bit = before.match(item).groups()
+        add_punctuation_to_tokens(punctuation)
+
+        word, _ignored, punctuation = after.match(rest_of_bit).groups()
+        tokens.append(word)
+        add_punctuation_to_tokens(punctuation)
+
+        # And we want to add the space back that we had
+        # when we originally split the sentence
+        tokens.append(' ')
+
+    return tokens
 
 
 def print_document(database: MockDatabase):
