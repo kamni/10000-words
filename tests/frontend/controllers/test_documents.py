@@ -13,7 +13,8 @@ from common.models.documents import DocumentDB, DocumentUI
 from common.stores.app import AppStore
 from common.utils.files import get_project_dir
 from frontend.controllers.documents import DocumentController
-from tests.utils.users import create_user_db
+from tests.utils.documents import make_document_ui
+from tests.utils.users import create_user_db, make_user_ui
 
 
 DATA_DIR = Path(get_project_dir()) / 'scripts' / 'data' / 'en'
@@ -81,26 +82,25 @@ class TestDocumentController(TestCase):
         returned_docdb = self.backend_adapter.get(returned_docui.id, user.id)
         self.assertEqual('Test Create', returned_docdb.display_name)
         self.assertEqual('es', returned_docdb.language_code)
+
+    def test_get_all(self):
+        userui = make_user_ui()
+        expected_docsui = [make_document_ui(user=userui) for i in range(3)]
+        with mock.patch('frontend.controllers.documents.app') as mock_app:
+            mock_app.storage = mock.Mock()
+            mock_app.storage.client = ObservableDict()
+            mock_app.storage.client.update({
+                'documents': {
+                    'current_document': None,
+                    'all_documents': [doc.model_dump() for doc in expected_docsui],
+                },
+            })
+            returned_docsui = self.controller.get_all()
+            self.assertEqual(expected_docsui, returned_docsui)
+
+    def test_get_all_no_documents(self):
+        pass
 '''
-    def create(self, document_dict: Dict[str, Any]):
-        user = document_dict['user']
-        document = DocumentDB(
-            user_id=user.id,
-            display_name=document_dict['display_name'],
-            language_code=language_name_to_code[document_dict['language']],
-            binary_data=BinaryFileData(
-                name=document_dict['upload'].name,
-                data=document_dict['upload'].content.read(),
-            ),
-        )
-        new_doc = self.backend_adapter.create_or_update(document)
-
-        doc_ui = self.frontend_adapter.get(new_doc, user)
-        app.storage.client['documents']['all_documents'].append(
-            doc_ui.model_dump(),
-        )
-        self.set_current_document(doc_ui)
-
     def get_all(self) -> List[DocumentUI]:
         doc_dicts = app.storage.client['documents']['all_documents']
         docs = [DocumentUI(**doc) for doc in doc_dicts]
