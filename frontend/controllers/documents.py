@@ -36,7 +36,7 @@ class DocumentController(BaseController):
         document = DocumentDB(
             user_id=user.id,
             display_name=document_dict['display_name'],
-            language_code=language_name_to_code(document_dict['language']),
+            language_code=language_name_to_code[document_dict['language']],
             binary_data=BinaryFileData(
                 name=document_dict['upload'].name,
                 data=document_dict['upload'].content.read(),

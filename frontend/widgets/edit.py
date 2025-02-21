@@ -93,9 +93,9 @@ class DocumentSidebar(EditComponent):
         by_language = {}
         for doc in all_docs:
             if doc.language in by_language:
-                by_language[doc.language].append(doc_ui)
+                by_language[doc.language].append(doc)
             else:
-                by_language[doc.language] = [doc_ui]
+                by_language[doc.language] = [doc]
         return by_language
 
     def show_document(self, doc_id):
@@ -204,7 +204,7 @@ class UploadForm(EditComponent):
             # TODO: add validation
             return
 
-        self.document_controller.create_document({
+        self.document_controller.create({
             'user': self.user,
             'display_name': self.document_title_input.value,
             'language': self.language_input.value,
