@@ -50,7 +50,16 @@ class EditArea(EditComponent):
 
         document = self.current_document
         if document:
-            ui.label(document.displayName).classes('text-3xl bold text-blue-950')
+            if document.attrs:
+                with ui.card().style('width: 100%'):
+                    for attr, value in document.attrs.items():
+                        ui.label(f'{attr}: {value}') \
+                                .classes('text-2xl bold text-blue-950') \
+                                .style('line-height: .5 !important')
+            else:
+                with ui.card().style('width: 100%'):
+                    ui.label(document.displayName)\
+                            .classes('text-3xl bold text-blue-950')
         else:
             with ui.row():
                 ui.icon('arrow_back').classes('text-2xl')

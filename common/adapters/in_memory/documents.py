@@ -40,14 +40,22 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
 
         existing_doc = None
         try:
-            existing_doc = list(filter(
-                lambda x: (
-                    x.display_name == document.display_name
-                    and x.language_code == document.language_code
-                ),
-                self.store.db.documents[str(document.user_id)],
-            ))[0]
+            documents = self.store.db.documents[str(document.user_id)]
+            if document.id:
+                existing_doc = list(filter(
+                    lambda x: x.id == document.id,
+                    documents,
+                ))[0]
+            else:
+                existing_doc = list(filter(
+                    lambda x: (
+                        x.display_name == document.display_name
+                        and x.language_code == document.language_code
+                    ),
+                    self.store.db.documents[str(document.user_id)],
+                ))[0]
             doc = existing_doc
+
         except (IndexError, KeyError):
             doc = document
             doc.id = uuid.uuid4()
@@ -58,6 +66,15 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
                 self.store.db.documents[user_id].append(doc)
             else:
                 self.store.db.documents[user_id] = [doc]
+
+        doc.display_name = document.display_name
+        if document.binary_data:
+            doc.attrs = self.parse_binary_data_attrs(document.binary_data)
+        else:
+            doc.attrs = document.attrs
+
+        # The binary data does not get stored.
+        doc.binary_data = None
 
         return doc
 

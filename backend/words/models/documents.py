@@ -6,6 +6,7 @@ Affero GPL v3
 import pathlib
 import uuid
 
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -42,6 +43,11 @@ class Document(models.Model):
         max_length=8,
         choices=language_code_choices,
         help_text=_('Language that the document belongs to'),
+    )
+    attrs = models.JSONField(
+        blank=True,
+        null=True,
+        encoder=DjangoJSONEncoder,
     )
 
     def __str__(self):

@@ -1,6 +1,6 @@
-Rumpelstilzchen
-
-Ein Märchen der Brüder Grimm
+:Titel: Rumpelstilzchen
+:Autor: Ein Märchen der Brüder Grimm
+:Quelle: https://www.grimmstories.com/de/grimm_maerchen/rumpelstilzchen
 
 Es war einmal ein Müller, der war arm, aber er hatte eine schöne Tochter.
 Nun traf es sich, daß er mit dem König zu sprechen kam, und um sich ein Ansehen zu geben, sagte er zu ihm: "Ich habe eine Tochter, die kann Stroh zu Gold spinnen."

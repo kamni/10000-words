@@ -3,11 +3,13 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import os
 import uuid
 from abc import ABC, abstractmethod
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 from ..models.documents import DocumentDB, DocumentUI
+from ..models.files import BinaryFileData
 from ..models.users import UserUI
 
 
@@ -54,6 +56,33 @@ class DocumentDBPort(ABC):
         :return: List of documents (may be empty)
         """
         pass
+
+    def parse_binary_data_attrs(
+        self,
+        binary_data: BinaryFileData,
+    ) -> Dict[str, str]:
+        """
+        Parse the data from a binary file into a dict of attributes.
+
+        The attributes must be at the start of the document
+        and be delineated with colons on both side of the tag.
+        For example:
+
+            :Some Attr: some string value
+
+        :binary_data: The data to parse.
+        :return: dictionary of attr-to-values
+        """
+        attrs = {}
+        data = binary_data.data.decode('utf-8')
+        text = data.split(os.linesep)
+        for line in text:
+            line = line.strip()
+            if not line.startswith(':'):
+                return attrs
+            key, value = line.split(':', 2)[1:]
+            attrs[key.strip()] = value.strip()
+        return attrs
 
 
 class DocumentUIPort(ABC):

@@ -4,12 +4,13 @@ Affero GPL v3
 """
 
 import uuid
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, validator
 
 from ..utils.languages import LanguageCode
 from .base import HashableMixin
+from .files import BinaryFileData
 from .sentences import SentenceDB, SentenceUI
 from .users import UserUI
 
@@ -25,6 +26,8 @@ class DocumentDB(HashableMixin, BaseModel):
     language_code: LanguageCode
     author: Optional[str] = None
     sentences: Optional[List[SentenceDB]] = []
+    attrs: Optional[Dict[str, str]] = {}
+    binary_data: Optional[BinaryFileData] = None
 
     class Config:
         exclude_defaults = True
@@ -42,7 +45,7 @@ class DocumentUI(HashableMixin, BaseModel):
 
     id: uuid.UUID
     user: UserUI
-    author: Optional[str] = None
     displayName: str
     language: str
     sentences: List[SentenceUI]
+    attrs: Optional[Dict[str, str]] = {}

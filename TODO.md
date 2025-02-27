@@ -1,6 +1,246 @@
 # TODOS
 
-## Document
+## 1. Load document with one sentence per line
+
+* Frontend tests:
+  * tbd
+
+---
+
+* Sentence Adapter
+  * Port
+    * create_or_update
+    * get_all for document
+  * In Memory
+    * setup.cfg
+    * tests
+  * Django
+    * setup.cfg
+    * tests
+  * UI
+    * setup.cfg
+    * tests
+
+* Upload adds sentences
+  * Displays sentences in Edit view
+  * Export button back to TOML
+
+---
+
+* Personal settings
+  * preferred language
+  * learning languages
+* Add translations to sentence
+* Edit translations
+
+---
+
+* Add DisplayText
+* Adapters
+  * DisplayText
+    * port
+      * create_or_update
+        * Needs to be called when sentence is create_or_update-ed
+      * get_all for sentence
+    * In Memory
+      * setup.cfg
+      * tests
+    * Django
+      * setup.cfg
+      * tests
+    * UI
+      * setup.cfg
+      * tests
+
+---
+
+50 Repetitions for learning
+
+* Adapters for each model:
+  * Word
+    * In Memory
+    * Django
+    * UI
+  * Update Document
+    * In Memory
+    * Django
+    * UI
+* In-Memory adapters read from and write to TOML, so we keep state
+  * Which file is configurable in setup.cfg
+* I need a util that can be used in both in-memory and django adapters
+
+## Where am I trying to get to?
+
+I'm trying to work through the "Een Beetje Nederlands" episode.
+This means:
+
+1. Load a document with one sentence per line.
+2. Choose which sentences I want to work with.
+3. For each sentence I picked:
+   * Add a translation.
+   * Mark:
+     * Ignored
+     * Learned
+     * To Learn
+     * Learning will be marked automatically when I move to practice.
+     * This automatically updates all words with the same base
+   * Combine/change base word (doesn't auto-update other words,
+     but the combination will be given as a suggestion when updating).
+   * Add additional sentence examples + translations
+     for "To Learn" words
+   * See the document progress of Learned + Ignored
+4. Practice:
+   * Select by:
+     * language (all documents for language will be practiced)
+     * document (only sentences for the document will be studied)
+   * Dutch to English unscramble
+   * English to Dutch unscramble
+   * Hear Dutch sentence and unscramble
+   * Hear Dutch sentence and free-form type
+   * Punctuation is not counted in correctness
+   * Each exercise is shown 5 times before progressing to next
+     (scattered with other exercises)
+     * When free-form typing is mastered,
+       brings in another sentence to mark up?
+     * Brings back old sentences on a timed schedule, free-form type
+5. See progress on each document for learning.
+6. Export to TOML for re-upload.
+
+---
+
+## Unfinished:
+
+* finish edit01 prototype
+  * delete scripts/prototype_deleteme.py
+* finish practice01 prototype
+* Add validation to EditView upload
+  * tests
+
+---
+
+## Refactor with Controllers
+
+* Tests for existing EditView
+
+* We have logging on everything?
+
+---
+
+## EditO1 Prototype
+
+* Sentence widget
+  * Add a translation
+* Batch change words in a sentence
+
+
+## ObservableDict
+
+ObservableDict app.storage.client can add handlers with `on_change`
+events.handle_event(handler, events.ObservableChangeEventArguments(sender=self))
+
+Could we make documents/sentences/words observable dicts?
+
+
+## Import steps
+
+1. Import a text with single lines.
+2. Add a translation of the sentence.
+3. Mark up the sentence (and mark up other sentences automatically).
+   * For individual display text, change the underlying word
+     * Bulk change...how can I make this less painful?
+4. For learning/to-learn sentences, upload example sentences.
+5. Export document as TOML
+
+* We'll worry about combo words later.
+
+## Sentences: Prototype
+
+* Create models
+* Create adapters
+  * In Memory
+    * tests
+  * Django
+    * tests
+* Store document
+  * In Memory
+    * tests
+  * Django
+    * tests
+* Generate test data that can be loaded
+  * Script to load data
+* Update the frontend to use models
+
+---
+
+* Combining words
+  * Combine words menu item needs black text
+
+  * Covert everything to actual pydantic models,
+    so I'm not getting confused about index versus attribute
+  * BUG: second time we try to combine a word doesn't work
+  * BUG: Setting status on combined word doesn't work
+
+  * We need to replace labels if they're consecutive
+  * Refreshable sentence?
+
+  * Change the word associated with display_text
+  * how to handle in sentences when they're separate?
+    * color really needs to change based on word
+    * get display text from marker?
+    * reorder display_text by ordering
+    * create new word, or get existing
+    * create new label with word's marker
+    * if they're consecutive, we can merge them
+    * see if any are consecutive; they can merge
+    * it points to the same word
+      * I need a word lookup
+    * sentence should refresh
+  * Replacing in the rest of the document
+
+* Model to approve/edit combined words
+
+* Spinner while loading
+
+* Clean up prototype
+  * CSS:
+    * Can add sass, scss
+  * Models?
+
+---
+
+## Senentences: File Upload and Translations Prototype
+
+* Upload translations (later or at the same time)
+* Tabs per language?
+* Manually add translation
+
+---
+
+* set default classes
+* Tabbed view for translations
+
+* Switch to toml / tomllib
+  * tomllib.load(opened_file)
+
+* Uploading translations at the same time
+
+* Put some explanatory text about word color in the right sidebar
+* Words in document learned as percentage
+* Put multiple into the same word (orange) -- ctl click?
+
+* Sentences are displayed as individual words, color-coded by status
+  * white background, black text: ignored or learned
+  * gray background, black text: not set
+  * learning: light green background, black text
+  * waiting to learn: lavendar background, black text
+
+* Nice to have:
+  * Loading icon until document loads
+  * Cleanup: don't display extra classes...
+
+---
+
+## Documents
 
 * Nicegui: upload a document
   * Form validation
@@ -44,6 +284,9 @@
 * lint
 * mypy
 * copyright checker
+* poetry?
+* Figure out config format -- all TOML?
+  * Separate out my config by type? (e.g., dev vs prod)
 
 ---
 
@@ -102,7 +345,7 @@ Editing Mode:
    2. lavender background, black text: learning
    3. light green background, black text: defined, but not added to learning
       rotation.
-   4. orange background, black text: Unknown type.
+   4. gray background, black text: Unknown type.
 4. You handle all Unknown words. Left-click to bring up an editing modal:
    1. Set the type -- multiple words are type "Expression" -- ctrl+click to
       select multiple.

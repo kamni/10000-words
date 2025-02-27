@@ -33,6 +33,7 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
             user_id=document.user.id,
             display_name=document.display_name,
             language_code=document.language_code,
+            attrs=document.attrs,
         )
         return docdb
 
@@ -51,25 +52,30 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         # We won't trap it in a try-except block.
         user = UserProfile.objects.get(id=document.user_id)
 
-        existing_doc = Document.objects.filter(
-            user__id=document.user_id,
-            display_name=document.display_name,
-            language_code=document.language_code,
-        ).first()
+        if document.id:
+            existing_doc = Document.objects.filter(id=document.id).first()
+        else:
+            existing_doc = Document.objects.filter(
+                user__id=document.user_id,
+                display_name=document.display_name,
+                language_code=document.language_code,
+            ).first()
 
         if existing_doc:
-            # Currently, nothing so we won't do anything here.
-            # TODO: a direct `update` function that changes display_name
             doc = existing_doc
+            doc.display_name = document.display_name
         else:
-            doc = Document.objects.create(
+            doc = Document(
                 user=user,
                 display_name=document.display_name,
                 language_code=document.language_code,
             )
 
-        # TODO: handle translations
-        # TODO: handle new sentence uploads
+        if document.binary_data:
+            doc.attrs = self.parse_binary_data_attrs(document.binary_data)
+        else:
+            doc.attrs = document.attrs
+        doc.save()
 
         docdb = self._django_to_pydantic(doc)
         return docdb

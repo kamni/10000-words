@@ -11,11 +11,13 @@ from nicegui.testing import User
 from common.models.errors import ObjectNotFoundError
 from common.models.settings import AppSettingsDB
 from common.stores.adapter import AdapterStore
+from frontend import main
 from tests.frontend.utils import assert_logged_in, login
 from tests.utils.users import create_user_db
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_all_fields_filled_in(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -56,6 +58,7 @@ async def test_all_fields_filled_in(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_second_user_is_not_automatically_admin(user: User):
     create_user_db(is_admin=True)
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -88,6 +91,7 @@ async def test_second_user_is_not_automatically_admin(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_display_name_optional(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -126,6 +130,7 @@ async def test_display_name_optional(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_username_must_be_4_characters_long(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -157,6 +162,7 @@ async def test_username_must_be_4_characters_long(user: User):
     assert userdb.username == username
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_username_cannot_contain_spaces(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -180,6 +186,7 @@ async def test_username_cannot_contain_spaces(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_username_cannot_contain_punctuation(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -206,6 +213,7 @@ async def test_username_cannot_contain_punctuation(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_username_cannot_contain_upercase_letters(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -229,6 +237,7 @@ async def test_username_cannot_contain_upercase_letters(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_username_is_valid(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -256,6 +265,7 @@ async def test_username_is_valid(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_password_must_be_8_characters_long(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -291,6 +301,7 @@ async def test_password_must_be_8_characters_long(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_password_cannot_contain_spaces(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -314,6 +325,7 @@ async def test_password_cannot_contain_spaces(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_password_confirm_matches(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB())
@@ -337,6 +349,7 @@ async def test_password_confirm_matches(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_dont_show_password_fields_if_passwordless_system(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(passwordless_login=True))
@@ -370,6 +383,7 @@ async def test_dont_show_password_fields_if_passwordless_system(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_redirects_if_no_app_settings(user: User):
     await user.open('/register')
     await user.should_not_see('Register for 10,000 Words', kind=ui.label)
@@ -378,6 +392,7 @@ async def test_redirects_if_no_app_settings(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_redirects_if_not_multiuser_system_and_user_exists(user: User):
     create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -389,6 +404,7 @@ async def test_redirects_if_not_multiuser_system_and_user_exists(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_redirects_if_already_logged_in_as_another_user(user: User):
     userdb = create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -402,6 +418,7 @@ async def test_redirects_if_already_logged_in_as_another_user(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_cancel(user: User):
     create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -426,6 +443,7 @@ async def test_cancel(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_cancel_unavailable_for_first_user(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     adapter.create_or_update(AppSettingsDB(multiuser_mode=True))

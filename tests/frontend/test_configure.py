@@ -9,11 +9,13 @@ from nicegui.testing import User
 
 from common.models.settings import AppSettingsDB
 from common.stores.adapter import AdapterStore
+from frontend import main
 from tests.frontend.utils import login
 from tests.utils.users import create_user_db
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_configure_first_time_all_false(user: User):
     """
     This is testing the first time the app runs,
@@ -32,6 +34,7 @@ async def test_configure_first_time_all_false(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_configure_first_time_all_true(user: User):
     """
     This is testing the first time the app runs,
@@ -53,6 +56,7 @@ async def test_configure_first_time_all_true(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_configure_second_time(user: User):
     userdb = create_user_db(is_admin=True)
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -80,6 +84,7 @@ async def test_configure_second_time(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_configure_second_time_cancel(user: User):
     userdb = create_user_db(is_admin=True)
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -107,6 +112,7 @@ async def test_configure_second_time_cancel(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_redirects_to_register_if_settings_exist_but_no_user(user: User):
     adapter = AdapterStore().get('AppSettingsDBPort')
     settings = adapter.create_or_update(
@@ -123,6 +129,7 @@ async def test_redirects_to_register_if_settings_exist_but_no_user(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_redirects_if_user_not_logged_in_and_not_first_run(user: User):
     create_user_db(is_admin=True)
     adapter = AdapterStore().get('AppSettingsDBPort')
@@ -140,6 +147,7 @@ async def test_redirects_if_user_not_logged_in_and_not_first_run(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_redirects_when_not_admin_user(user: User):
     userdb = create_user_db()
     adapter = AdapterStore().get('AppSettingsDBPort')

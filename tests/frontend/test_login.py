@@ -74,6 +74,7 @@ async def test_initial_setup_flow(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_false_false_false(user: User):
     """
     multiuser_mode = False
@@ -95,6 +96,7 @@ async def test_login_config_false_false_false(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_true_false_false(user: User):
     """
     multiuser_mode = True
@@ -122,6 +124,7 @@ async def test_login_config_true_false_false(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_true_true_false(user: User):
     """
     multiuser_mode = True
@@ -153,6 +156,7 @@ async def test_login_config_true_true_false(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_true_false_true(user: User):
     """
     multiuser_mode = True
@@ -187,6 +191,7 @@ async def test_login_config_true_false_true(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_true_true_true(user: User):
     """
     multiuser_mode = True
@@ -220,6 +225,7 @@ async def test_login_config_true_true_true(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_false_true_false(user: User):
     """
     multiuser_mode = False
@@ -237,6 +243,7 @@ async def test_login_config_false_true_false(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_false_true_true(user: User):
     """
     multiuser_mode = False
@@ -258,6 +265,7 @@ async def test_login_config_false_true_true(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_config_false_false_true(user: User):
     """
     multiuser_mode = False
@@ -288,6 +296,7 @@ async def test_login_config_false_false_true(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_redirects_to_signup_when_no_other_users(user: User):
     create_app_settings(
         multiuser_mode=False,
@@ -302,6 +311,7 @@ async def test_login_redirects_to_signup_when_no_other_users(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_login_redirects_already_logged_in(user: User):
     userdb = create_user_db()
     create_app_settings()
@@ -312,6 +322,7 @@ async def test_login_redirects_already_logged_in(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_validate_username_bad_user(user: User):
     create_user_db()
     create_app_settings()
@@ -323,6 +334,7 @@ async def test_validate_username_bad_user(user: User):
     await user.should_see('Invalid username or password.', kind=ui.label)
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_validate_username_bad_user_passwordless(user: User):
     create_user_db()
     create_app_settings(multiuser_mode=True, passwordless_login=True)
@@ -334,6 +346,7 @@ async def test_validate_username_bad_user_passwordless(user: User):
     await user.should_see('Invalid username.', kind=ui.label)
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_validate_username_bad_password(user: User):
     userdb = create_user_db()
     create_app_settings()
@@ -346,6 +359,7 @@ async def test_validate_username_bad_password(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_registration_link(user: User):
     create_user_db()
     create_app_settings(multiuser_mode=True)
@@ -359,6 +373,7 @@ async def test_registration_link(user: User):
 
 
 @pytest.mark.asyncio
+@pytest.mark.module_under_test(main)
 async def test_logout(user: User):
     userdb = create_user_db(is_admin=True)
     create_app_settings(multiuser_mode=True)

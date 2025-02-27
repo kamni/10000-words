@@ -62,8 +62,6 @@ async def test_can_visit_unrestricted_pages_when_not_authenticated(user: User):
     await user.should_see('Register for 10,000 Words', kind=ui.label)
 
 
-# This works for manual testing,
-# but Nicegui seems to ignore middleware during tests.
 @pytest.mark.asyncio
 @pytest.mark.module_under_test(main)
 async def test_middleware_redirects_to_login_for_restricted_pages(user: User):

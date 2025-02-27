@@ -68,9 +68,10 @@ class DocumentController(BaseController):
             'all_documents': [],
         }
 
-        documents = self.backend_adapter.get_all(user.id)
-        for doc in self.frontend_adapter.get_all(documents, user):
-            doc_dict['all_documents'].append(doc.model_dump())
+        if user:
+            documents = self.backend_adapter.get_all(user.id)
+            for doc in self.frontend_adapter.get_all(documents, user):
+                doc_dict['all_documents'].append(doc.model_dump())
 
         app.storage.client['documents'] = doc_dict
 

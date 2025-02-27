@@ -6,4 +6,5 @@ data/uploads/*
 *.log
 .nicegui
 /setup.cfg
+tests/data/deleteme.toml
 **/__pycache__/**

@@ -42,6 +42,7 @@ class DocumentUIAdapter(DocumentUIPort):
                 'Unknown',
             ),
             sentences=[],
+            attrs=document.attrs,
         )
         return docui
 
@@ -67,6 +68,7 @@ class DocumentUIAdapter(DocumentUIPort):
                     'Unknown',
                 ),
                 sentences=[],
+                attrs=docdb.attrs,
             ) for docdb in documents
         ]
         return docuis
