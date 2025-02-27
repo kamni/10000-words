@@ -74,7 +74,11 @@ class TOMLCreator:
         self._set_translation_and_words_interactively(document)
 
         # We have to run this through JSON so the UUIDs serialize correctly.
-        new_toml = {'document': json.loads(document.model_dump_json())}
+        new_toml = {
+            'document': json.loads(
+                document.model_dump_json(exclude_defaults=True),
+            ),
+        }
         with output_file.open('w') as outfile:
             toml.dump(new_toml, outfile)
 
