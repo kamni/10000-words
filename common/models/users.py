@@ -6,25 +6,10 @@ Affero GPL v3
 import uuid
 from typing import Optional
 
-from pydantic import BaseModel
-
-from .base import HashableMixin
+from .base import GlobalBaseModel, HashableMixin
 
 
-class UserBase(HashableMixin):
-    """
-    Shared base class for the Pydantic models for the database.
-
-    Must implement the following fields:
-
-    * id
-    * user (with user.id)
-    * language_code
-    """
-    pass
-
-
-class UserDB(UserBase, BaseModel):
+class UserDB(HashableMixin, GlobalBaseModel):
     """
     Representation of a user in the database.
     """
@@ -40,7 +25,7 @@ class UserDB(UserBase, BaseModel):
         return ['username']
 
 
-class UserUI(UserBase, BaseModel):
+class UserUI(HashableMixin, GlobalBaseModel):
     """
     Representation of a logged-in user in the UI.
     NOTE: use camel-cased attributes for easier handling with javascript

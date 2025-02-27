@@ -5,6 +5,8 @@ Affero GPL v3
 
 from typing import Any
 
+from pydantic import BaseModel, ConfigDict
+
 
 class HashableMixin:
     """
@@ -41,3 +43,10 @@ class HashableMixin:
             return ['id']
         except AssertionError:
             raise NotImplementedError
+
+
+class GlobalBaseModel(BaseModel):
+    """
+    Use this base for all pydantic models
+    """
+    model_config = ConfigDict(use_enum_values=True)

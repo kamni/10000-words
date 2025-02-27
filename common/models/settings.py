@@ -5,12 +5,10 @@ Affero GPL v3
 
 from typing import Optional
 
-from pydantic import BaseModel
-
-from .base import HashableMixin
+from .base import GlobalBaseModel, HashableMixin
 
 
-class AppSettingsDB(HashableMixin, BaseModel):
+class AppSettingsDB(HashableMixin, GlobalBaseModel):
     """
     Tracks global settings for the application
     """
@@ -42,7 +40,7 @@ class AppSettingsDB(HashableMixin, BaseModel):
         ]
 
 
-class AppSettingsUI(HashableMixin, BaseModel):
+class AppSettingsUI(HashableMixin, GlobalBaseModel):
     """
     The way the app settings are displayed in the frontend.
     """

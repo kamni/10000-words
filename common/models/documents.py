@@ -6,16 +6,16 @@ Affero GPL v3
 import uuid
 from typing import Dict, List, Optional
 
-from pydantic import BaseModel, validator
+from pydantic import validator
 
 from ..utils.languages import LanguageCode
-from .base import HashableMixin
+from .base import GlobalBaseModel, HashableMixin
 from .files import BinaryFileData
 from .sentences import SentenceDB, SentenceUI
 from .users import UserUI
 
 
-class DocumentDB(HashableMixin, BaseModel):
+class DocumentDB(HashableMixin, GlobalBaseModel):
     """
     Representation of a document to be stored in the database
     """
@@ -29,16 +29,12 @@ class DocumentDB(HashableMixin, BaseModel):
     attrs: Optional[Dict[str, str]] = {}
     binary_data: Optional[BinaryFileData] = None
 
-    class Config:
-        exclude_defaults = True
-        use_enum_values = True
-
     @property
     def unique_fields(self):
         return ['user_id', 'display_name', 'language_code']
 
 
-class DocumentUI(HashableMixin, BaseModel):
+class DocumentUI(HashableMixin, GlobalBaseModel):
     """
     Full document for display in the UI
     """

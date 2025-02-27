@@ -7,13 +7,11 @@ import uuid
 from enum import StrEnum
 from typing import List, Optional
 
-from pydantic import BaseModel
-
 from ..utils.languages import LanguageCode
-from .base import HashableMixin
+from .base import GlobalBaseModel, HashableMixin
 
 
-class SentenceDB(HashableMixin, BaseModel):
+class SentenceDB(HashableMixin, GlobalBaseModel):
     """
     Database representation of a sentence.
     """
@@ -34,16 +32,12 @@ class SentenceDB(HashableMixin, BaseModel):
     display_text: Optional[List['DisplayTextDB']] = []
     translations: Optional[List['SentenceDB']] = []
 
-    class Config:
-        exclude_defaults = True
-        use_enum_values = True
-
     @property
     def unique_fields(self):
         return ['user_id', 'text', 'language_code']
 
 
-class SentenceUI(HashableMixin, BaseModel):
+class SentenceUI(HashableMixin, GlobalBaseModel):
     """
     UI representation of a sentence.
     """
@@ -58,7 +52,7 @@ class SentenceUI(HashableMixin, BaseModel):
     translations: Optional[List['SentenceUI']] = []
 
 
-class DisplayTextDB(HashableMixin, BaseModel):
+class DisplayTextDB(HashableMixin, GlobalBaseModel):
     """
     Preserves the original version/case of the word for the sentence/document.
     Allows us to store the same word for multiple variations.
@@ -78,7 +72,7 @@ class DisplayTextDB(HashableMixin, BaseModel):
         return ['user_id', 'sentence_id', 'word_id', 'ordering']
 
 
-class DisplayTextUI(HashableMixin, BaseModel):
+class DisplayTextUI(HashableMixin, GlobalBaseModel):
     """
     Representation of display text for individual words in the UI.
     """
@@ -114,7 +108,7 @@ class WordStatus(StrEnum):
     learning = 'learning'
 
 
-class WordDB(HashableMixin, BaseModel):
+class WordDB(HashableMixin, GlobalBaseModel):
     """
     Representation of a word in the database.
 
@@ -133,16 +127,12 @@ class WordDB(HashableMixin, BaseModel):
     language_code: LanguageCode
     text: str  # Case-insensitive, unlike DisplayText; always lower-case.
 
-    class Config:
-        exclude_defaults = True
-        use_enum_values = True
-
     @property
     def unique_fields(self):
         return ['user_id', 'language_code', 'text']
 
 
-class WordUI(HashableMixin, BaseModel):
+class WordUI(HashableMixin, GlobalBaseModel):
     """
     Representation of a word in the UI
     """
@@ -152,7 +142,3 @@ class WordUI(HashableMixin, BaseModel):
     status: WordStatus
     language: str
     text: str
-
-    class Config:
-        exclude_defaults = True
-        use_enum_values = True

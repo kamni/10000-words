@@ -115,7 +115,7 @@ class DataPort(ABC):
         """
         # We have to convert this to JSON first
         # so it serializes the UUIDs correctly.
-        json_data = database.model_dump_json()
+        json_data = database.model_dump_json(exclude_defaults=True)
         toml_dict = json.loads(json_data)
 
         try:
