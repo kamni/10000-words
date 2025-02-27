@@ -9,7 +9,6 @@ from typing import Any, Dict, Optional
 
 from ..models.settings import AppSettingsDB
 from ..stores.config import ConfigStore
-from ..utils.files import get_project_dir
 from ..utils.singleton import Singleton
 
 

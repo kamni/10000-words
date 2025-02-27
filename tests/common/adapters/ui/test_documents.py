@@ -8,7 +8,7 @@ from unittest import TestCase
 
 from common.adapters.ui.documents import DocumentUIAdapter
 from common.adapters.ui.users import UserUIAdapter
-from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
+from common.models.documents import DocumentDB, DocumentUI
 from tests.utils.documents import make_document_db
 from tests.utils.users import make_user_ui
 
@@ -29,11 +29,12 @@ class TestDocumentUIAdapter(TestCase):
             user=user,
             displayName=docdb.display_name,
             language='English',
+            sentences=[],
         )
         returned = self.adapter.get(docdb, user)
         self.assertEqual(expected, returned)
 
-    def test_get_all_minimal(self):
+    def test_get_all(self):
         lang_codes = ('fr', 'es', 'de')
         langs = ('French', 'Spanish', 'German')
         user = make_user_ui()
@@ -42,19 +43,20 @@ class TestDocumentUIAdapter(TestCase):
             for lang in lang_codes
         ]
         expected = [
-            DocumentUIMinimal(
+            DocumentUI(
                 id=docdb.id,
                 user=user,
                 displayName=docdb.display_name,
                 language=lang,
+                sentences=[],
             ) for docdb, lang in zip(docdbs, langs)
         ]
-        returned = self.adapter.get_all_minimal(docdbs, user)
+        returned = self.adapter.get_all(docdbs, user)
         self.assertEqual(expected, returned)
 
-    def test_get_all_minimal_list_empty(self):
+    def test_get_all_list_empty(self):
         user = make_user_ui()
         docdbs = []
         expected = docdbs
-        returned = self.adapter.get_all_minimal(docdbs, user)
+        returned = self.adapter.get_all(docdbs, user)
         self.assertEqual(expected, returned)

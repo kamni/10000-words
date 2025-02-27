@@ -16,7 +16,7 @@ from common.stores.data.in_memory import InMemoryDBStore
 from common.utils.files import get_project_dir
 
 
-PROJECT_DIR = Path(get_project_dir())
+PROJECT_DIR = get_project_dir()
 PROJECT_CONF = PROJECT_DIR / 'setup.cfg'
 TEST_CONF = PROJECT_DIR / 'tests' / 'setup.cfg'
 
@@ -93,29 +93,21 @@ class TestDjangDBStore(TestCase):
         self.assertEqual(0, User.objects.all().count())
 
     def test_load_data_without_force(self):
-        app = AppStore(config=TEST_CONF, subsection='dev.in_memory')
+        app = AppStore(config=TEST_CONF, subsection='dev.django')
         store = DjangoDBStore()
-        other_store = InMemoryDBStore()
         # We have to hack this a bit for the test,
         # because the default is not to load data
         store.should_load_data = True
+        store._data_is_loaded = True
 
         self.assertEqual(0, User.objects.all().count())
-        self.assertEqual(0, len(other_store.db.users))
         store.load_data()
         self.assertEqual(0, User.objects.all().count())
 
-        # Calling this will load data into the in-memory store,
-        # which is why we have the warnings in the docstring.
-        self.assertTrue(len(other_store.db.users) > 0)
-
     def test_load_data_with_force(self):
-        app = AppStore(config=TEST_CONF, subsection='dev.in_memory')
+        app = AppStore(config=TEST_CONF, subsection='dev.django')
         store = DjangoDBStore()
-        # When we use the `force` flag,
-        # it loads the corrrect database,
-        # although it also destroys the server's app configuration.
-        # Once again, heed the warnings!
+
         self.assertEqual(0, User.objects.all().count())
         store.load_data(force=True)
         self.assertTrue(User.objects.all().count() > 0)

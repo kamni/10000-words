@@ -5,7 +5,7 @@ Affero GPL v3
 
 from typing import List, Tuple
 
-from ...models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
+from ...models.documents import DocumentDB, DocumentUI
 from ...models.users import UserUI
 from ...ports.documents import DocumentUIPort
 from ...stores.adapter import AdapterStore
@@ -41,23 +41,24 @@ class DocumentUIAdapter(DocumentUIPort):
                 document.language_code,
                 'Unknown',
             ),
+            sentences=[],
         )
         return docui
 
-    def get_all_minimal(
+    def get_all(
         self,
         documents: List[DocumentDB],
         user: UserUI,
-    ) -> List[DocumentUIMinimal]:
+    ) -> List[DocumentUI]:
         """
-        Convert a list of database documents into a list of minimal UI objects.
+        Convert a list of database documents into a list of UI objects.
 
         :documents: DocumentDB instances
         :user: UserUI instances
-        :return: List of DocumentUIMinimal objects.
+        :return: List of DocumentUI objects.
         """
         docuis = [
-            DocumentUIMinimal(
+            DocumentUI(
                 id=docdb.id,
                 user=user,
                 displayName=docdb.display_name,
@@ -65,6 +66,7 @@ class DocumentUIAdapter(DocumentUIPort):
                     docdb.language_code,
                     'Unknown',
                 ),
+                sentences=[],
             ) for docdb in documents
         ]
         return docuis

@@ -5,35 +5,33 @@ Affero GPL v3
 
 from nicegui import app, events, ui
 
-from common.models.documents import DocumentDB, DocumentUI, DocumentUIMinimal
-from common.models.files import BinaryFileData
+from common.models.documents import DocumentDB, DocumentUI
 from common.stores.adapter import AdapterStore
-from common.utils.languages import language_code_choices
+from common.utils.languages import language_choices
 
-from .base import BaseWidget
+from frontend.controllers.documents import DocumentController
+from frontend.widgets.base import BaseWidget
 
 
 class EditComponent(BaseWidget):
     """
     Useful properties for all parts of the EditWidget
     """
+
     @property
     def current_document(self) -> DocumentUI:
-        document_dict = app.storage.client['documents']['current_document']
-        if document_dict is not None:
-            document = DocumentUI(**document_dict)
-            return document
-        return None
+        return self.document_controller.get_current_document()
 
     @current_document.setter
     def current_document(self, doc: DocumentUI):
-        app.storage.client['documents']['current_document'] = doc.model_dump()
+        self.document_controller.set_current_document(doc)
 
     @property
     def documents(self):
-        doc_dicts = app.storage.client['documents']['all_documents']
-        docs = [DocumentUI(**doc) for doc in doc_dicts]
-        return docs
+        return self.document_controller.get_all()
+
+    def set_controllers(self):
+        self.document_controller = DocumentController()
 
 
 class EditArea(EditComponent):
@@ -41,7 +39,7 @@ class EditArea(EditComponent):
     Area for editing documents
     """
     def show_content(self):
-        if not app.storage.client['documents']['all_documents']:
+        if not self.documents:
             ui.label('Welcome to 10,000 Words!').classes('text-2xl')
             with ui.row():
                 ui.label('''
@@ -91,14 +89,13 @@ class DocumentSidebar(EditComponent):
 
     @property
     def documents_by_language(self):
-        doc_dicts = app.storage.client['documents']['all_documents']
+        all_docs = self.document_controller.get_all()
         by_language = {}
-        for doc in doc_dicts:
-            doc_ui = DocumentUIMinimal(**doc)
-            if doc_ui.language in by_language:
-                by_language[doc_ui.language].append(doc_ui)
+        for doc in all_docs:
+            if doc.language in by_language:
+                by_language[doc.language].append(doc)
             else:
-                by_language[doc_ui.language] = [doc_ui]
+                by_language[doc.language] = [doc]
         return by_language
 
     def show_document(self, doc_id):
@@ -145,45 +142,6 @@ class UploadForm(EditComponent):
         }
     '''
 
-    def update_documents(self, document: DocumentDB):
-        adapter = self.adapters.get('DocumentUIPort')
-        doc_ui = adapter.get(document, self.user)
-        app.storage.client['documents']['all_documents'].append(
-            doc_ui.model_dump(),
-        )
-        self.current_document = doc_ui
-
-    def create_document(self):
-        if not self._upload_event:
-            # TODO: add validation
-            return
-        adapter = self.adapters.get('DocumentDBPort')
-        # TODO: add validation
-        # TODO: check if document already exists and ask what to do
-        document = DocumentDB(
-            user_id=self.user.id,
-            display_name=self.document_title_input.value,
-            language_code=self.language_input.value,
-            binary_data=BinaryFileData(
-                name=self._upload_event.name,
-                data=self._upload_event.content.read(),
-            ),
-        )
-        new_doc = adapter.create_or_update(document)
-        ui.notify('Document Saved')
-
-        self.update_documents(new_doc)
-        document_sidebar.refresh()
-        edit_area.refresh()
-        self.cancel()
-
-    def hold_onto_document(self, event: events.UploadEventArguments):
-        """
-        Hold on to the event that just marked the file upload.
-        We still need to save the rest of the form.
-        """
-        self._upload_event = event
-
     def cancel(self):
         """
         Cancel the user form
@@ -222,7 +180,7 @@ class UploadForm(EditComponent):
             self.document_title_input = ui.input('Document Title')
             self.language_input = ui.select(
                 label='Language',
-                options=language_code_choices,
+                options=language_choices,
                 with_input=True,
             )
             with ui.row():
@@ -230,7 +188,7 @@ class UploadForm(EditComponent):
                         .classes('bold text-blue-950')
                 ui.icon('arrow_downward').classes('bold text-lg text-blue-950')
             self.upload = ui.upload(
-                on_upload=self.hold_onto_document,
+                on_upload=self._hold_onto_document,
                 on_rejected=lambda: ui.notify('File too large (max 1MB)'),
                 max_file_size=1_000_000,
             ).props('accept=.txt')
@@ -239,7 +197,31 @@ class UploadForm(EditComponent):
             with ui.row().classes('w-full'):
                 ui.button('Cancel', on_click=self.cancel).classes('bg-warning')
                 ui.space()
-                ui.button('Save', on_click=self.create_document)
+                ui.button('Save', on_click=self._create_document)
+
+    def _create_document(self):
+        if not self._upload_event:
+            # TODO: add validation
+            return
+
+        self.document_controller.create({
+            'user': self.user,
+            'display_name': self.document_title_input.value,
+            'language': self.language_input.value,
+            'upload': self._upload_event,
+        })
+        ui.notify('Document Saved')
+
+        document_sidebar.refresh()
+        edit_area.refresh()
+        self.cancel()
+
+    def _hold_onto_document(self, event: events.UploadEventArguments):
+        """
+        Hold on to the event that just marked the file upload.
+        We still need to save the rest of the form.
+        """
+        self._upload_event = event
 
 
 class UploadSidebar(EditComponent):

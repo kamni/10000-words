@@ -24,7 +24,7 @@ class ConfigureView(BaseView):
                 self.redirect = '/'
                 return False
         else:
-            existing_user = self.adapters.get('UserDBPort').get_first()
+            existing_user = self.user_controller.get_first()
             # The first time the app is configured,
             # we also want to give the chance to create a new user.
             if not existing_user:
@@ -32,4 +32,3 @@ class ConfigureView(BaseView):
 
         self.page_content.append(ConfigureWidget())
         return True
-

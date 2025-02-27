@@ -93,13 +93,13 @@ class AdapterStore(metaclass=Singleton):
         general_opts = self._config.get(common_key, default=[])
         for key in general_opts:
             value = self._config.get(common_key, key)
-            options[common_key] = value
+            options[key] = value
 
         adapter_key = f'adapters.{adapter_name}'
         adapter_opts = self._config.get(adapter_key, default=[])
         for key in adapter_opts:
             value = self._config.get(adapter_key, key)
-            options[adapter_key] = value
+            options[key] = value
 
         return options
 

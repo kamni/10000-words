@@ -9,7 +9,6 @@ import uuid
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from common.utils.files import document_upload_path
 from common.utils.languages import language_code_choices
 
 from users.models.profile import UserProfile
@@ -43,17 +42,6 @@ class Document(models.Model):
         max_length=8,
         choices=language_code_choices,
         help_text=_('Language that the document belongs to'),
-    )
-    file = models.FileField(
-        blank=True,
-        null=True,
-        upload_to=document_upload_path,
-        help_text=_('Uploaded document'),
-    )
-    translations = models.ManyToManyField(
-        'Document',
-        symmetrical=True,
-        help_text=_('Other language translations of this document'),
     )
 
     def __str__(self):

@@ -6,28 +6,15 @@ Affero GPL v3
 import uuid
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
-from .base import HashableMixin
-from .files import BinaryFileData
-from .users import UserUI
 from ..utils.languages import LanguageCode
+from .base import HashableMixin
+from .sentences import SentenceDB, SentenceUI
+from .users import UserUI
 
 
-class DocumentBase(HashableMixin):
-    """
-    Shared base class for the Pydantic models for the database.
-
-    Must implement the following fields:
-
-    * id
-    * user (with user.id)
-    * language_code
-    """
-    pass
-
-
-class DocumentDB(DocumentBase, BaseModel):
+class DocumentDB(HashableMixin, BaseModel):
     """
     Representation of a document to be stored in the database
     """
@@ -36,34 +23,26 @@ class DocumentDB(DocumentBase, BaseModel):
     user_id: uuid.UUID  # UserProfile uuid
     display_name: str
     language_code: LanguageCode
-    file_path: Optional[str] = None
-    binary_data: Optional[BinaryFileData] = None
-    translations: Optional[List['DocumentDB']] = None
+    author: Optional[str] = None
+    sentences: Optional[List[SentenceDB]] = []
+
+    class Config:
+        exclude_defaults = True
+        use_enum_values = True
 
     @property
     def unique_fields(self):
         return ['user_id', 'display_name', 'language_code']
 
 
-class DocumentUIMinimal(DocumentBase, BaseModel):
-    """
-    Bare minimum display of documents in the UI
-    Excludes Sentences and Words
-    """
-
-    id: uuid.UUID
-    user: UserUI
-    displayName: str
-    language: str
-
-
-class DocumentUI(DocumentBase, BaseModel):
+class DocumentUI(HashableMixin, BaseModel):
     """
     Full document for display in the UI
     """
 
     id: uuid.UUID
     user: UserUI
+    author: Optional[str] = None
     displayName: str
     language: str
-    # TODO: rest of the model
+    sentences: List[SentenceUI]

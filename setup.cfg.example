@@ -27,6 +27,7 @@ UploadDir = data/uploads
 AppSettingsDBPort = common.adapters.django_orm.settings.AppSettingsDjangoORMAdapter
 AppSettingsUIPort = common.adapters.ui.settings.AppSettingsUIAdapter
 AuthPort = common.adapters.django_orm.auth.AuthDjangoORMAdapter
+DataPort = common.adapters.django_orm.data.DataDjangoORMAdapter
 DocumentDBPort = common.adapters.django_orm.documents.DocumentDBDjangoORMAdapter
 DocumentUIPort = common.adapters.ui.documents.DocumentUIAdapter
 UserDBPort = common.adapters.django_orm.users.UserDBDjangoORMAdapter
@@ -40,7 +41,8 @@ UserUIPort = common.adapters.ui.users.UserUIAdapter
 #
 #   [dev.django.adapters.FooPort]
 #   UseFoo = yes
-
+[dev.django.adapters.dataport]
+DataFile = scripts/data/db.toml
 
 [dev.django.stores]
 AdapterStore = common.stores.adapter.AdapterStore
@@ -72,12 +74,16 @@ UploadDir = data/uploads
 AppSettingsDBPort = common.adapters.in_memory.settings.AppSettingsInMemoryAdapter
 AppSettingsUIPort = common.adapters.ui.settings.AppSettingsUIAdapter
 AuthPort = common.adapters.in_memory.auth.AuthInMemoryAdapter
+DataPort = common.adapters.in_memory.data.DataInMemoryAdapter
 DocumentDBPort = common.adapters.in_memory.documents.DocumentDBInMemoryAdapter
 DocumentUIPort = common.adapters.ui.documents.DocumentUIAdapter
 UserDBPort = common.adapters.in_memory.users.UserDBInMemoryAdapter
 UserUIPort = common.adapters.ui.users.UserUIAdapter
 
 [dev.in_memory.adapters.common]
+
+[dev.in_memory.adapters.dataport]
+DataFile = scripts/data/db.toml
 
 [dev.in_memory.stores]
 AdapterStore = common.stores.adapter.AdapterStore

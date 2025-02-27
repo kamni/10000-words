@@ -17,9 +17,8 @@ class RegisterView(BaseView):
     def setup(self) -> bool:
         if (
             not self.settings.show_registration
-            or app.storage.user.get('authenticated', False)
+            or (self.user and self.user.authenticated)
         ):
-            self.log_console('foo')
             self.redirect = '/'
             return False
 

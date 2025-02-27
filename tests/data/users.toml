@@ -1,0 +1,6 @@
+[[users]]
+id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+username = "dev-admin"
+password = "dev"
+display_name = "Dev Admin"
+is_admin = true

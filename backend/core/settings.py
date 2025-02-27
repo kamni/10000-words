@@ -28,7 +28,7 @@ SETTINGS_STORE_FILE = PROJECT_DIR / 'setup.cfg'
 SETTINGS_STORE_CFG = 'dev.django'
 SETTINGS_STORE = ConfigStore(SETTINGS_STORE_FILE, SETTINGS_STORE_CFG)
 
-MEDIA_ROOT = get_upload_dir()
+MEDIA_ROOT = get_upload_dir().as_posix()
 
 ###############################################################################
 #                                                                             #

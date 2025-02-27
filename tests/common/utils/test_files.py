@@ -10,11 +10,7 @@ from unittest import TestCase
 
 from common.models.documents import DocumentDB
 from common.stores.config import ConfigStore
-from common.utils.files import (
-    document_upload_path,
-    get_project_dir,
-    get_upload_dir,
-)
+from common.utils.files import get_project_dir, get_upload_dir
 from common.utils.singleton import Singleton
 
 
@@ -28,7 +24,7 @@ class TestGetProjectDir(TestCase):
     """
 
     def test_get_project_dir(self):
-        expected = Path(__file__).resolve().parent.parent.parent.parent.as_posix()
+        expected = Path(__file__).resolve().parent.parent.parent.parent
         returned = get_project_dir()
         self.assertEqual(expected, returned)
 
@@ -46,39 +42,12 @@ class TestGetUploadDir(TestCase):
 
     def test_get_absolute_path(self):
         config = ConfigStore(TEST_CONFIG, 'test')
-        expected_path = config.get('common', 'UploadDir')
+        expected_path = Path(config.get('common', 'UploadDir'))
         returned_path = get_upload_dir()
         self.assertEqual(expected_path, returned_path)
 
     def test_get_from_relative_path(self):
         config = ConfigStore(TEST_CONFIG, 'dev.django')
-        expected_path = (
-            TEST_DIR.parent / config.get('common', 'UploadDir')
-        ).as_posix()
+        expected_path = TEST_DIR.parent / config.get('common', 'UploadDir')
         returned_path = get_upload_dir()
         self.assertEqual(expected_path, returned_path)
-
-
-class TestDocumentUploadPath(TestCase):
-    """
-    Tests for common.utils.files.document_upload_path
-    """
-
-    def test_document_upload_path(self):
-        user_id = uuid.uuid4()
-        instance = DocumentDB(
-            user_id=user_id,
-            display_name='Test document upload path',
-            language_code='ru',
-        )
-        filename = 'bar.txt'
-
-        expected_path = os.path.join(
-            str(user_id),
-            instance.language_code,
-            'docs',
-            filename,
-        )
-        returned_path = document_upload_path(instance, filename)
-        self.assertEqual(expected_path, returned_path)
-

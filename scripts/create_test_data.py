@@ -19,9 +19,11 @@ import uuid
 from pathlib import Path
 from typing import List
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent.as_posix()
-if PROJECT_DIR not in sys.path:
-    sys.path.append(PROJECT_DIR)
+import toml
+
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+if PROJECT_DIR.as_posix() not in sys.path:
+    sys.path.append(PROJECT_DIR.as_posix())
 
 from common.models.documents import DocumentDB
 from common.models.settings import AppSettingsDB
@@ -29,8 +31,8 @@ from common.models.users import UserDB
 from common.stores.data.in_memory import Database
 
 
-DATA_DIR = os.path.join('scripts', 'data')
-DB_FILE = 'db.json'
+DATA_DIR = PROJECT_DIR / 'scripts' / 'data'
+DB_FILE = 'db.toml'
 
 
 def create_settings() -> AppSettingsDB:
@@ -119,10 +121,7 @@ def create_database() -> Database:
     """
     Generate a Database object with test data
     """
-    database = Database(
-        users=[],
-        documents=[],
-    )
+    database = Database()
     app_settings = create_settings()
     database.app_settings = app_settings
 
@@ -130,16 +129,35 @@ def create_database() -> Database:
     database.users = users
 
     documents = create_documents(users)
-    database.documents = documents
+    for doc in documents:
+        id = str(doc.user_id)
+        if id in database.documents:
+            database.documents[id].append(doc)
+        else:
+            database.documents[id] = [doc]
     return database
 
 
 if __name__ == '__main__':
-    database = create_database()
-    json_str = database.model_dump_json()
-    parsed = json.loads(json_str)
-    formatted = json.dumps(parsed, indent=4)
+    parser = argparse.ArgumentParser(
+        prog='CreateTestData',
+        description='Create test data for 10,000 Words, stored as a TOML file.',
+    )
+    parser.add_argument(
+        '-o',
+        '--output-file',
+        default=(DATA_DIR / DB_FILE).as_posix(),
+        help=(
+            'Where to write the generated data. '
+            'This should have a .toml extension.'
+        ),
+    )
+    args = parser.parse_args()
 
-    db_file = os.path.join(PROJECT_DIR, DATA_DIR, DB_FILE)
-    with open(os.path.join(PROJECT_DIR, DATA_DIR, DB_FILE), 'w') as db:
-        db.write(formatted)
+    database = create_database()
+    # We have to convert this to json first to serialize the UUIDs correctly
+    toml_dict = json.loads(database.model_dump_json())
+
+    db_file = args.output_file
+    with open(db_file, 'w') as db:
+        toml.dump(toml_dict, db)

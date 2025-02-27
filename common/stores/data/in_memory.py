@@ -22,12 +22,7 @@ class InMemoryDBStore(BaseDataStore):
     """
 
     def _get_blank_database(self) -> Database:
-        return Database(users=[], documents=[])
-
-    def get_config(self) -> Tuple[str, str]:
-        config = ConfigStore().config
-        subsection = 'dev.in_memory'
-        return config, subsection
+        return Database()
 
     def setup(self):
         """

@@ -16,11 +16,6 @@ class DjangoDBStore(BaseDataStore):
     Manages a database configured by Django.
     """
 
-    def get_config(self) -> Tuple[str, str]:
-        config = ConfigStore().config
-        subsection = 'dev.django'
-        return config, subsection
-
     def setup(self):
         call_command('migrate')
 

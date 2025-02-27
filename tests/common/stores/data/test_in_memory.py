@@ -3,10 +3,9 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import uuid
 from pathlib import Path
-
-from django.contrib.auth.models import User
-from django.test import TestCase
+from unittest import TestCase
 
 from common.adapters.in_memory.users import UserDBInMemoryAdapter
 from common.models.database import Database
@@ -18,7 +17,7 @@ from tests.utils.documents import make_document_db
 from tests.utils.users import make_user_db
 
 
-PROJECT_DIR = Path(get_project_dir())
+PROJECT_DIR = get_project_dir()
 PROJECT_CONF = PROJECT_DIR / 'setup.cfg'
 TEST_CONF = PROJECT_DIR / 'tests' / 'setup.cfg'
 
@@ -47,13 +46,16 @@ class TestInMemoryDBStore(TestCase):
 
     def test_setup(self):
         store = InMemoryDBStore()
-        expected = Database(users=[], documents=[])
+        expected = Database()
         self.assertEqual(expected, store.db)
 
     def test_drop(self):
         store = InMemoryDBStore()
-        store.db.users.append(make_user_db())
-        store.db.documents.append(make_document_db())
+        user = make_user_db(id=uuid.uuid4())
+        document = make_document_db(user_id=user.id)
+
+        store.db.users.append(user)
+        store.db.documents[str(user.id)] = [document]
         self.assertEqual(1, len(store.db.users))
         self.assertEqual(1, len(store.db.documents))
 
@@ -72,6 +74,7 @@ class TestInMemoryDBStore(TestCase):
         self.assertEqual(0, len(store.db.users))
         self.assertEqual(0, len(store.db.documents))
         self.assertIsNone(store.db.app_settings)
+
         store.load_data()
         self.assertTrue(len(store.db.users) > 0)
         self.assertTrue(len(store.db.documents) > 0)
@@ -88,30 +91,20 @@ class TestInMemoryDBStore(TestCase):
         self.assertEqual(0, len(store.db.users))
 
     def test_load_data_without_force(self):
-        app = AppStore(config=TEST_CONF, subsection='dev.django')
+        app = AppStore(config=TEST_CONF, subsection='dev.in_memory')
         store = InMemoryDBStore()
-        other_store = DjangoDBStore()
-        # We have to hack this a bit for the test,
-        # because the default is not to load data
         store.should_load_data = True
+        store._data_is_loaded = True
 
-        self.assertEqual(0, User.objects.all().count())
         self.assertEqual(0, len(store.db.users))
         store.load_data()
         self.assertEqual(0, len(store.db.users))
 
-        # Calling this will load data into the in-memory store,
-        # which is why we have the warnings in the docstring.
-        self.assertTrue(User.objects.all().count() > 0)
-
     def test_load_data_with_force(self):
-        app = AppStore(config=TEST_CONF, subsection='dev.django')
+        app = AppStore(config=TEST_CONF, subsection='dev.in_memory')
         store = InMemoryDBStore()
-        # When we use the `force` flag,
-        # it loads the corrrect database,
-        # although it also destroys the server's app configuration.
-        # Once again, heed the warnings!
         self.assertEqual(0, len(store.db.users))
+
         store.load_data(force=True)
         store = AppStore().get('DataStore')
         self.assertTrue(len(store.db.users) > 0)

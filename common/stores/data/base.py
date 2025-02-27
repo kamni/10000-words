@@ -3,10 +3,11 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+from pathlib import Path
 from typing import Optional, Tuple
 
+from common.stores.adapter import AdapterStore
 from common.utils.config import str_to_bool
-from common.utils.data import DataLoader
 from common.utils.singleton import Singleton
 
 
@@ -16,37 +17,50 @@ class BaseDataStore(metaclass=Singleton):
     """
 
     def __init__(self, **kwargs):
-        self.setup()
-        self.should_load_data = str_to_bool(kwargs.get('loadtestdata'))
+        self._initialized = False
         self._data_is_loaded = False
+        self._adapter = None
+
+        self.should_load_data = str_to_bool(kwargs.get('loadtestdata'))
+        self.initialize()
 
     @property
     def is_loaded(self):
         return self._data_is_loaded
 
-    def load_data(self, force: Optional[bool]=False):
+    @property
+    def adapter(self):
+        if not self._adapter:
+            self._adapter = AdapterStore().get('DataPort')
+        return self._adapter
+
+    def initialize(self, force: bool=False):
+        if self._initialized and not force:
+            return
+
+        self.setup()
+        self._initialized = True
+
+    def load_data(self, db_file: Optional[str]=None, force: Optional[bool]=False):
         """
         Load test data into the database, if configured in setup.cfg
 
         This is function is not intended to be used in production,
         because it uses unsafe/plaintext data.
 
+        :db_file: Path to database file to load, as string.
+            If not specified, defaults to DataFile in setup.cfg.
         :force: If True, forces the data to load regardless of config settings.
-            WARNING: This can override AppStore configuration in a live system.
         """
         if self._data_is_loaded and not force:
             return
 
         if self.should_load_data or force:
-            config, subsection = self.get_config()
-            DataLoader(config, subsection, force).load()
-            self._data_is_loaded = True
+            if db_file:
+                db_file = Path(db_file).resolve()
 
-    def get_config(self) -> Tuple[str, str]:
-        """
-        Get the configuration that is used by this data store.
-        """
-        raise NotImplementedError('BaseDataStore.get_config is not Implemented')
+            self.adapter.load(data_file=db_file)
+            self._data_is_loaded = True
 
     def setup(self):
         """

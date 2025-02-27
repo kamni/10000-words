@@ -6,163 +6,164 @@
     },
     "users": [
         {
-            "id": "11105bda-68c1-42b0-8f90-1a8dacdaaf7e",
+            "id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
             "username": "dev-admin",
             "password": "dev",
             "display_name": "Dev Admin",
             "is_admin": true
         },
         {
-            "id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
+            "id": "7f41e088-8c4b-4135-9740-a88a9b853c2c",
             "username": "user00",
             "password": "dev",
             "display_name": "User 00",
             "is_admin": false
         },
         {
-            "id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
+            "id": "ae096136-8bd0-4282-9f57-9632dfae2842",
             "username": "user01",
             "password": "dev",
             "display_name": "User 01",
             "is_admin": false
         }
     ],
-    "documents": [
-        {
-            "id": "6c17c337-6f30-4ed9-b3f1-8a406fe76fcb",
-            "user_id": "11105bda-68c1-42b0-8f90-1a8dacdaaf7e",
-            "display_name": "Rumpelstilzchen",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Rumpelstilzchen.txt",
-            "translations": null
-        },
-        {
-            "id": "79993a29-9fd9-42f5-aaaf-a58fecfe1f65",
-            "user_id": "11105bda-68c1-42b0-8f90-1a8dacdaaf7e",
-            "display_name": "Die Bremer Stadtmusikanten",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Die-Bremer-Stadtmusikanten.text",
-            "translations": null
-        },
-        {
-            "id": "bd43e70e-cbd7-444c-aaa1-ff22aacdea12",
-            "user_id": "11105bda-68c1-42b0-8f90-1a8dacdaaf7e",
-            "display_name": "Rotk\u00e4ppchen",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Rotk\u00e4ppchen.txt",
-            "translations": null
-        },
-        {
-            "id": "0261c158-6dbb-4222-b2d4-2c0e4fe9b2ba",
-            "user_id": "11105bda-68c1-42b0-8f90-1a8dacdaaf7e",
-            "display_name": "Little Red Riding Hood",
-            "language_code": "en",
-            "file_path": "scripts/data/en/Little-Red-Riding-Hood.txt",
-            "translations": null
-        },
-        {
-            "id": "5cb5975d-b6f3-4324-bfc0-4c328ab5c51e",
-            "user_id": "11105bda-68c1-42b0-8f90-1a8dacdaaf7e",
-            "display_name": "Roodkapje",
-            "language_code": "nl",
-            "file_path": "scripts/data/nl/Roodkapje.txt",
-            "translations": null
-        },
-        {
-            "id": "ee5cd4a9-005a-49a2-a926-1ad7080d1107",
-            "user_id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
-            "display_name": "Die Bremer Stadtmusikanten",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Die-Bremer-Stadtmusikanten.text",
-            "translations": null
-        },
-        {
-            "id": "ae09ae97-e818-4825-b369-e2280d8f17c2",
-            "user_id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
-            "display_name": "Rotk\u00e4ppchen",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Rotk\u00e4ppchen.txt",
-            "translations": null
-        },
-        {
-            "id": "7d6b3367-35a6-4648-98ed-63931bafb4a1",
-            "user_id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
-            "display_name": "Rumpelstilzchen",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Rumpelstilzchen.txt",
-            "translations": null
-        },
-        {
-            "id": "16f4f8e7-e139-4b78-b33a-1a6796180759",
-            "user_id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
-            "display_name": "The Bremen Town Musicians",
-            "language_code": "en",
-            "file_path": "scripts/data/en/The-Bremen-town-musicians.txt",
-            "translations": null
-        },
-        {
-            "id": "bd596ce8-1cd6-4c69-bc63-4a850540fea6",
-            "user_id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
-            "display_name": "Rumpelstiltskin",
-            "language_code": "en",
-            "file_path": "scripts/data/en/Rumpelstiltskin.txt",
-            "translations": null
-        },
-        {
-            "id": "03f6038c-cc0e-4ffa-a76b-6cb16321ddd8",
-            "user_id": "cdc95400-dc01-4dab-b635-ad9a18d7a5af",
-            "display_name": "De Bremer Stadsmuzikanten",
-            "language_code": "nl",
-            "file_path": "scripts/data/nl/De-Bremer-stadsmuzikanten.txt",
-            "translations": null
-        },
-        {
-            "id": "3f5bc6a2-625e-44d7-8542-23ae0da0e1b2",
-            "user_id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
-            "display_name": "Rumpelstilzchen",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Rumpelstilzchen.txt",
-            "translations": null
-        },
-        {
-            "id": "8c159d47-310e-4a29-998b-6fb99ac2ec9a",
-            "user_id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
-            "display_name": "Die Bremer Stadtmusikanten",
-            "language_code": "de",
-            "file_path": "scripts/data/de/Die-Bremer-Stadtmusikanten.text",
-            "translations": null
-        },
-        {
-            "id": "bedd4046-e7ef-42a0-b018-dfa91879ecf7",
-            "user_id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
-            "display_name": "The Bremen Town Musicians",
-            "language_code": "en",
-            "file_path": "scripts/data/en/The-Bremen-town-musicians.txt",
-            "translations": null
-        },
-        {
-            "id": "31132c54-7f09-4450-9261-5843607f235b",
-            "user_id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
-            "display_name": "Roodkapje",
-            "language_code": "nl",
-            "file_path": "scripts/data/nl/Roodkapje.txt",
-            "translations": null
-        },
-        {
-            "id": "6ed97a89-ed80-4ea0-a40e-be5a7e7e0b21",
-            "user_id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
-            "display_name": "De Bremer Stadsmuzikanten",
-            "language_code": "nl",
-            "file_path": "scripts/data/nl/De-Bremer-stadsmuzikanten.txt",
-            "translations": null
-        },
-        {
-            "id": "c1638600-4b9e-4eff-ad86-9c59bffb5213",
-            "user_id": "a6898dd7-2a7d-420e-8309-c322d5d86bf4",
-            "display_name": "Repelsteeltje",
-            "language_code": "nl",
-            "file_path": "scripts/data/nl/Repelsteeltje.txt",
-            "translations": null
-        }
-    ]
+    "documents": {
+        "425c6f31-3e48-43c5-8d8e-36083ad125bd": [
+            {
+                "id": "7b767626-ae79-4c2e-aa8d-d39ae98505d8",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "Rotk\u00e4ppchen",
+                "author": null,
+                "language_code": "de",
+                "sentences": []
+            },
+            {
+                "id": "6fa7f0c7-0c80-4476-8c0b-5d4da2d34967",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "Rumpelstilzchen",
+                "author": null,
+                "language_code": "de",
+                "sentences": []
+            },
+            {
+                "id": "41b4f33f-e47a-4998-859b-c2a46e6e419d",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "Rumpelstiltskin",
+                "author": null,
+                "language_code": "en",
+                "sentences": []
+            },
+            {
+                "id": "749875eb-ef01-41f8-945d-0815668be272",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "Little Red Riding Hood",
+                "author": null,
+                "language_code": "en",
+                "sentences": []
+            },
+            {
+                "id": "50e2f73f-aa59-42b5-9409-4ce5964d4b1c",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "De Bremer Stadsmuzikanten",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            },
+            {
+                "id": "1f3467b8-6a40-4a04-a67b-78608b993340",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "Sneeuwwitje",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            },
+            {
+                "id": "dd83c100-2fd9-481f-b180-5a33493498ff",
+                "user_id": "425c6f31-3e48-43c5-8d8e-36083ad125bd",
+                "display_name": "Roodkapje",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            }
+        ],
+        "7f41e088-8c4b-4135-9740-a88a9b853c2c": [
+            {
+                "id": "fbd66b55-e139-40ca-8ffc-dd5ae783f3e7",
+                "user_id": "7f41e088-8c4b-4135-9740-a88a9b853c2c",
+                "display_name": "Rumpelstilzchen",
+                "author": null,
+                "language_code": "de",
+                "sentences": []
+            },
+            {
+                "id": "a2cad726-d5e1-4057-a817-f2f516f5a706",
+                "user_id": "7f41e088-8c4b-4135-9740-a88a9b853c2c",
+                "display_name": "Little Red Riding Hood",
+                "author": null,
+                "language_code": "en",
+                "sentences": []
+            },
+            {
+                "id": "678dd8c0-e329-4acc-9fdf-ca3413eb27d4",
+                "user_id": "7f41e088-8c4b-4135-9740-a88a9b853c2c",
+                "display_name": "Repelsteeltje",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            },
+            {
+                "id": "46e85229-aef2-4aff-9c41-88121f4a77f5",
+                "user_id": "7f41e088-8c4b-4135-9740-a88a9b853c2c",
+                "display_name": "Sneeuwwitje",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            },
+            {
+                "id": "ef1c3844-d6ed-4d91-ad2f-7765f6cd5e80",
+                "user_id": "7f41e088-8c4b-4135-9740-a88a9b853c2c",
+                "display_name": "De Bremer Stadsmuzikanten",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            }
+        ],
+        "ae096136-8bd0-4282-9f57-9632dfae2842": [
+            {
+                "id": "abb4a6ad-8b0b-420c-89db-2dd307f11bf6",
+                "user_id": "ae096136-8bd0-4282-9f57-9632dfae2842",
+                "display_name": "Rotk\u00e4ppchen",
+                "author": null,
+                "language_code": "de",
+                "sentences": []
+            },
+            {
+                "id": "7412ce12-5df0-4cf5-b8d0-130e3ae34efe",
+                "user_id": "ae096136-8bd0-4282-9f57-9632dfae2842",
+                "display_name": "Rumpelstiltskin",
+                "author": null,
+                "language_code": "en",
+                "sentences": []
+            },
+            {
+                "id": "35e08cfd-dcb1-4f4c-93a6-2405df08e618",
+                "user_id": "ae096136-8bd0-4282-9f57-9632dfae2842",
+                "display_name": "Little Red Riding Hood",
+                "author": null,
+                "language_code": "en",
+                "sentences": []
+            },
+            {
+                "id": "4d08e948-ed17-4e5f-989e-a5ed9f11989c",
+                "user_id": "ae096136-8bd0-4282-9f57-9632dfae2842",
+                "display_name": "Roodkapje",
+                "author": null,
+                "language_code": "nl",
+                "sentences": []
+            }
+        ]
+    },
+    "words": {},
+    "display_text": {},
+    "sentences": {}
 }

@@ -16,7 +16,6 @@ from words.models import Document
 from ...models.documents import DocumentDB
 from ...models.errors import ObjectNotFoundError
 from ...ports.documents import DocumentDBPort, DocumentUIPort
-from ...utils.files import document_upload_path, get_upload_dir
 
 
 class DocumentDBDjangoORMAdapter(DocumentDBPort):
@@ -34,7 +33,6 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
             user_id=document.user.id,
             display_name=document.display_name,
             language_code=document.language_code,
-            file_path=document.file.name,
         )
         return docdb
 
@@ -47,7 +45,6 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
 
         :return: DocumentDB that was created/updated
         :raises: ObjectNotFound error if user does not exist
-        :raises: FileNotFoundError if file doesn't exist.
         """
 
         # This raises an ObjectNotFound error.
@@ -61,8 +58,7 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         ).first()
 
         if existing_doc:
-            # Currently, only the file gets updated,
-            # so we won't do anything here.
+            # Currently, nothing so we won't do anything here.
             # TODO: a direct `update` function that changes display_name
             doc = existing_doc
         else:
@@ -74,31 +70,6 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
 
         # TODO: handle translations
         # TODO: handle new sentence uploads
-
-        if document.binary_data:
-            relative_upload_path = Path(
-                document_upload_path(document, document.binary_data.name),
-            ).as_posix()
-            upload_path = Path(get_upload_dir()) / relative_upload_path
-            folder_path = upload_path.parent
-            folder_path.mkdir(parents=True, exist_ok=True)
-
-            with open(upload_path, 'wb') as file:
-                file.write(document.binary_data.data)
-            with open(upload_path, 'rb') as file:
-                doc.file = File(file, name=document.binary_data.name)
-                doc.save()
-
-        elif document.file_path:
-            file_path = Path(document.file_path)
-            if not file_path.is_file():
-                raise FileNotFoundError(
-                    f'Could not find file {document.file_path}',
-                )
-
-            with file_path.open(mode='rb') as file:
-                doc.file = File(file, name=file_path.name)
-                doc.save()
 
         docdb = self._django_to_pydantic(doc)
         return docdb

@@ -50,3 +50,4 @@ class UserUI(UserBase, BaseModel):
     username: str
     displayName: Optional[str] = None
     isAdmin: Optional[bool] = False
+    authenticated: Optional[bool] = False

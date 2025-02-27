@@ -3,7 +3,7 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from typing import Optional
+from typing import Dict, Optional
 
 from nicegui import ui
 from nicegui.elements.label import Label
@@ -57,43 +57,33 @@ class ConfigureWidget(BaseWidget):
     Configure the global app settings
     """
 
-    def display(self):
-        adapter_db = self.adapters.get('AppSettingsDBPort')
-        adapter_ui = self.adapters.get('AppSettingsUIPort')
+    @property
+    def settings(self):
+        return self.settings_controller.get()
 
-        current_settings = adapter_db.get()
-        if current_settings:
-            is_configured = True
-        else:
-            current_settings = adapter_db.get_or_default()
-            is_configured = False
+    @settings.setter
+    def settings(self, settings_dict: Dict[str, bool]):
+        self.settings_controller.update(settings_dict)
+
+    def display(self):
+        is_configured = self.settings.is_configured
+        current_db_settings = self.settings_controller.get_db()
 
         self._multiuser = OptionWidget(
             'Can multiple people use the app?',
-            current_settings.multiuser_mode,
+            current_db_settings.multiuser_mode,
             'multiuser',
         )
         self._passwordless = OptionWidget(
             'Log in without a password?',
-            current_settings.passwordless_login,
+            current_db_settings.passwordless_login,
             'passwordless',
         )
         self._show_users = OptionWidget(
             'Show user list on the login page?',
-            current_settings.show_users_on_login_screen,
+            current_db_settings.show_users_on_login_screen,
             'show-user',
         )
-
-        def save_settings():
-            settings = AppSettingsDB(
-                multiuser_mode=self._multiuser.value,
-                passwordless_login=self._passwordless.value,
-                show_users_on_login_screen=self._show_users.value,
-            )
-            adapter_db.create_or_update(settings)
-            self.settings = adapter_ui.get(settings)
-            ui.notify('Settings Saved!')
-            self.emit_done()
 
         with ui.card().classes('absolute-center'):
             ui.label('Settings').classes('text-3xl')
@@ -109,4 +99,14 @@ class ConfigureWidget(BaseWidget):
                 if is_configured:
                     ui.button('Cancel', on_click=self.emit_cancel, color='warning')
                 ui.space()
-                ui.button('Save', on_click=save_settings)
+                ui.button('Save', on_click=self._save_settings)
+
+    def _save_settings(self):
+        self.settings = {
+            'multiuser_mode': self._multiuser.value,
+            'passwordless_login': self._passwordless.value,
+            'show_users_on_login_screen': self._show_users.value,
+        }
+        ui.notify('Settings Saved!')
+        self.emit_done()
+

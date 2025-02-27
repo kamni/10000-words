@@ -3,14 +3,15 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+import logging
 from abc import ABC, abstractmethod
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 
 from nicegui import app, ui
 
-from common.models.settings import AppSettingsUI
 from common.models.users import UserUI
-from common.stores.adapter import AdapterStore
+from frontend.controllers.settings import SettingsController
+from frontend.controllers.users import UserController
 
 
 class BaseWidget(ABC):
@@ -23,31 +24,21 @@ class BaseWidget(ABC):
     CSS = ''
 
     def __init__(self):
-        self.adapters = AdapterStore()
+        self.settings_controller = SettingsController()
+        self.user_controller = UserController()
+        self.logger = logging.getLogger(__name__)
 
+        self.set_controllers()
         self.set_style()
         self.set_storage()
 
     @property
     def user(self):
-        user_dict = app.storage.user
-        user = UserUI(**user_dict)
-        return user
-
-    @user.setter
-    def user(self, user: UserUI):
-        app.storage.user.update(user.model_dump())
-        app.storage.user['authenticated'] = True
+        return self.user_controller.get()
 
     @property
     def settings(self):
-        settings_dict = app.storage.client.get('settings', {})
-        settings = AppSettingsUI(**settings_dict)
-        return settings
-
-    @settings.setter
-    def settings(self, settings: AppSettingsUI):
-        app.storage.client['settings'] = settings.model_dump()
+        return self.settings_controller.get()
 
     @abstractmethod
     def display(self):
@@ -59,6 +50,12 @@ class BaseWidget(ABC):
     def get_storage(self):
         """
         Returns data from the widget's storage.
+        """
+        pass
+
+    def set_controllers(self):
+        """
+        Set up controllers used by the widget.
         """
         pass
 

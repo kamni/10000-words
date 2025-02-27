@@ -9,7 +9,7 @@ import string
 import uuid
 from typing import Optional
 
-from common.utils.languages import LanguageCode
+from common.utils.languages import LanguageCode, language_choices
 
 
 def random_email(username: Optional[str]=None, domain: Optional[str]=None) -> str:
@@ -40,7 +40,12 @@ def random_file_path(
 
 
 def random_language_code():
-    lang = str(random.choice(list(LanguageCode)))
+    lang_code = str(random.choice(list(LanguageCode)))
+    return lang_code
+
+
+def random_language():
+    lang = random.choice(list(language_choices.keys()))
     return lang
 
 

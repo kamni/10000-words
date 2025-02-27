@@ -67,53 +67,9 @@ class RegistrationWidget(BaseWidget):
                 password_toggle_button=True,
             )
 
-        def is_valid() -> bool:
-            return all([
-                self._display_name.validate(),
-                self._username.validate(),
-                self._password.validate() if self._password else True,
-                self._password_confirm.validate() if self._password else True,
-            ])
+        self.another_user_exists = self.user_controller.get_first() is not None
 
-        adapter = self.adapters.get('UserDBPort')
-        another_user_exists = adapter.get_first() is not None
-
-        def save_user():
-            if self._password:
-                self._password_confirm.remove_validators()
-                self._password_confirm.add_validator(
-                    partial(
-                        text_equals_value,
-                        expected_value=self._password.value,
-                    ),
-                )
-            if not is_valid():
-                return
-
-            user = UserDB(
-                display_name=self._display_name.value,
-                username=self._username.value,
-                password=self._password.value if self._password else None,
-            )
-            # First user should always be an admin
-            # so we have someone to manage the system
-            if not another_user_exists:
-                user.is_admin = True
-
-            try:
-                adapter.create(user)
-            except ObjectExistsError:
-                self._username.set_error(['already exists.'])
-                return
-            except ObjectValidationError as exc:
-                # Currently the only validation in the backend is password
-                self._password.set_error(exc.messages, include_title=False)
-                return
-
-            ui.notify(f'Success!')
-            self.emit_done()
-
-        ui.on('keydown.enter', save_user)
+        ui.on('keydown.enter', self._save_user)
 
         with ui.card().classes('absolute-center'):
             ui.label('Register for 10,000 Words').classes('text-3xl')
@@ -127,7 +83,47 @@ class RegistrationWidget(BaseWidget):
 
             ui.separator()
             with ui.row().classes('w-full'):
-                if another_user_exists:
+                if self.another_user_exists:
                     ui.button('Cancel', on_click=self.emit_cancel, color='warning')
                 ui.space()
-                ui.button('Join', on_click=save_user).classes('self-center')
+                ui.button('Join', on_click=self._save_user).classes('self-center')
+
+    def _is_valid(self) -> bool:
+        return all([
+            self._display_name.validate(),
+            self._username.validate(),
+            self._password.validate() if self._password else True,
+            self._password_confirm.validate() if self._password else True,
+        ])
+
+    def _save_user(self):
+        if self._password:
+            self._password_confirm.remove_validators()
+            self._password_confirm.add_validator(
+                partial(
+                    text_equals_value,
+                    expected_value=self._password.value,
+                ),
+            )
+        if not self._is_valid():
+            return
+
+        try:
+            # First user should always be an admin
+            # so we have someone to manage the system
+            self.user_controller.update({
+                'display_name': self._display_name.value,
+                'username': self._username.value,
+                'password': self._password.value if self._password else None,
+                'is_admin': not self.another_user_exists,
+            })
+        except ObjectExistsError:
+            self._username.set_error(['already exists.'])
+            return
+        except ObjectValidationError as exc:
+            # Currently the only validation in the backend is password
+            self._password.set_error(exc.messages, include_title=False)
+            return
+
+        ui.notify(f'Success!')
+        self.emit_done()

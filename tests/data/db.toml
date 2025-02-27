@@ -1,0 +1,165 @@
+[[users]]
+id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+username = "dev-admin"
+password = "dev"
+display_name = "Dev Admin"
+is_admin = true
+
+[[users]]
+id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+username = "user00"
+password = "dev"
+display_name = "User 00"
+is_admin = false
+
+[[users]]
+id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+username = "user01"
+password = "dev"
+display_name = "User 01"
+is_admin = false
+
+[app_settings]
+multiuser_mode = true
+passwordless_login = false
+show_users_on_login_screen = true
+
+[documents]
+[[documents.50fc9c63-1572-41ad-b62f-158b6765a5cf]]
+id = "d5ae2910-0388-4a7e-9e9f-a1beb5b93013"
+user_id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+display_name = "Rumpelstilzchen"
+language_code = "de"
+sentences = []
+
+[[documents.50fc9c63-1572-41ad-b62f-158b6765a5cf]]
+id = "a992e1cd-1ce5-41a6-bf6f-97ae1482ff32"
+user_id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+display_name = "Die Bremer Stadtmusikanten"
+language_code = "de"
+sentences = []
+
+[[documents.50fc9c63-1572-41ad-b62f-158b6765a5cf]]
+id = "94fda91e-1f98-4844-8be4-5065685202cd"
+user_id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+display_name = "The Bremen Town Musicians"
+language_code = "en"
+sentences = []
+
+[[documents.50fc9c63-1572-41ad-b62f-158b6765a5cf]]
+id = "f0c7d0d7-d058-49b2-8358-5da92a2c65aa"
+user_id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+display_name = "Rumpelstiltskin"
+language_code = "en"
+sentences = []
+
+[[documents.50fc9c63-1572-41ad-b62f-158b6765a5cf]]
+id = "aac028e0-556b-42d2-8a46-9b3b5a351700"
+user_id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+display_name = "Repelsteeltje"
+language_code = "nl"
+sentences = []
+
+[[documents.50fc9c63-1572-41ad-b62f-158b6765a5cf]]
+id = "874d9e10-0ee0-4f86-a2d5-a869c4444ec1"
+user_id = "50fc9c63-1572-41ad-b62f-158b6765a5cf"
+display_name = "Sneeuwwitje"
+language_code = "nl"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "a79c7a63-c1b0-4df1-ad99-6ae9727cc137"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Rumpelstilzchen"
+language_code = "de"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "b492e6f2-5830-4741-985c-e9209ba94e1a"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Rotkäppchen"
+language_code = "de"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "2687a45b-5bc8-44aa-8635-c50a1d374437"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Die Bremer Stadtmusikanten"
+language_code = "de"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "9099667a-0324-4ed5-b2cb-1ba3960ad6dd"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Rumpelstiltskin"
+language_code = "en"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "f4ecf71d-f40b-4171-b632-60977f368a57"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Roodkapje"
+language_code = "nl"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "4a19b4c4-17d8-4fca-89a6-cf2d83a33336"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Sneeuwwitje"
+language_code = "nl"
+sentences = []
+
+[[documents.a5b85e35-2805-4c1c-873d-23960bd5faa9]]
+id = "52a1bdd5-cb74-4f29-b7b5-9dc8c3af76d9"
+user_id = "a5b85e35-2805-4c1c-873d-23960bd5faa9"
+display_name = "Repelsteeltje"
+language_code = "nl"
+sentences = []
+
+[[documents.021bdc6b-9abf-4672-9fdb-f506622d75d9]]
+id = "87e79ca3-3a5e-438f-b119-935b9fd5b9a7"
+user_id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+display_name = "Rotkäppchen"
+language_code = "de"
+sentences = []
+
+[[documents.021bdc6b-9abf-4672-9fdb-f506622d75d9]]
+id = "cb8610f6-3ffe-46be-8fc6-bc7293ce3d64"
+user_id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+display_name = "Rumpelstilzchen"
+language_code = "de"
+sentences = []
+
+[[documents.021bdc6b-9abf-4672-9fdb-f506622d75d9]]
+id = "d80a40b4-189a-4a9f-a017-bed898eaa52e"
+user_id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+display_name = "Die Bremer Stadtmusikanten"
+language_code = "de"
+sentences = []
+
+[[documents.021bdc6b-9abf-4672-9fdb-f506622d75d9]]
+id = "45644489-b93c-4919-bc00-890ba4bb3730"
+user_id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+display_name = "Rumpelstiltskin"
+language_code = "en"
+sentences = []
+
+[[documents.021bdc6b-9abf-4672-9fdb-f506622d75d9]]
+id = "23890ca0-cc71-45f4-9594-e4bc54656d38"
+user_id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+display_name = "Repelsteeltje"
+language_code = "nl"
+sentences = []
+
+[[documents.021bdc6b-9abf-4672-9fdb-f506622d75d9]]
+id = "f13f95cf-fb1a-4176-ba60-a4d061ba5c49"
+user_id = "021bdc6b-9abf-4672-9fdb-f506622d75d9"
+display_name = "De Bremer Stadsmuzikanten"
+language_code = "nl"
+sentences = []
+
+[words]
+
+[display_text]
+
+[sentences]

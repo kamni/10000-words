@@ -8,6 +8,7 @@ from typing import Any, Optional
 from nicegui import app, ui
 
 from common.ports.auth import AuthInvalidError
+from common.stores.adapter import AdapterStore
 from frontend.widgets.base import BaseWidget
 from frontend.widgets.errors import Error500Widget
 
@@ -28,6 +29,14 @@ class LoginWidget(BaseWidget):
     Log into the system
     """
 
+    @property
+    def user(self):
+        return self.user_controller.get()
+
+    @user.setter
+    def user(self, user):
+        self.user_controller.set(user)
+
     def display(self):
         # This shouldn't happen,
         # because this means we got here without configuring the app.
@@ -35,47 +44,25 @@ class LoginWidget(BaseWidget):
             Error500Widget().display()
             return
 
-        user_adapter = self.adapters.get('UserDBPort')
-        auth_adapter = self.adapters.get('AuthPort')
+        self.username = None
+        self.password = None
+        self.error = None
 
-        username = None
-        password = None
-        error = None
-
-        def login():
-            error.classes(add='hidden')
-            error.text = ''
-            try:
-                userui = auth_adapter.login(
-                    username.value,
-                    password.value if password else None,
-                )
-            except AuthInvalidError as exc:
-                if self.settings.show_password_field:
-                    error.text = 'Invalid username or password.'
-                else:
-                    error.text = 'Invalid username.'
-                error.classes(remove='hidden')
-            else:
-                self.user = userui
-                ui.notify('Welcome!')
-                self.emit_done()
-
-        ui.on('keydown.enter', login)
+        ui.on('keydown.enter', self._login)
 
         with ui.card().classes('absolute-center'):
             ui.label('Login').classes('text-3xl')
             ui.separator()
 
             if self.settings.show_user_select:
-                users = user_adapter.get_all()
+                users = self.user_controller.get_all()
                 if not users:
                     RegistrationLinkWidget().display()
                     return
 
                 if len(users) == 1:
                     user = users[0]
-                    username = ui.input(
+                    self.username = ui.input(
                         'Username',
                         value=user.username,
                     ).classes('text-1xl')
@@ -84,26 +71,49 @@ class LoginWidget(BaseWidget):
                         user.username: user.username
                         for user in users
                     }
-                    username = ui.select(
+                    self.username = ui.select(
                         label='Username',
                         options=options,
                         with_input=True,
                     )
             else:
-                username = ui.input('Username')
+                self.username = ui.input('Username')
 
             if self.settings.show_password_field:
-                password = ui.input(
+                self.password = ui.input(
                     'Password',
                     password=True,
                     password_toggle_button=True,
                 )
 
-            error = ui.label('').classes(
+            self.error = ui.label('').classes(
                 'text-amber-600 text-center self-center height-fit hidden',
             )
 
             ui.separator()
             if self.settings.show_registration:
                 RegistrationLinkWidget().display()
-            ui.button('Log In', on_click=login).classes('self-center')
+
+            ui.button('Log In', on_click=self._login).classes('self-center')
+
+    def _login(self):
+        auth_adapter = AdapterStore().get('AuthPort')
+
+        self.error.classes(add='hidden')
+        self.error.text = ''
+        try:
+            user = auth_adapter.login(
+                self.username.value,
+                self.password.value if self.password else None,
+            )
+        except AuthInvalidError as exc:
+            if self.settings.show_password_field:
+                self.error.text = 'Invalid username or password.'
+            else:
+                self.error.text = 'Invalid username.'
+            self.error.classes(remove='hidden')
+        else:
+            self.user = user
+            ui.notify('Welcome!')
+            self.emit_done()
+
