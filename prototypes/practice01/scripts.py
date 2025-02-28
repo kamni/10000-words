@@ -269,6 +269,26 @@ class TOMLCreator:
 
         return tokens
 
+'''
+    def make_mp3(
+        sentence: Dict,
+        tts_dir: Path,
+        idx: int,
+        download_tts_again: bool,
+    ) -> Path:
+        counter = str(idx).zfill(3)
+        mp3_filename = f'{counter}.mp3'
+        mp3 = tts_dir / mp3_filename
+
+        if not mp3.exists() or download_tts_again:
+            print(f'Downloading {mp3_filename}...')
+            tts = gTTS(sentence['text'], lang='nl')
+            tts.save(mp3.as_posix())
+        else:
+            print(f'Skipping download of {mp3_filename}. Already downloaded.')
+        return mp3
+'''
+
 if __name__ == '__main__':
     toml_creator = TOMLCreator()
     toml_creator.create(DATA_DIR / 'aflevering-070.txt')
