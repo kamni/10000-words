@@ -55,7 +55,6 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
                     self.store.db.documents[str(document.user_id)],
                 ))[0]
             doc = existing_doc
-
         except (IndexError, KeyError):
             doc = document
             doc.id = uuid.uuid4()
@@ -70,6 +69,12 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
         doc.display_name = document.display_name
         if document.binary_data:
             doc.attrs = self.parse_binary_data_attrs(document.binary_data)
+            doc.sentences = self.parse_binary_data_sentences(
+                document.binary_data,
+                document,
+            )
+            for sentencedb in doc.sentences:
+                sentencedb.id = uuid.uuid4()
         else:
             doc.attrs = document.attrs
 

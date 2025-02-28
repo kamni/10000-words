@@ -5,11 +5,14 @@
 * Upload adds sentences
   * Displays sentences in Edit view
   * Export button back to TOML
+    * TOML adapter?
 
 * Tests
   * DocumentUIAdapter
     * get
     * get_all
+  * DocumentDBInMemoryAdapter
+    * create_or_update
 
 ---
 
@@ -36,26 +39,9 @@ Be opinionated for first round -- nothing custom
 
 [Anki reference](https://docs.ankiweb.net/templates/fields.html)
 
+Should we get rid of the login?
+
 ----
-
-* Add DisplayText
-* Adapters
-  * DisplayText
-    * port
-      * create_or_update
-        * Needs to be called when sentence is create_or_update-ed
-      * get_all for sentence
-    * In Memory
-      * setup.cfg
-      * tests
-    * Django
-      * setup.cfg
-      * tests
-    * UI
-      * setup.cfg
-      * tests
-
----
 
 50 Repetitions for learning
 

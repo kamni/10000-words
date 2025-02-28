@@ -8,7 +8,7 @@ import uuid
 from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple
 
-from ..models.documents import DocumentDB, DocumentUI
+from ..models.documents import DocumentDB, DocumentUI, SentenceDB
 from ..models.files import BinaryFileData
 from ..models.users import UserUI
 
@@ -76,13 +76,40 @@ class DocumentDBPort(ABC):
         attrs = {}
         data = binary_data.data.decode('utf-8')
         text = data.split(os.linesep)
+
         for line in text:
             line = line.strip()
             if not line.startswith(':'):
                 return attrs
             key, value = line.split(':', 2)[1:]
             attrs[key.strip()] = value.strip()
+
         return attrs
+
+    def parse_binary_data_sentences(
+        self,
+        binary_data: BinaryFileData,
+        document: DocumentDB,
+    ) -> List[SentenceDB]:
+        sentences = []
+        data = binary_data.data.decode('utf-8')
+        text = data.split(os.linesep)
+
+        for line in text:
+            line = line.strip()
+            if line.startswith(':'):
+                continue
+            sentences.append(
+                SentenceDB(
+                    user_id=document.user_id,
+                    document_id=document.id,
+                    ordering=len(sentences) + 1,
+                    language_code=document.language_code,
+                    text=line,
+                ),
+            )
+
+        return sentences
 
 
 class DocumentUIPort(ABC):
