@@ -180,11 +180,6 @@ class TOMLCreator:
                 if not sentence.text or sentence.translation:
                     continue
 
-                # Handling legacy versions of the file
-                if sentence.translations:
-                    sentence.translation = sentence.translations[0]
-                    continue
-
                 self._print_divider()
                 print(f'\n{sentence.text}\n')
                 self._print_divider()
@@ -226,7 +221,42 @@ class TOMLCreator:
                         ),
                     )
                     words.append(word)
-                document.words = list(set(document.words + words))
+
+                # Update words
+                for word in words:
+                    try:
+                        existing_word = document.words.pop(
+                            document.words.index(word),
+                        )
+                    except ValueError:
+                        document.words.append(word)
+                        continue
+
+                    self._print_divider()
+                    print('You have duplicate words:\n')
+                    print(f'1. {word.text}: {word.translation.text}')
+                    print(
+                        f'2. {existing_word.text}: '
+                        f'{existing_word.translation.text}'
+                    )
+                    print('3. Combine them\n')
+
+                    answer = None
+                    while answer not in ('1', '2', '3'):
+                        answer = input('Which one would you like to keep? ')
+
+                    if answer == '3':
+                        new_translation = input(
+                            'What would you like the translation to be? ',
+                        )
+                        word.translation = Word(
+                            text=new_translation,
+                            language_code='en',
+                        )
+                    elif answer == '2':
+                        word = existing_word
+
+                    document.words.append(word)
 
                 # Once the sentence has been completely processed,
                 # we can start studying it

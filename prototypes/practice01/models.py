@@ -25,12 +25,10 @@ class Document(BaseModel):
 
 
 class Sentence(BaseModel):
-    id: uuid.UUID = Field(default_factory=uuid.uuid4)
     text: str
     language_code: LanguageCode
     ordering: Optional[int] = None
     enabled_for_study: Optional[bool] = False
-    translations: Optional[List['Sentence']] = []
     translation: Optional['Sentence'] = None
 
     class Config:
@@ -63,7 +61,6 @@ class WordStatus(StrEnum):
 
 
 class Word(BaseModel):
-    id: uuid.UUID = Field(default_factory=uuid.uuid4)
     text: str
     language_code: LanguageCode
     status: Optional[WordStatus] = 'not_set'
