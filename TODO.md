@@ -3,6 +3,8 @@
 ## 1. Load document with one sentence per line
 
 * Upload adds sentences
+  * Create Sentence Django model
+    * select_related
   * Displays sentences in Edit view
   * Export button back to TOML
     * TOML adapter?
@@ -13,6 +15,11 @@
     * get_all
   * DocumentDBInMemoryAdapter
     * create_or_update
+  * DocumentDBDjangoORMAdapter
+    * create_or_update
+    * get
+    * get_all -- should it return the sentences at this time?
+      * Maybe we do another query?
 
 ---
 

@@ -4,3 +4,4 @@ Affero GPL v3
 """
 
 from .documents import Document
+from .sentences import Sentence

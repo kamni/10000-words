@@ -11,9 +11,10 @@ from django.core.files import File
 from django.db.utils import IntegrityError
 
 from users.models import UserProfile
-from words.models import Document
+from words.models import Document, Sentence
 
 from ...models.documents import DocumentDB
+from ...models.sentences import SentenceDB
 from ...models.errors import ObjectNotFoundError
 from ...ports.documents import DocumentDBPort, DocumentUIPort
 
@@ -28,12 +29,27 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         super().__init__()
 
     def _django_to_pydantic(self, document: Document) -> DocumentDB:
+        # TODO: select_related when we add display_text
+        sentences = [
+            SentenceDB(
+                id: sentence.id
+                user_id: document.user.id,
+                document_id: document.id,
+                ordering: sentence.ordering,
+                language_code: sentence.language_code,
+                text: sentence.text,
+                enabled_for_study: sentence.enabled_for_study,
+            )
+            for sentence in document.sentence_set.all()
+        ]
+
         docdb = DocumentDB(
             id=document.id,
             user_id=document.user.id,
             display_name=document.display_name,
             language_code=document.language_code,
             attrs=document.attrs,
+            sentences=sentences,
         )
         return docdb
 
@@ -75,7 +91,35 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
             doc.attrs = self.parse_binary_data_attrs(document.binary_data)
         else:
             doc.attrs = document.attrs
-        doc.save()
+        # We have to save before we can create sentences
+        doc = doc.save()
+
+        if document.binary_data:
+            # Sorry, but we're not going to do a merge situation
+            Sentence.objects.filter(document=doc).delete()
+
+            sentence_dbs = self.parse_binary_data_sentences(
+                document.binary_data,
+                doc,
+            )
+            for sentence in sentencedbs:
+                Sentence.objects.create(
+                    document=doc,
+                    user=doc.user,
+                    ordering=sentence.ordering,
+                    language_code=document.language_code,
+                    text=sentence.text,
+                )
+            doc.refresh_from_db()
+
+        docdb = self._django_to_pydantic(doc)
+        return docdb
+
+    @property
+    def unique_fields(self):
+        return ['user_id', 'text', 'language_code']
+            sentences = [
+                Sentence.objects.crea
 
         docdb = self._django_to_pydantic(doc)
         return docdb
