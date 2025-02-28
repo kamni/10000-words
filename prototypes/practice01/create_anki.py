@@ -11,7 +11,7 @@ import toml
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
-INPUT = PROJECT_DIR / 'nl' / 'een-beetje-nederlands' / 'aflevering-070.toml'
+INPUT = PROJECT_DIR / 'practice01' / 'data' / 'aflevering-070.toml'
 
 
 class AnkiDeckCreator:
