@@ -257,6 +257,7 @@ language_code = "en"
 text = "Op veel plekken mag je daarom als mens niet komen, en dat is goed nieuws voor de natuur."
 language_code = "nl"
 ordering = 32
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "For that reason, you are not allowed to enter many places as a human, and that is good news for nature."
@@ -265,6 +266,7 @@ language_code = "en"
 text = "Hoewel maar 1% van het Nederlandse oppervlakte duingebied is, komen er veel bijzondere planten en vogels voor."
 language_code = "nl"
 ordering = 33
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Although only 1% of the Dutch surface area is dune, many special plants and birds occur there."
@@ -273,6 +275,7 @@ language_code = "en"
 text = "Dat komt vooral door de grote verschillen in landschap die je vindt in de duinen."
 language_code = "nl"
 ordering = 34
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This is mainly due to the large differences in landscape that you find in the dunes."
@@ -281,6 +284,7 @@ language_code = "en"
 text = "In de duinen vind je heuvels, dalen, droge en natte gebieden."
 language_code = "nl"
 ordering = 35
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "In the dunes you will find hills, valleys, dry and wet areas."
@@ -289,6 +293,7 @@ language_code = "en"
 text = "Die variatie zorgt ervoor dat er 850 verschillende planten in het gebied groeien."
 language_code = "nl"
 ordering = 36
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This variation ensures that 850 different plants grow in the area."
@@ -297,6 +302,7 @@ language_code = "en"
 text = "Ook komen er 140 verschillende vogelsoorten voor in de duinen, van de 190 in totaal in Nederland."
 language_code = "nl"
 ordering = 37
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "There are also 140 different bird species in the dunes, out of a total of 190 in the Netherlands."
@@ -310,6 +316,7 @@ ordering = 38
 text = "Een typisch Nederlands duingebied is het Zuid-Kennemerland, bij Haarlem."
 language_code = "nl"
 ordering = 39
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "A typical Dutch dune area is the South Kennemerland, near Haarlem."
@@ -318,6 +325,7 @@ language_code = "en"
 text = "De duinen in het Kennemerland noemen we de Kennemerduinen."
 language_code = "nl"
 ordering = 40
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The dunes in Kennemerland are called the Kennemer Dunes."
@@ -326,6 +334,7 @@ language_code = "en"
 text = "Dit nationale park ligt bij het bekende strand Zandvoort in Noord-Holland en is een van de grootste duingebieden van Nederland."
 language_code = "nl"
 ordering = 41
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This national park is located near the well-known Zandvoort beach in North Holland and is one of the largest dune areas in the Netherlands."
@@ -334,6 +343,7 @@ language_code = "en"
 text = "Dit bijzondere duinlandschap is een Europees Natura 2000-gebied, een gebied dat extra beschermd wordt."
 language_code = "nl"
 ordering = 42
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This special dune landscape is a European Natura 2000 area, an area that is given extra protection."
@@ -342,6 +352,7 @@ language_code = "en"
 text = "In dit gebied kom je alle landschappen tegen die ik eerder beschreef: meren, bossen, open stukken land en uitzichtpunten."
 language_code = "nl"
 ordering = 43
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "In this area you will encounter all the landscapes I described earlier: lakes, forests, open pieces of land and viewpoints."
@@ -350,6 +361,7 @@ language_code = "en"
 text = "Ook leven er veel zoogdieren in het gebied, zoals herten, vossen, konijnen en de Europese bizon."
 language_code = "nl"
 ordering = 44
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "There are also many mammals living in the area, such as deer, foxes, rabbits and the European bison."
@@ -358,6 +370,7 @@ language_code = "en"
 text = "Deze bizon noemen we de wisent, en dat zijn indrukwekkende beesten!"
 language_code = "nl"
 ordering = 45
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "We call this bison the wisent, and they are impressive beasts!"
@@ -371,6 +384,7 @@ ordering = 46
 text = "Ook de Amsterdamse Waterleidingduinen, die vlakbij de Kennemerduinen liggen, zijn bijzonder."
 language_code = "nl"
 ordering = 47
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The Amsterdam Water Supply Dunes, which are located near the Kennemer Dunes, are also special."
@@ -379,6 +393,7 @@ language_code = "en"
 text = "In dit gebied wordt al sinds 1853 drinkwater gewonnen."
 language_code = "nl"
 ordering = 48
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Drinking water has been extracted in this area since 1853."
@@ -387,6 +402,7 @@ language_code = "en"
 text = "Duinen zijn namelijk heel erg goed in het filteren van water: als het water door het zand heen gaat, blijft er heel helder water over."
 language_code = "nl"
 ordering = 49
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Dunes are namely very good at filtering water: when the water passes through the sand, very clear water remains."
@@ -395,6 +411,7 @@ language_code = "en"
 text = "Maar in het natuurgebied wordt ook veel gewandeld: het gebied heeft ongeveer een miljoen bezoekers per jaar."
 language_code = "nl"
 ordering = 50
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "But the nature reserve is also a popular place for walking: the area has approximately one million visitors per year."
@@ -408,6 +425,7 @@ ordering = 51
 text = "Een andere natuursoort die je in Nederland kan vinden zijn heidelandschappen."
 language_code = "nl"
 ordering = 52
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Another type of nature that you can find in the Netherlands are heathland landscapes."
@@ -416,6 +434,7 @@ language_code = "en"
 text = "In dit gebied vind je heide, of hei, dat is een plant die groeit op grond met weinig voedingsstoffen, zoals zand."
 language_code = "nl"
 ordering = 53
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "In this area you will find heather, or heath, which is a plant that grows on soil with few nutrients, such as sand."
@@ -424,6 +443,7 @@ language_code = "en"
 text = "Heide komt alleen voor bij klimaten met koele zomers, zachte winter en voldoende neerslag."
 language_code = "nl"
 ordering = 54
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Heather only occurs in climates with cool summers, mild winters and sufficient precipitation."
@@ -432,6 +452,7 @@ language_code = "en"
 text = "Buiten Nederland en België vind je op weinig plekken heidelandschappen."
 language_code = "nl"
 ordering = 55
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Outside the Netherlands and Belgium, you will find heathland landscapes in few places."
@@ -440,6 +461,7 @@ language_code = "en"
 text = "Heiden zijn open landschappen: heideplanten zijn laag en er groeien weinig bomen."
 language_code = "nl"
 ordering = 56
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Heaths are open landscapes: heather plants are low and few trees grow there."
@@ -453,6 +475,7 @@ ordering = 57
 text = "Het bijzondere van heiden is de periode wanneer de heideplanten bloeien."
 language_code = "nl"
 ordering = 58
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The special thing about heaths is the period when the heather plants bloom."
@@ -461,6 +484,7 @@ language_code = "en"
 text = "Tegen het einde van de zomer, van ongeveer half augustus tot half september, staat de heide in bloei in Nederland."
 language_code = "nl"
 ordering = 59
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Towards the end of summer, from about mid-August to mid-September, the heather is in bloom in the Netherlands."
@@ -469,6 +493,7 @@ language_code = "en"
 text = "Aan de heideplanten komen dan kleine paarse bloemetjes."
 language_code = "nl"
 ordering = 60
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The heather plants then produce small purple flowers."
@@ -477,6 +502,7 @@ language_code = "en"
 text = "Hierdoor verandert het hele landschap in een prachtige paarse zee."
 language_code = "nl"
 ordering = 61
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This turns the entire landscape into a beautiful purple sea."
@@ -490,6 +516,7 @@ ordering = 62
 text = "Op heiden komen allerlei bijzondere dieren voor, zoals hagedissen, slangen, reeën en edelherten."
 language_code = "nl"
 ordering = 63
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Heathlands are home to all kinds of special animals, such as lizards, snakes, roe deer and red deer."
@@ -498,6 +525,7 @@ language_code = "en"
 text = "Het edelhert is de een-na grootste hertensoort, in Europa zijn alleen elanden groter."
 language_code = "nl"
 ordering = 64
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The red deer is the second largest deer species, in Europe only elk is larger."
@@ -506,6 +534,7 @@ language_code = "en"
 text = "Mannetjes hebben een gewei op hun kop van 70 tot 90 centimeter, dat wel tien kilo kan wegen."
 language_code = "nl"
 ordering = 65
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Males have antlers on their heads that are 70 to 90 centimetres long and can weigh up to ten kilos."
@@ -514,6 +543,7 @@ language_code = "en"
 text = "In de bronsttijd, de periode aan het einde van de zomer waarin dieren paren, zijn de mannelijke edelherten zeer actief bezig."
 language_code = "nl"
 ordering = 66
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "During the rutting season, the period at the end of summer when animals mate, male red deer are very active."
@@ -522,6 +552,7 @@ language_code = "en"
 text = "Ze maken een specifiek geluid, dat we burlen noemen, om andere mannetjes te laten weten dat ze aanwezig zijn."
 language_code = "nl"
 ordering = 67
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "They make a specific sound, called a roar, to let other males know they are present."
@@ -530,6 +561,7 @@ language_code = "en"
 text = "Dat klinkt zo: …."
 language_code = "nl"
 ordering = 68
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "That sounds like this: ..."
@@ -543,6 +575,7 @@ ordering = 69
 text = "Als dat nog niet genoeg indruk maakt, gebruiken ze hun geweien om de concurrenten weg te jagen."
 language_code = "nl"
 ordering = 70
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "If that isn't impressive enough, they use their antlers to chase away competitors."
@@ -556,6 +589,7 @@ ordering = 71
 text = "Edelherten zijn niet de enige grote wilde dieren in de Nederlandse natuur."
 language_code = "nl"
 ordering = 72
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Red deer are not the only large wild animals in Dutch nature."
@@ -564,6 +598,7 @@ language_code = "en"
 text = "Er is sinds een aantal jaar weer een roofdier aanwezig in Nederland, dat tot veel discussie leidt: de wolf."
 language_code = "nl"
 ordering = 73
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "For a number of years now, a predator has been present in the Netherlands again, which has led to much discussion: the wolf."
@@ -572,6 +607,7 @@ language_code = "en"
 text = "Sinds 2015 is dit dier weer in Nederland te vinden, nadat het roofdier 150 jaar lang afwezig was geweest."
 language_code = "nl"
 ordering = 74
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Since 2015, this animal has been found in the Netherlands again, after the predator had been absent for 150 years."
@@ -580,6 +616,7 @@ language_code = "en"
 text = "Nu leven er ongeveer 100 wolven in Nederland, vooral in het oosten van het land."
 language_code = "nl"
 ordering = 75
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "There are currently about 100 wolves living in the Netherlands, mainly in the east of the country."
@@ -588,6 +625,7 @@ language_code = "en"
 text = "De wolf zorgt voor een gezonde natuur, omdat het jaagt op dieren zoals reeën, zwijnen en herten."
 language_code = "nl"
 ordering = 76
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The wolf ensures a healthy environment, because it hunts animals such as roe deer, wild boar and deer."
@@ -596,6 +634,7 @@ language_code = "en"
 text = "Die diersoorten groeien daardoor niet te veel in aantal en blijven gezond."
 language_code = "nl"
 ordering = 77
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "As a result, these animal species do not grow too much in numbers and remain healthy."
@@ -604,6 +643,7 @@ language_code = "en"
 text = "Maar wolven vallen ook andere dieren aan, zoals schapen, jonge koeien en pony’s."
 language_code = "nl"
 ordering = 78
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "But wolves also attack other animals, such as sheep, young cows and ponies."
@@ -612,6 +652,7 @@ language_code = "en"
 text = "De eigenaren van deze dieren hebben daardoor schade, en het zorgt voor angst bij veel mensen."
 language_code = "nl"
 ordering = 79
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This causes damage to the owners of these animals and causes fear among many people."
@@ -620,6 +661,7 @@ language_code = "en"
 text = "Sommige mensen vragen zich af of een wild dier als een wolf wel thuishoort in een dichtbevolkt land als Nederland."
 language_code = "nl"
 ordering = 80
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Some people wonder whether a wild animal like a wolf belongs in a densely populated country like the Netherlands."
@@ -628,6 +670,7 @@ language_code = "en"
 text = "Natuurorganisaties vinden dat boeren zich moeten aanpassen en dat we moeten leren samen te leven met de wolf."
 language_code = "nl"
 ordering = 81
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Nature organizations believe that farmers must adapt and that we must learn to live together with the wolf."
@@ -636,6 +679,7 @@ language_code = "en"
 text = "Eigenaren van dieren die zijn gedood door wolven krijgen een schadevergoeding van de overheid."
 language_code = "nl"
 ordering = 82
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Owners of animals killed by wolves will receive compensation from the government."
@@ -649,6 +693,7 @@ ordering = 83
 text = "Waar moet je dan heen in Nederland om te kunnen genieten van de natuur?"
 language_code = "nl"
 ordering = 84
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Where should you go in the Netherlands to enjoy nature?"
@@ -657,6 +702,7 @@ language_code = "en"
 text = "Door het hele land zijn er natuurgebieden te vinden, er zijn 21 nationale parken in Nederland."
 language_code = "nl"
 ordering = 85
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "There are nature reserves throughout the country, there are 21 national parks in the Netherlands."
@@ -665,6 +711,7 @@ language_code = "en"
 text = "Maar er zijn drie gebieden die ik extra de moeite waard vind."
 language_code = "nl"
 ordering = 86
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "But there are three areas that I find particularly worthwhile."
@@ -678,6 +725,7 @@ ordering = 87
 text = "De Hoge Veluwe is het bekendste natuurgebied van Nederland."
 language_code = "nl"
 ordering = 88
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The Hoge Veluwe is the most famous nature reserve in the Netherlands."
@@ -686,6 +734,7 @@ language_code = "en"
 text = "Het ligt in de provincie Gelderland, in een groter gebied dat de Veluwe heet."
 language_code = "nl"
 ordering = 89
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "It is located in the province of Gelderland, in a larger area called the Veluwe."
@@ -694,6 +743,7 @@ language_code = "en"
 text = "In De Hoge Veluwe vind je heiden, bossen en grote zandvlakten."
 language_code = "nl"
 ordering = 90
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "In the Hoge Veluwe you will find heaths, forests and large sandy plains."
@@ -702,6 +752,7 @@ language_code = "en"
 text = "Op de Hoge Veluwe leven veel grote zoogdieren zoals edelherten, everzwijnen en reeën."
 language_code = "nl"
 ordering = 91
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Many large mammals such as red deer, wild boar and roe deer live on the Hoge Veluwe."
@@ -710,6 +761,7 @@ language_code = "en"
 text = "Het is het enige nationale park in Nederland waarvoor je entree moet betalen."
 language_code = "nl"
 ordering = 92
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "It is the only national park in the Netherlands for which you have to pay an entrance fee."
@@ -718,6 +770,7 @@ language_code = "en"
 text = "Je kan wel gebruikmaken van gratis fietsen, wat een hele goede manier is om je door het gebied te verplaatsen."
 language_code = "nl"
 ordering = 93
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "You can use free bicycles, which are a great way to get around the area."
@@ -726,6 +779,7 @@ language_code = "en"
 text = "Ook ligt er een prachtig museum midden in het park, het Kröller-Müller Museum."
 language_code = "nl"
 ordering = 94
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "There is also a beautiful museum in the middle of the park, the Kröller-Müller Museum."
@@ -734,6 +788,7 @@ language_code = "en"
 text = "Daar hangen onder andere schilderijen van Van Gogh en andere beroemde kunstenaars."
 language_code = "nl"
 ordering = 95
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Among other things, paintings by Van Gogh and other famous artists hang there."
@@ -747,6 +802,7 @@ ordering = 96
 text = "Een heel ander natuurgebied is het Biesbosch, dat ligt voor een deel in de provincie Zuid-Holland en een deel in Noord-Brabant."
 language_code = "nl"
 ordering = 97
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "A completely different nature reserve is the Biesbosch, which is partly located in the province of South Holland and partly in North Brabant."
@@ -755,6 +811,7 @@ language_code = "en"
 text = "Het Biesbosch is meer dan 600 jaar geleden ontstaan door een overstroming."
 language_code = "nl"
 ordering = 98
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The Biesbosch was formed more than 600 years ago by a flood."
@@ -763,6 +820,7 @@ language_code = "en"
 text = "Het is nu nog steeds een nat gebied, met veel rivieren, eilandjes en water."
 language_code = "nl"
 ordering = 99
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "It is still a wet area today, with many rivers, islands and water."
@@ -771,6 +829,7 @@ language_code = "en"
 text = "En dus veel planten, vissen en vogels die van natte gebieden houden."
 language_code = "nl"
 ordering = 100
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "And therefore many plants, fish and birds that like wet areas."
@@ -779,6 +838,7 @@ language_code = "en"
 text = "In het gebied leven ook veel bevers, die verder niet zo veel voorkomen in Nederland."
 language_code = "nl"
 ordering = 101
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The area is also home to many beavers, which are not very common in the Netherlands."
@@ -787,6 +847,7 @@ language_code = "en"
 text = "In het Biesbosch kan je bootjes of kano’s huren waarmee je heel goed het gebied kan ontdekken, echt een aanrader!"
 language_code = "nl"
 ordering = 102
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "In the Biesbosch you can rent boats or canoes with which you can explore the area very well, highly recommended!"
@@ -800,6 +861,7 @@ ordering = 103
 text = "Het derde natuurgebied dat ik extra aandacht wil geven is de Oostvaardersplassen."
 language_code = "nl"
 ordering = 104
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The third nature reserve that I would like to pay extra attention to is the Oostvaardersplassen."
@@ -808,6 +870,7 @@ language_code = "en"
 text = "Dit gebied ligt vlakbij Almere, in Flevoland."
 language_code = "nl"
 ordering = 105
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This area is located near Almere, in Flevoland."
@@ -816,6 +879,7 @@ language_code = "en"
 text = "Zoals je misschien weet, bestond Flevoland 100 jaar geleden nog niet, toen was het nog een meer."
 language_code = "nl"
 ordering = 106
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "As you may know, Flevoland did not exist 100 years ago, it was still a lake."
@@ -824,6 +888,7 @@ language_code = "en"
 text = "Het gebied waar nu de Oostvaardersplassen liggen was eigenlijk bedoeld als industrieterrein, maar daar was te weinig interesse voor."
 language_code = "nl"
 ordering = 107
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The area where the Oostvaardersplassen are now located was actually intended as an industrial estate, but there was too little interest in this."
@@ -832,6 +897,7 @@ language_code = "en"
 text = "Daarom werd het gebied met rust gelaten en werd het vanzelf een natuurgebied."
 language_code = "nl"
 ordering = 108
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Therefore the area was left alone and automatically became a nature reserve."
@@ -840,6 +906,7 @@ language_code = "en"
 text = "Nu, zo’n 50 jaar later, is de Oostvaardersplassen het grootste door mens gemaakte natuurgebied ter wereld."
 language_code = "nl"
 ordering = 109
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Now, some 50 years later, the Oostvaardersplassen is the largest man-made nature reserve in the world."
@@ -848,6 +915,7 @@ language_code = "en"
 text = "Het natuurgebied is een paradijs voor vogelliefhebbers: er zijn ruim 100 vogelsoorten te zien."
 language_code = "nl"
 ordering = 110
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The nature reserve is a paradise for bird lovers: more than 100 bird species can be seen."
@@ -856,6 +924,7 @@ language_code = "en"
 text = "Sinds 2006 leeft de zeearend in het gebied."
 language_code = "nl"
 ordering = 111
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The white-tailed eagle has lived in the area since 2006."
@@ -864,6 +933,7 @@ language_code = "en"
 text = "Deze roofvogel heeft vleugels van meer dan 2,50, waardoor het dier de bijnaam ‘vliegende deur’ heeft."
 language_code = "nl"
 ordering = 112
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This bird of prey has wingspans of over 2.50, earning it the nickname “flying door.”"
@@ -872,6 +942,7 @@ language_code = "en"
 text = "De zeearend was eeuwenlang afwezig in Nederland, maar nu zijn er ongeveer 70 zeearenden in Nederland."
 language_code = "nl"
 ordering = 113
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The white-tailed eagle was absent from the Netherlands for centuries, but now there are about 70 white-tailed eagles in the Netherlands."
@@ -880,6 +951,7 @@ language_code = "en"
 text = "Mede dankzij het succes van de Oostvaardersplassen."
 language_code = "nl"
 ordering = 114
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Partly thanks to the success of the Oostvaardersplassen."
@@ -893,6 +965,7 @@ ordering = 115
 text = "Wist je dat Nederland een nationale vogel heeft?"
 language_code = "nl"
 ordering = 116
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Did you know that the Netherlands has a national bird?"
@@ -901,6 +974,7 @@ language_code = "en"
 text = "In 2015 is er een verkiezing geweest waarbij er gekozen kon worden welke vogel het nationale symbool van Nederland moest worden."
 language_code = "nl"
 ordering = 117
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "In 2015 there was an election to choose which bird should become the national symbol of the Netherlands."
@@ -909,6 +983,7 @@ language_code = "en"
 text = "En de winnaar was: de grutto!"
 language_code = "nl"
 ordering = 118
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "And the winner was: the black-tailed godwit!"
@@ -917,6 +992,7 @@ language_code = "en"
 text = "Een grutto is een weidevogel, dat zijn vogels die graag leven in graslanden."
 language_code = "nl"
 ordering = 119
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "A black-tailed godwit is a meadow bird, which are birds that like to live in grasslands."
@@ -925,6 +1001,7 @@ language_code = "en"
 text = "Het is een bruin/oranje vogel met lange poten en een lange snavel."
 language_code = "nl"
 ordering = 120
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "It is a brown/orange bird with long legs and a long beak."
@@ -933,6 +1010,7 @@ language_code = "en"
 text = "Met die snavel kan de grutto zijn voedsel, wormen en insecten, uit de grond halen."
 language_code = "nl"
 ordering = 121
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The beak enables the black-tailed godwit to extract its food, worms and insects, from the ground."
@@ -941,6 +1019,7 @@ language_code = "en"
 text = "De naam grutto komt van het geluid dat deze vogel maakt: met een beetje fantasie roept hij zijn eigen naam."
 language_code = "nl"
 ordering = 122
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The name black-tailed godwit comes from the sound this bird makes: with a little imagination it calls out its own name."
@@ -949,6 +1028,7 @@ language_code = "en"
 text = "(grutto utto utto!)"
 language_code = "nl"
 ordering = 123
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "(black-tailed godwit utto utto!)"
@@ -962,6 +1042,7 @@ ordering = 124
 text = "Nergens in Europa broeden zoveel grutto’s als in Nederland."
 language_code = "nl"
 ordering = 125
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Nowhere in Europe do as many black-tailed godwits breed as in the Netherlands."
@@ -970,6 +1051,7 @@ language_code = "en"
 text = "Helaas gaat het steeds slechter met de grutto en andere weidevogels."
 language_code = "nl"
 ordering = 126
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Unfortunately, the situation of the black-tailed godwit and other meadow birds is getting worse."
@@ -978,6 +1060,7 @@ language_code = "en"
 text = "Er is steeds minder leefgebied voor de vogels."
 language_code = "nl"
 ordering = 127
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "There is less and less habitat for the birds."
@@ -986,6 +1069,7 @@ language_code = "en"
 text = "Dat komt omdat landbouwgrond steeds minder ruimte geeft voor vogels."
 language_code = "nl"
 ordering = 128
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This is because agricultural land provides less and less space for birds."
@@ -999,6 +1083,7 @@ ordering = 129
 text = "Helaas is het dus niet alleen goed nieuws als het gaat om natuur in Nederland."
 language_code = "nl"
 ordering = 130
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Unfortunately, it is not all good news when it comes to nature in the Netherlands."
@@ -1007,6 +1092,7 @@ language_code = "en"
 text = "De natuur staat onder druk: er is weinig land en er zijn veel mensen die er gebruik van willen maken."
 language_code = "nl"
 ordering = 131
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Nature is under pressure: there is little land and many people who want to use it."
@@ -1015,6 +1101,7 @@ language_code = "en"
 text = "Ik heb het daar in de aflevering over de stikstofcrisis ook over gehad, als er niet iets gebeurt zal de natuur de komende jaren alleen maar achteruit gaan."
 language_code = "nl"
 ordering = 132
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "I also talked about this in the episode about the nitrogen crisis; if nothing is done, nature will only deteriorate in the coming years."
@@ -1023,6 +1110,7 @@ language_code = "en"
 text = "40% van de diersoorten in Nederland staat op de rode lijst."
 language_code = "nl"
 ordering = 133
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "40% of the animal species in the Netherlands are on the red list."
@@ -1031,6 +1119,7 @@ language_code = "en"
 text = "Dat betekent dat ze misschien binnenkort hier niet meer voorkomen."
 language_code = "nl"
 ordering = 134
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "This means that they may soon no longer be found here."
@@ -1044,6 +1133,7 @@ ordering = 135
 text = "Gelukkig zijn er organisaties die zich inzetten voor de bescherming van de natuur in Nederland."
 language_code = "nl"
 ordering = 136
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "Fortunately, there are organizations that are committed to protecting nature in the Netherlands."
@@ -1052,6 +1142,7 @@ language_code = "en"
 text = "De organisaties Natuurmonumenten en Staatsbosbeheer hebben als doel om de Nederlandse natuur te beschermen."
 language_code = "nl"
 ordering = 137
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "The organisations Natuurmonumenten and Staatsbosbeheer aim to protect Dutch nature."
@@ -1060,6 +1151,7 @@ language_code = "en"
 text = "Maar er zal ook in de politiek meer aandacht aan gegeven moeten worden."
 language_code = "nl"
 ordering = 138
+enabled_for_study = true
 
 [document.sentences.translation]
 text = "But more attention should also be paid to this in politics."
@@ -1601,14 +1693,6 @@ enabled_for_study = true
 text = "to enjoy"
 language_code = "en"
 [[document.words]]
-text = "het landschap / de landschappen"
-language_code = "nl"
-enabled_for_study = true
-
-[document.words.translation]
-text = "the landscape"
-language_code = "en"
-[[document.words]]
 text = "het gebied / de gebieden"
 language_code = "nl"
 enabled_for_study = true
@@ -1759,4 +1843,2012 @@ enabled_for_study = true
 
 [document.words.translation]
 text = "the storm"
+language_code = "en"
+[[document.words]]
+text = "daarom"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "therefore / that is why"
+language_code = "en"
+[[document.words]]
+text = "het nieuws"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the news"
+language_code = "en"
+[[document.words]]
+text = "hoewel"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "although"
+language_code = "en"
+[[document.words]]
+text = "het oppervlak / de oppervlakken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the surface"
+language_code = "en"
+[[document.words]]
+text = "vooral"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "mainly"
+language_code = "en"
+[[document.words]]
+text = "het verschil / de verschillen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the difference"
+language_code = "en"
+[[document.words]]
+text = "het landschap / de landschappen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the landscape"
+language_code = "en"
+[[document.words]]
+text = "het dal / de dalen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the dale"
+language_code = "en"
+[[document.words]]
+text = "nat / natte"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "wet"
+language_code = "en"
+[[document.words]]
+text = "de variatie / de variaties"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the variation"
+language_code = "en"
+[[document.words]]
+text = "zorgen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to assure"
+language_code = "en"
+[[document.words]]
+text = "ervoor"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "before"
+language_code = "en"
+[[document.words]]
+text = "de soort / de sorten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the species"
+language_code = "en"
+[[document.words]]
+text = "totaal"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "total"
+language_code = "en"
+[[document.words]]
+text = "typisch"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "typical"
+language_code = "en"
+[[document.words]]
+text = "noemen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to call by name"
+language_code = "en"
+[[document.words]]
+text = "national / nationale"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "national"
+language_code = "en"
+[[document.words]]
+text = "liggen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to be located"
+language_code = "en"
+[[document.words]]
+text = "bekend / bekende"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "well-known"
+language_code = "en"
+[[document.words]]
+text = "grootste"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "biggest"
+language_code = "en"
+[[document.words]]
+text = "het park / de parken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the park"
+language_code = "en"
+[[document.words]]
+text = "Europees / Europeese"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "European"
+language_code = "en"
+[[document.words]]
+text = "beschermd / beschermde"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "protected"
+language_code = "en"
+[[document.words]]
+text = "worden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to become"
+language_code = "en"
+[[document.words]]
+text = "tegen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "against / toward"
+language_code = "en"
+[[document.words]]
+text = "eerder"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "earlier"
+language_code = "en"
+[[document.words]]
+text = "beschrijven"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to describe"
+language_code = "en"
+[[document.words]]
+text = "het meer / de meren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the lake"
+language_code = "en"
+[[document.words]]
+text = "het boss / de bossen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the forest"
+language_code = "en"
+[[document.words]]
+text = "het stuk / de stukken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the piece"
+language_code = "en"
+[[document.words]]
+text = "het uitzichtpunt / de uitzichtpunten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the viewing point"
+language_code = "en"
+[[document.words]]
+text = "leven"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to live"
+language_code = "en"
+[[document.words]]
+text = "het zoogdier / de zoogdieren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the mammal"
+language_code = "en"
+[[document.words]]
+text = "het hert / de herten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the deer"
+language_code = "en"
+[[document.words]]
+text = "de vos / de vossen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the fox"
+language_code = "en"
+[[document.words]]
+text = "het konijn / de konijnen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the rabbit"
+language_code = "en"
+[[document.words]]
+text = "de bizon / de bizons"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the bison"
+language_code = "en"
+[[document.words]]
+text = "de wisent / de wisenten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the European bison"
+language_code = "en"
+[[document.words]]
+text = "indrukwekkend / indrukwekkende"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "impressive"
+language_code = "en"
+[[document.words]]
+text = "het beest / de beesten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the beast"
+language_code = "en"
+[[document.words]]
+text = "de waterleiding / de waterleidingen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "aquaduct / water pipe"
+language_code = "en"
+[[document.words]]
+text = "vlakbij"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "nearby"
+language_code = "en"
+[[document.words]]
+text = "sinds"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "since"
+language_code = "en"
+[[document.words]]
+text = "het drinkwater"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the drinking water"
+language_code = "en"
+[[document.words]]
+text = "gewinnen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to win"
+language_code = "en"
+[[document.words]]
+text = "namelijk"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "namely"
+language_code = "en"
+[[document.words]]
+text = "filteren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to filter"
+language_code = "en"
+[[document.words]]
+text = "heen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "away"
+language_code = "en"
+[[document.words]]
+text = "overblijven"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to remain"
+language_code = "en"
+[[document.words]]
+text = "helder / heldere"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "clear / bright / pure"
+language_code = "en"
+[[document.words]]
+text = "wandelen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to wander"
+language_code = "en"
+[[document.words]]
+text = "ongeveer"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "approximately"
+language_code = "en"
+[[document.words]]
+text = "de bezoeker / de bezoekers"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the visitor"
+language_code = "en"
+[[document.words]]
+text = "de heide / de heiden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the heath"
+language_code = "en"
+[[document.words]]
+text = "de grond / de gronden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the ground"
+language_code = "en"
+[[document.words]]
+text = "weinig"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "few"
+language_code = "en"
+[[document.words]]
+text = "de voedingsstof / de vodingsstoffen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the nutrient"
+language_code = "en"
+[[document.words]]
+text = "het klimaat / de klimaten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the climate"
+language_code = "en"
+[[document.words]]
+text = "koel / koele"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "cool"
+language_code = "en"
+[[document.words]]
+text = "de zomer / de zomers"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the summer"
+language_code = "en"
+[[document.words]]
+text = "zacht / zachte"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "soft / gentle"
+language_code = "en"
+[[document.words]]
+text = "de winter / de winters"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the winter"
+language_code = "en"
+[[document.words]]
+text = "voldoend / voldoende"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "satisfying / sufficient"
+language_code = "en"
+[[document.words]]
+text = "de neerslag / de neerslagen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the precipitation"
+language_code = "en"
+[[document.words]]
+text = "buiten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "outside of"
+language_code = "en"
+[[document.words]]
+text = "laag / lage"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "low"
+language_code = "en"
+[[document.words]]
+text = "de boom / de bomen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the tree"
+language_code = "en"
+[[document.words]]
+text = "de periode / de periodes"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the period"
+language_code = "en"
+[[document.words]]
+text = "bloeien"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to bloom"
+language_code = "en"
+[[document.words]]
+text = "het einde / de eindes"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the end"
+language_code = "en"
+[[document.words]]
+text = "het half / de halven"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the half"
+language_code = "en"
+[[document.words]]
+text = "september"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "September"
+language_code = "en"
+[[document.words]]
+text = "staan"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to stand / to be"
+language_code = "en"
+[[document.words]]
+text = "klein / kleine"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "small"
+language_code = "en"
+[[document.words]]
+text = "paars / paarse"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "purple"
+language_code = "en"
+[[document.words]]
+text = "de bloem / de bloemen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the flower"
+language_code = "en"
+[[document.words]]
+text = "hierdoor"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "hereby / because of this"
+language_code = "en"
+[[document.words]]
+text = "veranderen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to change"
+language_code = "en"
+[[document.words]]
+text = "prachtig / prachtige"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "gorgeous"
+language_code = "en"
+[[document.words]]
+text = "allerlei"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "all kinds"
+language_code = "en"
+[[document.words]]
+text = "de hagedis / de hagedissen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the lizard"
+language_code = "en"
+[[document.words]]
+text = "de slang / de slangen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the snake"
+language_code = "en"
+[[document.words]]
+text = "het ree / de reeën"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the roe deer"
+language_code = "en"
+[[document.words]]
+text = "het edelhert / de edelherten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the red deer"
+language_code = "en"
+[[document.words]]
+text = "een-na"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "second to last"
+language_code = "en"
+[[document.words]]
+text = "Europa"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "Europe"
+language_code = "en"
+[[document.words]]
+text = "de eland / de elanden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the moose"
+language_code = "en"
+[[document.words]]
+text = "groter"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "bigger"
+language_code = "en"
+[[document.words]]
+text = "de mannetje / de mannetjes"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the male"
+language_code = "en"
+[[document.words]]
+text = "het gewei / de geweien"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the antler"
+language_code = "en"
+[[document.words]]
+text = "de kop / de koppen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the head of an animal"
+language_code = "en"
+[[document.words]]
+text = "wegen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to weigh"
+language_code = "en"
+[[document.words]]
+text = "de bronsttijd"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the rutting season"
+language_code = "en"
+[[document.words]]
+text = "paren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to mate / to pair"
+language_code = "en"
+[[document.words]]
+text = "actief / actieve"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "active"
+language_code = "en"
+[[document.words]]
+text = "bezig / bezige"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "busy"
+language_code = "en"
+[[document.words]]
+text = "specifiek / specifieke"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "specific"
+language_code = "en"
+[[document.words]]
+text = "het geluid / de geluiden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the sound"
+language_code = "en"
+[[document.words]]
+text = "het burlen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the bellow of a red deer"
+language_code = "en"
+[[document.words]]
+text = "laten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to let"
+language_code = "en"
+[[document.words]]
+text = "weten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to know"
+language_code = "en"
+[[document.words]]
+text = "aanwezig"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "present"
+language_code = "en"
+[[document.words]]
+text = "klinken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to sound"
+language_code = "en"
+[[document.words]]
+text = "de indruk / de indrukken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the impressin"
+language_code = "en"
+[[document.words]]
+text = "maken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to make / to do"
+language_code = "en"
+[[document.words]]
+text = "gebruiken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to use / to employ"
+language_code = "en"
+[[document.words]]
+text = "de concurrent / de concurrenten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the competitor"
+language_code = "en"
+[[document.words]]
+text = "wegjagen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to drive something away"
+language_code = "en"
+[[document.words]]
+text = "groot / grote"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "big"
+language_code = "en"
+[[document.words]]
+text = "wild / wilde"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "wild"
+language_code = "en"
+[[document.words]]
+text = "einige"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "some / the only"
+language_code = "en"
+[[document.words]]
+text = "het aantal"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the number of"
+language_code = "en"
+[[document.words]]
+text = "het roofdier / de roofdieren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the predator"
+language_code = "en"
+[[document.words]]
+text = "de discussie / de discussies"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the discussion"
+language_code = "en"
+[[document.words]]
+text = "de wolf / de wolven"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the wolf"
+language_code = "en"
+[[document.words]]
+text = "leiden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to lead"
+language_code = "en"
+[[document.words]]
+text = "tot"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "until"
+language_code = "en"
+[[document.words]]
+text = "weer"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "again"
+language_code = "en"
+[[document.words]]
+text = "nadat"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "once"
+language_code = "en"
+[[document.words]]
+text = "afwezig / afwezige"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "absent"
+language_code = "en"
+[[document.words]]
+text = "het oosten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the east"
+language_code = "en"
+[[document.words]]
+text = "gezond / gezonde"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "healthy"
+language_code = "en"
+[[document.words]]
+text = "omdat"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "because"
+language_code = "en"
+[[document.words]]
+text = "het zwijn / de zwijnen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the swine"
+language_code = "en"
+[[document.words]]
+text = "daardoor"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "thereby / because of that"
+language_code = "en"
+[[document.words]]
+text = "aanvallen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to attack"
+language_code = "en"
+[[document.words]]
+text = "het schap / de schapen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the sheep"
+language_code = "en"
+[[document.words]]
+text = "jong / jonge"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "young"
+language_code = "en"
+[[document.words]]
+text = "de koe / de koeien"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the cow"
+language_code = "en"
+[[document.words]]
+text = "de pony / de pony's"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the pony"
+language_code = "en"
+[[document.words]]
+text = "de eigenaar / de eigenaren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the owner"
+language_code = "en"
+[[document.words]]
+text = "de schade / de schades"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the injury / the damage"
+language_code = "en"
+[[document.words]]
+text = "de angst / de angsten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "fear"
+language_code = "en"
+[[document.words]]
+text = "de mens / de mensen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the human"
+language_code = "en"
+[[document.words]]
+text = "thuishoren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to belong"
+language_code = "en"
+[[document.words]]
+text = "de organisatie / de organisaties"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the organization"
+language_code = "en"
+[[document.words]]
+text = "de boer / de boeren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the farmer"
+language_code = "en"
+[[document.words]]
+text = "aanpassen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to adjust"
+language_code = "en"
+[[document.words]]
+text = "leren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to learn"
+language_code = "en"
+[[document.words]]
+text = "doden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to kill"
+language_code = "en"
+[[document.words]]
+text = "krijgen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to get / to receive"
+language_code = "en"
+[[document.words]]
+text = "de schadevergoeding / de schadevergoedingen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the compensation"
+language_code = "en"
+[[document.words]]
+text = "de overheid / de overheiden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the government"
+language_code = "en"
+[[document.words]]
+text = "extra"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "extra"
+language_code = "en"
+[[document.words]]
+text = "de provincie / de provinciën"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the province"
+language_code = "en"
+[[document.words]]
+text = "heten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to be named"
+language_code = "en"
+[[document.words]]
+text = "de vlakte / de vlaktes"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the plain"
+language_code = "en"
+[[document.words]]
+text = "het everzwijn / de everzwijnen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the wild boar"
+language_code = "en"
+[[document.words]]
+text = "waarvoor"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "wherefore"
+language_code = "en"
+[[document.words]]
+text = "de entree / de entrees"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the entrance"
+language_code = "en"
+[[document.words]]
+text = "betalen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to pay"
+language_code = "en"
+[[document.words]]
+text = "gebruikmaken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to make use of"
+language_code = "en"
+[[document.words]]
+text = "gratis"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "free"
+language_code = "en"
+[[document.words]]
+text = "de fiets / de fietsen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the bicycle"
+language_code = "en"
+[[document.words]]
+text = "de manier / de manieren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the way"
+language_code = "en"
+[[document.words]]
+text = "verplaatsen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to move / to remove"
+language_code = "en"
+[[document.words]]
+text = "het museum / de museums"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the museum"
+language_code = "en"
+[[document.words]]
+text = "midden in"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "in the middle of"
+language_code = "en"
+[[document.words]]
+text = "daar"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "there"
+language_code = "en"
+[[document.words]]
+text = "hangen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to hang"
+language_code = "en"
+[[document.words]]
+text = "onder"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "under"
+language_code = "en"
+[[document.words]]
+text = "het schilderij / de schilderijen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the painting"
+language_code = "en"
+[[document.words]]
+text = "de kunstenaar / de kunstenaars"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the artist"
+language_code = "en"
+[[document.words]]
+text = "het deel / de delen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the part"
+language_code = "en"
+[[document.words]]
+text = "steeds"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "still"
+language_code = "en"
+[[document.words]]
+text = "het eiland / de eilanden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the island"
+language_code = "en"
+[[document.words]]
+text = "het water / de wateren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the water"
+language_code = "en"
+[[document.words]]
+text = "dus"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "so"
+language_code = "en"
+[[document.words]]
+text = "de vis / de vissen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the fish"
+language_code = "en"
+[[document.words]]
+text = "de bever / de bevers"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the beaver"
+language_code = "en"
+[[document.words]]
+text = "verder"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "further"
+language_code = "en"
+[[document.words]]
+text = "de boot / de boten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the boat"
+language_code = "en"
+[[document.words]]
+text = "de kano / de kano's"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the canoe"
+language_code = "en"
+[[document.words]]
+text = "huren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to rent"
+language_code = "en"
+[[document.words]]
+text = "waarmee"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "with which"
+language_code = "en"
+[[document.words]]
+text = "ontdekken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to discover"
+language_code = "en"
+[[document.words]]
+text = "echt een aanrader"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "highly recommended"
+language_code = "en"
+[[document.words]]
+text = "derde"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "third"
+language_code = "en"
+[[document.words]]
+text = "tweede"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "second"
+language_code = "en"
+[[document.words]]
+text = "de aandacht"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the attention"
+language_code = "en"
+[[document.words]]
+text = "geven"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to give"
+language_code = "en"
+[[document.words]]
+text = "bestaan"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to exist"
+language_code = "en"
+[[document.words]]
+text = "toen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "when"
+language_code = "en"
+[[document.words]]
+text = "eigenlijk"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "actually"
+language_code = "en"
+[[document.words]]
+text = "bedoeld"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "meant"
+language_code = "en"
+[[document.words]]
+text = "het terrein / de terreinen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the terrain"
+language_code = "en"
+[[document.words]]
+text = "de interesse / de interesses"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the interest"
+language_code = "en"
+[[document.words]]
+text = "de rust"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the peace and quiet"
+language_code = "en"
+[[document.words]]
+text = "vanzelf"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "by itself"
+language_code = "en"
+[[document.words]]
+text = "zo'n"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "about / some"
+language_code = "en"
+[[document.words]]
+text = "later"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "later"
+language_code = "en"
+[[document.words]]
+text = "door mens gemaakte"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "man-made"
+language_code = "en"
+[[document.words]]
+text = "de wereld / de werelden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the world"
+language_code = "en"
+[[document.words]]
+text = "het paradijs / de paradijzen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the paradise"
+language_code = "en"
+[[document.words]]
+text = "de vogelliefhebber / de vogelliefhebbers"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the bird-lover"
+language_code = "en"
+[[document.words]]
+text = "ruim"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "plenty / over"
+language_code = "en"
+[[document.words]]
+text = "zien"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to see"
+language_code = "en"
+[[document.words]]
+text = "de zeearend / de zeearenden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the sea eagle"
+language_code = "en"
+[[document.words]]
+text = "de arend / de arenden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the eagle"
+language_code = "en"
+[[document.words]]
+text = "de roofvogel / de roofvogels"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the bird of prey"
+language_code = "en"
+[[document.words]]
+text = "de vleugel / de vleugels"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the wing"
+language_code = "en"
+[[document.words]]
+text = "de bijnaam / de bijnamen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the nickname"
+language_code = "en"
+[[document.words]]
+text = "vliegend / vliegende"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "flying"
+language_code = "en"
+[[document.words]]
+text = "mede dankzij"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "thanks in part to"
+language_code = "en"
+[[document.words]]
+text = "het succes / de successen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the success"
+language_code = "en"
+[[document.words]]
+text = "de verkiezing / de verkiezingen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the election"
+language_code = "en"
+[[document.words]]
+text = "waarbij"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "whereby"
+language_code = "en"
+[[document.words]]
+text = "kizen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to choose"
+language_code = "en"
+[[document.words]]
+text = "de winnaar / de winnaars"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the winner"
+language_code = "en"
+[[document.words]]
+text = "de grutto / de grutto's"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the black-tailed godwit"
+language_code = "en"
+[[document.words]]
+text = "de weidevogel / de weidevogels"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the meadow bird"
+language_code = "en"
+[[document.words]]
+text = "het grasland / de graslanden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the grassland"
+language_code = "en"
+[[document.words]]
+text = "de weide / de weides"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the meadow"
+language_code = "en"
+[[document.words]]
+text = "bruin"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "brown"
+language_code = "en"
+[[document.words]]
+text = "oranje"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "orange"
+language_code = "en"
+[[document.words]]
+text = "lang / lange"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "long"
+language_code = "en"
+[[document.words]]
+text = "de poot / de poten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the claw / the leg"
+language_code = "en"
+[[document.words]]
+text = "de snavel / de snavels"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the beak"
+language_code = "en"
+[[document.words]]
+text = "het voedsel"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "nourishment"
+language_code = "en"
+[[document.words]]
+text = "de worm / de wormen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the worm"
+language_code = "en"
+[[document.words]]
+text = "het insect / de insecten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the insect"
+language_code = "en"
+[[document.words]]
+text = "halen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to pull / to fetch"
+language_code = "en"
+[[document.words]]
+text = "roepen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to call out"
+language_code = "en"
+[[document.words]]
+text = "eigen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "own"
+language_code = "en"
+[[document.words]]
+text = "de fantasie / de fantasiën"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the fantasy"
+language_code = "en"
+[[document.words]]
+text = "nergens"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "nowhere"
+language_code = "en"
+[[document.words]]
+text = "broeden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to brood / to incubate"
+language_code = "en"
+[[document.words]]
+text = "zoveel"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "so many"
+language_code = "en"
+[[document.words]]
+text = "heelaas"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "unfortunately"
+language_code = "en"
+[[document.words]]
+text = "slecht / slechte"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "bad"
+language_code = "en"
+[[document.words]]
+text = "minder"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "fewer"
+language_code = "en"
+[[document.words]]
+text = "het leefgebied / de leefgebieden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the habitat"
+language_code = "en"
+[[document.words]]
+text = "de landbouwgrond / de landbouwgronden"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the agricultural land"
+language_code = "en"
+[[document.words]]
+text = "de ruimte / de ruimtes"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the space"
+language_code = "en"
+[[document.words]]
+text = "de druk / de drukken"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the pressure"
+language_code = "en"
+[[document.words]]
+text = "de crisis / de crisissen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the crisis"
+language_code = "en"
+[[document.words]]
+text = "iets"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "something"
+language_code = "en"
+[[document.words]]
+text = "het gebeuren / de gebeurens"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the occurrence"
+language_code = "en"
+[[document.words]]
+text = "gebeuren"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to happen"
+language_code = "en"
+[[document.words]]
+text = "komend / komende"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "coming"
+language_code = "en"
+[[document.words]]
+text = "achteruit"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "backwards"
+language_code = "en"
+[[document.words]]
+text = "rood / rode"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "red"
+language_code = "en"
+[[document.words]]
+text = "de lijst / de lijsten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the list"
+language_code = "en"
+[[document.words]]
+text = "betekenen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to mean"
+language_code = "en"
+[[document.words]]
+text = "binnenkort"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "soon"
+language_code = "en"
+[[document.words]]
+text = "gelukkig"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "luckily"
+language_code = "en"
+[[document.words]]
+text = "inzetten"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "to step up"
+language_code = "en"
+[[document.words]]
+text = "de bescherming / de beschermingen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the protection"
+language_code = "en"
+[[document.words]]
+text = "het beheer"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the management"
+language_code = "en"
+[[document.words]]
+text = "het doel / de doelen"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the goal / the purpose"
+language_code = "en"
+[[document.words]]
+text = "de politiek"
+language_code = "nl"
+enabled_for_study = true
+
+[document.words.translation]
+text = "the politics"
 language_code = "en"

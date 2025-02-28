@@ -30,6 +30,21 @@
 
 ---
 
+* Select display text to learn
+* Edit underlying words to learn
+
+---
+
+Anki creator
+Be opinionated for first round -- nothing custom
+
+* fields
+* tts selection
+
+[Anki reference](https://docs.ankiweb.net/templates/fields.html)
+
+----
+
 * Add DisplayText
 * Adapters
   * DisplayText
