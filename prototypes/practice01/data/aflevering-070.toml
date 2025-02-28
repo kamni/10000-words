@@ -13,6 +13,7 @@ id = "d124f9a2-5e10-40b8-b914-76591f9ab7aa"
 text = "Ook al is Nederland een klein en dichtbevolkt land, is er genoeg mooie en bijzondere natuur te vinden."
 language_code = "nl"
 ordering = 2
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "2eb61e91-8907-4cef-938e-aad96016cdd0"
 text = "Even though the Netherlands is a small and densely populated country, there is plenty of beautiful and special nature to be found."
@@ -24,6 +25,7 @@ id = "1724ef78-8a97-4a09-bc8e-785d4666187f"
 text = "Nederland is niet echt beroemd vanwege de natuur, en vergeleken met sommige andere landen is dat misschien terecht."
 language_code = "nl"
 ordering = 3
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "5ad6a91f-a56f-4f2a-8a1d-b627e95442d0"
 text = "The Netherlands is not really famous for its nature, and compared to some other countries this is perhaps justified."
@@ -35,6 +37,7 @@ id = "04e41161-d45a-4cd1-8686-943db39837bf"
 text = "Toch genieten miljoenen Nederlanders van de verschillende landschappen die we hebben: de duinen aan de kust, moerasgebieden met bijzondere vogels en bosrijke gebieden."
 language_code = "nl"
 ordering = 4
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "307f1bc1-15df-4efe-98b8-0b598ce2ec96"
 text = "Yet millions of Dutch people enjoy the different landscapes we have: the dunes on the coast, marshlands with special birds and wooded areas."
@@ -46,6 +49,7 @@ id = "2da5cf19-fecc-42fc-8af0-d49a9073dde2"
 text = "In deze aflevering vertel ik over natuur in Nederland: over de bijzondere gebieden en dieren, maar ook de problemen die er zijn."
 language_code = "nl"
 ordering = 5
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "a795344c-e71e-4d26-9857-e1f3fd364035"
 text = "In this episode I talk about nature in the Netherlands: about the special areas and animals, but also the problems that exist."
@@ -63,6 +67,7 @@ id = "953de37b-28eb-4607-a854-63484f372272"
 text = "Nederland is niet een land met hoge spectaculaire bergen of extreem warme of koude natuur."
 language_code = "nl"
 ordering = 7
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "efe0ea81-0075-463d-a429-2ce57072c43d"
 text = "The Netherlands is not a country with high spectacular mountains or extremely hot or cold nature."
@@ -74,6 +79,7 @@ id = "27306f17-68b9-4486-8841-a0c7196b217e"
 text = "Maar toch kan je in Nederland best wat bijzondere natuurgebieden vinden die de moeite waard zijn."
 language_code = "nl"
 ordering = 8
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "98f897f1-ec4e-47e8-a283-a6b02b46a1f9"
 text = "But still, you can find quite a few special nature reserves in the Netherlands that are worth the effort."
@@ -91,6 +97,7 @@ id = "9274b6a6-b948-49b9-9eff-2c4f7e1eb646"
 text = "De eerste natuursoort waar ik het over wil hebben zijn de duinen."
 language_code = "nl"
 ordering = 10
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "52ecf29a-efa0-4a83-a30e-225a6eead8a8"
 text = "The first natural places I want to talk about are the dunes."
@@ -102,6 +109,7 @@ id = "6dab4bc0-04e2-41a8-b165-69e3e803bd19"
 text = "Nederland ligt aan de Noordzee, en langs de hele kust van de provincies Noord- en Zuid-Holland en Zeeland liggen duinen."
 language_code = "nl"
 ordering = 11
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "6849a07a-6197-4547-b903-e00273606459"
 text = "The Netherlands is located on the North Sea, and there are dunes along the entire coast of the provinces of North and South Holland and Zeeland."
@@ -113,6 +121,7 @@ id = "f57efd3b-5d1b-414b-8e55-acb02d7d046e"
 text = "Duinen zijn heuvels van zand, meestal langs een zee."
 language_code = "nl"
 ordering = 12
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "a1b37669-c196-4e30-bc9c-7f97782ae2f9"
 text = "Dunes are hills of sand, generally along a sea."
@@ -124,6 +133,7 @@ id = "aae5b823-66a7-47ca-ad88-ed0936dcaf2c"
 text = "Niet allemaal, er zijn ook duinen langs rivieren."
 language_code = "nl"
 ordering = 13
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "b2a16bed-4543-4ee3-ac6f-cf88cdeef5c2"
 text = "Not all of them, there are also dunes along rivers."
@@ -135,6 +145,7 @@ id = "fe064d15-6cb7-4216-924d-abe777e022b2"
 text = "Duinen ontstaan door de wind: zand komt uit de zee op het strand terecht."
 language_code = "nl"
 ordering = 14
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "a269ef37-4628-4a5d-945d-5cd2715de221"
 text = "Dunes are formed by the wind: sand comes from the sea onto the beach."
@@ -146,6 +157,7 @@ id = "f9f959b9-cc85-4301-a42e-9d642e21e180"
 text = "Als het zand droog is, kan de wind het zand richting het land waaien."
 language_code = "nl"
 ordering = 15
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "d0d41b6c-cc3f-4639-8021-6a703d030012"
 text = "When the sand is dry, the wind can blow the sand towards the land."
@@ -157,6 +169,7 @@ id = "5ed05a90-ab23-4fd5-9053-23554bddd717"
 text = "Verderop komt het zand weer neer, bijvoorbeeld waar planten groeien."
 language_code = "nl"
 ordering = 16
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "ba5b2ad9-3a1c-4d81-8c78-7e6464624522"
 text = "Further on, the sand comes down again, for example where plants grow."
@@ -168,6 +181,7 @@ id = "35cc7045-705c-4f55-a552-b8da3ae5eab5"
 text = "Daar hoopt het zand zich op, en ontstaan zandheuvels."
 language_code = "nl"
 ordering = 17
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "1ae6d793-78fa-4f18-b871-ed778f5f9d46"
 text = "There the sand accumulates and sand hills are formed."
@@ -185,6 +199,7 @@ id = "ef19df71-b698-44f8-983d-cc7b7255b7fb"
 text = "Wat is er nou interessant aan de duinen, vraag je je misschien af?"
 language_code = "nl"
 ordering = 19
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "74b344da-7da4-4f46-a772-ae5fa269fd24"
 text = "What's so interesting about the dunes, you might ask?"
@@ -202,6 +217,7 @@ id = "2ed9a27c-c831-4e87-8f8c-38a4207d676b"
 text = "Van de 15.000 kilometer Atlantische kust in Europa, is maar 3000 kilometer duingebied."
 language_code = "nl"
 ordering = 21
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "f45592bd-cb81-4a9b-9a29-d7019ab798e4"
 text = "Of the 15,000 kilometers of Atlantic coastline in Europe, only 3,000 kilometers are dune areas."
@@ -213,6 +229,7 @@ id = "fa8e19d8-585a-429c-aa81-48122cbae823"
 text = "En 10% daarvan ligt langs de Nederlandse kust."
 language_code = "nl"
 ordering = 22
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "f606b62e-9c9f-4303-bd68-06a8c3f42961"
 text = "And 10% of that is along the Dutch coast."
@@ -230,6 +247,7 @@ id = "e9f382d8-3d86-4597-9078-67a60674eda6"
 text = "De Nederlandse duinen zijn duizenden jaren geleden ontstaan."
 language_code = "nl"
 ordering = 24
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "a3eec879-4a8a-4518-9ca7-3c2166354cd8"
 text = "The Dutch dunes were formed thousands of years ago."
@@ -241,6 +259,7 @@ id = "9d8fc2f0-059d-44bd-8ea7-f371e10f81e5"
 text = "Ongeveer 5000 jaar geleden ontstond er een duinstrook langs de Hollandse kust."
 language_code = "nl"
 ordering = 25
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "9a38ceb2-27b7-48a6-a248-549f6ee689b6"
 text = "About 5,000 years ago, a strip of dunes formed along the Dutch coast."
@@ -252,6 +271,7 @@ id = "15cda750-0650-497c-aade-8b895a64aa0c"
 text = "Daarna verschoven de duinen eeuwenlang van plaats."
 language_code = "nl"
 ordering = 26
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "261aec4f-83f4-4335-ba3b-b9de1a49b8f9"
 text = "After that, the dunes shifted position for centuries."
@@ -263,6 +283,7 @@ id = "dec87767-3f23-48e9-970d-aa5049650256"
 text = "Op sommige plekken lag de kust wel tien kilometer van de huidige plaats."
 language_code = "nl"
 ordering = 27
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "1ae31a2d-5620-4407-b354-cc21b783d4ce"
 text = "In some places the coast was as far as ten kilometers from the current location."
@@ -274,6 +295,7 @@ id = "f364a690-0ec4-4f88-8925-16afb8dbf15c"
 text = "Pas rond het jaar 1600 lagen de duinen op de huidige plek."
 language_code = "nl"
 ordering = 28
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "cea6043e-ba8a-40d9-ba63-bafdc3df1c0b"
 text = "It was not until around 1600 that the dunes were in their current location."
@@ -291,6 +313,7 @@ id = "6529a02f-2f06-41fa-8dce-8146fb00ad5d"
 text = "De duinen zijn natuurlijk hartstikke belangrijk voor de Nederlandse veiligheid."
 language_code = "nl"
 ordering = 30
+enabled_for_study = true
 [[document.sentences.translations]]
 id = "003a2a16-411e-4b62-9acd-718f37ee061d"
 text = "The dunes are of course terribly important for Dutch safety."
@@ -1410,3 +1433,750 @@ text = "But more attention should also be paid to this in politics."
 language_code = "en"
 
 
+[[document.words]]
+id = "08082a8b-7eb4-4185-bab3-6ae925aa4095"
+text = "warm / warme"
+language_code = "nl"
+
+[document.words.translation]
+id = "3944e0a9-b18e-4a35-a95d-43a7053364c0"
+text = "warm"
+language_code = "en"
+[[document.words]]
+id = "96aeb25c-9f9d-4b95-99b2-6a3a24287b9c"
+text = "waaien"
+language_code = "nl"
+
+[document.words.translation]
+id = "382d4f66-0cd8-4f2a-b67b-6a95bd24c030"
+text = "to blow"
+language_code = "en"
+[[document.words]]
+id = "cf5f0a04-cf3e-47ef-814a-fc51d126347b"
+text = "allemaal"
+language_code = "nl"
+
+[document.words.translation]
+id = "555997b6-b11c-4359-8d05-92547eacda81"
+text = "everything / everyone"
+language_code = "en"
+[[document.words]]
+id = "cecef217-de12-456e-b344-ea3db112e23c"
+text = "de eeuw / de eeuwen"
+language_code = "nl"
+
+[document.words.translation]
+id = "34965b20-573c-45b6-ac17-920309747636"
+text = "the century"
+language_code = "en"
+[[document.words]]
+id = "97e1342e-5d0f-442a-803a-f49229695735"
+text = "de plek / de plekken"
+language_code = "nl"
+
+[document.words.translation]
+id = "0f86e54a-c5ae-4b77-a2db-eef9a3d2cf29"
+text = "the place / the spot"
+language_code = "en"
+[[document.words]]
+id = "81959d36-e1b5-498f-8afc-906d8840f996"
+text = "daarna"
+language_code = "nl"
+
+[document.words.translation]
+id = "6206547c-b5d2-47a9-877e-a6f251f066e9"
+text = "after that / then"
+language_code = "en"
+[[document.words]]
+id = "72261ff8-8585-48b2-b482-5fb8d6eb8a40"
+text = "best"
+language_code = "nl"
+
+[document.words.translation]
+id = "4312e5d5-0595-4c1c-ba11-a57bb1ee2db1"
+text = "best"
+language_code = "en"
+[[document.words]]
+id = "277c7550-a6b7-41f0-bb0d-174a939a42df"
+text = "vertellen"
+language_code = "nl"
+
+[document.words.translation]
+id = "5b8bf2f3-a23b-4184-9583-f119057cd3fe"
+text = "to tell"
+language_code = "en"
+[[document.words]]
+id = "ffcf40a5-380a-4914-b4b9-377f2e96f600"
+text = "extreem"
+language_code = "nl"
+
+[document.words.translation]
+id = "a1544223-8224-4644-a3ed-09d69a6719b6"
+text = "extreme"
+language_code = "en"
+[[document.words]]
+id = "af72e7f9-4d04-4345-bab8-fd1f3cdca4e3"
+text = "belangrijk"
+language_code = "nl"
+
+[document.words.translation]
+id = "1446854e-f0db-4026-a864-3f308864c451"
+text = "important"
+language_code = "en"
+[[document.words]]
+id = "f681d9cd-9887-48a1-b506-f52565959c58"
+text = "de wind / de winden"
+language_code = "nl"
+
+[document.words.translation]
+id = "d735500f-fa35-491c-bbe4-e34b1d18e552"
+text = "the wind"
+language_code = "en"
+[[document.words]]
+id = "5198eca2-58ed-4865-9530-93bda56d7a9b"
+text = "interessant"
+language_code = "nl"
+
+[document.words.translation]
+id = "27e29032-65d6-43a0-9bd7-02847854bbed"
+text = "interesting"
+language_code = "en"
+[[document.words]]
+id = "360d2905-b185-4801-affe-5f9253bced88"
+text = "dichtbevolkt"
+language_code = "nl"
+
+[document.words.translation]
+id = "5324baba-06aa-45d8-a8d1-c443f4e80418"
+text = "densely populated"
+language_code = "en"
+[[document.words]]
+id = "75666b43-d68f-45fe-82fd-c47c9b17755d"
+text = "de warmte"
+language_code = "nl"
+
+[document.words.translation]
+id = "67c50ec2-bf87-42d6-b9b8-9413bfa34e5f"
+text = "the warmth"
+language_code = "en"
+[[document.words]]
+id = "b8dcdea6-30f7-4d30-a552-0c562a42ddaa"
+text = "nou"
+language_code = "nl"
+
+[document.words.translation]
+id = "9f7cb9d7-8811-4795-a79b-020e5a631c61"
+text = "now"
+language_code = "en"
+[[document.words]]
+id = "6987229e-1727-4dd4-85e9-fece56432873"
+text = "ook al"
+language_code = "nl"
+
+[document.words.translation]
+id = "5ece8517-5c47-4459-9a31-2a8d46f737a3"
+text = "even though"
+language_code = "en"
+[[document.words]]
+id = "bc85aeef-af95-47d3-b49a-ed232642316f"
+text = "droog / droge"
+language_code = "nl"
+
+[document.words.translation]
+id = "91bf928a-5875-4c44-82c0-ebb1f266d62d"
+text = "dry"
+language_code = "en"
+[[document.words]]
+id = "1b0daf1a-ea26-44cb-b38b-f939be57b01b"
+text = "het dier / de dieren"
+language_code = "nl"
+
+[document.words.translation]
+id = "c7253dcf-903d-4801-9be9-9c8bb7eda40b"
+text = "the animal"
+language_code = "en"
+[[document.words]]
+id = "973330eb-c52b-48c7-b348-ed1d486d9ada"
+text = "langs"
+language_code = "nl"
+
+[document.words.translation]
+id = "19cd5364-69b9-4469-9fc9-dd3c5b522373"
+text = "along"
+language_code = "en"
+[[document.words]]
+id = "d5ab75a8-b7d2-4da3-aa24-8e3b522c7cf7"
+text = "waard zijn"
+language_code = "nl"
+
+[document.words.translation]
+id = "af0c394f-d828-4d47-9b6f-4a071476faa0"
+text = "to be worth"
+language_code = "en"
+[[document.words]]
+id = "670899be-60ad-4d61-a6c8-6518c06bcd45"
+text = "vinden"
+language_code = "nl"
+
+[document.words.translation]
+id = "77f0a972-8ab1-4090-80b1-a1990d5a8fe9"
+text = "to find"
+language_code = "en"
+[[document.words]]
+id = "0a3aa9db-5b3d-49ca-ae9f-35f5046eef6f"
+text = "liggen"
+language_code = "nl"
+
+[document.words.translation]
+id = "8bbc3bbf-6b4b-4748-a012-b1b378f2f2d9"
+text = "to lie / to be located"
+language_code = "en"
+[[document.words]]
+id = "694d25d9-8797-4d31-896b-8b6921510ef7"
+text = "verschuiven"
+language_code = "nl"
+
+[document.words.translation]
+id = "643f7160-cbac-4fc0-ba8c-87528dcee139"
+text = "to shift"
+language_code = "en"
+[[document.words]]
+id = "6bcb6299-1ddb-4925-ad2f-da3b85e37792"
+text = "duizend / duizenden"
+language_code = "nl"
+
+[document.words.translation]
+id = "547923ee-d36d-490b-ad09-bff4dc059107"
+text = "thousand / thousands"
+language_code = "en"
+[[document.words]]
+id = "d1fb2f5b-3c7b-4d57-96f7-eae571135975"
+text = "koud / koude"
+language_code = "nl"
+
+[document.words.translation]
+id = "bde96f81-a788-413a-8a91-ef36ff3d086b"
+text = "cold"
+language_code = "en"
+[[document.words]]
+id = "9c8404a4-f43c-4cc3-9070-e1aefe5ae29b"
+text = "de vogel / de vogels"
+language_code = "nl"
+
+[document.words.translation]
+id = "65a80420-103d-4867-b3bb-d579bd01e10e"
+text = "the bird"
+language_code = "en"
+[[document.words]]
+id = "59114c3e-27dd-4427-bc43-45920407de02"
+text = "het strand / de stranden"
+language_code = "nl"
+
+[document.words.translation]
+id = "3ffcf644-2cf3-4cec-9124-79b89b936d95"
+text = "the beach"
+language_code = "en"
+[[document.words]]
+id = "87e4ee0c-969a-4c68-9086-a4df5aa71f9c"
+text = "misschien"
+language_code = "nl"
+
+[document.words.translation]
+id = "5c6a47dd-e6af-4265-99be-f173d9cad66d"
+text = "perhaps"
+language_code = "en"
+[[document.words]]
+id = "838fc346-0368-4ada-adc6-bfb4dd703346"
+text = "de duin / de duinen"
+language_code = "nl"
+
+[document.words.translation]
+id = "5773161c-6ef6-4e3d-ab5e-f0db05042ddb"
+text = "the dune"
+language_code = "en"
+[[document.words]]
+id = "b522629e-c83c-49ec-935a-e8797295ed41"
+text = "vanwege"
+language_code = "nl"
+
+[document.words.translation]
+id = "3140c095-3a7d-4fdc-b230-dac0277c26ce"
+text = "on account of"
+language_code = "en"
+[[document.words]]
+id = "18b12b03-7f9c-41be-b8b6-a1d0c0b3b629"
+text = "de aflevering / de afleveringen"
+language_code = "nl"
+
+[document.words.translation]
+id = "165116cf-3454-4d9c-8fb0-9ccb14bbbbb6"
+text = "the episode"
+language_code = "en"
+[[document.words]]
+id = "3084f08b-acc4-45ee-b871-8ab79da4cacf"
+text = "de plaats / de plaatsen"
+language_code = "nl"
+
+[document.words.translation]
+id = "451f7708-6994-485f-b8de-899507dfc90a"
+text = "geographic place"
+language_code = "en"
+[[document.words]]
+id = "5f2b2f52-386e-4b23-bb80-20cd620f630b"
+text = "hartstikke"
+language_code = "nl"
+
+[document.words.translation]
+id = "424f9d74-886c-4adc-a457-946487f5f229"
+text = "terribly"
+language_code = "en"
+[[document.words]]
+id = "d21c832d-1fea-4e95-a3d8-c94619845701"
+text = "lagen"
+language_code = "nl"
+
+[document.words.translation]
+id = "cbca3ace-2af4-420f-896c-b6e26cb69eb7"
+text = "to lie on"
+language_code = "en"
+[[document.words]]
+id = "e8549587-fb3e-4c04-a5f4-397aec32be34"
+text = "het zand"
+language_code = "nl"
+
+[document.words.translation]
+id = "88ddfc8b-354e-4fcf-b11f-ac0d2d9b714a"
+text = "the sand"
+language_code = "en"
+[[document.words]]
+id = "775ca3c4-5175-4d6b-956a-3552e06017b4"
+text = "natuursoort"
+language_code = "nl"
+
+[document.words.translation]
+id = "31d75a1b-aa08-4fe7-a5b2-d68cddd46a3b"
+text = "natural place"
+language_code = "en"
+[[document.words]]
+id = "f8556ccf-71c9-4eb7-8c47-09df6affbaf2"
+text = "hoog / hoge"
+language_code = "nl"
+
+[document.words.translation]
+id = "ac6ac1ea-0d52-4683-8cb9-ffce3ee96406"
+text = "high"
+language_code = "en"
+[[document.words]]
+id = "99e74687-fb4d-452f-babd-31d05ff0ad1d"
+text = "groeien"
+language_code = "nl"
+
+[document.words.translation]
+id = "c7a20fd6-4427-4c0f-97e3-421285af34b3"
+text = "to grow"
+language_code = "en"
+[[document.words]]
+id = "b5b58c22-21e2-47fe-ae3a-fc40b59d7808"
+text = "het moerasgebied / de moerasgebieden"
+language_code = "nl"
+
+[document.words.translation]
+id = "8c71c903-f738-4911-8571-4367af2dcd37"
+text = "the swamp area"
+language_code = "en"
+[[document.words]]
+id = "71afc3c7-5d7f-4486-9267-0dc945dfc217"
+text = "weer neer"
+language_code = "nl"
+
+[document.words.translation]
+id = "d0135eaa-34ba-4441-b932-fd8c82dcad96"
+text = "down again"
+language_code = "en"
+[[document.words]]
+id = "3ed21d70-b61e-4532-89c6-89cea9bc8c2e"
+text = "geleden"
+language_code = "nl"
+
+[document.words.translation]
+id = "578018b3-fdba-4dac-990f-cc73719e9bd3"
+text = "ago"
+language_code = "en"
+[[document.words]]
+id = "b75dc5a3-a577-43a1-aeb1-a6230b504f9a"
+text = "rond"
+language_code = "nl"
+
+[document.words.translation]
+id = "8531928e-ebd5-47fb-8a42-09093bf5e45b"
+text = "around"
+language_code = "en"
+[[document.words]]
+id = "ea0d4867-17d7-451e-8abc-20eeec289411"
+text = "eerst / eerste"
+language_code = "nl"
+
+[document.words.translation]
+id = "f4736970-0a9d-4ade-89d2-78ef20e8f5de"
+text = "first"
+language_code = "en"
+[[document.words]]
+id = "bb125126-6729-4220-94b8-f05da5a4823d"
+text = "huidig / huidige"
+language_code = "nl"
+
+[document.words.translation]
+id = "0aff2b27-6151-4328-beb6-2c35b7fcaf3a"
+text = "current"
+language_code = "en"
+[[document.words]]
+id = "ed96487e-d940-43a5-8eb7-5376fa0f08c4"
+text = "de heuvel / de heuvels"
+language_code = "nl"
+
+[document.words.translation]
+id = "f29256a7-62c3-444c-9a73-c386ec5750dd"
+text = "the hill"
+language_code = "en"
+[[document.words]]
+id = "94fb49d3-62c5-4ff5-851e-5ffbe6f13d1d"
+text = "vergeleten met"
+language_code = "nl"
+
+[document.words.translation]
+id = "bc64e793-9fc4-497e-acd8-2924912345eb"
+text = "compared to"
+language_code = "en"
+[[document.words]]
+id = "24d8650a-2c34-4b9c-a931-4c8dc95a2aa2"
+text = "de moeite / de moeiten"
+language_code = "nl"
+
+[document.words.translation]
+id = "d0338605-8bd0-4d69-9be1-d79cbc66bff3"
+text = "the trouble / the effort"
+language_code = "en"
+[[document.words]]
+id = "a777fc0c-0c8c-44cb-a28f-54e4b9ab6d8a"
+text = "natuurlijk"
+language_code = "nl"
+
+[document.words.translation]
+id = "099beb2c-9271-4dac-a98b-934838345146"
+text = "naturally"
+language_code = "en"
+[[document.words]]
+id = "e63aeb0a-4e8d-41ac-b041-7dabf6c6c852"
+text = "de berg / de bergen"
+language_code = "nl"
+
+[document.words.translation]
+id = "1755ebb3-032f-4b1f-a47b-83d545474a1d"
+text = "the mountain"
+language_code = "en"
+[[document.words]]
+id = "190c6719-118b-4f62-b28a-ff77b6fab266"
+text = "sommige"
+language_code = "nl"
+
+[document.words.translation]
+id = "21517e58-b6ac-4bfe-9175-cc8af835b1ad"
+text = "some"
+language_code = "en"
+[[document.words]]
+id = "9a38bc04-27e7-4b67-aa78-8381895a2ee0"
+text = "verschillend / verschillende"
+language_code = "nl"
+
+[document.words.translation]
+id = "39a0d937-4567-428d-a2ef-b5984fa75cea"
+text = "different"
+language_code = "en"
+[[document.words]]
+id = "776775b1-2daf-4e2b-bf4d-ebdefd00a74d"
+text = "het land / de landen"
+language_code = "nl"
+
+[document.words.translation]
+id = "50842da2-704e-4504-bbe4-a697e2008c71"
+text = "the country"
+language_code = "en"
+[[document.words]]
+id = "ea27188e-3e3b-47e2-a753-b8dcda0abdb3"
+text = "ongeveer"
+language_code = "nl"
+
+[document.words.translation]
+id = "e6ece8e4-8975-4a1f-9acc-814e6e38ba45"
+text = "about / approximately"
+language_code = "en"
+[[document.words]]
+id = "851c8603-bf6f-4804-83d6-d8802de9139e"
+text = "miljoen / miljoenen"
+language_code = "nl"
+
+[document.words.translation]
+id = "09092ce2-5c1c-4fa8-a794-aa5b640b224a"
+text = "million / millions"
+language_code = "en"
+[[document.words]]
+id = "860c72cd-164a-4d9c-8d93-840ebcfaffab"
+text = "de plant / de planten"
+language_code = "nl"
+
+[document.words.translation]
+id = "1b98e5a3-6e3b-44e1-9eeb-d780eb255638"
+text = "the plant"
+language_code = "en"
+[[document.words]]
+id = "846de993-788f-4a1b-aced-1e6484e6dd54"
+text = "bosrijk / bosrijke"
+language_code = "nl"
+
+[document.words.translation]
+id = "139a9180-b310-47dd-b9a9-16a77c84ee78"
+text = "wooded"
+language_code = "en"
+[[document.words]]
+id = "6e30e0d1-f4c2-49ea-ad28-5dd42d67f7ad"
+text = "spectaculair / spectaculaire"
+language_code = "nl"
+
+[document.words.translation]
+id = "9c38cea3-8fad-4878-a24c-491e9eb8d3a5"
+text = "spectacular"
+language_code = "en"
+[[document.words]]
+id = "952bd550-d397-4db4-8e8d-3f873737b21d"
+text = "de natuur"
+language_code = "nl"
+
+[document.words.translation]
+id = "d5a7ecae-32d3-4075-98ea-ddbdaae95052"
+text = "the nature"
+language_code = "en"
+[[document.words]]
+id = "b757ef9d-e73b-476d-b768-087d5af522bd"
+text = "pas"
+language_code = "nl"
+
+[document.words.translation]
+id = "0abe187d-c270-4a47-a273-3058f8cf32ac"
+text = "not until / not long ago"
+language_code = "en"
+[[document.words]]
+id = "8d1fd85f-3411-43e0-af96-6d856f1a6802"
+text = "daarvan"
+language_code = "nl"
+
+[document.words.translation]
+id = "c3fb9b77-92c9-4024-bb7b-e983df3b34a7"
+text = "of them"
+language_code = "en"
+[[document.words]]
+id = "00fe8623-3fd7-47dd-8ef9-4a59d90b3f1c"
+text = "terecht"
+language_code = "nl"
+
+[document.words.translation]
+id = "743577e1-2664-4aa4-8148-9a5f28680843"
+text = "justified"
+language_code = "en"
+[[document.words]]
+id = "fa0878e1-fee5-475a-97ac-d6aad1ed694e"
+text = "meestal"
+language_code = "nl"
+
+[document.words.translation]
+id = "04eba3ef-56f5-4359-b8cb-90f748f3f62a"
+text = "generally"
+language_code = "en"
+[[document.words]]
+id = "3fa80de9-9517-4365-8679-744f4cd7e0b8"
+text = "bijvoorbeeld"
+language_code = "nl"
+
+[document.words.translation]
+id = "c998a890-1d11-4f1a-9841-3aa2b3bdba76"
+text = "for example"
+language_code = "en"
+[[document.words]]
+id = "c1a5b3e4-c3e3-4c34-b6c3-63555ca41a51"
+text = "het probleem / de problemen"
+language_code = "nl"
+
+[document.words.translation]
+id = "654a37ed-40db-4f5e-ad4e-ff0101316cef"
+text = "the problem"
+language_code = "en"
+[[document.words]]
+id = "ec01aebd-5a32-4404-9e84-f409e3d69e2b"
+text = "ontstaan"
+language_code = "nl"
+
+[document.words.translation]
+id = "c76418a8-62af-4b30-8408-fc95e21cc1b6"
+text = "to arise / to originate"
+language_code = "en"
+[[document.words]]
+id = "1f520dac-a07b-4984-bada-6afc6723a64f"
+text = "ophopen"
+language_code = "nl"
+
+[document.words.translation]
+id = "dc017055-3ec4-4d68-8bf3-191a2bfb1ed1"
+text = "to accumulate"
+language_code = "en"
+[[document.words]]
+id = "e0db3d14-80ed-46bb-b1db-0ef202f8a68d"
+text = "genoeg"
+language_code = "nl"
+
+[document.words.translation]
+id = "ef667cda-992c-4851-833e-5d0fab455155"
+text = "enough"
+language_code = "en"
+[[document.words]]
+id = "bfb7ee08-1a05-40ca-a8c7-e86ff293f80a"
+text = "genieten"
+language_code = "nl"
+
+[document.words.translation]
+id = "43a0d04a-c8f1-4c1d-ac91-2f90e10ccae7"
+text = "to enjoy"
+language_code = "en"
+[[document.words]]
+id = "faea9ac3-a3a7-4d4d-9a0d-e772825f7e33"
+text = "het landschap / de landschappen"
+language_code = "nl"
+
+[document.words.translation]
+id = "884730fc-723c-4611-aa05-0cfc6b2b55e8"
+text = "the landscape"
+language_code = "en"
+[[document.words]]
+id = "974d8a11-aa28-44c8-9efe-f475844001b3"
+text = "het gebied / de gebieden"
+language_code = "nl"
+
+[document.words.translation]
+id = "6304c7e0-9288-4ecf-974a-e6b4321a4c90"
+text = "the area"
+language_code = "en"
+[[document.words]]
+id = "c1bc965e-0e8a-4efa-80fa-7cd282a1f869"
+text = "afvragen"
+language_code = "nl"
+
+[document.words.translation]
+id = "6d08f555-2367-4149-b26a-3ae0db4bc92d"
+text = "to wonder"
+language_code = "en"
+[[document.words]]
+id = "e05752f2-a207-4fb4-9ac6-931e8928d19d"
+text = "de veiligheid"
+language_code = "nl"
+
+[document.words.translation]
+id = "f3b8ee6c-ae8f-47e5-8aa7-7eece3dc25c1"
+text = "safety"
+language_code = "en"
+[[document.words]]
+id = "b38157b9-a243-4028-9127-bbf502b3acca"
+text = "de zee / de zeeën"
+language_code = "nl"
+
+[document.words.translation]
+id = "b8105845-14d4-446d-b1bf-67c9706491b4"
+text = "the sea"
+language_code = "en"
+[[document.words]]
+id = "f6e51f45-7bb1-4348-a1fd-37c3c3f8a462"
+text = "mooi / mooie"
+language_code = "nl"
+
+[document.words.translation]
+id = "73c39609-df56-4168-bef2-90995c8db8be"
+text = "beautiful"
+language_code = "en"
+[[document.words]]
+id = "9270f339-4d95-4f0c-a28f-a8865a70a4ba"
+text = "de strook / de stroken"
+language_code = "nl"
+
+[document.words.translation]
+id = "d8b40810-f5d9-4f10-b94b-4ac87502c8ad"
+text = "the strip"
+language_code = "en"
+[[document.words]]
+id = "218f80bc-a66c-4561-87e1-185058d56257"
+text = "de rivier / de rivieren"
+language_code = "nl"
+
+[document.words.translation]
+id = "e5194a40-2b0d-45a6-9b35-bce411963bce"
+text = "the river"
+language_code = "en"
+[[document.words]]
+id = "62ceb735-ffe7-4845-ac71-d401872130c0"
+text = "de kou"
+language_code = "nl"
+
+[document.words.translation]
+id = "25f99626-884c-4f89-b38c-f3571934043b"
+text = "the cold"
+language_code = "en"
+[[document.words]]
+id = "d3b2b5a7-7c9b-41d3-9d4d-ac59f1227a76"
+text = "de kust / de kusten"
+language_code = "nl"
+
+[document.words.translation]
+id = "d985ca22-45b0-4d72-b970-85c34433f7e4"
+text = "the coast"
+language_code = "en"
+[[document.words]]
+id = "6e80a00d-ef0b-4920-8aab-1cfadbcbc920"
+text = "over hebben"
+language_code = "nl"
+
+[document.words.translation]
+id = "180aa2ba-b278-400b-a336-f4055c938876"
+text = "talk about"
+language_code = "en"
+[[document.words]]
+id = "d23d4456-1cc7-4e35-8828-69f1f105affc"
+text = "bijzonder / bijzondere"
+language_code = "nl"
+
+[document.words.translation]
+id = "ec38e931-91a8-476e-92ff-6d6056f0f31c"
+text = "special"
+language_code = "en"
+[[document.words]]
+id = "66e5ec9b-ee29-41a9-a4e4-e25bdbfa62cd"
+text = "richting"
+language_code = "nl"
+
+[document.words.translation]
+id = "5367d9d2-4a9b-452d-9e93-d97675772734"
+text = "in the direction"
+language_code = "en"
+[[document.words]]
+id = "0ffe6515-f99e-4010-adf1-1da432776fed"
+text = "verderop"
+language_code = "nl"
+
+[document.words.translation]
+id = "c49b6155-c7c8-46f3-954a-b017412c8779"
+text = "further on / hereafter"
+language_code = "en"
+[[document.words]]
+id = "82cc9094-2a97-4d11-82b9-5cea9c2fa892"
+text = "beroemd"
+language_code = "nl"
+
+[document.words.translation]
+id = "63cee5c9-358b-4cd8-bff3-cc3eb38da1a6"
+text = "famous"
+language_code = "en"

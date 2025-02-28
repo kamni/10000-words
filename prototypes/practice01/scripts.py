@@ -177,17 +177,19 @@ class TOMLCreator:
         try:
             # Do translations first.
             for sentence in document.sentences:
-                if not sentence.text or sentence.enabled_for_study:
+                if not sentence.text or sentence.translation:
                     continue
 
-                if not sentence.translations:
-                    self._print_divider()
-                    print(f'\n{sentence.text}\n')
-                    self._print_divider()
-                    translation = input('Translation (en): ')
-                    sentence.translations.append(
-                        self._make_translation(translation),
-                    )
+                # Handling legacy versions of the file
+                if sentence.translations:
+                    sentence.translation = sentence.translations[0]
+                    continue
+
+                self._print_divider()
+                print(f'\n{sentence.text}\n')
+                self._print_divider()
+                translation = input('Translation (en): ')
+                sentence.translation = self._make_translation(translation)
 
             # Then load words
             for sentence in document.sentences:
@@ -196,8 +198,6 @@ class TOMLCreator:
                 # and we don't keep re-asking for sentences
                 # TODO: suggest alternative words
                 # that similar display text has used to speed up the process.
-                continue
-
                 if not sentence.text or sentence.enabled_for_study:
                     continue
 
@@ -205,29 +205,28 @@ class TOMLCreator:
                 print(f'\n{sentence.text}\n')
                 self._print_divider()
 
-                words = self._parse_words(sentence)
-                for word in words:
-                    if word.text in document.words:
-                        document.words[word.text].example_sentence_ids.extend(
-                            word.example_sentence_ids,
-                        )
-                        continue
-
-                    while word.status == 'not_set':
-                        self._print_divider()
-                        print(f'Word: {word.text}\n')
-                        print('1. Learn this word.')
-                        print('2. Mark word as already learned.')
-                        print('3. Ignore this word.')
-                        print('4. Edit word.\n')
-                        word_status = int(input('What would you like to do? '))
-
-                        if word_status == 4:
-                            self._edit_word(word)
-                            continue
-
-                        self._set_word_status(word, word_status)
-                        document.words[word.text] = word
+                print(
+                    'Which words or phrases would you like to learn? '
+                    '(comma-separated)'
+                )
+                wordstr = input()
+                wordtext = [
+                    word.strip() for word in wordstr.split(',')
+                    if word.strip()
+                ]
+                words = []
+                for word in wordtext:
+                    translation = input(f'Translation for "{word}": ').strip()
+                    word = Word(
+                        text=word,
+                        language_code='nl',
+                        translation=Word(
+                            text=translation,
+                            language_code='en',
+                        ),
+                    )
+                    words.append(word)
+                document.words = list(set(document.words + words))
 
                 # Once the sentence has been completely processed,
                 # we can start studying it

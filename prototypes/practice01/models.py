@@ -17,7 +17,7 @@ class Document(BaseModel):
     author: Optional[str] = None
     language_code: Optional[LanguageCode] = None
     sentences: Optional[List['Sentence']] = []
-    words: Optional[Dict[str, 'Word']] = {}
+    words: Optional[List['Word']] = []
 
     class Config:
         exclude_default = True
@@ -31,6 +31,7 @@ class Sentence(BaseModel):
     ordering: Optional[int] = None
     enabled_for_study: Optional[bool] = False
     translations: Optional[List['Sentence']] = []
+    translation: Optional['Sentence'] = None
 
     class Config:
         exclude_default = True
@@ -67,7 +68,11 @@ class Word(BaseModel):
     language_code: LanguageCode
     status: Optional[WordStatus] = 'not_set'
     example_sentence_ids: Optional[List[uuid.UUID]] = []
+    translation: Optional['Word'] = None
 
     class Config:
         exclude_default = True
         use_enum_values = True
+
+    def __hash__(self):
+        return hash(self.text)
