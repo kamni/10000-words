@@ -130,7 +130,9 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         """
 
         try:
-            doc = Document.objects.get(id=id, user__id=user_id)
+            doc = Document.objects.prefetch_related('sentence_set') \
+                    .select_related('user') \
+                    .get(id=id, user__id=user_id)
         except Document.DoesNotExist as exc:
             raise ObjectNotFoundError(exc)
 
@@ -145,7 +147,9 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
 
         :return: List of documents (may be empty)
         """
-        docs = Document.objects.filter(user__id=user_id).all()
+        docs = Document.objects.prefetch_related('sentence_set') \
+                .select_related('user') \
+                .filter(user__id=user_id).all()
         docdbs = [self._django_to_pydantic(doc) for doc in docs]
         return docdbs
 

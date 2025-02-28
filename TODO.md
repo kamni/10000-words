@@ -2,11 +2,6 @@
 
 ## 1. Load document with one sentence per line
 
-* Upload adds sentences
-  * Displays sentences in Edit view
-  * Export button back to TOML
-    * TOML adapter?
-
 * Tests
   * DocumentUIAdapter
     * get
@@ -18,6 +13,11 @@
     * get
     * get_all -- should it return the sentences at this time?
       * Maybe we do another query?
+
+* Upload adds sentences
+  * Displays sentences in Edit view
+  * Export button back to TOML
+    * TOML adapter?
 
 ---
 
