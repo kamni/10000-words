@@ -21,9 +21,6 @@ class Sentence(models.Model):
 
     class Meta:
         ordering = ['document', 'ordering']
-        unique_together = [
-            ['user', 'text', 'language_code', 'ordering', 'document'],
-        ]
 
     id = models.UUIDField(
         primary_key=True,

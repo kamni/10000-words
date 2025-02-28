@@ -3,8 +3,6 @@
 ## 1. Load document with one sentence per line
 
 * Upload adds sentences
-  * Create Sentence Django model
-    * select_related
   * Displays sentences in Edit view
   * Export button back to TOML
     * TOML adapter?
