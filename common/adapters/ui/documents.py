@@ -32,7 +32,6 @@ class DocumentUIAdapter(DocumentUIPort):
 
         :return: Document instance ready for display in the UI.
         """
-        # TODO: complete this when the model is more defined
         docui = DocumentUI(
             id=document.id,
             user=user,
@@ -41,8 +40,8 @@ class DocumentUIAdapter(DocumentUIPort):
                 document.language_code,
                 'Unknown',
             ),
-            sentences=[],
             attrs=document.attrs,
+            sentences=[],
         )
         return docui
 
@@ -58,17 +57,5 @@ class DocumentUIAdapter(DocumentUIPort):
         :user: UserUI instances
         :return: List of DocumentUI objects.
         """
-        docuis = [
-            DocumentUI(
-                id=docdb.id,
-                user=user,
-                displayName=docdb.display_name,
-                language=language_code_choices.get(
-                    docdb.language_code,
-                    'Unknown',
-                ),
-                sentences=[],
-                attrs=docdb.attrs,
-            ) for docdb in documents
-        ]
+        docuis = [self.get(docdb, user) for docdb in documents]
         return docuis

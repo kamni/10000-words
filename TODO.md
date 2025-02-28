@@ -2,26 +2,6 @@
 
 ## 1. Load document with one sentence per line
 
-* Should we have a separate Sentence adapter?
-  * Sentences are used by themselves, or are they?
-    * Only create a separate adapter when it's relevant.
-  * Words are used by themselves
-
-
-* Sentence Adapter
-  * Port
-    * create_or_update
-    * get_all for document
-  * In Memory
-    * setup.cfg
-    * tests
-  * Django
-    * setup.cfg
-    * tests
-  * UI
-    * setup.cfg
-    * tests
-
 * Upload adds sentences
   * Displays sentences in Edit view
   * Export button back to TOML
@@ -37,7 +17,7 @@
 ---
 
 * Create display text
-* Create words
+* Create words -- are they in their own file? Probably not...
 * Select display text to learn
 * Edit underlying words to learn
 
