@@ -73,6 +73,9 @@ class TOMLCreator:
 
         self._set_translation_and_words_interactively(document)
 
+        for word in document.words:
+            word.enabled_for_study = True
+
         # We have to run this through JSON so the UUIDs serialize correctly.
         new_toml = {
             'document': json.loads(

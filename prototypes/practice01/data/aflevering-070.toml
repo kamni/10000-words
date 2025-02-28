@@ -14,7 +14,7 @@ ordering = 2
 enabled_for_study = true
 
 [document.sentences.translation]
-text = "Even though the Netherlands is a small and densely populated country, there is plenty of beautiful and special nature to be found."
+text = "Even though the Netherlands is a small and densely populated country, there is enough beautiful and special nature to find."
 language_code = "en"
 [[document.sentences]]
 text = "Nederland is niet echt beroemd vanwege de natuur, en vergeleken met sommige andere landen is dat misschien terecht."
@@ -41,7 +41,7 @@ ordering = 5
 enabled_for_study = true
 
 [document.sentences.translation]
-text = "In this episode I talk about nature in the Netherlands: about the special areas and animals, but also the problems that exist."
+text = "In this episode I talk about nature in the Netherlands: about the special areas and animals, but also the problems there are."
 language_code = "en"
 [[document.sentences]]
 text = ""
