@@ -32,13 +32,13 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         # TODO: select_related when we add display_text
         sentences = [
             SentenceDB(
-                id: sentence.id
-                user_id: document.user.id,
-                document_id: document.id,
-                ordering: sentence.ordering,
-                language_code: sentence.language_code,
-                text: sentence.text,
-                enabled_for_study: sentence.enabled_for_study,
+                id=sentence.id,
+                user_id=document.user.id,
+                document_id=document.id,
+                ordering=sentence.ordering,
+                language_code=sentence.language_code,
+                text=sentence.text,
+                enabled_for_study=sentence.enabled_for_study,
             )
             for sentence in document.sentence_set.all()
         ]
@@ -92,7 +92,7 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         else:
             doc.attrs = document.attrs
         # We have to save before we can create sentences
-        doc = doc.save()
+        doc.save()
 
         if document.binary_data:
             # Sorry, but we're not going to do a merge situation
@@ -102,7 +102,7 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
                 document.binary_data,
                 doc,
             )
-            for sentence in sentencedbs:
+            for sentence in sentence_dbs:
                 Sentence.objects.create(
                     document=doc,
                     user=doc.user,
@@ -110,17 +110,8 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
                     language_code=document.language_code,
                     text=sentence.text,
                 )
-            doc.refresh_from_db()
 
-        docdb = self._django_to_pydantic(doc)
-        return docdb
-
-    @property
-    def unique_fields(self):
-        return ['user_id', 'text', 'language_code']
-            sentences = [
-                Sentence.objects.crea
-
+        doc.refresh_from_db()
         docdb = self._django_to_pydantic(doc)
         return docdb
 
