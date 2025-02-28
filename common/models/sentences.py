@@ -8,17 +8,17 @@ from enum import StrEnum
 from typing import List, Optional
 
 from ..utils.languages import LanguageCode
-from .base import GlobalBaseModel, HashableMixin
+from .base import GlobalBaseModel
 
 
-class SentenceDB(HashableMixin, GlobalBaseModel):
+class SentenceDB(GlobalBaseModel):
     """
     Database representation of a sentence.
     """
     id: Optional[uuid.UUID] = None  # The database/adapter sets this value
     user_id: uuid.UUID
 
-    # Example sentences might not have a document or ordering,
+    # Example sentences and translations might not have a document or ordering,
     # which is why document_id and ordering are optional.
     document_id: Optional[uuid.UUID] = None
     ordering: Optional[int] = None  # Relative to the document
@@ -37,7 +37,7 @@ class SentenceDB(HashableMixin, GlobalBaseModel):
         return ['user_id', 'text', 'language_code']
 
 
-class SentenceUI(HashableMixin, GlobalBaseModel):
+class SentenceUI(GlobalBaseModel):
     """
     UI representation of a sentence.
     """
@@ -52,7 +52,7 @@ class SentenceUI(HashableMixin, GlobalBaseModel):
     translations: Optional[List['SentenceUI']] = []
 
 
-class DisplayTextDB(HashableMixin, GlobalBaseModel):
+class DisplayTextDB(GlobalBaseModel):
     """
     Preserves the original version/case of the word for the sentence/document.
     Allows us to store the same word for multiple variations.
@@ -63,6 +63,7 @@ class DisplayTextDB(HashableMixin, GlobalBaseModel):
     user_id: uuid.UUID
     sentence_id: uuid.UUID
     word_id: uuid.UUID
+
     ordering: int  # Relative to the sentence
     language_code: LanguageCode
     text: str
@@ -72,43 +73,19 @@ class DisplayTextDB(HashableMixin, GlobalBaseModel):
         return ['user_id', 'sentence_id', 'word_id', 'ordering']
 
 
-class DisplayTextUI(HashableMixin, GlobalBaseModel):
+class DisplayTextUI(GlobalBaseModel):
     """
     Representation of display text for individual words in the UI.
     """
     id: uuid.UUID
     sentenceId: uuid.UUID
     word: 'WordUI'
-    ordering: int
+    ordering: int  # Relative to sentence
     language: str
     text: str
 
 
-class WordStatus(StrEnum):
-    """
-    Statuses for a certain word or word phrase.
-
-    How the statuses work:
-
-    1. Not Set: User has not yet set a status on this word
-    2. Ignored: this word doesn't have much value in learning
-       -- e.g. articles like "the", conjunctions like "and",
-       and prepositions that don't translate well.
-
-    3. Learned: words that the user feels fluently comfortable with.
-
-    4. To Learn: adds the words to a queue to introduce in future lessons.
-
-    5. Learning: currently in circulation for learning exercises.
-    """
-    not_set = 'not_set'
-    ignored = 'ignored'
-    learned = 'learned'
-    to_learn = 'to_learn'
-    learning = 'learning'
-
-
-class WordDB(HashableMixin, GlobalBaseModel):
+class WordDB(GlobalBaseModel):
     """
     Representation of a word in the database.
 
@@ -123,7 +100,7 @@ class WordDB(HashableMixin, GlobalBaseModel):
     user_id: uuid.UUID
     sentence_ids: Optional[List[uuid.UUID]] = []
     display_text_ids: Optional[List[uuid.UUID]] = []
-    status: Optional[WordStatus] = 'not_set'
+    enabled_for_study: Optional[bool] = False
     language_code: LanguageCode
     text: str  # Case-insensitive, unlike DisplayText; always lower-case.
 
@@ -132,13 +109,12 @@ class WordDB(HashableMixin, GlobalBaseModel):
         return ['user_id', 'language_code', 'text']
 
 
-class WordUI(HashableMixin, GlobalBaseModel):
+class WordUI(GlobalBaseModel):
     """
     Representation of a word in the UI
     """
 
     id: uuid.UUID
-    sentences: List[SentenceUI]
-    status: WordStatus
     language: str
     text: str
+    enabled_for_study: bool

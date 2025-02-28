@@ -2,6 +2,12 @@
 
 ## 1. Load document with one sentence per line
 
+* Should we have a separate Sentence adapter?
+  * Sentences are used by themselves, or are they?
+    * Only create a separate adapter when it's relevant.
+  * Words are used by themselves
+
+
 * Sentence Adapter
   * Port
     * create_or_update
@@ -30,6 +36,8 @@
 
 ---
 
+* Create display text
+* Create words
 * Select display text to learn
 * Edit underlying words to learn
 

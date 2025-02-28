@@ -1024,15 +1024,7 @@ enabled_for_study = true
 [document.sentences.translation]
 text = "The name black-tailed godwit comes from the sound this bird makes: with a little imagination it calls out its own name."
 language_code = "en"
-[[document.sentences]]
-text = "(grutto utto utto!)"
-language_code = "nl"
-ordering = 123
-enabled_for_study = true
 
-[document.sentences.translation]
-text = "(black-tailed godwit utto utto!)"
-language_code = "en"
 [[document.sentences]]
 text = ""
 language_code = "nl"

@@ -45,8 +45,8 @@ class HashableMixin:
             raise NotImplementedError
 
 
-class GlobalBaseModel(BaseModel):
+class GlobalBaseModel(HashableMixin, BaseModel):
     """
-    Use this base for all pydantic models
+    Use this base for important models
     """
     model_config = ConfigDict(use_enum_values=True)

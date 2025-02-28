@@ -6,10 +6,10 @@ Affero GPL v3
 import uuid
 from typing import Optional
 
-from .base import GlobalBaseModel, HashableMixin
+from .base import GlobalBaseModel
 
 
-class UserDB(HashableMixin, GlobalBaseModel):
+class UserDB(GlobalBaseModel):
     """
     Representation of a user in the database.
     """
@@ -25,7 +25,7 @@ class UserDB(HashableMixin, GlobalBaseModel):
         return ['username']
 
 
-class UserUI(HashableMixin, GlobalBaseModel):
+class UserUI(GlobalBaseModel):
     """
     Representation of a logged-in user in the UI.
     NOTE: use camel-cased attributes for easier handling with javascript

@@ -9,13 +9,13 @@ from typing import Dict, List, Optional
 from pydantic import validator
 
 from ..utils.languages import LanguageCode
-from .base import GlobalBaseModel, HashableMixin
+from .base import GlobalBaseModel
 from .files import BinaryFileData
 from .sentences import SentenceDB, SentenceUI
 from .users import UserUI
 
 
-class DocumentDB(HashableMixin, GlobalBaseModel):
+class DocumentDB(GlobalBaseModel):
     """
     Representation of a document to be stored in the database
     """
@@ -24,9 +24,10 @@ class DocumentDB(HashableMixin, GlobalBaseModel):
     user_id: uuid.UUID  # UserProfile uuid
     display_name: str
     language_code: LanguageCode
-    author: Optional[str] = None
-    sentences: Optional[List[SentenceDB]] = []
     attrs: Optional[Dict[str, str]] = {}
+    sentences: Optional[List[SentenceDB]] = []
+    # This shouldn't be stored in the database,
+    # but it's used to set the related information.
     binary_data: Optional[BinaryFileData] = None
 
     @property
@@ -34,7 +35,7 @@ class DocumentDB(HashableMixin, GlobalBaseModel):
         return ['user_id', 'display_name', 'language_code']
 
 
-class DocumentUI(HashableMixin, GlobalBaseModel):
+class DocumentUI(GlobalBaseModel):
     """
     Full document for display in the UI
     """
@@ -43,5 +44,5 @@ class DocumentUI(HashableMixin, GlobalBaseModel):
     user: UserUI
     displayName: str
     language: str
-    sentences: List[SentenceUI]
     attrs: Optional[Dict[str, str]] = {}
+    sentences: List[SentenceUI]

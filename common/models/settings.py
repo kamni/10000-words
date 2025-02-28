@@ -8,7 +8,7 @@ from typing import Optional
 from .base import GlobalBaseModel, HashableMixin
 
 
-class AppSettingsDB(HashableMixin, GlobalBaseModel):
+class AppSettingsDB(GlobalBaseModel):
     """
     Tracks global settings for the application
     """
@@ -40,7 +40,7 @@ class AppSettingsDB(HashableMixin, GlobalBaseModel):
         ]
 
 
-class AppSettingsUI(HashableMixin, GlobalBaseModel):
+class AppSettingsUI(GlobalBaseModel):
     """
     The way the app settings are displayed in the frontend.
     """
@@ -77,4 +77,3 @@ class AppSettingsUI(HashableMixin, GlobalBaseModel):
             'show_password_field',
             'show_user_select',
         ]
-
