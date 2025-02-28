@@ -71,6 +71,7 @@ class DocumentDBPort(ABC):
             :Some Attr: some string value
 
         :binary_data: The data to parse.
+
         :return: dictionary of attr-to-values
         """
         attrs = {}
@@ -91,6 +92,14 @@ class DocumentDBPort(ABC):
         binary_data: BinaryFileData,
         document: DocumentDB,
     ) -> List[SentenceDB]:
+        """
+        Parse the data from a binary file into a list of sentences.
+
+        :binary_data: The data to parse.
+        :document: The document that the data belongs to.
+
+        :return: A list of sentences.
+        """
         sentences = []
         data = binary_data.data.decode('utf-8')
         text = data.split(os.linesep)
