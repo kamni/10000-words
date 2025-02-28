@@ -63,8 +63,7 @@ class WordStatus(StrEnum):
 class Word(BaseModel):
     text: str
     language_code: LanguageCode
-    status: Optional[WordStatus] = 'not_set'
-    example_sentence_ids: Optional[List[uuid.UUID]] = []
+    enabled_for_study: Optional[bool] = False
     translation: Optional['Word'] = None
 
     class Config:

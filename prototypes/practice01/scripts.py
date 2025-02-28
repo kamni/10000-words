@@ -215,6 +215,7 @@ class TOMLCreator:
                     word = Word(
                         text=word,
                         language_code='nl',
+                        enabled_for_study=True,
                         translation=Word(
                             text=translation,
                             language_code='en',
