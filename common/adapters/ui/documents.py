@@ -5,7 +5,7 @@ Affero GPL v3
 
 from typing import List, Tuple
 
-from ...models.documents import DocumentDB, DocumentUI
+from ...models.documents import DocumentDB, DocumentUI, SentenceUI
 from ...models.users import UserUI
 from ...ports.documents import DocumentUIPort
 from ...stores.adapter import AdapterStore
@@ -32,16 +32,34 @@ class DocumentUIAdapter(DocumentUIPort):
 
         :return: Document instance ready for display in the UI.
         """
+        # This should always be the same for all objects
+        # that belong to a document.
+        # We only store it on the child models for easy filtering.
+        language=language_code_choices.get(
+            document.language_code,
+            'Unknown',
+        )
+
+        sentences = [
+            SentenceUI(
+                id=sentencedb.id,
+                language=language,
+                ordering=sentencedb.ordering,
+                text=sentencedb.text,
+                enabledForStudy=sentencedb.enabled_for_study,
+                translations=sentencedb.translations,
+                displayText=sentencedb.display_text,
+            )
+            for sentencedb in document.sentences
+        ]
+
         docui = DocumentUI(
             id=document.id,
             user=user,
             displayName=document.display_name,
-            language=language_code_choices.get(
-                document.language_code,
-                'Unknown',
-            ),
+            language=language,
             attrs=document.attrs,
-            sentences=[],
+            sentences=sentences,
         )
         return docui
 

@@ -6,6 +6,11 @@
   * Displays sentences in Edit view
   * Export button back to TOML
 
+* Tests
+  * DocumentUIAdapter
+    * get
+    * get_all
+
 ---
 
 * Personal settings
