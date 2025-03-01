@@ -2,13 +2,7 @@
 
 ## 1. Load document with one sentence per line
 
-* Is enabled_for_study working?
-* background color on cards not configured
-
 * Tests
-  * DocumentUIAdapter
-    * get
-    * get_all
   * DocumentDBInMemoryAdapter
     * create_or_update
   * DocumentDBDjangoORMAdapter

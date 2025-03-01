@@ -45,12 +45,32 @@ class Sentence(BaseWidget):
 
     def display(self):
         if self.sentence.text:
-            with ui.card().classes('w-full'):
+            with ui.card().classes('w-full') as sentence_card:
+                if not self.sentence.translations:
+                    sentence_card.classes(add='bg-zinc-300')
+                elif not self.sentence.enabledForStudy:
+                    sentence_card.classes(add='bg-amber-50')
+
                 with ui.row().classes('w-full'):
                     ui.label(self.sentence.text).classes('text-xl w-5/6')
                     ui.space()
+
+                    if not self.sentence.translations:
+                        with ui.icon('block').classes('text-xl text-amber-800') \
+                                .style('padding-top: .5em !important'):
+                            ui.tooltip(
+                                'Add translation in settings to enable sentence',
+                            ) \
+                                    .classes('text-lg')
+                    elif not self.sentece.enabledForStudy:
+                        with ui.icon('warning').classes('text-xl text-amber-800') \
+                                .style('padding-top: .5em !important'):
+                            ui.tooltip('Vocabulary words missing') \
+                                    .classes('text-lg')
+
                     with ui.button().props('flat'):
-                        ui.icon('settings')
+                        with ui.icon('settings'):
+                            ui.tooltip('Settings').classes('text-lg')
         else:
             ui.html('&nbsp;')
 
