@@ -47,7 +47,7 @@ class Sentence(BaseWidget):
         if self.sentence.text:
             with ui.card().classes('w-full') as sentence_card:
                 if not self.sentence.translations:
-                    sentence_card.classes(add='bg-zinc-300')
+                    sentence_card.classes(add='bg-zinc-200')
                 elif not self.sentence.enabledForStudy:
                     sentence_card.classes(add='bg-amber-50')
 

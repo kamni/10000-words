@@ -17,23 +17,32 @@
 
 ---
 
+## Translations
+
+* Add translation to sentence
+  * Refresh sentence when added
+* Edit translation on sentence
+* Edit sentence
+* Copy sentence to clipboard
+* Delete sentence
+* Delete document
+* When hovering over text, see translation and vocabulary words
+
+---
+
 * Exporting:
   * TOML
   * Anki apkg
-* Ability to delete documents
-* Ability to edit / delete sentences
 
 ---
 
 * Personal settings
   * preferred language
   * learning languages
-* Add translations to sentence
-* Edit translations
 
 ---
 
-* Create display text
+* Create display text?
 * Create words -- are they in their own file? Probably not...
 * Select display text to learn
 * Edit underlying words to learn
