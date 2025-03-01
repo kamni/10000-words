@@ -46,9 +46,7 @@ class SentenceUI(GlobalBaseModel):
     ordering: Optional[int] = None
     text: str
     enabledForStudy: bool
-    # A sentence can't be displayed in the UI without its display text,
-    # so this is mandatory, unlike when creating the SentenceDB
-    displayText: List['DisplayTextUI']
+    displayText: Optional[List['DisplayTextUI']] = []
     translations: Optional[List['SentenceUI']] = []
 
 

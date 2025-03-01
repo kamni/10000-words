@@ -22,23 +22,6 @@ def random_email(username: Optional[str]=None, domain: Optional[str]=None) -> st
     return email
 
 
-def random_file_path(
-    base_path: Optional[str]=None,
-    extension: Optional[str]=None,
-) -> str:
-    if not base_path:
-        num_parts = random.randrange(3, 5)
-        base_path = os.path.join(*[
-            random_string() for i in range(num_parts)
-        ])
-    if not extension:
-        extension = random.choice(['json', 'mp3', 'txt'])
-    filename = random_string()
-
-    file_path = os.path.join(base_path, f'{filename}.{extension}')
-    return file_path
-
-
 def random_language_code():
     lang_code = str(random.choice(list(LanguageCode)))
     return lang_code
