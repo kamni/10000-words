@@ -62,6 +62,8 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
 
         :return: DocumentDB that was created/updated
         :raises: ObjectNotFound error if user does not exist
+            or document.sentences contains saved sentences
+            that the document does not know about.
         """
 
         # This raises an ObjectNotFound error.
@@ -75,7 +77,8 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
                 user__id=document.user_id,
                 display_name=document.display_name,
                 language_code=document.language_code,
-            ).first()
+            ).prefetch_related('sentence_set') \
+                    .select_related('user').first()
 
         if existing_doc:
             doc = existing_doc
@@ -95,7 +98,7 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
         doc.save()
 
         if document.binary_data:
-            # Sorry, but we're not going to do a merge situation
+            # Sorry, but we're not going to attempt a merge
             Sentence.objects.filter(document=doc).delete()
 
             sentence_dbs = self.parse_binary_data_sentences(
@@ -107,9 +110,50 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
                     document=doc,
                     user=doc.user,
                     ordering=sentence.ordering,
-                    language_code=document.language_code,
+                    language_code=doc.language_code,
                     text=sentence.text,
                 )
+        elif document.sentences and document.sentences != doc.sentences:
+            # Delete the extras
+            if existing_doc:
+                for existing_sentence in existing_doc.sentence_set:
+                    try:
+                        sentence = list(filter(
+                            lambda x: x.id == existing_sentence.id,
+                            document.sentences,
+                        ))[0]
+                    except IndexError:
+                        existing_sentence.delete()
+                    else:
+                        # We're only going to allow changes of the ordering,
+                        # language, and text
+                        existing_sentence.ordering = sentence.ordering
+                        existing_sentence.language_code = doc.language_code
+                        existing_sentence.text = sentence.text
+                        existing_sentence.save()
+
+            # Add the new sentences or raise an objection
+            # if the sentence isn't new, but the document can't find it.
+            for sentence in document.sentences:
+                if not sentence.id:
+                    Sentence.objects.create(
+                        document=doc,
+                        user=doc.user,
+                        ordering=sentence.ordering,
+                        language_code=doc.language_code,
+                        text=sentence.text,
+                    )
+                elif existing_doc and not existing_doc.sentence_set.filter(
+                    id=sentence_id,
+                ):
+                    # This is bad...where did this sentence come from,
+                    # if it already has an ID,
+                    # but the document doesn't know about it?
+                    raise ObjectNotFoundError(
+                        'Could not update sentence with id '
+                        f'{{sentence.id}} because it does not '
+                        'belong to document {{doc.id}}.'
+                    )
 
         doc.refresh_from_db()
         docdb = self._django_to_pydantic(doc)

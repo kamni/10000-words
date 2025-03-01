@@ -51,7 +51,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         doc = DocumentDB(
             user_id=userdb.id,
             display_name='Test create',
-            language_code='nl',
+            language_code='de',
             binary_data=binary_data,
         )
         new_docdb = self.adapter.create_or_update(doc)
@@ -61,6 +61,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         self.assertEqual(userdb.id, docdb.user_id)
         self.assertEqual(doc.display_name, docdb.display_name)
         self.assertEqual(doc.language_code, docdb.language_code)
+        self.assertEqual(54, len(doc.sentences))
         self.assertEqual({}, docdb.attrs)
 
     def test_create_or_update_first_creation_with_attrs(self):
@@ -75,7 +76,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         doc = DocumentDB(
             user_id=userdb.id,
             display_name='Test create',
-            language_code='nl',
+            language_code='de',
             binary_data=binary_data,
         )
         new_docdb = self.adapter.create_or_update(doc)
@@ -100,7 +101,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         doc = DocumentDB(
             user_id=userdb.id,
             display_name='Test create with update',
-            language_code='nl',
+            language_code='de',
         )
         docdb1 = self.adapter.create_or_update(doc)
         docdb2 = self.adapter.create_or_update(doc)
@@ -111,7 +112,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         doc = DocumentDB(
             user_id=userdb.id,
             display_name='Test create with update',
-            language_code='nl',
+            language_code='de',
         )
         docdb1 = self.adapter.create_or_update(doc)
 
@@ -126,7 +127,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
             id=docdb1.id,
             user_id=userdb.id,
             display_name='Test2 create with update',
-            language_code='nl',
+            language_code='de',
             binary_data=binary_data,
         )
         docdb2 = self.adapter.create_or_update(doc)
@@ -143,6 +144,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         self.assertEqual(docdb1.id, docdb2.id)
         self.assertEqual(doc.display_name, docdb2.display_name)
         self.assertEqual(doc.language_code, docdb2.language_code)
+        self.assertEqual(50, len(doc.sentences))
         self.assertEqual(expected_attrs, docdb2.attrs)
 
     def test_create_or_update_with_update_and_new_attrs(self):

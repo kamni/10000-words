@@ -10,6 +10,7 @@
 * Tests
   * DocumentDBInMemoryAdapter
     * create_or_update
+    * update with sentences
   * DocumentDBDjangoORMAdapter
     * create_or_update
     * get
