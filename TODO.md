@@ -2,6 +2,11 @@
 
 ## 1. Load document with one sentence per line
 
+* UI:
+  * Edit sentence
+  * Copy sentence to clipboard
+  * Delete sentence
+
 * Tests
   * DocumentDBInMemoryAdapter
     * create_or_update
@@ -19,12 +24,11 @@
 
 ## Translations
 
+* Is there a way to refresh an individual sentence,
+  instead of refreshing the entire EditArea?
 * Add translation to sentence
   * Refresh sentence when added
 * Edit translation on sentence
-* Edit sentence
-* Copy sentence to clipboard
-* Delete sentence
 * Delete document
 * When hovering over text, see translation and vocabulary words
 

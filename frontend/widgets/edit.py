@@ -3,6 +3,8 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
+from collections.abc import Callable
+
 from nicegui import app, events, ui
 
 from common.models.documents import DocumentUI
@@ -34,14 +36,33 @@ class EditComponent(BaseWidget):
         self.document_controller = DocumentController()
 
 
-class Sentence(BaseWidget):
+class Sentence(EditComponent):
     """
     An individual sentence
     """
 
-    def __init__(self, sentence: SentenceUI):
+    def __init__(
+        self,
+        document: DocumentUI,
+        sentence: SentenceUI,
+    ):
+        self.document = document
         self.sentence = sentence
         super().__init__()
+
+    def refresh(self):
+        # TODO: this is a hack to test states.
+        # Remove this when actual state is present.
+        from tests.utils.documents import make_sentence_ui
+        if not self.sentence.translations:
+            self.sentence.translations = [make_sentence_ui()]
+        elif not self.sentence.enabledForStudy:
+            self.sentence.enabledForStudy = True
+
+        self.current_document = self.document
+        # TODO: is there another way to do this than just refreshing
+        # the whole document?
+        edit_area.refresh()
 
     def display(self):
         if self.sentence.text:
@@ -62,13 +83,13 @@ class Sentence(BaseWidget):
                                 'Add translation in settings to enable sentence',
                             ) \
                                     .classes('text-lg')
-                    elif not self.sentece.enabledForStudy:
+                    elif not self.sentence.enabledForStudy:
                         with ui.icon('warning').classes('text-xl text-amber-800') \
                                 .style('padding-top: .5em !important'):
                             ui.tooltip('Vocabulary words missing') \
                                     .classes('text-lg')
 
-                    with ui.button().props('flat'):
+                    with ui.button(on_click=self.refresh).props('flat'):
                         with ui.icon('settings'):
                             ui.tooltip('Settings').classes('text-lg')
         else:
@@ -110,7 +131,7 @@ class EditArea(EditComponent):
         if document:
             DocumentAttrs().display()
             for sentence in document.sentences:
-                Sentence(sentence).display()
+                Sentence(document, sentence).display()
         else:
             with ui.row():
                 ui.icon('arrow_back').classes('text-2xl')
