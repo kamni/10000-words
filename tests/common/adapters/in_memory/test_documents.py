@@ -282,6 +282,13 @@ class TestDocumentDBInMemoryAdapter(TestCase):
                 display_name='Some document',
                 language_code=lang,
                 attrs=expected_attrs,
+                sentences=[
+                    make_sentence_db(
+                        user_id=userdb.id,
+                        language_code=lang,
+                    )
+                    for i in range(2)
+                ]
             ) for lang in lang_codes
         ]
         docs2 = [
@@ -298,6 +305,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         self.assertEqual(expected1, returned1)
         for doc in returned1:
             self.assertEqual(expected_attrs, doc.attrs)
+            self.assertEqual(2, len(doc.sentences))
 
         expected2 = set(filter(lambda x: x.user_id == userdb2.id, docdbs))
         returned2 = set(self.adapter.get_all(userdb2.id))
