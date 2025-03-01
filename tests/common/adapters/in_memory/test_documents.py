@@ -233,6 +233,17 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         self.assertEqual(new_attrs, new_docdb2.attrs)
         self.assertEqual(3, len(new_docdb.sentences))
 
+    def test_create_or_update_document_with_id_missing(self):
+        userdb = self.user_adapter.create(make_user_db())
+        doc = DocumentDB(
+            id=uuid.uuid4(),
+            user_id=userdb.id,
+            display_name='Test create sentences-to-sentences',
+            language_code='de',
+        )
+        with self.assertRaises(ObjectNotFoundError):
+            self.adapter.create_or_update(doc)
+
     '''
     def test_create_or_update_first_creation(self):
         filepath = TEST_DATA_DIR / 'Die-Bremer-Stadtmusikanten.txt'

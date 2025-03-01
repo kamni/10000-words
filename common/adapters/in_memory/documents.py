@@ -49,7 +49,7 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
                 ))[0]
                 doc = existing_doc
             except (IndexError, KeyError):
-                raise ObjectNotFound(
+                raise ObjectNotFoundError(
                     f'Could not update document {document.id}. Not found.'
                 )
         else:
