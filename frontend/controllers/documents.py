@@ -76,7 +76,4 @@ class DocumentController(BaseController):
         app.storage.client['documents'] = doc_dict
 
     def set_current_document(self, document: DocumentUI):
-        # TODO: fetch sentence data
-        # TODO: update sentences, words
         app.storage.client['documents']['current_document'] = document.model_dump()
-

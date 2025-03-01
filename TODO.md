@@ -21,6 +21,10 @@
 
 ---
 
+* BUG: login doesn't redirect if only one user. Why?
+
+---
+
 * Personal settings
   * preferred language
   * learning languages

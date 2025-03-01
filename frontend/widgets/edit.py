@@ -5,8 +5,8 @@ Affero GPL v3
 
 from nicegui import app, events, ui
 
-from common.models.documents import DocumentDB, DocumentUI
-from common.stores.adapter import AdapterStore
+from common.models.documents import DocumentUI
+from common.models.sentences import SentenceUI
 from common.utils.languages import language_choices
 
 from frontend.controllers.documents import DocumentController
@@ -34,6 +34,37 @@ class EditComponent(BaseWidget):
         self.document_controller = DocumentController()
 
 
+class Sentence(BaseWidget):
+    """
+    An individual sentence
+    """
+
+    def __init__(self, sentence: SentenceUI):
+        self.sentence = sentence
+        super().__init__()
+
+    def display(self):
+        with ui.card():
+            ui.label(self.sentence.text)
+
+
+class DocumentAttrs(EditComponent):
+    def display(self):
+        document = self.current_document
+        if document:
+            if document.attrs:
+                with ui.card().style('width: 100%'):
+                    for attr, value in document.attrs.items():
+                        ui.label(f'{attr}: {value}') \
+                                .classes('text-2xl bold text-blue-950') \
+                                .style('line-height: .5 !important')
+            else:
+                with ui.card().style('width: 100%'):
+                    ui.label(document.displayName)\
+                            .classes('text-3xl bold text-blue-950')
+
+
+
 class EditArea(EditComponent):
     """
     Area for editing documents
@@ -50,16 +81,7 @@ class EditArea(EditComponent):
 
         document = self.current_document
         if document:
-            if document.attrs:
-                with ui.card().style('width: 100%'):
-                    for attr, value in document.attrs.items():
-                        ui.label(f'{attr}: {value}') \
-                                .classes('text-2xl bold text-blue-950') \
-                                .style('line-height: .5 !important')
-            else:
-                with ui.card().style('width: 100%'):
-                    ui.label(document.displayName)\
-                            .classes('text-3xl bold text-blue-950')
+            DocumentAttrs().display()
         else:
             with ui.row():
                 ui.icon('arrow_back').classes('text-2xl')
@@ -156,6 +178,8 @@ class UploadForm(EditComponent):
         Cancel the user form
         """
         self.hide_modal()
+        self._upload_event = None
+        upload_sidebar.refresh()
         # TODO: how do I reload?
 
     def hide_modal(self):

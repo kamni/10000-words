@@ -152,4 +152,3 @@ class DocumentDBDjangoORMAdapter(DocumentDBPort):
                 .filter(user__id=user_id).all()
         docdbs = [self._django_to_pydantic(doc) for doc in docs]
         return docdbs
-
