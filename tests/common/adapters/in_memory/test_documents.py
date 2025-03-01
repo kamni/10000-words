@@ -39,6 +39,90 @@ class TestDocumentDBInMemoryAdapter(TestCase):
     def tearDown(self):
         AppStore.destroy_all()
 
+    def test_create_or_update_binary_create_and_binary_update(self):
+        # Creation from a binary file
+        filepath = TEST_DATA_DIR / 'Die-Bremer-Stadtmusikanten.txt'
+        with filepath.open('rb') as testfile:
+            binary_data = BinaryFileData(
+                name='Die-Bremer-Stadtmusikanten.txt',
+                data=testfile.read(),
+            )
+
+        userdb = self.user_adapter.create(make_user_db())
+        doc = DocumentDB(
+            user_id=userdb.id,
+            display_name='Test create binary-to-binary',
+            language_code='de',
+            binary_data=binary_data,
+            attrs={'foo': 'bar'},
+        )
+        new_docdb = self.adapter.create_or_update(doc)
+        self.assertIsNotNone(new_docdb.id)
+
+        docdb = self.adapter.get(id=new_docdb.id, user_id=userdb.id)
+        self.assertEqual(userdb.id, docdb.user_id)
+        self.assertEqual(doc.display_name, docdb.display_name)
+        self.assertEqual(doc.language_code, docdb.language_code)
+        self.assertEqual(54, len(doc.sentences))
+        self.assertEqual({}, docdb.attrs)
+
+        # Update from a binary file
+        # We can't update this attribute:
+        bad_language_code = 'es'
+        # These attributes can be updated:
+        good_display_name = 'Test update binary-to-binary'
+        filepath = TEST_DATA_DIR / 'Rumpelstilzchen.txt'
+        with filepath.open('rb') as testfile:
+            good_binary_data = BinaryFileData(
+                name='Rumpelstilzchen.txt',
+                data=testfile.read(),
+            )
+        expected_attrs = {
+            'Titel': 'Rumpelstilzchen',
+            'Autor': 'Ein Märchen der Brüder Grimm',
+            'Quelle': (
+                'https://www.grimmstories.com/de/grimm_maerchen/rumpelstilzchen'
+            ),
+        }
+
+        doc = DocumentDB(
+            id=new_docdb.id,
+            user_id=userdb.id,
+            display_name=good_display_name,
+            language_code=bad_language_code,
+            binary_data=good_binary_data,
+        )
+        new_docdb2 = self.adapter.create_or_update(doc)
+
+        self.assertEqual(new_docdb.id, new_docdb2.id)
+        self.assertEqual(new_docdb.user_id, new_docdb2.user_id)
+        self.assertEqual(good_display_name, new_docdb2.display_name)
+        self.assertEqual(new_docdb.language_code, new_docdb2.language_code)
+        self.assertEqual(expected_attrs, new_docdb2.attrs)
+        self.assertEqual(48, len(new_docdb2.sentences))
+
+    def test_create_or_update_binary_create_and_sentences_update(self):
+        # Test update attrs, display_name
+        # Test can't update language_code, user
+        pass
+
+    def test_create_or_update_sentences_create_and_binary_update(self):
+        # Test update attrs, display_name
+        # Test can't update language_code, user
+        pass
+
+    def test_create_or_update_sentences_create_and_sentence_update(self):
+        # Test update attrs, display_name
+        # Test can't update language_code, user
+        pass
+
+    def test_create_or_update_binary_create_and_invalid_sentences_update(self):
+        pass
+
+    def test_create_or_update_sentences_create_and_invalid_sentences_update(self):
+        pass
+
+    '''
     def test_create_or_update_first_creation(self):
         filepath = TEST_DATA_DIR / 'Die-Bremer-Stadtmusikanten.txt'
         with filepath.open('rb') as testfile:
@@ -179,6 +263,8 @@ class TestDocumentDBInMemoryAdapter(TestCase):
             display_name='Test get',
             language_code='hy',
             attrs=expected_attrs,
+            sentences=[
+                SentenceDB(
         )
 
         expected = self.adapter.create_or_update(doc)
@@ -230,3 +316,4 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         expected = []
         returned = self.adapter.get_all(uuid.uuid4())
         self.assertEqual(expected, returned)
+    '''

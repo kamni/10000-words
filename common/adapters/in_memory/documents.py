@@ -79,6 +79,9 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
             doc.attrs = document.attrs
             if document.sentences:
                 doc.sentences = document.sentences
+                for sentence in doc.sentences:
+                    if not sentence.id:
+                        sentence.id = uuid.uuid4()
 
         # The binary data does not get stored if it's present.
         doc.binary_data = None

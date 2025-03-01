@@ -8,9 +8,29 @@
   * Delete sentence
 
 * Tests
+  * create_or_update_scenarios:
+    * sentences then binary data
+      * some were deleted
+      * some were added
+        * make sure they get a uuid
+    * sentences then sentences
+      * some were deleted
+      * some were added
+        * make sure they get a uuid
+      * error condition of extra sentences in source
+    * binary_data then sentences
+      * some were deleted
+      * some were added
+        * make sure they get a uuid
+      * error condition of extra sentences in source
+    * binary_data then binary_data
+      * some were deleted
+      * some were added
+        * make sure they get a uuid
+
   * DocumentDBInMemoryAdapter
     * create_or_update
-    * update with sentences
+    * update with sentence list
   * DocumentDBDjangoORMAdapter
     * create_or_update
     * get
