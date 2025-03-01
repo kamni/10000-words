@@ -44,8 +44,15 @@ class Sentence(BaseWidget):
         super().__init__()
 
     def display(self):
-        with ui.card():
-            ui.label(self.sentence.text)
+        if self.sentence.text:
+            with ui.card().classes('w-full'):
+                with ui.row().classes('w-full'):
+                    ui.label(self.sentence.text).classes('text-xl w-5/6')
+                    ui.space()
+                    with ui.button().props('flat'):
+                        ui.icon('settings')
+        else:
+            ui.html('&nbsp;')
 
 
 class DocumentAttrs(EditComponent):
@@ -82,6 +89,8 @@ class EditArea(EditComponent):
         document = self.current_document
         if document:
             DocumentAttrs().display()
+            for sentence in document.sentences:
+                Sentence(sentence).display()
         else:
             with ui.row():
                 ui.icon('arrow_back').classes('text-2xl')
@@ -120,17 +129,24 @@ class DocumentSidebar(EditComponent):
 
     @property
     def documents_by_language(self):
-        all_docs = self.document_controller.get_all()
+        all_docs = self.documents
         by_language = {}
         for doc in all_docs:
             if doc.language in by_language:
                 by_language[doc.language].append(doc)
             else:
                 by_language[doc.language] = [doc]
-        return by_language
+
+        by_language_sorted = dict(sorted(by_language.items()))
+        for value_list in by_language_sorted.values():
+            value_list.sort(key=lambda x: x.displayName)
+
+        return by_language_sorted
 
     def show_document(self, doc_id):
         def _on_click():
+            # TODO: we'll have to fetch full doc ffom server
+            self.document_controller.get(doc_id)
             self.current_document = self.document_controller.get(doc_id)
             edit_area.refresh()
             upload_sidebar.refresh()

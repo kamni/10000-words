@@ -21,8 +21,12 @@
 
 ---
 
-* BUG: documents in the sidebar aren't arranged alphabetically in header and list
 * BUG: login doesn't redirect if only one user. Why?
+
+---
+
+* Ability to delete documents
+* Ability to edit / delete sentences
 
 ---
 
