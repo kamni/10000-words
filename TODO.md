@@ -29,14 +29,10 @@
         * make sure they get a uuid
     * check create_or_update raises an error if a uuid is present
 
-  * DocumentDBInMemoryAdapter
-    * create_or_update
-    * update with sentence list
   * DocumentDBDjangoORMAdapter
     * create_or_update
     * get
-    * get_all -- should it return the sentences at this time?
-      * Maybe we do another query?
+    * get_all
 
 ---
 

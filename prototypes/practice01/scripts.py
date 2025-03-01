@@ -324,4 +324,4 @@ class TOMLCreator:
 
 if __name__ == '__main__':
     toml_creator = TOMLCreator()
-    toml_creator.create(DATA_DIR / 'aflevering-070.txt')
+    toml_creator.create(DATA_DIR / 'aflevering-071.txt')
