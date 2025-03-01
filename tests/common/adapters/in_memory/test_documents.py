@@ -59,12 +59,11 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         new_docdb = self.adapter.create_or_update(doc)
         self.assertIsNotNone(new_docdb.id)
 
-        docdb = self.adapter.get(id=new_docdb.id, user_id=userdb.id)
-        self.assertEqual(userdb.id, docdb.user_id)
-        self.assertEqual(doc.display_name, docdb.display_name)
-        self.assertEqual(doc.language_code, docdb.language_code)
-        self.assertEqual(54, len(doc.sentences))
-        self.assertEqual({}, docdb.attrs)
+        self.assertEqual(userdb.id, new_docdb.user_id)
+        self.assertEqual(doc.display_name, new_docdb.display_name)
+        self.assertEqual(doc.language_code, new_docdb.language_code)
+        self.assertEqual(54, len(new_docdb.sentences))
+        self.assertEqual({}, new_docdb.attrs)
 
         # Update from a binary file
         # We can't update this attribute:
@@ -119,15 +118,17 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         userdb = self.user_adapter.create(make_user_db())
         doc = DocumentDB(
             user_id=userdb.id,
-            display_name='Test create binary-to-binary',
+            display_name='Test create binary-to-sentences',
             language_code='de',
             binary_data=binary_data,
         )
         new_docdb = self.adapter.create_or_update(doc)
         self.assertEqual(expected_attrs, new_docdb.attrs)
+        # This shouldn't be stored
+        self.assertIsNone(new_docdb.binary_data)
 
         # These attributes can be updated:
-        new_display_name = 'Test update binary-to-binary'
+        new_display_name = 'Test update binary-to-sentences'
         new_attrs = {'foo': 'bar'}
         new_sentences = [
             make_sentence_db(
@@ -155,9 +156,45 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         self.assertEqual(new_sentences, new_docdb2.sentences)
 
     def test_create_or_update_sentences_create_and_binary_update(self):
-        # Test update attrs, display_name
-        # Test can't update language_code, user
-        pass
+        userdb = self.user_adapter.create(make_user_db())
+        sentences = [make_sentence_db()]
+        attrs = {'foo': 'bar'}
+        doc = DocumentDB(
+            user_id=userdb.id,
+            display_name='Test create sentences-to-binary',
+            language_code='de',
+            attrs=attrs,
+            sentences=sentences,
+        )
+        new_docdb = self.adapter.create_or_update(doc)
+
+        self.assertIsNotNone(doc.id)
+        self.assertEqual(1, len(new_docdb.sentences))
+        self.assertIsNotNone(new_docdb.sentences[0].id)
+        self.assertEqual(userdb.id, new_docdb.sentences[0].user_id)
+        self.assertEqual(attrs, new_docdb.attrs)
+
+        filepath = TEST_DATA_DIR / 'Die-Bremer-Stadtmusikanten.txt'
+        with filepath.open('rb') as testfile:
+            binary_data = BinaryFileData(
+                name='Die-Bremer-Stadtmusikanten.txt',
+                data=testfile.read(),
+            )
+
+        doc = DocumentDB(
+            id=new_docdb.id,
+            user_id=userdb.id,
+            display_name='Test update sentences-to-binary',
+            language_code='de',
+            binary_data=binary_data,
+            attrs={'msg': 'This is ignored when binary data is present'},
+        )
+        new_docdb2 = self.adapter.create_or_update(doc)
+
+        self.assertEqual(new_docdb.id, new_docdb2.id)
+        self.assertEqual({}, new_docdb.attrs)
+        self.assertEqual(54, len(new_docdb.sentences))
+        self.assertIsNone(new_docdb.binary_data)
 
     def test_create_or_update_sentences_create_and_sentence_update(self):
         # Test update attrs, display_name
