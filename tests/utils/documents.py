@@ -6,7 +6,7 @@ Affero GPL v3
 import string
 
 from common.models.documents import DocumentDB, DocumentUI
-from common.models.sentences import SentenceDB
+from common.models.sentences import SentenceDB, SentenceUI
 from common.stores.adapter import AdapterStore
 from tests.utils.random_data import (
     random_language,
@@ -115,3 +115,23 @@ def make_document_ui(**kwargs) -> DocumentUI:
 
     document = DocumentUI(**random_data)
     return document
+
+
+def make_sentence_ui(**kwargs) -> SentenceUI:
+    """
+    Make a SentenceUI object.
+    Not written to database.
+
+    :kwargs: arguments for the SentenceUI instance
+    """
+    random_data = {
+        'id': random_uuid(),
+        'language': random_language(),
+        'ordering': 0,
+        'text': random_string(min_size=100, max_size=200),
+        'enabledForStudy': False,
+    }
+    random_data.update(kwargs)
+
+    sentence = SentenceUI(**random_data)
+    return sentence
