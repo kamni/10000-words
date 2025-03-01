@@ -14,6 +14,7 @@ from common.models.errors import ObjectNotFoundError
 from common.models.files import BinaryFileData
 from common.stores.app import AppStore
 from common.utils.files import get_project_dir
+from tests.utils.documents import make_sentence_db
 from tests.utils.users import make_user_db
 
 
@@ -54,7 +55,6 @@ class TestDocumentDBInMemoryAdapter(TestCase):
             display_name='Test create binary-to-binary',
             language_code='de',
             binary_data=binary_data,
-            attrs={'foo': 'bar'},
         )
         new_docdb = self.adapter.create_or_update(doc)
         self.assertIsNotNone(new_docdb.id)
@@ -102,9 +102,57 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         self.assertEqual(48, len(new_docdb2.sentences))
 
     def test_create_or_update_binary_create_and_sentences_update(self):
-        # Test update attrs, display_name
-        # Test can't update language_code, user
-        pass
+        filepath = TEST_DATA_DIR / 'Rumpelstilzchen.txt'
+        with filepath.open('rb') as testfile:
+            binary_data = BinaryFileData(
+                name='Rumpelstilzchen.txt',
+                data=testfile.read(),
+            )
+        expected_attrs = {
+            'Titel': 'Rumpelstilzchen',
+            'Autor': 'Ein Märchen der Brüder Grimm',
+            'Quelle': (
+                'https://www.grimmstories.com/de/grimm_maerchen/rumpelstilzchen'
+            ),
+        }
+
+        userdb = self.user_adapter.create(make_user_db())
+        doc = DocumentDB(
+            user_id=userdb.id,
+            display_name='Test create binary-to-binary',
+            language_code='de',
+            binary_data=binary_data,
+        )
+        new_docdb = self.adapter.create_or_update(doc)
+        self.assertEqual(expected_attrs, new_docdb.attrs)
+
+        # These attributes can be updated:
+        new_display_name = 'Test update binary-to-binary'
+        new_attrs = {'foo': 'bar'}
+        new_sentences = [
+            make_sentence_db(
+                user_id=userdb.id,
+                document_id=new_docdb.id,
+                language_code=new_docdb.language_code,
+            ),
+        ]
+
+        doc = DocumentDB(
+            id=new_docdb.id,
+            user_id=userdb.id,
+            language_code=new_docdb.language_code,
+            display_name=new_display_name,
+            attrs=new_attrs,
+            sentences=new_sentences,
+        )
+        new_docdb2 = self.adapter.create_or_update(doc)
+
+        self.assertEqual(new_docdb.id, new_docdb2.id)
+        self.assertEqual(new_docdb.user_id, new_docdb2.user_id)
+        self.assertEqual(new_display_name, new_docdb2.display_name)
+        self.assertEqual(new_docdb.language_code, new_docdb2.language_code)
+        self.assertEqual(new_attrs, new_docdb2.attrs)
+        self.assertEqual(new_sentences, new_docdb2.sentences)
 
     def test_create_or_update_sentences_create_and_binary_update(self):
         # Test update attrs, display_name

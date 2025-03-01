@@ -64,7 +64,7 @@ def make_sentence_db(**kwargs) -> SentenceDB:
         'user_id': random_uuid(),
         'document_id': random_uuid(),
         'ordering': 1,
-        'language': random_language,
+        'language_code': random_language_code(),
         'text': random_string(min_size=100, max_size=200),
     }
     random_data.update(kwargs)
