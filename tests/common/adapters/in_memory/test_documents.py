@@ -244,149 +244,19 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         with self.assertRaises(ObjectNotFoundError):
             self.adapter.create_or_update(doc)
 
-    '''
-    def test_create_or_update_first_creation(self):
-        filepath = TEST_DATA_DIR / 'Die-Bremer-Stadtmusikanten.txt'
-        with filepath.open('rb') as testfile:
-            binary_data = BinaryFileData(
-                name='Die-Bremer-Stadtmusikanten.txt',
-                data=testfile.read(),
-            )
-
-        userdb = self.user_adapter.create(make_user_db())
-        doc = DocumentDB(
-            user_id=userdb.id,
-            display_name='Test create',
-            language_code='de',
-            binary_data=binary_data,
-        )
-        new_docdb = self.adapter.create_or_update(doc)
-        self.assertIsNotNone(new_docdb.id)
-
-        docdb = self.adapter.get(id=new_docdb.id, user_id=userdb.id)
-        self.assertEqual(userdb.id, docdb.user_id)
-        self.assertEqual(doc.display_name, docdb.display_name)
-        self.assertEqual(doc.language_code, docdb.language_code)
-        self.assertEqual(54, len(doc.sentences))
-        self.assertEqual({}, docdb.attrs)
-
-    def test_create_or_update_first_creation_with_attrs(self):
-        filepath = TEST_DATA_DIR / 'Rumpelstilzchen.txt'
-        with filepath.open('rb') as testfile:
-            binary_data = BinaryFileData(
-                name='Rumpelstilzchen.txt',
-                data=testfile.read(),
-            )
-
-        userdb = self.user_adapter.create(make_user_db())
-        doc = DocumentDB(
-            user_id=userdb.id,
-            display_name='Test create',
-            language_code='de',
-            binary_data=binary_data,
-        )
-        new_docdb = self.adapter.create_or_update(doc)
-        self.assertIsNotNone(new_docdb.id)
-
-        docdb = self.adapter.get(id=new_docdb.id, user_id=userdb.id)
-        expected_attrs = {
-            'Titel': 'Rumpelstilzchen',
-            'Autor': 'Ein Märchen der Brüder Grimm',
-            'Quelle': (
-                'https://www.grimmstories.com/de/grimm_maerchen/'
-                'rumpelstilzchen'
-            ),
-        }
-        self.assertEqual(userdb.id, docdb.user_id)
-        self.assertEqual(doc.display_name, docdb.display_name)
-        self.assertEqual(doc.language_code, docdb.language_code)
-        self.assertEqual(expected_attrs, docdb.attrs)
-
-    def test_create_or_update_with_update(self):
-        userdb = self.user_adapter.create(make_user_db())
-        doc = DocumentDB(
-            user_id=userdb.id,
-            display_name='Test create with update',
-            language_code='de',
-        )
-        docdb1 = self.adapter.create_or_update(doc)
-        docdb2 = self.adapter.create_or_update(doc)
-        self.assertEqual(docdb1, docdb2)
-
-    def test_create_or_update_with_update_and_binary_data(self):
-        userdb = self.user_adapter.create(make_user_db())
-        doc = DocumentDB(
-            user_id=userdb.id,
-            display_name='Test create with update',
-            language_code='de',
-        )
-        docdb1 = self.adapter.create_or_update(doc)
-
-        filepath = TEST_DATA_DIR / 'Rumpelstilzchen.txt'
-        with filepath.open('rb') as testfile:
-            binary_data = BinaryFileData(
-                name='Rumpelstilzchen.txt',
-                data=testfile.read(),
-            )
-
-        doc = DocumentDB(
-            id=docdb1.id,
-            user_id=userdb.id,
-            display_name='Test2 create with update',
-            language_code='de',
-            binary_data=binary_data,
-        )
-        docdb2 = self.adapter.create_or_update(doc)
-
-        expected_attrs = {
-            'Titel': 'Rumpelstilzchen',
-            'Autor': 'Ein Märchen der Brüder Grimm',
-            'Quelle': (
-                'https://www.grimmstories.com/de/grimm_maerchen/'
-                'rumpelstilzchen'
-            ),
-        }
-        self.assertEqual(userdb.id, docdb2.user_id)
-        self.assertEqual(docdb1.id, docdb2.id)
-        self.assertEqual(doc.display_name, docdb2.display_name)
-        self.assertEqual(doc.language_code, docdb2.language_code)
-        self.assertEqual(50, len(doc.sentences))
-        self.assertEqual(expected_attrs, docdb2.attrs)
-
-    def test_create_or_update_with_update_and_new_attrs(self):
-        userdb = self.user_adapter.create(make_user_db())
-        expected_attrs = {'foo': 'bar'}
-        doc = DocumentDB(
-            user_id=userdb.id,
-            display_name='Test create with update and attrs',
-            language_code='nl',
-            attrs=expected_attrs,
-        )
-        docdb1 = self.adapter.create_or_update(doc)
-        self.assertEqual(expected_attrs, docdb1.attrs)
-
-        expected_attrs = {'bar': 'foo'}
-        doc = DocumentDB(
-            id=docdb1.id,
-            user_id=userdb.id,
-            display_name='Test create with update and attrs',
-            language_code='nl',
-            attrs=expected_attrs,
-        )
-        docdb2 = self.adapter.create_or_update(doc)
-        self.assertEqual(docdb2.id, docdb1.id)
-        self.assertEqual(expected_attrs, docdb2.attrs)
-
     def test_get(self):
         userdb = self.user_adapter.create(make_user_db())
         expected_attrs = {'foo': 'bar'}
+        expected_sentences = [make_sentence_db(
+            user_id=userdb.id,
+            language_code='hy',
+        )]
         doc = DocumentDB(
             user_id=userdb.id,
             display_name='Test get',
             language_code='hy',
             attrs=expected_attrs,
-            sentences=[
-                SentenceDB(
+            sentences=expected_sentences,
         )
 
         expected = self.adapter.create_or_update(doc)
@@ -394,6 +264,7 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         # Unique on user_id, display_name, and language_code
         self.assertEqual(expected, returned)
         self.assertEqual(expected_attrs, returned.attrs)
+        self.assertEqual(expected_sentences, returned.sentences)
 
     def test_get_does_not_exist(self):
         with self.assertRaises(ObjectNotFoundError):
@@ -438,4 +309,3 @@ class TestDocumentDBInMemoryAdapter(TestCase):
         expected = []
         returned = self.adapter.get_all(uuid.uuid4())
         self.assertEqual(expected, returned)
-    '''
