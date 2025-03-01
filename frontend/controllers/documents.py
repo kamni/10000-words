@@ -3,7 +3,8 @@ Copyright (C) J Leadbetter <j@jleadbetter.com>
 Affero GPL v3
 """
 
-from typing import Any, Dict, List
+import uuid
+from typing import Any, Dict, List, Union
 
 from nicegui import app
 
@@ -49,6 +50,16 @@ class DocumentController(BaseController):
             doc_ui.model_dump(),
         )
         self.set_current_document(doc_ui)
+
+    def get(self, id: uuid.UUID) -> Union[DocumentUI, None]:
+        docs = app.storage.client['documents']['all_documents']
+        try:
+            doc_dict = list(filter(lambda x: x['id'] == id, docs))[0]
+        except IndexError:
+            return None
+
+        doc = DocumentUI(**doc_dict)
+        return doc
 
     def get_all(self) -> List[DocumentUI]:
         doc_dicts = app.storage.client['documents']['all_documents']

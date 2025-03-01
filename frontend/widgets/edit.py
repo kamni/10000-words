@@ -131,9 +131,7 @@ class DocumentSidebar(EditComponent):
 
     def show_document(self, doc_id):
         def _on_click():
-            # TODO: we'll have to fetch full doc ffom server
-            doc = list(filter(lambda x: x.id == doc_id, self.documents))[0]
-            self.current_document = doc
+            self.current_document = self.document_controller.get(doc_id)
             edit_area.refresh()
             upload_sidebar.refresh()
         return _on_click

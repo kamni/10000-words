@@ -21,6 +21,7 @@
 
 ---
 
+* BUG: documents in the sidebar aren't arranged alphabetically in header and list
 * BUG: login doesn't redirect if only one user. Why?
 
 ---
@@ -244,7 +245,6 @@ Could we make documents/sentences/words observable dicts?
   * Form validation
     * input has validators...figure out how
   * Warning if file already exists, and confirmation dialog
-  * How do I clear the input forms?
   * In-Memory Adapter
     * needs to handle file upload
   * Tests:
