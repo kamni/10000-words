@@ -27,6 +27,7 @@
       * some were deleted
       * some were added
         * make sure they get a uuid
+    * check create_or_update raises an error if a uuid is present
 
   * DocumentDBInMemoryAdapter
     * create_or_update

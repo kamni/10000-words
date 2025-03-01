@@ -35,27 +35,24 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
         :document: Instance of a DocumentDB to save
 
         :return: DocumentDB that was created/updated
-        :raises: ObjectNotFound error if user does not exist.
+        :raises: ObjectNotFound error if user does not exist
+            or if updating an object that no longer exists.
         """
 
         existing_doc = None
-        try:
-            documents = self.store.db.documents[str(document.user_id)]
-            if document.id:
+        if document.id:
+            try:
+                documents = self.store.db.documents[str(document.user_id)]
                 existing_doc = list(filter(
                     lambda x: x.id == document.id,
                     documents,
                 ))[0]
-            else:
-                existing_doc = list(filter(
-                    lambda x: (
-                        x.display_name == document.display_name
-                        and x.language_code == document.language_code
-                    ),
-                    self.store.db.documents[str(document.user_id)],
-                ))[0]
-            doc = existing_doc
-        except (IndexError, KeyError):
+                doc = existing_doc
+            except (IndexError, KeyError):
+                raise ObjectNotFound(
+                    f'Could not update document {document.id}. Not found.'
+                )
+        else:
             doc = document
             doc.id = uuid.uuid4()
 
@@ -79,15 +76,17 @@ class DocumentDBInMemoryAdapter(DocumentDBPort):
             doc.attrs = document.attrs
             if document.sentences:
                 doc.sentences = document.sentences
+                # Important consistency checking
                 for sentence in doc.sentences:
                     if not sentence.id:
                         sentence.id = uuid.uuid4()
                     if sentence.user_id != doc.user_id:
                         sentence.user_id = doc.user_id
+                    if sentence.document_id != doc.id:
+                        sentence.document_id = doc.id
 
         # The binary data does not get stored if it's present.
         doc.binary_data = None
-
         return doc
 
     def get(self, id: uuid.UUID, user_id: uuid.UUID) -> DocumentDB:
